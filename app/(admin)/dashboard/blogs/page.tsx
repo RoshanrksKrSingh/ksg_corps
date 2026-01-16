@@ -1,0 +1,155 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Plus, Trash, Eye, Edit, AlertCircle, CheckCircle, AlertTriangle } from "lucide-react";
+import Loader from "@/components/ui/Loader";
+
+export default function AdminBlogsPage() {
+  const [blogs, setBlogs] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  
+  // States for Toast & Delete Modal
+  const [toast, setToast] = useState<{ msg: string; type: "success" | "error" | null }>({ msg: "", type: null });
+  const [deleteId, setDeleteId] = useState<string | null>(null); 
+
+  // --- Helper: Show Toast ---
+  const showToast = (msg: string, type: "success" | "error") => {
+    setToast({ msg, type });
+    setTimeout(() => setToast({ msg: "", type: null }), 3000);
+  };
+
+  // --- Fetch Blogs ---
+  const fetchBlogs = async () => {
+    try {
+      const res = await fetch("/api/blogs");
+      if (!res.ok) throw new Error("Failed to fetch");
+      const data = await res.json();
+      setBlogs(data);
+    } catch (error) {
+      console.error(error);
+      showToast("Failed to load blogs", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  // --- Delete Logic ---
+  const confirmDelete = (id: string) => setDeleteId(id);
+
+  const executeDelete = async () => {
+    if (!deleteId) return;
+    try {
+        const res = await fetch(`/api/blogs/${deleteId}`, { method: "DELETE" });
+        if (res.ok) {
+            setBlogs(blogs.filter((blog) => blog._id !== deleteId));
+            showToast("Insight deleted successfully!", "success");
+        } else {
+            showToast("Failed to delete insight", "error");
+        }
+    } catch (error) {
+        showToast("Server error while deleting", "error");
+    } finally {
+        setDeleteId(null);
+    }
+  };
+
+  return (
+    // Updated: Added px-4 for mobile spacing
+    <div className="relative space-y-8 max-w-7xl mx-auto px-4 md:px-0">
+      
+      {/* --- TOAST --- */}
+      {toast.type && (
+        <div className={`fixed top-5 right-5 z-50 flex items-center gap-3 px-6 py-4 rounded-xl shadow-2xl animate-in slide-in-from-top-5 duration-300 ${
+            toast.type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"
+        }`}>
+            {toast.type === "success" ? <CheckCircle size={24} /> : <AlertCircle size={24} />}
+            <div>
+                <h4 className="font-bold text-sm">{toast.type === "success" ? "Success" : "Error"}</h4>
+                <p className="text-sm opacity-90">{toast.msg}</p>
+            </div>
+        </div>
+      )}
+
+      {/* --- DELETE MODAL (Responsive) --- */}
+      {deleteId && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+            {/* Updated: Added w-[90%] for mobile width */}
+            <div className="bg-white rounded-2xl p-6 md:p-8 w-[90%] max-w-sm shadow-2xl animate-in zoom-in-95 duration-200">
+                <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-4">
+                        <AlertTriangle size={32} />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">Delete Insight?</h3>
+                    <p className="text-gray-500 mb-6 text-sm">
+                        Are you sure you want to delete this blog? This action cannot be undone.
+                    </p>
+                    <div className="flex gap-3 w-full">
+                        <button onClick={() => setDeleteId(null)} className="flex-1 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition">Cancel</button>
+                        <button onClick={executeDelete} className="flex-1 py-3 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition">Yes, Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      )}
+
+      {/* --- HEADER (Responsive Flex) --- */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-3xl font-bold text-white">Manage Blogs</h1>
+        <Link 
+          href="/dashboard/blogs/create" 
+          className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-green-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all transform hover:scale-105 w-full sm:w-auto justify-center sm:justify-start"
+        >
+          <Plus size={20} /> Create New Insight
+        </Link>
+      </div>
+
+      {/* --- TABLE CONTENT (Scrollable) --- */}
+      {loading ? (
+        <div className="bg-white/5 rounded-2xl p-12 backdrop-blur-sm border border-white/10">
+            <Loader text="Loading Blogs..." />
+        </div>
+      ) : (
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+          {/* Updated: Added overflow-x-auto for horizontal scroll */}
+          <div className="overflow-x-auto">
+            <table className="w-full text-left min-w-[600px]">
+                <thead className="bg-gray-50 border-b border-gray-200">
+                <tr>
+                    <th className="p-5 font-bold text-gray-600">Thumbnail</th>
+                    <th className="p-5 font-bold text-gray-600">Title</th>
+                    <th className="p-5 font-bold text-gray-600">Date</th>
+                    <th className="p-5 font-bold text-gray-600 text-right">Actions</th>
+                </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                {blogs.length === 0 ? (
+                    <tr><td colSpan={4} className="p-8 text-center text-gray-500">No blogs found.</td></tr>
+                ) : (
+                    blogs.map((blog) => (
+                    <tr key={blog._id} className="hover:bg-blue-50/50 transition duration-200">
+                        <td className="p-5">
+                        <img src={blog.thumbnail || "https://placehold.co/600x400?text=No+Image"} alt="" className="w-16 h-12 rounded-lg object-cover border border-gray-200 shadow-sm" />
+                        </td>
+                        <td className="p-5 font-bold text-gray-800 max-w-xs truncate">{blog.title}</td>
+                        <td className="p-5 text-gray-500 text-sm font-medium">{new Date(blog.createdAt).toLocaleDateString()}</td>
+                        <td className="p-5 flex justify-end gap-2">
+                            <Link href={`/insights/${blog.slug}`} target="_blank" className="p-2 text-blue-500 hover:bg-blue-100 rounded-lg transition"><Eye size={20} /></Link>
+                            <Link href={`/dashboard/blogs/edit/${blog._id}`} className="p-2 text-orange-500 hover:bg-orange-100 rounded-lg transition"><Edit size={20} /></Link>
+                            <button onClick={() => confirmDelete(blog._id)} className="p-2 text-red-400 hover:bg-red-100 rounded-lg transition"><Trash size={20} /></button>
+                        </td>
+                    </tr>
+                    ))
+                )}
+                </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

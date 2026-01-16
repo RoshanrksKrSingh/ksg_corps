@@ -1,0 +1,35 @@
+import Navbar from "@/components/layout/Navbar";
+import InsightHeader from "@/components/ui/InsightHeader";
+import Footer from "@/components/layout/Footer";
+import CareerWithUs from "@/components/career/CareerWithUs"; 
+
+export default function CareerPage() {
+  return (
+    <div className="bg-gray-50 min-h-screen font-sans">
+      
+      {/* 1. Navbar */}
+      <Navbar />
+
+      {/* 2. Header Section */}
+      <InsightHeader 
+        title={
+            // ✅ Updates: Font Size reduced + Gradient on First Word
+            <span className="text-3xl md:text-5xl font-bold">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-500">Career</span> With Us
+            </span>
+        }
+        breadcrumb="Career With Us"
+        image=""
+      />
+
+      {/* 3. Static Content (Images, Text, Counter) */}
+      <CareerWithUs />
+
+      {/* 4. Footer */}
+      <div className="relative z-20 mt-0 rounded-b-2xl px-2">
+         <Footer/>
+      </div>
+      
+    </div>
+  );
+}
