@@ -11,7 +11,20 @@ import {
 
 // ================== DATA ==================
 const megaMenuData = {
-  accounting: { id: 'accounting', label: 'Accounting', icon: FileText, items: ["Accounting and Book Keeping", "Outsourced Payroll Services", "IFRS Advisory Services", "Financial Statement Preparation"] },
+accounting: { 
+    id: 'accounting',
+    label: 'Accounting', 
+    icon: FileText, 
+    items: [
+      // slug must match the ID used in the pages data
+      { label: "Overview",  href: "/services/accounting" },
+      { label: "Accounting and Book Keeping", href: "/services/accounting/book-keeping" },
+      { label: "Outsourced Payroll Services", href: "/services/accounting/payroll" },
+      { label: "IFRS Advisory Services", href: "/services/accounting/ifrs" },
+      { label: "Financial Audit Support", href: "/services/accounting/financial-audit" },
+      { label: "Financial Statement Preparation", href: "/services/accounting/financial-statement" } 
+    ] 
+  },
   auditing: { id: 'auditing', label: 'Auditing', icon: BarChart3, items: ["Financial Audit Support", "Stock Audit and Verification", "Internal Audit", "Standard Operating Procedure (SOP)", "Forensic and Fraud Audit", "Internal Control (ICFR)", "Enterprise Risk Management (ERM)"] },
   tax: { id: 'tax', label: 'TAX Services', icon: Wallet, items: ["International Taxation & Transfer Pricing", "VAT/Excise Compliance", "VAT/Excise Health Checks", "VAT/Excise Registration/Deregistration", "VAT/Excise Audit Support", "VAT Refund Support", "Voluntary Disclosure"] },
   other: { id: 'other', label: 'Other Services', icon: Grid, categories: [
@@ -114,7 +127,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                   <span className="absolute bottom-4 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 group-hover:w-full"></span>
                 </button>
                 
-                {/* ✅ UPDATED: Adjusted Right Position for Symmetry */}
+                {/* ✅ Adjusted Right Position for Symmetry */}
                 <div className={`absolute left-0 top-full bg-[#041D2D] backdrop-blur-2xl text-white border border-brand-accent/30 rounded-[2rem] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl mt-2 ${
                     scrolled || forceStatic ? "right-0" : "right-4 md:right-12"
                 }`}>
@@ -145,12 +158,18 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                       <div className="min-h-[300px]">
                         {activeTab !== 'other' ? (
                            <div className="grid grid-cols-3 gap-x-8 gap-y-4">
-                              {megaMenuData[activeTab as keyof typeof megaMenuData].items?.map((item, idx) => (
-                                <Link key={idx} href="#" className="group/link flex items-center gap-3 p-2 hover:bg-white/5 rounded-lg transition-all">
-                                   <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-orange-500 to-green-500 group-hover/link:scale-125 transition-transform"></div>
-                                   <span className="text-white text-sm group-hover/link:text-white group-hover/link:translate-x-1 transition-transform">{item}</span>
-                                </Link>
-                              ))}
+                              {/* ✅ LOGIC UPDATE: Handle both Object (Accounting) and String (Others) */}
+                              {megaMenuData[activeTab as keyof typeof megaMenuData].items?.map((item: any, idx: number) => {
+                                const label = typeof item === 'string' ? item : item.label;
+                                const href = typeof item === 'string' ? '#' : item.href;
+
+                                return (
+                                  <Link key={idx} href={href} className="group/link flex items-center gap-3 p-2 hover:bg-white/5 rounded-lg transition-all">
+                                     <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-orange-500 to-green-500 group-hover/link:scale-125 transition-transform"></div>
+                                     <span className="text-white text-sm group-hover/link:text-white group-hover/link:translate-x-1 transition-transform">{label}</span>
+                                  </Link>
+                                );
+                              })}
                            </div>
                         ) : (
                           <div className="grid grid-cols-3 gap-x-8 gap-y-8">
@@ -254,9 +273,15 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     </button>
                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'acc' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
-                            {megaMenuData.accounting.items.map((item, i) => (
-                                <Link key={i} href="#" onClick={() => setIsOpen(false)} className="block text-gray-400 text-xs py-1 hover:text-white">{item}</Link>
-                            ))}
+                            {/* ✅ LOGIC UPDATE: Handle Accounting Objects in Mobile */}
+                            {megaMenuData.accounting.items.map((item: any, i) => {
+                                const label = typeof item === 'string' ? item : item.label;
+                                const href = typeof item === 'string' ? '#' : item.href;
+                                return (
+                                    <Link key={i} href={href} onClick={() => setIsOpen(false)} className="block text-gray-400 text-xs py-1 hover:text-white">{label}</Link>
+                                );
+                            })}
+                            {/* Auditing Items (Still Strings) */}
                             {megaMenuData.auditing.items.map((item, i) => (
                                 <Link key={i} href="#" onClick={() => setIsOpen(false)} className="block text-gray-400 text-xs py-1 hover:text-white">{item}</Link>
                             ))}
