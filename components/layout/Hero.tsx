@@ -42,9 +42,11 @@ const Hero = () => {
     <section className="relative w-full min-h-screen flex items-center overflow-hidden">
       
       {/* ================= BACKGROUND IMAGE ================= */}
-      {/* ✅ CHANGE: 'bottom-0' added and 'rounded-b' removed to eliminate bottom gap */}
+      {/* ✅ MOBILE FIX UPDATE: 
+         - Changed 'bg-[70%_center]' to 'bg-[85%_center]' to show more of the RIGHT side.
+      */}
       <div 
-        className="absolute top-2 left-2 right-2 bottom-0 z-0 bg-cover bg-[center_right] bg-no-repeat transition-transform duration-1000 rounded-t-[1rem] overflow-hidden"
+        className="absolute top-2 left-2 right-2 bottom-0 z-0 bg-cover bg-[85%_center] md:bg-[center_right] bg-no-repeat transition-transform duration-1000 rounded-t-[1rem] overflow-hidden"
         style={{
           backgroundImage: `url('https://cdn-becae.nitrocdn.com/OcwjylvgvBbNRDjYtTmGOXeUgIvOimBD/assets/images/optimized/rev-47b5ce8/www.aaconsultancy.ae/wp-content/uploads/2025/05/Business-Setup-company-in-uae.webp')`
         }}
@@ -75,19 +77,6 @@ const Hero = () => {
             </div>
           ))}
         </div>
-
-        {/* SLIDER INDICATORS (DOTS) */}
-        {/* <div className="flex space-x-2 mt-4 ">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                index === currentSlide ? "w-8 bg-green-500" : "w-2 bg-white/20 hover:bg-white"
-              }`}
-            />
-          ))}
-        </div> */}
 
       </div>
     </section>
