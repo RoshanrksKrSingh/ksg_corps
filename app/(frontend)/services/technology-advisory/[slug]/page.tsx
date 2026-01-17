@@ -12,74 +12,73 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-// --- DATA ---
+// --- TECHNOLOGY ADVISORY DATA ---
 const servicesData: Record<
   string,
   { title: string; desc: string; details: string[] }
 > = {
-  "book-keeping": {
-    title: "Accounting and Book Keeping",
-    desc: "Accounting is the process of tracking all income earned and expenses incurred whereas Book – Keeping services are the process of keeping records of financial transactions. Outsourcing of accounting and book-keeping services assures the business of obtaining professional services, complying with all the laws, standards, and requirements of the Land. KSG in-house qualified accountants with experience in different industries will assure you accounting records would comply with the applicable accounting standards.",
+  "consulting": {
+    title: "Technology Consulting Services",
+    desc: "KSG Technology consulting team will help in building your vision and enable you to achieve your technology goals and objectives, without compromising on security aspects of the organisations. We will work with you to understand the business capability, leverage it, and deliver the innovative solutions where needed. Together, we will achieve the required transformation envisioned for your business by delivering high quality work with visible improvements on the business.",
     details: [
-      "Maintenance of all accounting records and reports",
-      "Provide Bank Reconciliation Statement",
-      "Provide creditors and debtors ageing every month",
-      "Prepare MIS every month for the top management",
-      "Reporting financial performance, profitability and Cash/Bank position",
-      "Independent health check on the company’s accounting operations",
-      "Back log accounting for previous years",
+      "IT Structure Transformation",
+      "IT Program/Setup Delivery",
+      "Business Intelligence (BI) system implementation",
+      "Business Continuity Management (BCM) and Disaster Recovery (DR)"
     ],
   },
-  payroll: {
-    title: "Outsourced Payroll Services",
-    desc: "We provide professional and timely payroll services across the UAE, maintaining complete confidentiality, accuracy and detailed reporting. Our payroll service includes. Outsourcing your payroll processing to KSG Professional Team can be beneficial.",
+  "security-audit": {
+    title: "IT & Cyber Security Audit",
+    desc: "With businesses handling large quantities of data daily, there’s a need for you to develop systems and processes that keep this information safe. IT and cybersecurity are fundamental components of any company’s data security plans. Regardless of industry, you’ll need to examine your current environment, systems, and processes before implementing IT or cybersecurity. Our Technology Advisory team consists of seasoned technology advisors who come from a diverse background and cover a range of specialist skill sets. Our passion is to see organisations extract the best value from a reliable, secure technology environment with high integrity.",
     details: [
-      "Preparation of monthly salary, deductions, gratuity provisions",
-      "Preparing and delivery of payslips to the company every month",
-      "Comprehensive calculations of End of Service Settlements for outgoing employees",
-      "Ensuring compliance with Wage Protection Systems",
-      "Apply Cloud-based payroll software that provides easy access and data retrieval",
-      "Preparing payroll reports to support accounting",
+      "IT Infrastructure and Management Audits and Risk Management",
+      "Cybersecurity Audit and vulnerability assessment",
+      "Application and Enterprise Resource Planning (ERP) Audits",
+      "Data Security and Privacy Audits"
     ],
   },
-  ifrs: {
-    title: "IFRS Advisory Services",
-    desc: "International Financial Reporting Standards (IFRS) is the globally accepted Accounting standard based on which companies are preparing and presenting their financial statements. Financial statements prepared in accordance with the IFRS are globally acceptable and more reliable. KSG professional team will help to assess the potential impact these standards could have on the financial statements of the organisation and be prepared for the challenges that they may face due to the changes.",
+  "rpa": {
+    title: "Robotic Process Automation (RPA)",
+    desc: "Robotic process automation (RPA) is a form of business process automation technology that allows a user to configure software “bots” to mimic or emulate human actions to perform certain repetitive tasks to optimize the business process. It helps the organisation in automating the required but repetitive manual tasks such as data entry and data transfer. KSG Robotic Process Automation team helps clients automate, streamline, and optimize business processes, which have a direct, positive impact to our client’s bottom line.",
     details: [
-      "Identification of applicable IFRS to your organisation",
-      "Assessing the potential impact of these standards on your organisation",
-      "Identify areas of critical judgment and interpretation",
-      "Providing guidance for smooth transition to the new standards",
-      "Providing training on the new standards",
-      "Disclosure requirements as per the new standard",
+      "Document business processes",
+      "Model technology and data flow",
+      "Identify and design custom automation for implementation",
+      "Create customized training programs",
+      "Develop and deploy automations"
     ],
   },
-  "financial-audit": {
-    title: "Financial Audit Support",
-    desc: "Financial audit implies an examination of the books of accounts and other relevant records. KSG audit liaison services partner firm is authorised to conduct Statutory Audit for mainland and free zones companies. KSG Audit support team committed to providing exceptional service quality which goes far beyond regulatory demands. We aim to increase transparency and build stakeholder trust in your organisation. Our associated team guided by the KSG professional team ensure that requirements as per International Financial Reporting Standards (IFRSs), auditing standards, and relevant legal provisions are properly complied with.",
+  "cyber-security": {
+    title: "Cybersecurity Services Management",
+    desc: "In 2021 cybersecurity is among the top priorities for any company, as organizational executives recognise it is critical for business operations and processes. However, there is still a gap between the need and resources available to solve the problem. Cyber-attacks are increasing in sophistication and magnitude of impact across all industries globally. From 2019–2023, approximately $5.2 trillion in global value will be at risk from cyber-attacks, creating an ongoing challenge for corporations and investors alike. At KSG, we provide tailored Cybersecurity services which is aligned with your organisation’s needs.",
     details: [
-      "Streamline year end accounting closure",
-      "Financial statement preparation & review",
-      "Support to prepares all notes relating to Financial Statements",
-      "Develop the necessary documentation for audits",
-      "Support your overall audit requirements",
-      "Implement remediation efforts identified pre- or post-audit",
-      "Compilation and Maintenance of Fixed Asset Register",
+      "Assessment of Cybersecurity capabilities (malware protection, IDS/IPS, firewall)",
+      "Cybersecurity Management Strategy & Program Design",
+      "Cyber Incident Response Management",
+      "Cyber Investigations and Digital Forensics Services",
+      "Supplier Security and Privacy Assurance (SSPA)"
     ],
   },
-  "financial-statement": {
-    title: "Financial Statement Preparation",
-    desc: "Accurate financial statements are crucial for stakeholders. We help prepare Balance Sheets, Profit & Loss accounts, and Cash Flow statements in line with regulations.",
-    details: ["Balance Sheet", "Profit & Loss", "Cash Flow", "Equity Changes"],
+  "mssp": {
+    title: "Managed Security Services Provider (MSSP)",
+    desc: "As organisations struggle in managing, monitoring, and securing their valuable digital assets, depending only on traditional resources such as antivirus and firewalls, may not prevent the organisations from cyberattacks in the current world. A strong defence mechanism is required to defend the organisations from insider and outsider threats. Many companies are choosing to invest in outsourcing their required information security services to a highly qualified Managed Security Services Provider (MSSP), which offers a high level of security, substantial cost savings, and the freedom to concentrate on growing their business.",
+    details: [
+      "Designing of Cyber Security Operations Centre (CSOC)",
+      "Implement Vendor Risk Management (VRM)",
+      "Development and review of risk appetite statements",
+      "Cyber Security Vulnerability Management (CSVM)",
+      "Cyber Security Awareness Training Session"
+    ],
   },
 };
 
+// Sidebar Links List
 const sidebarLinks = [
-  { id: "book-keeping", label: "Accounting & Book Keeping" },
-  { id: "payroll", label: "Outsourced Payroll" },
-  { id: "ifrs", label: "IFRS Advisory" },
-  { id: "financial-audit", label: "Financial Audit Support" },
-  { id: "financial-statement", label: "Financial Statements" },
+  { id: "consulting", label: "Tech Consulting" },
+  { id: "security-audit", label: "IT & Cyber Audit" },
+  { id: "rpa", label: "Robotic Automation (RPA)" },
+  { id: "cyber-security", label: "Cybersecurity Mgmt" },
+  { id: "mssp", label: "Managed Security (MSSP)" },
 ];
 
 export default function ServiceDetailPage({
@@ -94,30 +93,31 @@ export default function ServiceDetailPage({
     return notFound();
   }
 
+  // Different image for sub-services (Cyber/Data Theme)
+  const detailImage = "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+
   return (
     <div className="bg-[#041D2D] min-h-screen font-sans relative overflow-hidden">
       
       <Navbar forceStatic={true} />
-      
+
       {/* Background Elements */}
       <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
         <div className="absolute top-20 left-[-100px] w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"></div>
         <div className="absolute bottom-20 right-[-100px] w-96 h-96 bg-green-600/10 rounded-full blur-[120px]"></div>
       </div>
 
-      {/* Spacer */}
       <div className="h-20"></div>
 
-      {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-9 py-10 -mt-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-10 -mt-8">
         
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm font-medium text-green-400 mb-8">
+        <div className="flex items-center gap-2 text-sm font-medium text-gray-400 mb-8">
           <Link
-            href="/services/accounting"
+            href="/services/technology-advisory"
             className="hover:text-green-400 transition-colors"
           >
-            Accounting
+            Technology Advisory
           </Link>
           <span>/</span>
           <span className="text-white">{service.title}</span>
@@ -136,7 +136,7 @@ export default function ServiceDetailPage({
                   return (
                     <li key={link.id}>
                       <Link
-                        href={`/services/accounting/${link.id}`}
+                        href={`/services/technology-advisory/${link.id}`}
                         className={`flex items-center justify-between p-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                           isActive
                             ? "bg-gradient-to-r from-orange-500 to-green-500 text-white shadow-lg"
@@ -180,17 +180,17 @@ export default function ServiceDetailPage({
                 {service.desc}
               </p>
 
-              {/* 3. Image Banner (Moved Here) */}
-              <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8  group">
+              {/* 3. Image Banner (Moved Here, No Shadow, Zoom on Hover) */}
+              <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8 group">
                 <img
-                  src="https://images.pexels.com/photos/29267524/pexels-photo-29267524.jpeg"
+                  src={detailImage}
                   alt={service.title}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#041D2D]/80 via-transparent to-transparent"></div>
               </div>
 
-              {/* 4. Key Features List */}
+              {/* 4. Includes List */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                 {service.details.map((item, index) => (
                   <div
@@ -203,10 +203,10 @@ export default function ServiceDetailPage({
                 ))}
               </div>
 
-              {/* 5. Action Buttons */}
+              {/* 5. Buttons */}
               <div className="flex flex-wrap gap-4 pt-6 border-t border-white/10">
                 <Link
-                  href="/services/accounting"
+                  href="/services/technology-advisory"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold text-sm shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1"
                 >
                   <ArrowLeft size={18} /> Back to Overview

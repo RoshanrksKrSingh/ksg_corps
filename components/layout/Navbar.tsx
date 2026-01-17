@@ -11,12 +11,11 @@ import {
 
 // ================== DATA ==================
 const megaMenuData = {
-accounting: { 
-    id: 'accounting',
+  accounting: { 
+    id: 'accounting', 
     label: 'Accounting', 
     icon: FileText, 
     items: [
-      // slug must match the ID used in the pages data
       { label: "Overview",  href: "/services/accounting" },
       { label: "Accounting and Book Keeping", href: "/services/accounting/book-keeping" },
       { label: "Outsourced Payroll Services", href: "/services/accounting/payroll" },
@@ -25,15 +24,110 @@ accounting: {
       { label: "Financial Statement Preparation", href: "/services/accounting/financial-statement" } 
     ] 
   },
-  auditing: { id: 'auditing', label: 'Auditing', icon: BarChart3, items: ["Financial Audit Support", "Stock Audit and Verification", "Internal Audit", "Standard Operating Procedure (SOP)", "Forensic and Fraud Audit", "Internal Control (ICFR)", "Enterprise Risk Management (ERM)"] },
-  tax: { id: 'tax', label: 'TAX Services', icon: Wallet, items: ["International Taxation & Transfer Pricing", "VAT/Excise Compliance", "VAT/Excise Health Checks", "VAT/Excise Registration/Deregistration", "VAT/Excise Audit Support", "VAT Refund Support", "Voluntary Disclosure"] },
-  other: { id: 'other', label: 'Other Services', icon: Grid, categories: [
-      { title: "Business Setup/PRO", items: ["UAE Mainland Company Formation", "Free Zone Company Formation", "Offshore Company Formation", "Sponsorship Services", "Corporate PRO Services", "Company Liquidation"] },
-      { title: "Corporate Advisory", items: ["Business Strategic Formulation", "Organisational Restructuring", "Business Expansion Advisory", "Process Improvement", "Feasibility Studies", "Cross-Border Expansion", "Business Continuity Planning (BCP)"] },
-      { title: "Legal Advisory", items: ["Labour Law Advisory", "Corporate and Commercial Law Advisory", "Litigation and Dispute Resolution", "Anti-Money Laundering", "Economic Substance Advisory", "Ultimate Beneficial Owner Advisory"] },
-      { title: "Merger & Acquisition", items: ["Financial Due Diligence", "Tax Due Diligence", "Legal Due Diligence", "Operational Due Diligence", "Post-Merger Integration"] },
-      { title: "Technology Advisory", items: ["Technology Consulting Services", "IT & Cyber Security Audit", "Robotic Process Automation (RPA)", "Cyber Security Management", "Managed Security Services (MSSP)"] },
-      { title: "Digital & Development", items: ["Website Development", "App Development", "Blockchain Development", "Digital Marketing"] }
+  auditing: { 
+    id: 'auditing', 
+    label: 'Auditing', 
+    icon: BarChart3, 
+    items: [
+        { label: "Overview", href: "/services/auditing" },
+        { label: "Financial Audit Support", href: "/services/auditing/financial-audit" },
+        { label: "Stock Audit and Verification", href: "/services/auditing/stock-audit" },
+        { label: "Internal Audit", href: "/services/auditing/internal-audit" },
+        { label: "Standard Operating Procedure (SOP)", href: "/services/auditing/sop" },
+        { label: "Forensic and Fraud Audit", href: "/services/auditing/forensic-audit" },
+        { label: "Internal Control (ICFR)", href: "/services/auditing/icfr" },
+        { label: "Enterprise Risk Management (ERM)", href: "/services/auditing/erm" }
+    ] 
+  },
+  tax: { 
+    id: 'tax', 
+    label: 'TAX Services', 
+    icon: Wallet, 
+    items: [
+        { label: "Overview", href: "/services/tax" },
+        { label: "International Taxation & Transfer Pricing", href: "/services/tax/international-tax" },
+        { label: "VAT/Excise Compliance", href: "/services/tax/vat-compliance" },
+        { label: "VAT/Excise Health Checks", href: "/services/tax/vat-health-check" },
+        { label: "VAT/Excise Registration/Deregistration", href: "/services/tax/vat-registration" },
+        { label: "VAT/Excise Audit Support", href: "/services/tax/vat-audit" },
+        { label: "VAT Refund Support", href: "/services/tax/vat-refund" },
+        { label: "Voluntary Disclosure", href: "/services/tax/voluntary-disclosure" }
+    ] 
+  },
+  other: { 
+    id: 'other', 
+    label: 'Other Services', 
+    icon: Grid, 
+    categories: [
+      { 
+        title: "Business Setup/PRO", 
+        items: [
+            { label: "Overview", href: "/services/business-setup" },
+            { label: "UAE Mainland Company Formation", href: "/services/business-setup/mainland" },
+            { label: "Free Zone Company Formation", href: "/services/business-setup/freezone" },
+            { label: "Offshore Company Formation", href: "/services/business-setup/offshore" },
+            { label: "Sponsorship Services", href: "/services/business-setup/sponsorship" },
+            { label: "Corporate PRO Services", href: "/services/business-setup/pro-services" },
+            { label: "Company Liquidation", href: "/services/business-setup/liquidation" }
+        ] 
+      },
+      { 
+        title: "Corporate Advisory", 
+        items: [
+            { label: "Overview", href: "/services/corporate-advisory" },
+            { label: "Business Strategic Formulation", href: "/services/corporate-advisory/strategy" },
+            { label: "Organisational Restructuring", href: "/services/corporate-advisory/restructuring" },
+            { label: "Business Expansion Advisory", href: "/services/corporate-advisory/expansion" },
+            { label: "Process Improvement", href: "/services/corporate-advisory/process-improvement" },
+            { label: "Feasibility Studies", href: "/services/corporate-advisory/feasibility" },
+            { label: "Cross-Border Expansion", href: "/services/corporate-advisory/cross-border" },
+            { label: "Business Continuity Planning (BCP)", href: "/services/corporate-advisory/bcp" }
+        ] 
+      },
+      { 
+        title: "Legal Advisory", 
+        items: [
+            { label: "Overview", href: "/services/legal-advisory" },
+            { label: "Labour Law Advisory", href: "/services/legal-advisory/labour-law" },
+            { label: "Corporate and Commercial Law Advisory", href: "/services/legal-advisory/corporate-law" },
+            { label: "Litigation and Dispute Resolution", href: "/services/legal-advisory/litigation" },
+            { label: "Anti-Money Laundering", href: "/services/legal-advisory/aml" },
+            { label: "Economic Substance Advisory", href: "/services/legal-advisory/esr" },
+            { label: "Ultimate Beneficial Owner Advisory", href: "/services/legal-advisory/ubo" }
+        ] 
+      },
+      { 
+        title: "Merger & Acquisition", 
+        items: [
+            { label: "Overview", href: "/services/merger-acquisition" },
+            { label: "Financial Due Diligence", href: "/services/merger-acquisition/financial-dd" },
+            { label: "Tax Due Diligence", href: "/services/merger-acquisition/tax-dd" },
+            { label: "Legal Due Diligence", href: "/services/merger-acquisition/legal-dd" },
+            { label: "Operational Due Diligence", href: "/services/merger-acquisition/operational-dd" },
+            { label: "Post-Merger Integration", href: "/services/merger-acquisition/integration" }
+        ] 
+      },
+      { 
+        title: "Technology Advisory", 
+        items: [
+            { label: "Overview", href: "/services/technology-advisory" },
+            { label: "Technology Consulting Services", href: "/services/technology-advisory/consulting" },
+            { label: "IT & Cyber Security Audit", href: "/services/technology-advisory/security-audit" },
+            { label: "Robotic Process Automation (RPA)", href: "/services/technology-advisory/rpa" },
+            { label: "Cyber Security Management", href: "/services/technology-advisory/cyber-security" },
+            { label: "Managed Security Services (MSSP)", href: "/services/technology-advisory/mssp" }
+        ] 
+      },
+      { 
+        title: "Digital & Development", 
+        items: [
+            { label: "Overview", href: "/services/digital-development" },
+            { label: "Website Development", href: "/services/digital-development/website" },
+            { label: "App Development", href: "/services/digital-development/app" },
+            { label: "Blockchain Development", href: "/services/digital-development/blockchain" },
+            { label: "Digital Marketing", href: "/services/digital-development/marketing" }
+        ] 
+      }
     ]
   }
 };
@@ -49,10 +143,16 @@ const randomMenuData = {
       { label: "Events", href: "/insights?cat=events" } 
     ] 
   },
+  // ✅ UPDATED: Added Overview and anchors for scrolling
   ourTeam: { 
     title: "Our Team", 
     icon: Users, 
-    items: ["Leadership", "Advisors", "Join Us", "Alumni Network"] 
+    items: [
+      { label: "Overview", href: "/ourteam" }, // Scrolls to top
+      { label: "Advisors", href: "/ourteam#advisors" },
+      { label: "Associated Partners", href: "/ourteam#associated-partners" },
+      { label: "Group Partners", href: "/ourteam#group-partners" } 
+    ] 
   },
   career: { 
     title: "Career", 
@@ -84,6 +184,14 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Helper to check active state
+  const isActiveLink = (path: string) => {
+    if (path.includes('#')) {
+       return pathname === path.split('#')[0];
+    }
+    return pathname === path;
+  };
+
   return (
     <header 
       className={`fixed z-50 font-sans transition-all duration-300 ${
@@ -113,60 +221,57 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
               <Link 
                 href="/" 
                 className={`font-semibold transition text-sm tracking-wide relative group ${
-                    pathname === "/" ? "text-brand-accent" : "text-white hover:text-brand-accent"
+                    isActiveLink("/") ? "text-green-400" : "text-white hover:text-green-400"
                 }`}
               >
                 Home
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${isActiveLink("/") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
               </Link>
 
               {/* SERVICES MEGA MENU */}
               <div className="group static h-full flex items-center"> 
-                <button className="flex items-center gap-1 font-semibold text-white hover:text-brand-accent transition text-sm  tracking-wide py-6 relative">
+                <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${pathname?.startsWith('/services') ? "text-green-400" : "text-white hover:text-green-400"}`}>
                   Services <ChevronDown size={14} />
-                  <span className="absolute bottom-4 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 group-hover:w-full"></span>
+                  <span className={`absolute bottom-4 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${pathname?.startsWith('/services') ? "w-full" : "w-0 group-hover:w-full"}`}></span>
                 </button>
                 
-                {/* ✅ Adjusted Right Position for Symmetry */}
                 <div className={`absolute left-0 top-full bg-[#041D2D] backdrop-blur-2xl text-white border border-brand-accent/30 rounded-[2rem] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl mt-2 ${
                     scrolled || forceStatic ? "right-0" : "right-4 md:right-12"
                 }`}>
                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
                    <div className="max-w-7xl mx-auto px-8 py-4 relative z-10">
                       
-                      {/* TABS HEADER */}
                       <div className="flex items-center justify-center border-b border-white/10 mb-8 space-x-8">
                         {Object.values(megaMenuData).map((tab) => {
                           const Icon = tab.icon;
-                          const isActive = activeTab === tab.id;
+                          const isActiveTab = activeTab === tab.id;
                           return (
                             <button
                               key={tab.id}
                               onMouseEnter={() => setActiveTab(tab.id)}
-                              className={`flex items-center gap-2 pb-4 text-sm font-bold  tracking-wide transition-all duration-300 relative ${
-                                isActive ? "text-brand-accent" : "text-white-400 hover:text-white"
+                              className={`flex items-center gap-2 pb-4 text-sm font-bold tracking-wide transition-all duration-300 relative ${
+                                isActiveTab ? "text-brand-accent" : "text-white-400 hover:text-white"
                               }`}
                             >
                               <Icon size={18} /> {tab.label}
-                              {isActive && <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-orange-500 to-green-500 shadow-[0_0_10px_#00A651]"></span>}
+                              {isActiveTab && <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-orange-500 to-green-500 shadow-[0_0_10px_#00A651]"></span>}
                             </button>
                           );
                         })}
                       </div>
 
-                      {/* TABS CONTENT */}
                       <div className="min-h-[300px]">
                         {activeTab !== 'other' ? (
                            <div className="grid grid-cols-3 gap-x-8 gap-y-4">
-                              {/* ✅ LOGIC UPDATE: Handle both Object (Accounting) and String (Others) */}
                               {megaMenuData[activeTab as keyof typeof megaMenuData].items?.map((item: any, idx: number) => {
                                 const label = typeof item === 'string' ? item : item.label;
                                 const href = typeof item === 'string' ? '#' : item.href;
+                                const isActive = isActiveLink(href);
 
                                 return (
-                                  <Link key={idx} href={href} className="group/link flex items-center gap-3 p-2 hover:bg-white/5 rounded-lg transition-all">
-                                     <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-orange-500 to-green-500 group-hover/link:scale-125 transition-transform"></div>
-                                     <span className="text-white text-sm group-hover/link:text-white group-hover/link:translate-x-1 transition-transform">{label}</span>
+                                  <Link key={idx} href={href} className={`group/link flex items-center gap-3 p-2 rounded-lg transition-all ${isActive ? "bg-white/10" : "hover:bg-white/5"}`}>
+                                     <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r from-orange-500 to-green-500 transition-transform ${isActive ? "scale-125" : "group-hover/link:scale-125"}`}></div>
+                                     <span className={`text-sm transition-transform ${isActive ? "text-green-400 translate-x-1" : "text-white group-hover/link:text-white group-hover/link:translate-x-1"}`}>{label}</span>
                                   </Link>
                                 );
                               })}
@@ -177,12 +282,21 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                               <div key={idx}>
                                 <div className="border-l-2 border-transparent relative pl-3 mb-2">
                                     <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500 to-green-500"></div>
-                                    <h4 className="text-brand-accent font-bold  text-[12px]">{cat.title}</h4>
+                                    <h4 className="text-brand-accent font-bold text-[12px]">{cat.title}</h4>
                                 </div>
-                                <ul className="space-y-1">
-                                  {cat.items.map((item, i) => (
-                                    <li key={i}><Link href="#" className="text-white hover:text-white text-[12px] hover:underline decoration-brand-accent/50 block py-0.5">{item}</Link></li>
-                                  ))}
+                                <ul className="space-y-0.5">
+                                  {cat.items.map((item: any, i: number) => {
+                                    const label = typeof item === 'string' ? item : item.label;
+                                    const href = typeof item === 'string' ? '#' : item.href;
+                                    const isActive = isActiveLink(href);
+                                    return (
+                                      <li key={i}>
+                                        <Link href={href} className={`text-[11px] block py-0.5 hover:underline decoration-brand-accent/50 ${isActive ? "text-green-400 font-semibold" : "text-white hover:text-white"}`}>
+                                          {label}
+                                        </Link>
+                                      </li>
+                                    );
+                                  })}
                                 </ul>
                               </div>
                             ))}
@@ -193,51 +307,71 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 </div>
               </div>
 
-              {/* OTHER DROPDOWN MENUS */}
-              {Object.entries(randomMenuData).map(([key, data]) => {
-                const isParentActive = data.items.some((item: any) => {
-                    const href = typeof item === 'object' ? item.href : '#';
-                    const itemPath = href.split('?')[0]; 
-                    return href !== '#' && pathname?.startsWith(itemPath);
-                });
+              {/* INSIGHTS */}
+              <div className="group relative h-full flex items-center">
+                <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${pathname?.startsWith('/insights') ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                    Insights <ChevronDown size={14} />
+                    <span className={`absolute bottom-4 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${pathname?.startsWith('/insights') ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+                </button>
+                 <div className="absolute left-0 top-full w-56 bg-[#041D2D] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
+                    <ul>
+                    {randomMenuData.insight.items.map((item: any, idx) => (
+                        <li key={idx}>
+                        <Link href={item.href} className={`block px-5 py-2 text-sm transition-colors border-b border-white/5 last:border-0 ${isActiveLink(item.href) ? "bg-white/10 text-green-400" : "hover:bg-white/10 hover:text-brand-accent"}`}>
+                            {item.label}
+                        </Link>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+              </div>
 
-                return (
-                    <div key={key} className="group relative h-full flex items-center">
-                    <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${
-                        isParentActive ? "text-brand-accent" : "text-white hover:text-brand-accent"
-                    }`}>
-                        {data.title} <ChevronDown size={14} />
-                        <span className="absolute bottom-4 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 group-hover:w-full"></span>
-                    </button>
-                    <div className="absolute left-0 top-full w-56 bg-[#041D2D] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
-                        <ul>
-                        {data.items.map((item: any, idx) => {
-                            const isObject = typeof item === 'object';
-                            const label = isObject ? item.label : item;
-                            const href = isObject ? item.href : "#";
+              {/* OUR TEAM */}
+              <div className="group relative h-full flex items-center">
+                <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${pathname?.startsWith('/ourteam') ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                    Our Team <ChevronDown size={14} />
+                    <span className={`absolute bottom-4 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${pathname?.startsWith('/ourteam') ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+                </button>
+                 <div className="absolute left-0 top-full w-56 bg-[#041D2D] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
+                    <ul>
+                    {randomMenuData.ourTeam.items.map((item: any, idx) => (
+                        <li key={idx}>
+                        <Link href={item.href} className={`block px-5 py-2 text-sm transition-colors border-b border-white/5 last:border-0 ${isActiveLink(item.href) ? "bg-white/10 text-green-400" : "hover:bg-white/10 hover:text-brand-accent"}`}>
+                            {item.label}
+                        </Link>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+              </div>
 
-                            return (
-                                <li key={idx}>
-                                <Link href={href} className="block px-5 py-2 hover:bg-white/10 hover:text-brand-accent text-sm transition-colors border-b border-white/5 last:border-0">
-                                    {label}
-                                </Link>
-                                </li>
-                            );
-                        })}
-                        </ul>
-                    </div>
-                    </div>
-                );
-              })}
+              {/* CAREER */}
+              <div className="group relative h-full flex items-center">
+                <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${pathname?.startsWith('/career') ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                    Career <ChevronDown size={14} />
+                    <span className={`absolute bottom-4 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${pathname?.startsWith('/career') ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+                </button>
+                 <div className="absolute left-0 top-full w-56 bg-[#041D2D] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
+                    <ul>
+                    {randomMenuData.career.items.map((item: any, idx) => (
+                        <li key={idx}>
+                        <Link href={item.href} className={`block px-5 py-2 text-sm transition-colors border-b border-white/5 last:border-0 ${isActiveLink(item.href) ? "bg-white/10 text-green-400" : "hover:bg-white/10 hover:text-brand-accent"}`}>
+                            {item.label}
+                        </Link>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+              </div>
 
               <Link 
                 href="/contact" 
                 className={`font-semibold transition text-sm tracking-wide relative group ${
-                    pathname === "/contact" ? "text-brand-accent" : "text-white hover:text-brand-accent"
+                    isActiveLink("/contact") ? "text-green-400" : "text-white hover:text-green-400"
                 }`}
               >
                 Contact
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${isActiveLink("/contact") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
               </Link>
 
             </nav>
@@ -261,49 +395,44 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
       >
          <div className="h-full overflow-y-auto px-6 pb-6 pt-24 flex flex-col">
             <div className="space-y-4 flex-grow">
-                <Link href="/" className="block text-white font-bold text-lg border-b border-gray-700 pb-2" onClick={() => setIsOpen(false)}>Home</Link>
+                <Link href="/" className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/") ? "text-green-400" : "text-white"}`} onClick={() => setIsOpen(false)}>Home</Link>
                 
+                {/* Services Section */}
                 <div className="space-y-1">
                   <p className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400 font-bold  text-xs tracking-widest mb-2">Services</p>
                   
-                  {/* Accounting Dropdown */}
+                  {/* Accounting */}
                   <div>
                     <button onClick={() => toggleMobile('acc')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
                         Accounting & Audit {mobileExpanded === 'acc' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
                     </button>
                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'acc' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
-                            {/* ✅ LOGIC UPDATE: Handle Accounting Objects in Mobile */}
-                            {megaMenuData.accounting.items.map((item: any, i) => {
-                                const label = typeof item === 'string' ? item : item.label;
-                                const href = typeof item === 'string' ? '#' : item.href;
-                                return (
-                                    <Link key={i} href={href} onClick={() => setIsOpen(false)} className="block text-gray-400 text-xs py-1 hover:text-white">{label}</Link>
-                                );
-                            })}
-                            {/* Auditing Items (Still Strings) */}
-                            {megaMenuData.auditing.items.map((item, i) => (
-                                <Link key={i} href="#" onClick={() => setIsOpen(false)} className="block text-gray-400 text-xs py-1 hover:text-white">{item}</Link>
+                            {megaMenuData.accounting.items.map((item: any, i) => (
+                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
+                            ))}
+                            {megaMenuData.auditing.items.map((item: any, i) => (
+                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                             ))}
                         </div>
                     </div>
                   </div>
 
-                  {/* Tax Dropdown */}
+                  {/* Tax */}
                   <div>
                     <button onClick={() => toggleMobile('tax')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
                         Tax Services {mobileExpanded === 'tax' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
                     </button>
                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'tax' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
-                            {megaMenuData.tax.items.map((item, i) => (
-                                <Link key={i} href="#" onClick={() => setIsOpen(false)} className="block text-gray-400 text-xs py-1 hover:text-white">{item}</Link>
+                            {megaMenuData.tax.items.map((item: any, i) => (
+                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                             ))}
                         </div>
                     </div>
                   </div>
 
-                  {/* Other Dropdown */}
+                  {/* Other */}
                   <div>
                     <button onClick={() => toggleMobile('other')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
                         Other Services {mobileExpanded === 'other' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
@@ -313,8 +442,8 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                             {megaMenuData.other.categories.map((cat, i) => (
                                 <div key={i}>
                                     <p className="text-orange-400 text-[10px] font-bold uppercase mb-1">{cat.title}</p>
-                                    {cat.items.map((item, j) => (
-                                        <Link key={j} href="#" onClick={() => setIsOpen(false)} className="block text-gray-400 text-xs py-0.5 hover:text-white">{item}</Link>
+                                    {cat.items.map((item: any, j: number) => (
+                                        <Link key={j} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-0.5 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                                     ))}
                                 </div>
                             ))}
@@ -326,7 +455,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 <div className="space-y-1 pt-2 border-t border-gray-700">
                    <p className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400 font-bold  text-xs tracking-widest mb-2">Explore</p>
                    
-                   {/* Insight Dropdown */}
+                   {/* Insight */}
                    <div>
                     <button onClick={() => toggleMobile('insight')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
                         Insight {mobileExpanded === 'insight' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
@@ -334,27 +463,27 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'insight' ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
                             {randomMenuData.insight.items.map((item, i) => (
-                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className="block text-gray-400 text-xs py-1 hover:text-white">{item.label}</Link>
+                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                             ))}
                         </div>
                     </div>
                    </div>
 
-                   {/* Our Team Dropdown */}
+                   {/* Our Team Mobile */}
                    <div>
-                    <button onClick={() => toggleMobile('team')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
-                        Our Team {mobileExpanded === 'team' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
+                    <button onClick={() => toggleMobile('ourTeam')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
+                        Our Team {mobileExpanded === 'ourTeam' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
                     </button>
-                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'team' ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'ourTeam' ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
-                            {randomMenuData.ourTeam.items.map((item, i) => (
-                                <Link key={i} href="#" onClick={() => setIsOpen(false)} className="block text-gray-400 text-xs py-1 hover:text-white">{item}</Link>
+                            {randomMenuData.ourTeam.items.map((item: any, i) => (
+                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                             ))}
                         </div>
                     </div>
                    </div>
 
-                   {/* Career Dropdown */}
+                   {/* Career */}
                    <div>
                     <button onClick={() => toggleMobile('career')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
                         Career {mobileExpanded === 'career' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
@@ -362,7 +491,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'career' ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
                             {randomMenuData.career.items.map((item, i) => (
-                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className="block text-gray-400 text-xs py-1 hover:text-white">{item.label}</Link>
+                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                             ))}
                         </div>
                     </div>
@@ -370,7 +499,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
 
                 </div>
 
-                <Link href="/contact" className="block text-white font-bold text-lg pt-2 border-t border-gray-700" onClick={() => setIsOpen(false)}>Contact</Link>
+                <Link href="/contact" className={`block font-bold text-lg pt-2 border-t border-gray-700 ${isActiveLink("/contact") ? "text-green-400" : "text-white"}`} onClick={() => setIsOpen(false)}>Contact</Link>
             </div>
             
             <div className="mt-6 mb-4">

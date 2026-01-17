@@ -13,9 +13,6 @@ import WhyChoose from "@/components/layout/WhyChoose";
 import LatestInsights from "@/components/layout/LatestInsights";
 import Footer from "@/components/layout/Footer";
 
-// ✅ 2. Import New Floating Contact Component
-import FloatingContact from "@/components/ui/FloatingContact";
-
 export default function HomePage() {
   // --- Contact Form Logic ---
   const [formData, setFormData] = useState({
@@ -40,8 +37,7 @@ export default function HomePage() {
   return (
     <div className="w-full font-sans bg-gray-50">
       
-      {/* ✅ 3. Floating Contact Added Here (Overlay on top of everything) */}
-      <FloatingContact />
+      
 
       {/* =========================================
           1. NEW HEADER & HERO

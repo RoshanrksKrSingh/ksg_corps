@@ -3,19 +3,21 @@
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-// import InsightHeader from "@/components/ui/InsightHeader"; 
 import { ArrowRight } from "lucide-react";
 
-export default function AccountingPage() {
+export default function MergerAcquisitionPage() {
   
   // Services List for Buttons
   const services = [
-    { id: "book-keeping", title: "Accounting and Book Keeping" },
-    { id: "payroll", title: "Outsourced Payroll Services" },
-    { id: "ifrs", title: "IFRS Advisory Services" },
-    { id: "financial-audit", title: "Financial Audit Support" },
-    { id: "financial-statement", title: "Financial Statement Preparation" },
+    { id: "financial-dd", title: "Financial Due Diligence" },
+    { id: "tax-dd", title: "Tax Due Diligence" },
+    { id: "legal-dd", title: "Legal Due Diligence" },
+    { id: "operational-dd", title: "Operational Due Diligence" },
+    { id: "integration", title: "Post-Merger Integration" },
   ];
+
+  // Image for Overview Section (M&A Theme - Partnership/Agreement)
+  const overviewImage = "https://images.pexels.com/photos/5673488/pexels-photo-5673488.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
@@ -25,8 +27,6 @@ export default function AccountingPage() {
       
        {/* 2. Spacer Div */}
        <div className="w-full h-20 bg-[#0b2b3f]"></div>
-
-       {/* InsightHeader Removed */}
 
       {/* Overview Section */}
       <section className="relative w-full pt-16 pb-20 bg-[#041D2D] -mt-8 overflow-hidden">
@@ -48,19 +48,23 @@ export default function AccountingPage() {
                         </span>
                     </span>
                     <h2 className="text-3xl md:text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-green-200">
-                        Aligning financial processes for better business outcomes
+                        Navigating Complex Deals with Confidence
                     </h2>
                     <div className="space-y-6 text-lg leading-relaxed text-gray-300">
-                        <p>Accounting services help organisations maintain accurate financial records and present a true and fair view of their financial position. Proper accounting ensures systematic recording of business transactions, compliance with Commercial Companies Law, Value Added Tax (VAT) regulations, and International Financial Reporting Standards (IFRS).</p>
-                        <p>Effective accounting provides management with clear financial visibility, supports informed decision-making, and strengthens internal financial control. Our accounting solutions cover day-to-day bookkeeping, transaction recording, financial statement preparation, and other critical finance functions to support sustainable business growth.</p>
+                        <p>The pandemic has forced many companies to restructure, and the trend is likely to continue as consolidation occurs across sectors. The Middle East and Northern Africa region is expected to see increased corporate mergers and acquisitions in the next two to three years, with cumulative deals potentially reaching $100 billion.</p>
+                        <p>When it comes to purchasing or selling a business, a successful strategy requires active portfolio management and a well-planned investment or divestment process. We at KSG help Buy Side throughout the deal cycle which ranges from identifying the right partners/targets to deal negotiations and closures and Sell Side while Assessing different divestment options in order to maximise the deal value by assisting in identifying the right buyers, negotiating the deals and closures.</p>
                     </div>
                 </div>
 
-                {/* Image Section - Shifted Down */}
+                {/* Image Section - Shifted Down, No Shadow, Zoom on Hover */}
                 <div className="relative group mt-12 lg:mt-24">
                     <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-green-500 rounded-3xl blur opacity-30"></div>
                     <div className="relative rounded-3xl overflow-hidden">
-                        <img src="https://images.pexels.com/photos/6248988/pexels-photo-6248988.jpeg" alt="Accounting Overview" className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                        <img 
+                            src={overviewImage} 
+                            alt="Merger & Acquisition Overview" 
+                            className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                        />
                     </div>
                 </div>
 
@@ -71,13 +75,13 @@ export default function AccountingPage() {
       {/* Services Buttons Section */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
         <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#041D2D]">Explore Our Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#041D2D]">Explore Our M&A Services</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-green-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => (
-                <Link key={s.id} href={`/services/accounting/${s.id}`} className="group relative p-8 bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                <Link key={s.id} href={`/services/merger-acquisition/${s.id}`} className="group relative p-8 bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-green-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
                     <h3 className="text-xl font-bold text-[#041D2D] mb-4 group-hover:text-green-600 transition-colors">{s.title}</h3>
                     <div className="flex items-center text-sm font-bold text-orange-500 gap-2">

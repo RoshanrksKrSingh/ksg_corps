@@ -12,74 +12,67 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-// --- DATA ---
+// --- DIGITAL & DEVELOPMENT DATA (Generated Content) ---
 const servicesData: Record<
   string,
   { title: string; desc: string; details: string[] }
 > = {
-  "book-keeping": {
-    title: "Accounting and Book Keeping",
-    desc: "Accounting is the process of tracking all income earned and expenses incurred whereas Book – Keeping services are the process of keeping records of financial transactions. Outsourcing of accounting and book-keeping services assures the business of obtaining professional services, complying with all the laws, standards, and requirements of the Land. KSG in-house qualified accountants with experience in different industries will assure you accounting records would comply with the applicable accounting standards.",
+  "website-development": {
+    title: "Website Development",
+    desc: "Your website is often the first interaction a potential customer has with your brand. We specialize in creating high-performance, visually stunning, and user-centric websites that not only look great but also convert visitors into loyal customers. Our development process focuses on responsiveness, speed, SEO foundation, and scalable architecture to support your future growth.",
     details: [
-      "Maintenance of all accounting records and reports",
-      "Provide Bank Reconciliation Statement",
-      "Provide creditors and debtors ageing every month",
-      "Prepare MIS every month for the top management",
-      "Reporting financial performance, profitability and Cash/Bank position",
-      "Independent health check on the company’s accounting operations",
-      "Back log accounting for previous years",
+      "Custom UI/UX Design and Prototyping",
+      "Responsive & Mobile-First Web Development",
+      "E-commerce Solutions (Shopify, WooCommerce, Custom)",
+      "Content Management Systems (CMS) Integration",
+      "Website Performance & Speed Optimization",
+      "SEO-Friendly Architecture and Basic Setup"
     ],
   },
-  payroll: {
-    title: "Outsourced Payroll Services",
-    desc: "We provide professional and timely payroll services across the UAE, maintaining complete confidentiality, accuracy and detailed reporting. Our payroll service includes. Outsourcing your payroll processing to KSG Professional Team can be beneficial.",
+  "app-development": {
+    title: "App Development",
+    desc: "In a mobile-first world, having a powerful application puts your business directly in the hands of your customers. We design and develop robust, scalable, and intuitive mobile applications for iOS and Android platforms. From initial concept to App Store deployment, we ensure a seamless user experience that drives engagement and retention.",
     details: [
-      "Preparation of monthly salary, deductions, gratuity provisions",
-      "Preparing and delivery of payslips to the company every month",
-      "Comprehensive calculations of End of Service Settlements for outgoing employees",
-      "Ensuring compliance with Wage Protection Systems",
-      "Apply Cloud-based payroll software that provides easy access and data retrieval",
-      "Preparing payroll reports to support accounting",
+      "Native iOS and Android App Development",
+      "Cross-Platform Development (React Native, Flutter)",
+      "UI/UX Design for Mobile Interfaces",
+      "Backend Development and API Integration",
+      "App Testing, QA, and Deployment Support",
+      "Ongoing Maintenance and Feature Updates"
     ],
   },
-  ifrs: {
-    title: "IFRS Advisory Services",
-    desc: "International Financial Reporting Standards (IFRS) is the globally accepted Accounting standard based on which companies are preparing and presenting their financial statements. Financial statements prepared in accordance with the IFRS are globally acceptable and more reliable. KSG professional team will help to assess the potential impact these standards could have on the financial statements of the organisation and be prepared for the challenges that they may face due to the changes.",
+  "blockchain-development": {
+    title: "Blockchain Development",
+    desc: "Unlock the potential of decentralized technology with our expert blockchain development services. We help businesses leverage blockchain for enhanced security, transparency, and efficiency. Whether you need smart contracts, decentralized applications (dApps), or private blockchain integration, our team provides future-proof solutions tailored to your specific industry needs.",
     details: [
-      "Identification of applicable IFRS to your organisation",
-      "Assessing the potential impact of these standards on your organisation",
-      "Identify areas of critical judgment and interpretation",
-      "Providing guidance for smooth transition to the new standards",
-      "Providing training on the new standards",
-      "Disclosure requirements as per the new standard",
+      "Smart Contract Development and Auditing",
+      "Decentralized Application (dApp) Development",
+      "Private and Consortium Blockchain Setup",
+      "Tokenization and ICO/STO Support Services",
+      "Blockchain Integration with Existing Systems",
+      "Consulting on Blockchain Strategy and Use Cases"
     ],
   },
-  "financial-audit": {
-    title: "Financial Audit Support",
-    desc: "Financial audit implies an examination of the books of accounts and other relevant records. KSG audit liaison services partner firm is authorised to conduct Statutory Audit for mainland and free zones companies. KSG Audit support team committed to providing exceptional service quality which goes far beyond regulatory demands. We aim to increase transparency and build stakeholder trust in your organisation. Our associated team guided by the KSG professional team ensure that requirements as per International Financial Reporting Standards (IFRSs), auditing standards, and relevant legal provisions are properly complied with.",
+  "digital-marketing": {
+    title: "Digital Marketing",
+    desc: "Cutting-through the noise in today's crowded digital space requires data-driven strategies and creative execution. Our digital marketing team helps you reach your target audience effectively, build brand awareness, and generate qualified leads. We utilize a mix of channels and analytics to optimize campaigns for maximum Return on Investment (ROI).",
     details: [
-      "Streamline year end accounting closure",
-      "Financial statement preparation & review",
-      "Support to prepares all notes relating to Financial Statements",
-      "Develop the necessary documentation for audits",
-      "Support your overall audit requirements",
-      "Implement remediation efforts identified pre- or post-audit",
-      "Compilation and Maintenance of Fixed Asset Register",
+      "Search Engine Optimization (SEO) Strategy",
+      "Pay-Per-Click (PPC) and Search Advertising",
+      "Social Media Marketing and Management",
+      "Content Marketing and Strategy Creation",
+      "Email Marketing Automation and Campaigns",
+      "Analytics, Reporting, and Conversion Rate Optimization (CRO)"
     ],
-  },
-  "financial-statement": {
-    title: "Financial Statement Preparation",
-    desc: "Accurate financial statements are crucial for stakeholders. We help prepare Balance Sheets, Profit & Loss accounts, and Cash Flow statements in line with regulations.",
-    details: ["Balance Sheet", "Profit & Loss", "Cash Flow", "Equity Changes"],
   },
 };
 
+// Sidebar Links List
 const sidebarLinks = [
-  { id: "book-keeping", label: "Accounting & Book Keeping" },
-  { id: "payroll", label: "Outsourced Payroll" },
-  { id: "ifrs", label: "IFRS Advisory" },
-  { id: "financial-audit", label: "Financial Audit Support" },
-  { id: "financial-statement", label: "Financial Statements" },
+  { id: "website-development", label: "Website Development" },
+  { id: "app-development", label: "App Development" },
+  { id: "blockchain-development", label: "Blockchain Dev" },
+  { id: "digital-marketing", label: "Digital Marketing" },
 ];
 
 export default function ServiceDetailPage({
@@ -94,30 +87,31 @@ export default function ServiceDetailPage({
     return notFound();
   }
 
+  // Different image for sub-services (Creative/Interactive Theme)
+  const detailImage = "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+
   return (
     <div className="bg-[#041D2D] min-h-screen font-sans relative overflow-hidden">
       
       <Navbar forceStatic={true} />
-      
+
       {/* Background Elements */}
       <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
         <div className="absolute top-20 left-[-100px] w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"></div>
         <div className="absolute bottom-20 right-[-100px] w-96 h-96 bg-green-600/10 rounded-full blur-[120px]"></div>
       </div>
 
-      {/* Spacer */}
       <div className="h-20"></div>
 
-      {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-9 py-10 -mt-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-10 -mt-8">
         
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm font-medium text-green-400 mb-8">
+        <div className="flex items-center gap-2 text-sm font-medium text-gray-400 mb-8">
           <Link
-            href="/services/accounting"
+            href="/services/digital-development"
             className="hover:text-green-400 transition-colors"
           >
-            Accounting
+            Digital & Development
           </Link>
           <span>/</span>
           <span className="text-white">{service.title}</span>
@@ -136,7 +130,7 @@ export default function ServiceDetailPage({
                   return (
                     <li key={link.id}>
                       <Link
-                        href={`/services/accounting/${link.id}`}
+                        href={`/services/digital-development/${link.id}`}
                         className={`flex items-center justify-between p-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                           isActive
                             ? "bg-gradient-to-r from-orange-500 to-green-500 text-white shadow-lg"
@@ -180,17 +174,17 @@ export default function ServiceDetailPage({
                 {service.desc}
               </p>
 
-              {/* 3. Image Banner (Moved Here) */}
-              <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8  group">
+              {/* 3. Image Banner (Moved Here, No Shadow, Zoom on Hover) */}
+              <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8 group">
                 <img
-                  src="https://images.pexels.com/photos/29267524/pexels-photo-29267524.jpeg"
+                  src={detailImage}
                   alt={service.title}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#041D2D]/80 via-transparent to-transparent"></div>
               </div>
 
-              {/* 4. Key Features List */}
+              {/* 4. Includes List */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                 {service.details.map((item, index) => (
                   <div
@@ -203,10 +197,10 @@ export default function ServiceDetailPage({
                 ))}
               </div>
 
-              {/* 5. Action Buttons */}
+              {/* 5. Buttons */}
               <div className="flex flex-wrap gap-4 pt-6 border-t border-white/10">
                 <Link
-                  href="/services/accounting"
+                  href="/services/digital-development"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold text-sm shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1"
                 >
                   <ArrowLeft size={18} /> Back to Overview

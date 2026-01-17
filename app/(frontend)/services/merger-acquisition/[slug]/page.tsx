@@ -12,74 +12,80 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-// --- DATA ---
+// --- M&A DATA (Placeholder Content generated for missing details) ---
 const servicesData: Record<
   string,
   { title: string; desc: string; details: string[] }
 > = {
-  "book-keeping": {
-    title: "Accounting and Book Keeping",
-    desc: "Accounting is the process of tracking all income earned and expenses incurred whereas Book – Keeping services are the process of keeping records of financial transactions. Outsourcing of accounting and book-keeping services assures the business of obtaining professional services, complying with all the laws, standards, and requirements of the Land. KSG in-house qualified accountants with experience in different industries will assure you accounting records would comply with the applicable accounting standards.",
+  "financial-dd": {
+    title: "Financial Due Diligence",
+    desc: "Financial Due Diligence is a critical step in any M&A transaction. We provide an in-depth analysis of the target company's financial health, historical performance, and future projections. Our goal is to identify potential risks, validate financial information, and provide a solid foundation for valuation and negotiation.",
     details: [
-      "Maintenance of all accounting records and reports",
-      "Provide Bank Reconciliation Statement",
-      "Provide creditors and debtors ageing every month",
-      "Prepare MIS every month for the top management",
-      "Reporting financial performance, profitability and Cash/Bank position",
-      "Independent health check on the company’s accounting operations",
-      "Back log accounting for previous years",
+      "Quality of Earnings (QoE) analysis",
+      "Review of historical financial statements and trends",
+      "Analysis of working capital requirements",
+      "Assessment of debt and contingent liabilities",
+      "Review of financial projections and assumptions",
+      "Identification of key financial risks and opportunities"
     ],
   },
-  payroll: {
-    title: "Outsourced Payroll Services",
-    desc: "We provide professional and timely payroll services across the UAE, maintaining complete confidentiality, accuracy and detailed reporting. Our payroll service includes. Outsourcing your payroll processing to KSG Professional Team can be beneficial.",
+  "tax-dd": {
+    title: "Tax Due Diligence",
+    desc: "Our Tax Due Diligence services help you understand the tax implications of a potential transaction. We assess the target's historical tax compliance, identify potential tax liabilities, and uncover opportunities for tax efficiencies in the deal structure. We ensure you are fully aware of the tax landscape before closing the deal.",
     details: [
-      "Preparation of monthly salary, deductions, gratuity provisions",
-      "Preparing and delivery of payslips to the company every month",
-      "Comprehensive calculations of End of Service Settlements for outgoing employees",
-      "Ensuring compliance with Wage Protection Systems",
-      "Apply Cloud-based payroll software that provides easy access and data retrieval",
-      "Preparing payroll reports to support accounting",
+      "Review of past tax filings and compliance history",
+      "Identification of potential undisclosed tax liabilities",
+      "Assessment of tax risks related to transfer pricing",
+      "Analysis of VAT and other indirect tax exposures",
+      "Deal structuring advice for tax optimization",
+      "Review of tax attributes (e.g., carryforwards)"
     ],
   },
-  ifrs: {
-    title: "IFRS Advisory Services",
-    desc: "International Financial Reporting Standards (IFRS) is the globally accepted Accounting standard based on which companies are preparing and presenting their financial statements. Financial statements prepared in accordance with the IFRS are globally acceptable and more reliable. KSG professional team will help to assess the potential impact these standards could have on the financial statements of the organisation and be prepared for the challenges that they may face due to the changes.",
+  "legal-dd": {
+    title: "Legal Due Diligence",
+    desc: "Legal Due Diligence involves a comprehensive review of the target company's legal affairs. We examine contracts, litigation history, intellectual property rights, regulatory compliance, and corporate governance structure to identify legal risks that could impact the transaction or future operations.",
     details: [
-      "Identification of applicable IFRS to your organisation",
-      "Assessing the potential impact of these standards on your organisation",
-      "Identify areas of critical judgment and interpretation",
-      "Providing guidance for smooth transition to the new standards",
-      "Providing training on the new standards",
-      "Disclosure requirements as per the new standard",
+      "Review of material contracts and agreements",
+      "Analysis of corporate governance and ownership structure",
+      "Assessment of pending or threatened litigation",
+      "Review of intellectual property portfolio and protection",
+      "Regulatory and environmental compliance check",
+      "Employment and labor law compliance review"
     ],
   },
-  "financial-audit": {
-    title: "Financial Audit Support",
-    desc: "Financial audit implies an examination of the books of accounts and other relevant records. KSG audit liaison services partner firm is authorised to conduct Statutory Audit for mainland and free zones companies. KSG Audit support team committed to providing exceptional service quality which goes far beyond regulatory demands. We aim to increase transparency and build stakeholder trust in your organisation. Our associated team guided by the KSG professional team ensure that requirements as per International Financial Reporting Standards (IFRSs), auditing standards, and relevant legal provisions are properly complied with.",
+  "operational-dd": {
+    title: "Operational Due Diligence",
+    desc: "Operational Due Diligence goes beyond the numbers to assess the target's operating model. We evaluate the efficiency and scalability of operations, IT infrastructure, supply chain robustness, and key processes. This helps identify potential synergies and operational risks that could affect post-merger value.",
     details: [
-      "Streamline year end accounting closure",
-      "Financial statement preparation & review",
-      "Support to prepares all notes relating to Financial Statements",
-      "Develop the necessary documentation for audits",
-      "Support your overall audit requirements",
-      "Implement remediation efforts identified pre- or post-audit",
-      "Compilation and Maintenance of Fixed Asset Register",
+      "Assessment of core business processes and efficiency",
+      "Review of IT infrastructure and cybersecurity posture",
+      "Supply chain and procurement analysis",
+      "Evaluation of key management and personnel",
+      "Identification of operational synergies and cost-saving opportunities",
+      "Capacity and scalability assessment"
     ],
   },
-  "financial-statement": {
-    title: "Financial Statement Preparation",
-    desc: "Accurate financial statements are crucial for stakeholders. We help prepare Balance Sheets, Profit & Loss accounts, and Cash Flow statements in line with regulations.",
-    details: ["Balance Sheet", "Profit & Loss", "Cash Flow", "Equity Changes"],
+  "integration": {
+    title: "Post-Merger Integration",
+    desc: "Realizing the full value of an M&A deal depends heavily on successful Post-Merger Integration (PMI). We assist clients in planning and executing the integration process, focusing on combining cultures, streamlining operations, harmonizing IT systems, and achieving targeted synergies to ensure a smooth transition and long-term success.",
+    details: [
+      "Development of a comprehensive integration roadmap",
+      "Cultural integration and change management support",
+      "Harmonization of IT systems and platforms",
+      "Consolidation of finance, HR, and operational functions",
+      "Tracking and realization of deal synergies",
+      "Communication strategy for internal and external stakeholders"
+    ],
   },
 };
 
+// Sidebar Links List
 const sidebarLinks = [
-  { id: "book-keeping", label: "Accounting & Book Keeping" },
-  { id: "payroll", label: "Outsourced Payroll" },
-  { id: "ifrs", label: "IFRS Advisory" },
-  { id: "financial-audit", label: "Financial Audit Support" },
-  { id: "financial-statement", label: "Financial Statements" },
+  { id: "financial-dd", label: "Financial Due Diligence" },
+  { id: "tax-dd", label: "Tax Due Diligence" },
+  { id: "legal-dd", label: "Legal Due Diligence" },
+  { id: "operational-dd", label: "Operational Due Diligence" },
+  { id: "integration", label: "Post-Merger Integration" },
 ];
 
 export default function ServiceDetailPage({
@@ -94,30 +100,31 @@ export default function ServiceDetailPage({
     return notFound();
   }
 
+  // Different image for the specific service page (Analysis/Teamwork Theme)
+  const detailImage = "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+
   return (
     <div className="bg-[#041D2D] min-h-screen font-sans relative overflow-hidden">
       
       <Navbar forceStatic={true} />
-      
+
       {/* Background Elements */}
       <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
         <div className="absolute top-20 left-[-100px] w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"></div>
         <div className="absolute bottom-20 right-[-100px] w-96 h-96 bg-green-600/10 rounded-full blur-[120px]"></div>
       </div>
 
-      {/* Spacer */}
       <div className="h-20"></div>
 
-      {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-9 py-10 -mt-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-10 -mt-8">
         
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm font-medium text-green-400 mb-8">
+        <div className="flex items-center gap-2 text-sm font-medium text-gray-400 mb-8">
           <Link
-            href="/services/accounting"
+            href="/services/merger-acquisition"
             className="hover:text-green-400 transition-colors"
           >
-            Accounting
+            Merger & Acquisition
           </Link>
           <span>/</span>
           <span className="text-white">{service.title}</span>
@@ -136,7 +143,7 @@ export default function ServiceDetailPage({
                   return (
                     <li key={link.id}>
                       <Link
-                        href={`/services/accounting/${link.id}`}
+                        href={`/services/merger-acquisition/${link.id}`}
                         className={`flex items-center justify-between p-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                           isActive
                             ? "bg-gradient-to-r from-orange-500 to-green-500 text-white shadow-lg"
@@ -180,17 +187,17 @@ export default function ServiceDetailPage({
                 {service.desc}
               </p>
 
-              {/* 3. Image Banner (Moved Here) */}
-              <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8  group">
+              {/* 3. Image Banner (Moved Here, No Shadow, Zoom on Hover) */}
+              <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8 group">
                 <img
-                  src="https://images.pexels.com/photos/29267524/pexels-photo-29267524.jpeg"
+                  src={detailImage}
                   alt={service.title}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#041D2D]/80 via-transparent to-transparent"></div>
               </div>
 
-              {/* 4. Key Features List */}
+              {/* 4. Includes List */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                 {service.details.map((item, index) => (
                   <div
@@ -203,10 +210,10 @@ export default function ServiceDetailPage({
                 ))}
               </div>
 
-              {/* 5. Action Buttons */}
+              {/* 5. Buttons */}
               <div className="flex flex-wrap gap-4 pt-6 border-t border-white/10">
                 <Link
-                  href="/services/accounting"
+                  href="/services/merger-acquisition"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold text-sm shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1"
                 >
                   <ArrowLeft size={18} /> Back to Overview
