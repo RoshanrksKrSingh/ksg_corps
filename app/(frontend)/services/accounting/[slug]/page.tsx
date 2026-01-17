@@ -15,11 +15,12 @@ import {
 // --- DATA ---
 const servicesData: Record<
   string,
-  { title: string; desc: string; details: string[] }
+  { title: string; desc: string; subtitle?: string; details: string[] }
 > = {
   "book-keeping": {
     title: "Accounting and Book Keeping",
     desc: "Accounting is the process of tracking all income earned and expenses incurred whereas Book – Keeping services are the process of keeping records of financial transactions. Outsourcing of accounting and book-keeping services assures the business of obtaining professional services, complying with all the laws, standards, and requirements of the Land. KSG in-house qualified accountants with experience in different industries will assure you accounting records would comply with the applicable accounting standards.",
+    subtitle: "Our Accounting and Book Keeping Service covers:",
     details: [
       "Maintenance of all accounting records and reports",
       "Provide Bank Reconciliation Statement",
@@ -33,6 +34,7 @@ const servicesData: Record<
   payroll: {
     title: "Outsourced Payroll Services",
     desc: "We provide professional and timely payroll services across the UAE, maintaining complete confidentiality, accuracy and detailed reporting. Our payroll service includes. Outsourcing your payroll processing to KSG Professional Team can be beneficial.",
+    subtitle: "Our customized payroll solutions to clients include:",
     details: [
       "Preparation of monthly salary, deductions, gratuity provisions",
       "Preparing and delivery of payslips to the company every month",
@@ -45,6 +47,7 @@ const servicesData: Record<
   ifrs: {
     title: "IFRS Advisory Services",
     desc: "International Financial Reporting Standards (IFRS) is the globally accepted Accounting standard based on which companies are preparing and presenting their financial statements. Financial statements prepared in accordance with the IFRS are globally acceptable and more reliable. KSG professional team will help to assess the potential impact these standards could have on the financial statements of the organisation and be prepared for the challenges that they may face due to the changes.",
+    subtitle: "Our IFRS Advisory Services Includes:",
     details: [
       "Identification of applicable IFRS to your organisation",
       "Assessing the potential impact of these standards on your organisation",
@@ -57,6 +60,7 @@ const servicesData: Record<
   "financial-audit": {
     title: "Financial Audit Support",
     desc: "Financial audit implies an examination of the books of accounts and other relevant records. KSG audit liaison services partner firm is authorised to conduct Statutory Audit for mainland and free zones companies. KSG Audit support team committed to providing exceptional service quality which goes far beyond regulatory demands. We aim to increase transparency and build stakeholder trust in your organisation. Our associated team guided by the KSG professional team ensure that requirements as per International Financial Reporting Standards (IFRSs), auditing standards, and relevant legal provisions are properly complied with.",
+    subtitle: "Our Business Expansion Advisory covers:",
     details: [
       "Streamline year end accounting closure",
       "Financial statement preparation & review",
@@ -67,19 +71,20 @@ const servicesData: Record<
       "Compilation and Maintenance of Fixed Asset Register",
     ],
   },
-  "financial-statement": {
-    title: "Financial Statement Preparation",
-    desc: "Accurate financial statements are crucial for stakeholders. We help prepare Balance Sheets, Profit & Loss accounts, and Cash Flow statements in line with regulations.",
-    details: ["Balance Sheet", "Profit & Loss", "Cash Flow", "Equity Changes"],
+  "stock-audit": {
+    title: "Stock Audit and Verification",
+    desc: "Stock Verification or Stocktaking is a physical checking of stock of goods or inventory in the store after a regular interval of time. Periodic physical review of inventory helps identify variances between physical and book quantities and assists in evaluating internal control on movement, accounting and safeguarding of inventory. Our KSG Professional team can assist you in inventory verification and provide more insights into your stock, along with a proper reconciliation of the existing stock records.",
+    subtitle: "Our Stock Audit and Verification service covers:",
+    details: ["Assists client with the complete inventory verification process", "Identification of damaged and slow moving or obsolete items", "Preparation and Submission of Variance Report", "Help to quantify pilferage, fraud, wastage or damage","Valuation of Inventory for Inventory Accounting"],
   },
 };
 
 const sidebarLinks = [
   { id: "book-keeping", label: "Accounting & Book Keeping" },
-  { id: "payroll", label: "Outsourced Payroll" },
-  { id: "ifrs", label: "IFRS Advisory" },
+  { id: "payroll", label: "Outsourced Payroll Services" },
   { id: "financial-audit", label: "Financial Audit Support" },
-  { id: "financial-statement", label: "Financial Statements" },
+  { id: "stock-audit", label: "Stock Audit and Verification" },
+  { id: "ifrs", label: "IFRS Advisory" },
 ];
 
 export default function ServiceDetailPage({
@@ -124,8 +129,9 @@ export default function ServiceDetailPage({
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-          {/* --- LEFT SIDEBAR --- */}
-          <div className="lg:col-span-1 space-y-4">
+          
+          {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left/First) --- */}
+          <div className="lg:col-span-1 space-y-4 order-last lg:order-first">
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6">
               <h3 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">
                 Other Services
@@ -175,12 +181,12 @@ export default function ServiceDetailPage({
                 {service.title}
               </h1>
 
-              {/* 2. Description */}
-              <p className="text-gray-300 text-lg leading-relaxed mb-8">
+              {/* 2. Description (Responsive Text) */}
+              <p className="text-gray-300 text-sm md:text-lg leading-relaxed mb-8">
                 {service.desc}
               </p>
 
-              {/* 3. Image Banner (Moved Here) */}
+              {/* 3. Image Banner */}
               <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8  group">
                 <img
                   src="https://images.pexels.com/photos/29267524/pexels-photo-29267524.jpeg"
@@ -190,15 +196,28 @@ export default function ServiceDetailPage({
                 <div className="absolute inset-0 bg-gradient-to-t from-[#041D2D]/80 via-transparent to-transparent"></div>
               </div>
 
-              {/* 4. Key Features List */}
+              {/* Subtitle (Responsive Text) */}
+              {service.subtitle && (
+                <h5 className="text-sm md:text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-green-200">
+                  {service.subtitle}
+                </h5>
+              )}
+
+              {/* 4. Key Features List (Mobile Responsive) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                 {service.details.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-green-500/30 transition-colors"
+                    // ✅ Updated: 'items-start' for mobile text wrapping, 'md:items-center' for desktop
+                    className="flex items-start md:items-center gap-3 p-3 md:p-4 bg-white/5 rounded-xl border border-white/5 hover:border-green-500/30 transition-colors"
                   >
-                    <CheckCircle2 className="text-green-400" size={20} />
-                    <span className="text-gray-200 font-medium">{item}</span>
+                    {/* ✅ Updated: 'flex-shrink-0' to prevent icon squashing, Size 20 */}
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1 md:mt-0" size={20} />
+                    
+                    {/* ✅ Updated: 'text-sm' for mobile, 'md:text-base' for desktop */}
+                    <span className="text-gray-200 text-sm md:text-base font-medium leading-relaxed">
+                      {item}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -209,7 +228,7 @@ export default function ServiceDetailPage({
                   href="/services/accounting"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold text-sm shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1"
                 >
-                  <ArrowLeft size={18} /> Back to Overview
+                  <ArrowLeft size={18} /> Back
                 </Link>
 
                 <Link

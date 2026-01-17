@@ -103,6 +103,19 @@ const servicesData: Record<
       "Disclosure requirements as per the new standard"
     ],
   },
+  "aml": {
+    title: "Anti-Money Laundering (AML) Advisory",
+    desc: "In September 2018, UAE introduced Federal Decree-law No. 20 of 2018 on Anti-Money Laundering and Combating the Financing of Terrorism. Related regulations target to identify and prevent the methods to launder illegally obtained funds. KSG Corporate Services safeguards your business’s reputation by protecting it from risks related to money laundering and terrorist financing through comprehensive compliance strategies.",
+    details: [
+      "Compliance Assessment AML and Counter Terrorist Financing (CTF)",
+      "Customer Due Diligence (CDD) through KYC Compliance",
+      "Assessment of Transaction Monitoring Process",
+      "Standard Operating procedure SOP’s for specific AML / CTF Policy",
+      "Develop the CDD Policy and the KYC Checklist for the Company",
+      "Provide in house staff training",
+      "Respond to any queries raised by the authorities"
+    ],
+  },
 };
 
 // Sidebar Links List
@@ -114,6 +127,7 @@ const sidebarLinks = [
   { id: "forensic-audit", label: "Forensic & Fraud Audit" },
   { id: "icfr", label: "Internal Control (ICFR)" },
   { id: "erm", label: "Enterprise Risk (ERM)" },
+   { id: "aml", label: "Anti-Money Laundering" },
 ];
 
 export default function ServiceDetailPage({
@@ -156,8 +170,10 @@ export default function ServiceDetailPage({
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-          {/* --- LEFT SIDEBAR --- */}
-          <div className="lg:col-span-1 space-y-4">
+          
+          {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left/First) --- */}
+          {/* ✅ Change: Added 'order-last' for mobile and 'lg:order-first' for desktop */}
+          <div className="lg:col-span-1 space-y-4 order-last lg:order-first">
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6">
               <h3 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">
                 Other Services
@@ -198,7 +214,7 @@ export default function ServiceDetailPage({
             </div>
           </div>
 
-          {/* --- RIGHT CONTENT --- */}
+          {/* --- RIGHT CONTENT (Mobile: Top, Desktop: Right) --- */}
           <div className="lg:col-span-3">
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden">
               
@@ -214,7 +230,6 @@ export default function ServiceDetailPage({
 
               {/* 3. Image Banner (Moved Here) */}
               <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8 shadow-2xl border border-white/10 group">
-                {/* Generic placeholder since specific image wasn't provided, adjust src as needed */}
                 <img
                   src="https://images.pexels.com/photos/3182749/pexels-photo-3182749.jpeg"
                   alt={service.title}

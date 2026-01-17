@@ -15,6 +15,7 @@ export default function AuditingPage() {
     { id: "forensic-audit", title: "Forensic and Fraud Audit" },
     { id: "icfr", title: "Internal Control (ICFR)" },
     { id: "erm", title: "Enterprise Risk Management (ERM)" },
+    { id: "", title: "Anti-Money Laundering" },
   ];
 
   return (

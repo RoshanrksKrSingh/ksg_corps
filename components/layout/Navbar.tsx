@@ -5,15 +5,16 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   Menu, X, ChevronDown, ChevronRight,
-  FileText, BarChart3, Wallet, Grid,
-  Users, Briefcase, Lightbulb 
+  FileText, BarChart3, Wallet, 
+  Users, Briefcase, Lightbulb,
+  Building, Scale 
 } from 'lucide-react';
 
 // ================== DATA ==================
 const megaMenuData = {
   accounting: { 
     id: 'accounting', 
-    label: 'Accounting', 
+    label: 'Accounting & Audit Support', 
     icon: FileText, 
     items: [
       { label: "Overview",  href: "/services/accounting" },
@@ -24,9 +25,10 @@ const megaMenuData = {
       { label: "Financial Statement Preparation", href: "/services/accounting/financial-statement" } 
     ] 
   },
+  
   auditing: { 
     id: 'auditing', 
-    label: 'Auditing', 
+    label: 'Risk Advisory', 
     icon: BarChart3, 
     items: [
         { label: "Overview", href: "/services/auditing" },
@@ -36,12 +38,14 @@ const megaMenuData = {
         { label: "Standard Operating Procedure (SOP)", href: "/services/auditing/sop" },
         { label: "Forensic and Fraud Audit", href: "/services/auditing/forensic-audit" },
         { label: "Internal Control (ICFR)", href: "/services/auditing/icfr" },
-        { label: "Enterprise Risk Management (ERM)", href: "/services/auditing/erm" }
+        { label: "Enterprise Risk Management (ERM)", href: "/services/auditing/erm" },
+        { label: "Anti-Money Laundering", href: "/services/auditing/aml" },
     ] 
   },
+
   tax: { 
     id: 'tax', 
-    label: 'TAX Services', 
+    label: 'TAX Advisory', 
     icon: Wallet, 
     items: [
         { label: "Overview", href: "/services/tax" },
@@ -54,81 +58,35 @@ const megaMenuData = {
         { label: "Voluntary Disclosure", href: "/services/tax/voluntary-disclosure" }
     ] 
   },
-  other: { 
-    id: 'other', 
-    label: 'Other Services', 
-    icon: Grid, 
-    categories: [
-      { 
-        title: "Business Setup/PRO", 
-        items: [
-            { label: "Overview", href: "/services/business-setup" },
-            { label: "UAE Mainland Company Formation", href: "/services/business-setup/mainland" },
-            { label: "Free Zone Company Formation", href: "/services/business-setup/freezone" },
-            { label: "Offshore Company Formation", href: "/services/business-setup/offshore" },
-            { label: "Sponsorship Services", href: "/services/business-setup/sponsorship" },
-            { label: "Corporate PRO Services", href: "/services/business-setup/pro-services" },
-            { label: "Company Liquidation", href: "/services/business-setup/liquidation" }
-        ] 
-      },
-      { 
-        title: "Corporate Advisory", 
-        items: [
-            { label: "Overview", href: "/services/corporate-advisory" },
-            { label: "Business Strategic Formulation", href: "/services/corporate-advisory/strategy" },
-            { label: "Organisational Restructuring", href: "/services/corporate-advisory/restructuring" },
-            { label: "Business Expansion Advisory", href: "/services/corporate-advisory/expansion" },
-            { label: "Process Improvement", href: "/services/corporate-advisory/process-improvement" },
-            { label: "Feasibility Studies", href: "/services/corporate-advisory/feasibility" },
-            { label: "Cross-Border Expansion", href: "/services/corporate-advisory/cross-border" },
-            { label: "Business Continuity Planning (BCP)", href: "/services/corporate-advisory/bcp" }
-        ] 
-      },
-      { 
-        title: "Legal Advisory", 
-        items: [
-            { label: "Overview", href: "/services/legal-advisory" },
-            { label: "Labour Law Advisory", href: "/services/legal-advisory/labour-law" },
-            { label: "Corporate and Commercial Law Advisory", href: "/services/legal-advisory/corporate-law" },
-            { label: "Litigation and Dispute Resolution", href: "/services/legal-advisory/litigation" },
-            { label: "Anti-Money Laundering", href: "/services/legal-advisory/aml" },
-            { label: "Economic Substance Advisory", href: "/services/legal-advisory/esr" },
-            { label: "Ultimate Beneficial Owner Advisory", href: "/services/legal-advisory/ubo" }
-        ] 
-      },
-      { 
-        title: "Merger & Acquisition", 
-        items: [
-            { label: "Overview", href: "/services/merger-acquisition" },
-            { label: "Financial Due Diligence", href: "/services/merger-acquisition/financial-dd" },
-            { label: "Tax Due Diligence", href: "/services/merger-acquisition/tax-dd" },
-            { label: "Legal Due Diligence", href: "/services/merger-acquisition/legal-dd" },
-            { label: "Operational Due Diligence", href: "/services/merger-acquisition/operational-dd" },
-            { label: "Post-Merger Integration", href: "/services/merger-acquisition/integration" }
-        ] 
-      },
-      { 
-        title: "Technology Advisory", 
-        items: [
-            { label: "Overview", href: "/services/technology-advisory" },
-            { label: "Technology Consulting Services", href: "/services/technology-advisory/consulting" },
-            { label: "IT & Cyber Security Audit", href: "/services/technology-advisory/security-audit" },
-            { label: "Robotic Process Automation (RPA)", href: "/services/technology-advisory/rpa" },
-            { label: "Cyber Security Management", href: "/services/technology-advisory/cyber-security" },
-            { label: "Managed Security Services (MSSP)", href: "/services/technology-advisory/mssp" }
-        ] 
-      },
-      { 
-        title: "Digital & Development", 
-        items: [
-            { label: "Overview", href: "/services/digital-development" },
-            { label: "Website Development", href: "/services/digital-development/website" },
-            { label: "App Development", href: "/services/digital-development/app" },
-            { label: "Blockchain Development", href: "/services/digital-development/blockchain" },
-            { label: "Digital Marketing", href: "/services/digital-development/marketing" }
-        ] 
-      }
-    ]
+
+  businessSetup: { 
+    id: 'businessSetup', 
+    label: 'Business Setup/PRO', 
+    icon: Building, 
+    items: [
+        { label: "Overview", href: "/services/business-setup" },
+        { label: "UAE Mainland Company Formation", href: "/services/business-setup/mainland" },
+        { label: "Free Zone Company Formation", href: "/services/business-setup/freezone" },
+        { label: "Offshore Company Formation", href: "/services/business-setup/offshore" },
+        { label: "Sponsorship Services", href: "/services/business-setup/sponsorship" },
+        { label: "Corporate PRO Services", href: "/services/business-setup/pro-services" },
+        { label: "Company Liquidation", href: "/services/business-setup/liquidation" }
+    ] 
+  },
+
+  legal: { 
+    id: 'legal', 
+    label: 'Legal Advisory', 
+    icon: Scale, 
+    items: [
+        { label: "Overview", href: "/services/legal-advisory" },
+        { label: "Labour Law Advisory", href: "/services/legal-advisory/labour-law" },
+        { label: "Corporate & Commercial Law", href: "/services/legal-advisory/corporate-law" },
+        { label: "Litigation & Dispute Resolution", href: "/services/legal-advisory/litigation" },
+        { label: "Anti-Money Laundering", href: "/services/legal-advisory/aml" },
+        { label: "Economic Substance Advisory", href: "/services/legal-advisory/esr" },
+        { label: "Ultimate Beneficial Owner Advisory", href: "/services/legal-advisory/ubo" }
+    ] 
   }
 };
 
@@ -143,12 +101,11 @@ const randomMenuData = {
       { label: "Events", href: "/insights?cat=events" } 
     ] 
   },
-  // ✅ UPDATED: Added Overview and anchors for scrolling
   ourTeam: { 
     title: "Our Team", 
     icon: Users, 
     items: [
-      { label: "Overview", href: "/ourteam" }, // Scrolls to top
+      { label: "Overview", href: "/ourteam" }, 
       { label: "Advisors", href: "/ourteam#advisors" },
       { label: "Associated Partners", href: "/ourteam#associated-partners" },
       { label: "Group Partners", href: "/ourteam#group-partners" } 
@@ -184,7 +141,6 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Helper to check active state
   const isActiveLink = (path: string) => {
     if (path.includes('#')) {
        return pathname === path.split('#')[0];
@@ -241,7 +197,8 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
                    <div className="max-w-7xl mx-auto px-8 py-4 relative z-10">
                       
-                      <div className="flex items-center justify-center border-b border-white/10 mb-8 space-x-8">
+                      {/* TABS HEADER */}
+                      <div className="flex items-center justify-center border-b border-white/10 mb-8 space-x-6">
                         {Object.values(megaMenuData).map((tab) => {
                           const Icon = tab.icon;
                           const isActiveTab = activeTab === tab.id;
@@ -260,8 +217,8 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                         })}
                       </div>
 
+                      {/* TABS CONTENT */}
                       <div className="min-h-[300px]">
-                        {activeTab !== 'other' ? (
                            <div className="grid grid-cols-3 gap-x-8 gap-y-4">
                               {megaMenuData[activeTab as keyof typeof megaMenuData].items?.map((item: any, idx: number) => {
                                 const label = typeof item === 'string' ? item : item.label;
@@ -276,32 +233,6 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                                 );
                               })}
                            </div>
-                        ) : (
-                          <div className="grid grid-cols-3 gap-x-8 gap-y-8">
-                            {megaMenuData.other.categories.map((cat, idx) => (
-                              <div key={idx}>
-                                <div className="border-l-2 border-transparent relative pl-3 mb-2">
-                                    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500 to-green-500"></div>
-                                    <h4 className="text-brand-accent font-bold text-[12px]">{cat.title}</h4>
-                                </div>
-                                <ul className="space-y-0.5">
-                                  {cat.items.map((item: any, i: number) => {
-                                    const label = typeof item === 'string' ? item : item.label;
-                                    const href = typeof item === 'string' ? '#' : item.href;
-                                    const isActive = isActiveLink(href);
-                                    return (
-                                      <li key={i}>
-                                        <Link href={href} className={`text-[11px] block py-0.5 hover:underline decoration-brand-accent/50 ${isActive ? "text-green-400 font-semibold" : "text-white hover:text-white"}`}>
-                                          {label}
-                                        </Link>
-                                      </li>
-                                    );
-                                  })}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
-                        )}
                       </div>
                    </div>
                 </div>
@@ -404,13 +335,24 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                   {/* Accounting */}
                   <div>
                     <button onClick={() => toggleMobile('acc')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
-                        Accounting & Audit {mobileExpanded === 'acc' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
+                        Accounting & Audit Support {mobileExpanded === 'acc' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
                     </button>
                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'acc' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
                             {megaMenuData.accounting.items.map((item: any, i) => (
                                 <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                             ))}
+                        </div>
+                    </div>
+                  </div>
+
+                  {/* Auditing */}
+                  <div>
+                    <button onClick={() => toggleMobile('audit')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
+                        Risk Advisory {mobileExpanded === 'audit' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'audit' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
                             {megaMenuData.auditing.items.map((item: any, i) => (
                                 <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                             ))}
@@ -421,7 +363,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                   {/* Tax */}
                   <div>
                     <button onClick={() => toggleMobile('tax')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
-                        Tax Services {mobileExpanded === 'tax' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
+                        Tax Advisory {mobileExpanded === 'tax' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
                     </button>
                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'tax' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
@@ -432,24 +374,34 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     </div>
                   </div>
 
-                  {/* Other */}
+                  {/* ✅ Business Setup (Moved from Other) */}
                   <div>
-                    <button onClick={() => toggleMobile('other')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
-                        Other Services {mobileExpanded === 'other' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
+                    <button onClick={() => toggleMobile('businessSetup')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
+                        Business Setup/PRO {mobileExpanded === 'businessSetup' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
                     </button>
-                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'other' ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                        <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-3">
-                            {megaMenuData.other.categories.map((cat, i) => (
-                                <div key={i}>
-                                    <p className="text-orange-400 text-[10px] font-bold uppercase mb-1">{cat.title}</p>
-                                    {cat.items.map((item: any, j: number) => (
-                                        <Link key={j} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-0.5 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
-                                    ))}
-                                </div>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'businessSetup' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
+                            {megaMenuData.businessSetup.items.map((item: any, i) => (
+                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                             ))}
                         </div>
                     </div>
                   </div>
+
+                  {/* ✅ Legal Advisory (Moved from Other) */}
+                  <div>
+                    <button onClick={() => toggleMobile('legal')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
+                        Legal Advisory {mobileExpanded === 'legal' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'legal' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
+                            {megaMenuData.legal.items.map((item: any, i) => (
+                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
+                            ))}
+                        </div>
+                    </div>
+                  </div>
+
                 </div>
 
                 <div className="space-y-1 pt-2 border-t border-gray-700">

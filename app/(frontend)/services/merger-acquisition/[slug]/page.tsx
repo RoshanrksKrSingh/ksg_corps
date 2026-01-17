@@ -12,7 +12,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-// --- M&A DATA (Placeholder Content generated for missing details) ---
+// --- M&A DATA ---
 const servicesData: Record<
   string,
   { title: string; desc: string; details: string[] }
@@ -131,8 +131,10 @@ export default function ServiceDetailPage({
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-          {/* --- LEFT SIDEBAR --- */}
-          <div className="lg:col-span-1 space-y-4">
+          
+          {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left) --- */}
+          {/* ✅ Change: Added 'order-last' for mobile and 'lg:order-first' for desktop */}
+          <div className="lg:col-span-1 space-y-4 order-last lg:order-first">
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6">
               <h3 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">
                 Other Services
@@ -173,7 +175,7 @@ export default function ServiceDetailPage({
             </div>
           </div>
 
-          {/* --- RIGHT CONTENT --- */}
+          {/* --- RIGHT CONTENT (Mobile: Top, Desktop: Right) --- */}
           <div className="lg:col-span-3">
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden">
               

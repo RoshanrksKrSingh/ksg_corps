@@ -44,23 +44,23 @@ export default function TaxPage() {
          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                 
-                <div>
-                    <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+                <div className="mt-6">
+                    {/* <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400 font-bold uppercase text-sm tracking-widest">
                            Overview
                         </span>
-                    </span>
+                    </span> */}
                     <h2 className="text-3xl md:text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-green-200">
-                        Strategic Tax Planning & Compliance
+                       Tax Advisory
                     </h2>
                     <div className="space-y-6 text-lg leading-relaxed text-gray-300">
-                        <p>Reducing the impact of complexity of tax related concerns and forming your tax strategies align with your organisational goals.</p>
-                        <p>We offer a full range of services to address the International Tax, Transfer Pricing, Value Added Tax (VAT) and Excise Tax challenges.</p>
-                        <p>This ensures that organizations remain ahead of the requirements within and outside the UAE, along with supporting the impact which may occur across the wider GCC (KSAVAT, Bahrain VAT and Oman VAT).</p>
+                        <p>Reducing the impact of complexity of tax related concerns and forming your tax strategies align with your organisational goals. We offer a full range of services to address the International Tax, Transfer Pricing, Value Added Tax (VAT) and Excise Tax challenges, which ensures that organizations remain ahead of the requirements within and outside the UAE, along with supporting the impact which may occur across the wider GCC (KSAVAT, Bahrain VAT and Oman VAT).</p>
+                        {/* <p>We offer a full range of services to address the International Tax, Transfer Pricing, Value Added Tax (VAT) and Excise Tax challenges.</p>
+                        <p>This ensures that organizations remain ahead of the requirements within and outside the UAE, along with supporting the impact which may occur across the wider GCC (KSAVAT, Bahrain VAT and Oman VAT).</p> */}
                     </div>
                 </div>
 
-                <div className="relative group mt-12 lg:mt-24">
+                <div className="relative group mt-12 lg:mt-10">
                     <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-green-500 rounded-3xl blur opacity-30"></div>
                     <div className="relative rounded-3xl overflow-hidden transform group-hover:scale-105 transition-transform duration-700">
                         <img src="https://images.pexels.com/photos/6863515/pexels-photo-6863515.jpeg" alt="Tax Advisory Overview" className="w-full h-auto object-cover" />
@@ -74,7 +74,7 @@ export default function TaxPage() {
       {/* Services Buttons Section */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
         <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#041D2D]">Explore Our Tax Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#041D2D]">Our Tax Advisory includes</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-green-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
