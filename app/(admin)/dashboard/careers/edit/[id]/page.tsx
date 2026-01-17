@@ -1,19 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react"; // ✅ Added 'use'
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import CareerForm from "@/components/admin/CareerForm";
 import Loader from "@/components/ui/Loader";
 
-export default function EditCareerPage({ params }: { params: { id: string } }) {
+// ✅ Update Props to expect a Promise
+export default function EditCareerPage({ params }: { params: Promise<{ id: string }> }) {
+  // ✅ Unwrap the params using React.use()
+  const { id } = use(params);
+
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchJob = async () => {
       try {
-        const res = await fetch(`/api/careers/${params.id}`);
+        // ✅ Use the unwrapped 'id'
+        const res = await fetch(`/api/careers/${id}`);
         const data = await res.json();
         if (res.ok) setJob(data);
       } catch (error) {
@@ -22,8 +27,11 @@ export default function EditCareerPage({ params }: { params: { id: string } }) {
         setLoading(false);
       }
     };
-    fetchJob();
-  }, [params.id]);
+    
+    if (id) {
+        fetchJob();
+    }
+  }, [id]); // ✅ Dependency is now just 'id'
 
   if (loading) return <div className="text-white text-center py-20"><Loader text="Loading Job Details..." /></div>;
   if (!job) return <div className="text-white text-center py-20">Job not found</div>;
