@@ -26,8 +26,8 @@ const megaMenuData = {
     ] 
   },
   
-  auditing: { 
-    id: 'auditing', 
+  risk: { 
+    id: 'risk', 
     label: 'Risk Advisory', 
     icon: BarChart3, 
     items: [
@@ -73,21 +73,6 @@ const megaMenuData = {
         { label: "Company Liquidation", href: "/services/business-setup/liquidation" }
     ] 
   },
-
-  legal: { 
-    id: 'legal', 
-    label: 'Legal Advisory', 
-    icon: Scale, 
-    items: [
-        { label: "Overview", href: "/services/legal-advisory" },
-        { label: "Labour Law Advisory", href: "/services/legal-advisory/labour-law" },
-        { label: "Corporate & Commercial Law", href: "/services/legal-advisory/corporate-law" },
-        { label: "Litigation & Dispute Resolution", href: "/services/legal-advisory/litigation" },
-        { label: "Anti-Money Laundering", href: "/services/legal-advisory/aml" },
-        { label: "Economic Substance Advisory", href: "/services/legal-advisory/esr" },
-        { label: "Ultimate Beneficial Owner Advisory", href: "/services/legal-advisory/ubo" }
-    ] 
-  }
 };
 
 const randomMenuData = {
@@ -346,14 +331,14 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     </div>
                   </div>
 
-                  {/* Auditing */}
+                  {/* Risk Advisory */}
                   <div>
                     <button onClick={() => toggleMobile('audit')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
-                        Risk Advisory {mobileExpanded === 'audit' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
+                        Risk Advisory {mobileExpanded === 'risk' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
                     </button>
-                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'audit' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'risk' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
-                            {megaMenuData.auditing.items.map((item: any, i) => (
+                            {megaMenuData.risk.items.map((item: any, i) => (
                                 <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                             ))}
                         </div>
@@ -387,21 +372,6 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                         </div>
                     </div>
                   </div>
-
-                  {/* ✅ Legal Advisory (Moved from Other) */}
-                  <div>
-                    <button onClick={() => toggleMobile('legal')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
-                        Legal Advisory {mobileExpanded === 'legal' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
-                    </button>
-                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'legal' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                        <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
-                            {megaMenuData.legal.items.map((item: any, i) => (
-                                <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
-                            ))}
-                        </div>
-                    </div>
-                  </div>
-
                 </div>
 
                 <div className="space-y-1 pt-2 border-t border-gray-700">

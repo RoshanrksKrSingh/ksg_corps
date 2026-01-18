@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 // import InsightHeader from "@/components/ui/InsightHeader"; 
 import { ArrowRight } from "lucide-react";
 
-export default function AuditingPage() {
+export default function RiskAdvisoryPage() {
   
   // Services List for Buttons
   const services = [
