@@ -12,7 +12,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-// --- AUDITING DATA ---
+// --- RISK DATA ---
 const servicesData: Record<
   string,
   { title: string; desc: string; details: string[] }
@@ -160,10 +160,10 @@ export default function ServiceDetailPage({
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm font-medium text-green-400 mb-8">
           <Link
-            href="/services/auditing"
+            href="/services/risk"
             className="hover:text-green-400 transition-colors"
           >
-            Auditing
+            Risk
           </Link>
           <span>/</span>
           <span className="text-white">{service.title}</span>
@@ -184,7 +184,7 @@ export default function ServiceDetailPage({
                   return (
                     <li key={link.id}>
                       <Link
-                        href={`/services/auditing/${link.id}`}
+                        href={`/services/risk/${link.id}`}
                         className={`flex items-center justify-between p-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                           isActive
                             ? "bg-gradient-to-r from-orange-500 to-green-500 text-white shadow-lg"
@@ -254,7 +254,7 @@ export default function ServiceDetailPage({
               {/* 5. Buttons */}
               <div className="flex flex-wrap gap-4 pt-6 border-t border-white/10">
                 <Link
-                  href="/services/auditing"
+                  href="/services/risk"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold text-sm shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1"
                 >
                   <ArrowLeft size={18} /> Back to Overview

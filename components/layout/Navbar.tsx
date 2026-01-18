@@ -20,9 +20,9 @@ const megaMenuData = {
       { label: "Overview",  href: "/services/accounting" },
       { label: "Accounting and Book Keeping", href: "/services/accounting/book-keeping" },
       { label: "Outsourced Payroll Services", href: "/services/accounting/payroll" },
-      { label: "IFRS Advisory Services", href: "/services/accounting/ifrs" },
       { label: "Financial Audit Support", href: "/services/accounting/financial-audit" },
-      { label: "Financial Statement Preparation", href: "/services/accounting/financial-statement" } 
+      { label: "IFRS Advisory Services", href: "/services/accounting/ifrs" },
+      { label: "Stock Audit and Verification", href: "/services/accounting/stock-audit" },
     ] 
   },
   
@@ -31,15 +31,13 @@ const megaMenuData = {
     label: 'Risk Advisory', 
     icon: BarChart3, 
     items: [
-        { label: "Overview", href: "/services/auditing" },
-        { label: "Financial Audit Support", href: "/services/auditing/financial-audit" },
-        { label: "Stock Audit and Verification", href: "/services/auditing/stock-audit" },
-        { label: "Internal Audit", href: "/services/auditing/internal-audit" },
-        { label: "Standard Operating Procedure (SOP)", href: "/services/auditing/sop" },
-        { label: "Forensic and Fraud Audit", href: "/services/auditing/forensic-audit" },
-        { label: "Internal Control (ICFR)", href: "/services/auditing/icfr" },
-        { label: "Enterprise Risk Management (ERM)", href: "/services/auditing/erm" },
-        { label: "Anti-Money Laundering", href: "/services/auditing/aml" },
+        { label: "Overview", href: "/services/risk" },
+        { label: "Internal Audit", href: "/services/risk/internal-audit" },
+        { label: "Standard Operating Procedure (SOP)", href: "/services/risk/sop" },
+        { label: "Forensic and Fraud Audit", href: "/services/risk/forensic-audit" },
+        { label: "Internal Control Over Financial Reporting (ICFR)", href: "/services/risk/icfr" },
+        { label: "Enterprise Risk Management (ERM)", href: "/risk/auditing/erm" },
+        { label: "Anti-Money Laundering", href: "/services/risk/aml" },
     ] 
   },
 
