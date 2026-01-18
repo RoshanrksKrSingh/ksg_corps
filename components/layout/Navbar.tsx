@@ -7,7 +7,7 @@ import {
   Menu, X, ChevronDown, ChevronRight,
   FileText, BarChart3, Wallet, 
   Users, Briefcase, Lightbulb,
-  Building, Scale 
+  Building
 } from 'lucide-react';
 
 // ================== DATA ==================
@@ -73,6 +73,8 @@ const megaMenuData = {
         { label: "Company Liquidation", href: "/services/business-setup/liquidation" }
     ] 
   },
+  
+  // ✅ REMOVED: Legal Advisory section
 };
 
 const randomMenuData = {
@@ -331,9 +333,9 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     </div>
                   </div>
 
-                  {/* Risk Advisory */}
+                  {/* ✅ FIX: Risk Advisory (Key updated to 'risk' to match data) */}
                   <div>
-                    <button onClick={() => toggleMobile('audit')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
+                    <button onClick={() => toggleMobile('risk')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
                         Risk Advisory {mobileExpanded === 'risk' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
                     </button>
                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'risk' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
@@ -359,7 +361,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     </div>
                   </div>
 
-                  {/* ✅ Business Setup (Moved from Other) */}
+                  {/* Business Setup */}
                   <div>
                     <button onClick={() => toggleMobile('businessSetup')} className="w-full flex justify-between text-gray-300 text-sm py-1.5 hover:text-white items-center">
                         Business Setup/PRO {mobileExpanded === 'businessSetup' ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
@@ -372,6 +374,9 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                         </div>
                     </div>
                   </div>
+
+                  {/* ❌ REMOVED: Legal Advisory from Mobile Menu as requested */}
+
                 </div>
 
                 <div className="space-y-1 pt-2 border-t border-gray-700">
