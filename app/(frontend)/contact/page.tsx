@@ -165,7 +165,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <div className="relative z-20 mt-0 rounded-b-2xl px-2">
+      <div className="rounded-2xl overflow-hidden">
         {/* CTA Strip */}
         <section className="py-12 bg-[#041D2D]">
             <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
@@ -178,7 +178,9 @@ export default function ContactPage() {
                 </a>
             </div>
         </section>
-        <Footer/>
+          
+         <Footer/>
+       
       </div>
     </div>
   );
