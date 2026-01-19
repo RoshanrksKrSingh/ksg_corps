@@ -62,7 +62,8 @@ const Footer = () => {
 
           {/* 2. Services Links */}
           <div className="md:pl-8 pt-4">
-            <h4 className="text-xl font-bold mb-6 text-white border-b-4 border-orange-500 inline-block rounded-sm pb-1">
+            {/* ✅ Updated: Changed solid border to Gradient (Orange to Green) using 'after' pseudo-element */}
+            <h4 className="text-xl font-bold mb-6 text-white inline-block pb-1 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-gradient-to-r after:from-orange-500 after:to-green-500 after:rounded-sm">
               Services
             </h4>
             <ul className="space-y-3 text-sm text-white">
@@ -78,7 +79,8 @@ const Footer = () => {
 
           {/* 3. Contact Details */}
           <div className="pt-4">
-            <h4 className="text-xl font-bold mb-6 text-white border-b-4 border-orange-500 inline-block rounded-sm pb-1">
+            {/* ✅ Updated: Changed solid border to Gradient (Orange to Green) using 'after' pseudo-element */}
+            <h4 className="text-xl font-bold mb-6 text-white inline-block pb-1 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-gradient-to-r after:from-orange-500 after:to-green-500 after:rounded-sm">
               Contact
             </h4>
             <ul className="space-y-5 text-sm text-white">
