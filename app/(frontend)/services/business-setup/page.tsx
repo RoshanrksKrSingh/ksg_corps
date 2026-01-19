@@ -46,23 +46,21 @@ export default function BusinessSetupPage() {
                 
                 {/* Text Content */}
                 <div>
-                    <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+                    {/* <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400 font-bold uppercase text-sm tracking-widest">
                            Overview
                         </span>
-                    </span>
+                    </span> */}
                     <h2 className="text-3xl md:text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-green-200">
-                        Establish Your Presence in the UAE
+                        Business Setup/Corporate PRO
                     </h2>
                     <div className="space-y-6 text-lg leading-relaxed text-gray-300">
-                        <p>The UAE market offers great incentives to companies looking at establishing a presence in the region. Depending on the planned business activities, companies can choose from onshore, free zone and offshore business structures.</p>
-                        <p>KSG help to evaluate the feasibility of setting up a Mainland UAE Branch / Mainland UAE LLC / FZ branch / FZ Company to undertake the proposed activities.</p>
-                        <p>We support you in registering the entity and obtaining business licenses, as well as getting the necessary employment visas, work and residences permits in the UAE. Our services cover the entire spectrum of company formation procedures, from company registration and trade license acquisition to contract drafting and notarization of documents, we guide you at every step of the process.</p>
+                        <p>The UAE market offers great incentives to companies looking at establishing a presence in the region. Depending on the planned business activities, companies can choose from onshore, free zone and offshore business structures. KSG help to evaluate the feasibility of setting up a Mainland UAE Branch / Mainland UAE LLC / FZ branch / FZ Company to undertake the proposed activities. Registering the entity and obtaining business licenses, as well as support you get the necessary employment visas, work and residences permits in the UAE. Our services cover the entire spectrum of company formation procedures in the UAE. From company registration and trade license acquisition to contract drafting and notarization of documents, we guide you at every step of the process.</p>
                     </div>
                 </div>
 
                 {/* Image Section - Shifted Down slightly if needed via margin */}
-                <div className="relative group mt-12 lg:mt-24"> 
+                <div className="relative group mt-12 lg:mt-10"> 
                     <div className="absolute -inset-1  rounded-3xl blur opacity-30"></div>
                     <div className="relative rounded-3xl overflow-hidden transform group-hover:scale-105 transition-transform duration-700">
                         <img src={overviewImage} alt="Business Setup Overview" className="w-full h-auto object-cover" />
@@ -76,7 +74,7 @@ export default function BusinessSetupPage() {
       {/* Services Buttons Section */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
         <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#041D2D]">Explore Our Setup Solutions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#041D2D]">Our Business Setup/Corporate PRO includes:</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-green-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
@@ -93,7 +91,9 @@ export default function BusinessSetupPage() {
         </div>
       </div>
 
-      <div className="relative z-20 mt-0 rounded-b-2xl px-2"><Footer/></div>
+     <div className="rounded-2xl overflow-hidden">
+             <Footer/>
+           </div>
     </div>
   );
 }

@@ -10,6 +10,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
     "mongoose": "^8.21.0",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
+    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/nodemailer": "^7.0.5",
     "@types/react": "^19",

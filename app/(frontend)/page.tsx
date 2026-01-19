@@ -1,10 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { ArrowRight, Globe, BarChart, Shield } from "lucide-react";
-
-// ✅ 1. Import Existing Components
 import Navbar from "@/components/layout/Navbar"; 
 import Hero from "@/components/layout/Hero";
 import HeroCards from "@/components/layout/HeroCards";
@@ -12,55 +8,49 @@ import AboutUs from "@/components/layout/AboutUs";
 import WhyChoose from "@/components/layout/WhyChoose";
 import LatestInsights from "@/components/layout/LatestInsights";
 import Footer from "@/components/layout/Footer";
+import ServicesCards from "@/components/layout/ServicesCards";
 
 export default function HomePage() {
-  // --- Contact Form Logic ---
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "Business Setup",
-    message: "",
-  });
-  const [status, setStatus] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("Sending...");
-    // Simulate API call or replace with actual fetch
-    setTimeout(() => {
-        setStatus("Thank you! We will contact you shortly.");
-        setFormData({ name: "", email: "", phone: "", service: "Business Setup", message: "" });
-    }, 1000);
-  };
-
   return (
-    <div className="w-full font-sans bg-gray-50">
+    // ✅ Updated: Set body background to bg-[#041D2D]
+    <div className="w-full font-sans bg-[#eceff1] overflow-x-hidden text-white rounded-2xl">
       
-      
-
       {/* =========================================
-          1. NEW HEADER & HERO
+          1. HEADER & HERO SECTION
       ========================================= */}
       <Navbar />
-      <Hero />
       
-      <div className="relative z-20 mt-0 px-2">
+      {/* Wrapper to remove extra spacing */}
+      <div className="relative w-full">
+        <Hero />
+        
+        {/* ✅ Updated: Hero Cards Positioning
+           - Mobile: 'mt-0' -> Cards will appear directly below the Hero section naturally.
+           - Desktop (md+): '-mt-32' -> Cards will overlap the Hero section by moving up 32 units.
+           - Added 'relative z-30' to ensure they sit on top.
+        */}
+        <div className="relative z-30 mt-0 md:-mt-75 px-4 md:px-0 pb-10 md:pb-0">
+           <HeroCards/>
+        </div>
+      </div>
+      
+      {/* ✅ Updated: Adjusted top margin for sections below to account for layout changes */}
+      <div className="relative z-20 mt-0 md:mt-0 px-0  text-gray-900 rounded-t-[2rem] pt-0">
         <AboutUs/>
-        <HeroCards/>
+        
+        <div className="mt-0">
+          <WhyChoose/>
+          <ServicesCards/>
+        </div>
+        
+        <div className="mt-0">
+          <LatestInsights />
+        </div>
       </div>
       
-      <div className="relative z-20 mt-0 px-2">
-        <WhyChoose/>
-      </div>
-      
-      <div className="relative z-20 mt-0 px-2">
-       <LatestInsights />
-      </div>
-      
-      <div className="relative z-20 mt-0 rounded-b-2xl px-2">
-        <Footer/>
-      </div>
+      <div className="rounded-b-2xl overflow-hidden">
+  <Footer/>
+</div>
     </div>
   );
 }

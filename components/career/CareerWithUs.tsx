@@ -59,11 +59,11 @@ export default function CareerWithUs() {
             <div>
               <span className="inline-block py-1 px-3 rounded-full bg-orange-50 border border-orange-100 mb-4">
                 <span className="text-orange-500 font-bold uppercase text-xs tracking-widest">
-                  Join Our Team
+                  Careers
                 </span>
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-[#041D2D] leading-tight">
-                Build Your{" "}
+                {/* Build Your{" "} */}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-500">
                   Career
                 </span>{" "}
@@ -72,17 +72,14 @@ export default function CareerWithUs() {
             </div>
 
             <p className="text-gray-600 text-lg leading-relaxed">
-              At KSG Corporate Services, we promote work-life balance while
-              providing a vibrant, agile, and dynamic work environment. Our
-              organization is a mirror image of our members, and its success
-              depends entirely on the quality of our people.
+              At KSG Corporate Services, we promote work life balance while providing a vibrant, agile and dynamic work environment to our group member. It is a philosophy we maintain across the organisation. As our organisation is a mirror image of our members and its success entirely depends on the quality of our people, why we’ve made it a priority to build a culture that rewards high performance and nurtures talent. With a team as diverse as our clients we are proud that people who thrive at KSG are motivated, interested in learning and genuinely have a desire to be the best at what they do. We recognise individual talent and the potential of people at all stages of their careers.
             </p>
 
-            <p className="text-gray-600 text-lg leading-relaxed">
+            {/* <p className="text-gray-600 text-lg leading-relaxed">
               We reward high performance and nurture talent. People who thrive
               at KSG are motivated, interested in learning, and genuinely
               desire to be the best at what they do.
-            </p>
+            </p> */}
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
   <a
@@ -150,7 +147,7 @@ export default function CareerWithUs() {
         </div>
 
         {/* --- BOTTOM SECTION: VALUES --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {/* Card 1 */}
           <div className="group p-8 md:p-10 rounded-3xl bg-gray-50 border border-gray-100 hover:border-orange-200  transition-all duration-300 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -212,28 +209,31 @@ export default function CareerWithUs() {
             </ul>
           </div>
         </div>
+      </div>
 
-        {/* --- EMAIL CTA BAR --- */}
-        <div className="mt-16 bg-gradient-to-r from-[#041D2D] to-[#0a3a55] rounded-3xl p-8 md:p-12 text-center relative overflow-hidden ">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+      {/* --- EMAIL CTA BAR --- */}
+      {/* ✅ Updated: Moved outside the max-w-7xl container and removed horizontal margins/padding constraints if any to ensure full width or zero side spacing relative to its parent */}
+      <div className="w-full px-0">
+          <div className="bg-gradient-to-r from-[#041D2D] to-[#0a3a55] rounded-none md:rounded-2xl p-8 md:p-12 mx-0 md:mx-0 lg:mx-0 text-center relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
 
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 relative z-10">
-            Ready to make an impact?
-          </h3>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto relative z-10">
-            If you are passionate, driven, and looking for a place to grow, we
-            want to hear from you. Send your resume directly to our HR team.
-          </p>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 relative z-10">
+              Ready to make an impact?
+            </h3>
+            <p className="text-blue-100 mb-8 max-w-2xl mx-auto relative z-10">
+              If you are passionate, driven, and looking for a place to grow, we
+              want to hear from you. Send your resume directly to our HR team.
+            </p>
 
-         <a
-  href="mailto:careers@ksgcorps.com"
-  className="inline-flex items-center gap-3 px-4 md:px-8 py-4 bg-gradient-to-r from-orange-500 to-green-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-orange-500/30 transition-all transform hover:scale-105 relative z-10"
->
-  <Mail size={20} className="text-white" />
-  <span>careers@ksgcorps.com</span>
-  <ArrowRight size={20} className="text-white" />
-</a>
-        </div>
+          <a
+            href="mailto:careers@ksgcorps.com"
+            className="inline-flex items-center gap-3 px-4 md:px-8 py-4 bg-gradient-to-r from-orange-500 to-green-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-orange-500/30 transition-all transform hover:scale-105 relative z-10"
+          >
+            <Mail size={20} className="text-white" />
+            <span>careers@ksgcorps.com</span>
+            <ArrowRight size={20} className="text-white" />
+          </a>
+          </div>
       </div>
     </section>
   );

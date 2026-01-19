@@ -137,7 +137,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
     <header 
       className={`fixed z-50 font-sans transition-all duration-300 ${
         scrolled || forceStatic
-          ? "top-0 left-2 right-2 bg-[#0b2b3f] rounded-2xl py-0 shadow-lg" 
+          ? "top-0 left-0 right-0 bg-[#0b2b3f] rounded-2xl py-0 " 
           : "top-0 left-2 -right-2 md:-right-10 bg-transparent py-2"
       }`}
     >

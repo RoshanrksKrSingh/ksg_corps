@@ -15,11 +15,12 @@ import {
 // --- BUSINESS SETUP DATA ---
 const servicesData: Record<
   string,
-  { title: string; desc: string; details: string[] }
+  { title: string; desc: string; subtitle?: string; details: string[] }
 > = {
   "mainland": {
     title: "UAE Mainland Company Formation",
     desc: "The Department of Economic Development (DED) setups in different emirates are the statutory body that regulates and controls the licensing procedures for business setup services in the UAE. From June 1st, 2021 an investor can get 100% ownership in more than 1000 activities. Our consultants work closely with the Department of Economic Development (DED) and other government bodies in UAE to ensure smooth and timely formation of your Mainland Company.",
+    subtitle: "Our Mainland Company Formation Service help:",
     details: [
       "Obtaining Trade License for the required business activities",
       "Obtaining Industrial License for the required business activities",
@@ -33,6 +34,7 @@ const servicesData: Record<
   "freezone": {
     title: "Free Zone Company Formation",
     desc: "The UAE is having around 45 Free Zones that facilitate diverse business operations across a range of industries. Free Zones in the UAE are designed for boosting international business by providing complete ownership to foreign investors. These Zones have played a stellar role in attracting global investments and boosting international business. At KSG Corporate Services, carefully evaluating your requirements and help you choose the Free Zone that best meets your business needs and maximizes your business value.",
+    subtitle: "Our Free Zone Company Formation Service help:",
     details: [
       "Obtaining Free Zone Company (FZC) License",
       "Obtaining Free Zone Establishment (FZE) License",
@@ -46,6 +48,7 @@ const servicesData: Record<
   "offshore": {
     title: "Offshore Company Formation",
     desc: "An offshore company can operated from outside the UAE from its official registration or the location of its owners and stakeholders. The UAE government has allocated the Jebel Ali, Ras Al Khaimah and Ajman jurisdictions for business owners interested in offshore company formation in the UAE. We assist in compiling and submitting all the necessary documents required registering your offshore company in the UAE.",
+    subtitle: "Our Offshore Company Formation Service help:",
     details: [
       "Assessing the requirement and selecting the Authorities and Agent",
       "Prepare Details/Documents required",
@@ -58,6 +61,7 @@ const servicesData: Record<
   "sponsorship": {
     title: "Sponsorship Services",
     desc: "As per the UAE Companies Law and UAE Civil Law, to form mainland company (LLC) in the mainland a minimum of 51% local share is a must. A foreign shareholding in mainland company (LLC) should not exceed 49%, however professional companies and civil companies can be owned 100% by an expatriate shareholder, where the local sponsor will act as a Local Service Agent (LSA). From 1st June, 2021 UAE government allowed 100% foreign ownership in more than 1000 business activities but some of the business & professional services require sponsorship. KSG Corporate Services helps in creating an environment where both businesses and local sponsors can thrive with mutual benefits.",
+    subtitle: "Our Sponsorship Services Covers:",
     details: [
       "Assist in getting an authentic and reliable local Partner",
       "Act as in intermediary between clients & Local Partner"
@@ -66,6 +70,7 @@ const servicesData: Record<
   "pro-services": {
     title: "Corporate PRO Services",
     desc: "There is a wide array of PRO Services in Dubai, UAE that Emirates Chartered Accountants Group offers to its clients. KSG corporate PRO services in UAE offers a professional service provided by our team of experts that have all the expertise and know-how that is required to submit your documents consistently and accurately, making the process faster and more cost-effective. KSG Corporate PRO Services is a one-stop-shop for all government services in the UAE.",
+    subtitle: "Our Corporate PRO Services Covers:",
     details: [
       "Renewal/modification of business licences",
       "Employment Visa Process Application",
@@ -81,6 +86,7 @@ const servicesData: Record<
   "liquidation": {
     title: "Company Liquidation",
     desc: "Company liquidation in the UAE is an extremely complex process that requires the submission of numerous official documents pertaining to company formation and operation. Our Company liquidation processes are based on your individual circumstances whilst giving you peace of mind that whatever our experts suggest would be the best feasible option for your business. We look at all the prevailing issues and help you through Company liquidation in Dubai in a timely, efficient, cost-effective and positive manner.",
+    subtitle: "Our Company liquidation services include:",
     details: [
       "Help in Liquidators’ appointment",
       "Liquidation Board of Resolution Drafting and Notarisation",
@@ -95,11 +101,11 @@ const servicesData: Record<
 
 // Sidebar Links List
 const sidebarLinks = [
-  { id: "mainland", label: "Mainland Formation" },
-  { id: "freezone", label: "Free Zone Formation" },
-  { id: "offshore", label: "Offshore Formation" },
+  { id: "mainland", label: "Mainland Company Formation" },
+  { id: "freezone", label: "Free Zone Company Formation" },
+  { id: "offshore", label: "Offshore Company Formation" },
   { id: "sponsorship", label: "Sponsorship Services" },
-  { id: "pro-services", label: "Corporate PRO" },
+  { id: "pro-services", label: "Corporate PRO Services" },
   { id: "liquidation", label: "Company Liquidation" },
 ];
 
@@ -134,7 +140,7 @@ export default function ServiceDetailPage({
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-10 -mt-8">
         
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm font-medium text-gray-400 mb-8">
+        <div className="flex items-center gap-2 text-sm font-medium text-green-400 mb-8">
           <Link
             href="/services/business-setup"
             className="hover:text-green-400 transition-colors"
@@ -199,13 +205,13 @@ export default function ServiceDetailPage({
                 {service.title}
               </h1>
 
-              {/* 2. Description */}
-              <p className="text-gray-300 text-lg leading-relaxed mb-8">
+              {/* 2. Description (Responsive Text) */}
+              <p className="text-gray-300 text-sm md:text-lg leading-relaxed mb-8">
                 {service.desc}
               </p>
 
               {/* 3. Image Banner */}
-              <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8 group">
+              <div className="relative w-full h-38 md:h-96 rounded-2xl overflow-hidden mb-8 group">
                 <img
                   src={detailImage}
                   alt={service.title}
@@ -214,15 +220,30 @@ export default function ServiceDetailPage({
                 <div className="absolute inset-0 bg-gradient-to-t from-[#041D2D]/80 via-transparent to-transparent"></div>
               </div>
 
-              {/* 4. Includes List */}
+              {/* ✅ Subtitle Added */}
+              {service.subtitle && (
+                <div>
+                  <h5 className="text-sm md:text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-green-200">
+                    {service.subtitle}
+                  </h5>
+                </div>
+              )}
+
+              {/* 4. Includes List (Responsive) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                 {service.details.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-green-500/30 transition-colors"
+                    // ✅ Mobile Wrapping & Alignment
+                    className="flex items-start md:items-center gap-3 p-3 md:p-4 bg-white/5 rounded-xl border border-white/5 hover:border-green-500/30 transition-colors"
                   >
-                    <CheckCircle2 className="text-green-400" size={20} />
-                    <span className="text-gray-200 font-medium">{item}</span>
+                    {/* ✅ Mobile Icon Sizing */}
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1 md:mt-0" size={20} />
+                    
+                    {/* ✅ Mobile Text Sizing */}
+                    <span className="text-gray-200 text-sm md:text-base font-medium leading-relaxed">
+                      {item}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -233,7 +254,7 @@ export default function ServiceDetailPage({
                   href="/services/business-setup"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold text-sm shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1"
                 >
-                  <ArrowLeft size={18} /> Back to Overview
+                  <ArrowLeft size={18} /> Back
                 </Link>
 
                 <Link
@@ -248,8 +269,8 @@ export default function ServiceDetailPage({
         </div>
       </div>
 
-      <div className="relative z-20 mt-10 rounded-b-2xl px-2">
-        <Footer />
+      <div className="rounded-b-2xl overflow-hidden">
+        <Footer/>
       </div>
     </div>
   );

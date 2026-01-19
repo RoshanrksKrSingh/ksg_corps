@@ -39,41 +39,37 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center overflow-hidden">
+    <section className="relative w-full h-screen flex items-center overflow-hidden bg-[#edf0f1]">
       
       {/* ================= BACKGROUND IMAGE ================= */}
-      {/* ✅ MOBILE FIX UPDATE: 
-         - Changed 'bg-[70%_center]' to 'bg-[85%_center]' to show more of the RIGHT side.
-      */}
       <div 
-        className="absolute top-2 left-2 right-2 bottom-0 z-0 bg-cover bg-[85%_center] md:bg-[center_right] bg-no-repeat transition-transform duration-1000 rounded-t-[1rem] overflow-hidden"
+        className="absolute inset-0 z-0 bg-cover bg-[85%_center] md:bg-[center_right] bg-no-repeat transition-transform duration-1000"
         style={{
           backgroundImage: `url('https://cdn-becae.nitrocdn.com/OcwjylvgvBbNRDjYtTmGOXeUgIvOimBD/assets/images/optimized/rev-47b5ce8/www.aaconsultancy.ae/wp-content/uploads/2025/05/Business-Setup-company-in-uae.webp')`
         }}
       >
         {/* Dark Gradient Overlay for Readability */}
-        <div className="absolute inset-0 to-transparent"></div>
+        {/* <div className="absolute inset-0 bg-black/40"></div> */}
       </div>
 
       {/* ================= HERO CONTENT (SLIDER) ================= */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full h-full flex flex-col justify-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full h-full flex flex-col justify-center pb-12 md:pb-32">
         
-        <div className="max-w-3xl relative h-40"> 
+        {/* ✅ Updated: Changed 'mt-32' to 'mt-60' to push text further down on mobile */}
+        <div className="max-w-3xl relative h-40 w-full mt-45 md:mt-0"> 
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`absolute top-0 left-0 transition-all duration-1000 ease-in-out transform ${
+              className={`absolute top-0 left-0 w-full transition-all duration-1000 ease-in-out transform ${
                 index === currentSlide 
                   ? "opacity-100 translate-y-0" 
                   : "opacity-0 translate-y-4 pointer-events-none"
               }`}
             >
-              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed mb-4 mt-20 md:mt-0">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-300 to-green-400">
-                  {slide.text}
-                </span>
+              {/* ✅ Updated: Replaced 'text-white' with gradient classes */}
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-500 to-green-500 drop-shadow-lg text-center md:text-left">
+                {slide.text}
               </h1>
-              
             </div>
           ))}
         </div>

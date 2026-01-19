@@ -218,7 +218,7 @@ export default function ServiceDetailPage({
               </p>
 
               {/* 3. Image Banner */}
-              <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8 shadow-2xl border border-white/10 group">
+              <div className="relative w-full h-38 md:h-96 rounded-2xl overflow-hidden mb-8 shadow-2xl border border-white/10 group">
                 <img
                   src="https://images.pexels.com/photos/6863259/pexels-photo-6863259.jpeg"
                   alt={service.title}
@@ -272,8 +272,8 @@ export default function ServiceDetailPage({
         </div>
       </div>
 
-      <div className="relative z-20 mt-10 rounded-b-2xl px-2">
-        <Footer />
+      <div className="rounded-b-2xl overflow-hidden">
+        <Footer/>
       </div>
     </div>
   );

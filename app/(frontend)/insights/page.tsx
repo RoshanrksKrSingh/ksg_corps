@@ -180,8 +180,8 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
           </div>
         )}
       </div>
-      <div className="relative z-20 mt-0 rounded-b-2xl px-2">
-      <Footer/>
+     <div className="rounded-2xl overflow-hidden">
+        <Footer/>
       </div>
     </div>
   );

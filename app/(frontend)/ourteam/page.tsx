@@ -1,13 +1,24 @@
 "use client";
 
+import { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import InsightHeader from "@/components/ui/InsightHeader"; 
 import { Users, Lightbulb, MessageSquare, ShieldCheck, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import AOS from "aos"; 
+import "aos/dist/aos.css"; 
 
 export default function OurTeamPage() {
   
+  // Initialize AOS Animation
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
   const strengths = [
     {
       title: "QUALIFIED PROFESSIONALS",
@@ -65,7 +76,7 @@ export default function OurTeamPage() {
               {/* Text Content */}
               <div>
                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-500">
-                    Building Success Together
+                    Our Team & Associates
                  </h2>
                  <p className="text-lg text-gray-600 leading-relaxed mb-6">
                    We at KSG have a well structured team, with pre-defined roles and responsibilities, and with the required supervision from the seniors/ partners. A structured approach not only aids in delivering services to the satisfaction of clients, but also provides a structured road-map for the professionals.
@@ -75,8 +86,8 @@ export default function OurTeamPage() {
 
               {/* Image Content */}
               <div className="relative group">
-                 <div className="absolute -inset-2 bg-gradient-to-r from-orange-500 to-green-500 rounded-2xl opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-500"></div>
-                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                 <div className="absolute -inset-2  rounded-2xl opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-500"></div>
+                 <div className="relative rounded-2xl overflow-hidden ">
                     <img 
                        src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
                        alt="Our Team Collaboration" 
@@ -93,18 +104,28 @@ export default function OurTeamPage() {
       <section id="advisors" className="py-20 px-6 max-w-7xl mx-auto bg-gray-50">
         <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-500 mb-4">
-                Our Core Strengths
+               Our Team four prime Strength
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-green-500 mx-auto rounded-full"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
            {strengths.map((item, idx) => (
-             <div key={idx} className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
-                {/* ✅ UPDATED: Permanent Gradient Background & White Icon */}
+             <div 
+                key={idx} 
+                className="bg-white p-6 rounded-2xl   hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
+                data-aos="fade-left" 
+                data-aos-delay={idx * 200}
+             >
+                {/* Gradient Icon Background */}
                 <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-green-500 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0 shadow-lg">
                    <item.icon className="text-white" size={28} />
                 </div>
-                <h3 className="text-lg font-bold text-[#041D2D] mb-3 text-center md:text-left group-hover:text-green-600 transition-colors">{item.title}</h3>
+                
+                {/* ✅ UPDATED: Changed 'text-lg' to 'text-base' to decrease size */}
+                <h3 className="text-base font-bold text-[#041D2D] mb-3 text-center md:text-left group-hover:text-green-600 transition-colors">
+                  {item.title}
+                </h3>
+                
                 <p className="text-gray-600 leading-relaxed text-sm text-center md:text-left">{item.desc}</p>
              </div>
            ))}
@@ -120,7 +141,6 @@ export default function OurTeamPage() {
             
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
                {associatedPartners.map((src, i) => (
-                 /* ✅ UPDATED: Added shadow-md and clean background for proper card look */
                  <div key={i} className="bg-white p-4 w-48 h-28 flex items-center justify-center border border-gray-200 rounded-xl shadow-md hover:shadow-xl hover:border-green-500/30 transition-all duration-300">
                     <img src={src} alt={`Partner ${i}`} className="max-w-full max-h-full object-contain" />
                  </div>
@@ -137,7 +157,6 @@ export default function OurTeamPage() {
             </h2>
             
             <div className="flex justify-center">
-               {/* ✅ UPDATED: Added shadow-md for proper card look */}
                <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all w-72 h-40 flex items-center justify-center border border-gray-200 hover:border-orange-500/30">
                   <img src={groupPartner} alt="IMAS Group Partner" className="max-w-full max-h-full object-contain" />
                </div>
@@ -145,9 +164,9 @@ export default function OurTeamPage() {
          </div>
       </section>
 
-      <div className="relative z-20 mt-0 rounded-b-2xl px-2">
-         <Footer/>
-      </div>
+     <div className="rounded-2xl overflow-hidden">
+        <Footer/>
+     </div>
     </div>
   );
 }
