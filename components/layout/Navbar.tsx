@@ -14,7 +14,7 @@ import {
 const megaMenuData = {
   accounting: { 
     id: 'accounting', 
-    label: 'Accounting & Audit', // Shortened for layout
+    label: 'Accounting & Audit', 
     icon: FileText, 
     items: [
       { label: "Overview",  href: "/services/accounting" },
@@ -84,7 +84,6 @@ const randomMenuData = {
       { label: "Events", href: "/insights?cat=events" } 
     ] 
   },
-  // "Our Team" removed from randomMenuData as it's now a direct link
   career: { 
     title: "Career", 
     icon: Briefcase, 
@@ -157,24 +156,28 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${isActiveLink("/") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
               </Link>
 
-              {/* SERVICES MEGA MENU - UPDATED: FULL GRID */}
+              {/* SERVICES MEGA MENU - FULL GRID */}
               <div className="group static h-full flex items-center"> 
                 <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${pathname?.startsWith('/services') ? "text-green-400" : "text-white hover:text-green-400"}`}>
                   Services <ChevronDown size={14} />
                   <span className={`absolute bottom-4 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${pathname?.startsWith('/services') ? "w-full" : "w-0 group-hover:w-full"}`}></span>
                 </button>
                 
-                {/* Mega Menu Container - Full Width logic */}
-                <div className="absolute left-0 top-full w-full bg-[#041D2D] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0">
+                {/* Mega Menu Container */}
+                {/* ✅ UPDATED: Changed 'left-6 right-6' to 'left-4 right-4' or 'w-full' with max-width container inside for better control.
+                   Using 'left-[-150px]' (approx) or centering logic depends on parent. 
+                   Here, I'm setting a fixed width container centered relative to the viewport or navbar to ensure symmetry.
+                */}
+                <div className="absolute left-1/2 -translate-x-1/2 top-full w-[90vw] max-w-[80rem] bg-[#03314e] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-3xl overflow-hidden">
                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
                    
                    {/* 4-Column Grid for All Services */}
-                   <div className="max-w-7xl mx-auto px-8 py-10 relative z-10">
+                   <div className="w-full px-8 py-10 relative z-10">
                       <div className="grid grid-cols-4 gap-8">
                           {Object.values(megaMenuData).map((category) => {
                              const Icon = category.icon;
                              return (
-                               <div key={category.id} className="space-y-4">
+                               <div key={category.id} className="space-y-4 border-l border-white/10 pl-6">
                                   {/* Category Title */}
                                   <div className="flex items-center gap-2 pb-2 border-b border-white/20">
                                       <Icon size={18} className="text-orange-500" />
@@ -185,16 +188,28 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                                   
                                   {/* Links List */}
                                   <ul className="space-y-2">
-                                      {category.items.map((item, idx) => (
-                                          <li key={idx}>
-                                              <Link 
-                                                  href={item.href} 
-                                                  className="text-xs text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 block py-1"
-                                              >
-                                                  {item.label}
-                                              </Link>
-                                          </li>
-                                      ))}
+                                      {category.items.map((item, idx) => {
+                                          const isItemActive = isActiveLink(item.href);
+                                          return (
+                                              <li key={idx}>
+                                                  <Link 
+                                                      href={item.href} 
+                                                      className={`group/item flex items-center gap-2 text-xs transition-all duration-200 py-1 ${
+                                                          isItemActive 
+                                                          ? "text-green-400 font-bold translate-x-1" 
+                                                          : "text-gray-300 hover:text-white hover:translate-x-1"
+                                                      }`}
+                                                  >
+                                                      <span className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                                                          isItemActive 
+                                                          ? "bg-green-400" 
+                                                          : "bg-gray-500 group-hover/item:bg-green-400"
+                                                      }`}></span>
+                                                      {item.label}
+                                                  </Link>
+                                              </li>
+                                          );
+                                      })}
                                   </ul>
                                </div>
                              );
@@ -214,7 +229,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     <ul>
                     {randomMenuData.insight.items.map((item: any, idx) => (
                         <li key={idx}>
-                        <Link href={item.href} className={`block px-5 py-2 text-sm transition-colors border-b border-white/5 last:border-0 ${isActiveLink(item.href) ? "bg-white/10 text-green-400" : "hover:bg-white/10 hover:text-brand-accent"}`}>
+                        <Link href={item.href} className={`block px-5 py-2 text-sm transition-colors border-b border-white/5 last:border-0 ${isActiveLink(item.href) ? "bg-white/10 text-green-400 font-bold" : "hover:bg-white/10 hover:text-brand-accent"}`}>
                             {item.label}
                         </Link>
                         </li>
@@ -223,7 +238,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 </div>
               </div>
 
-              {/* OUR TEAM - UPDATED: Direct Link (No Dropdown) */}
+              {/* OUR TEAM */}
               <Link 
                 href="/ourteam" 
                 className={`font-semibold transition text-sm tracking-wide relative group ${
@@ -244,7 +259,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     <ul>
                     {randomMenuData.career.items.map((item: any, idx) => (
                         <li key={idx}>
-                        <Link href={item.href} className={`block px-5 py-2 text-sm transition-colors border-b border-white/5 last:border-0 ${isActiveLink(item.href) ? "bg-white/10 text-green-400" : "hover:bg-white/10 hover:text-brand-accent"}`}>
+                        <Link href={item.href} className={`block px-5 py-2 text-sm transition-colors border-b border-white/5 last:border-0 ${isActiveLink(item.href) ? "bg-white/10 text-green-400 font-bold" : "hover:bg-white/10 hover:text-brand-accent"}`}>
                             {item.label}
                         </Link>
                         </li>
@@ -286,7 +301,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
             <div className="space-y-4 flex-grow">
                 <Link href="/" className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/") ? "text-green-400" : "text-white"}`} onClick={() => setIsOpen(false)}>Home</Link>
                 
-                {/* Services Section - Mobile (Expandable) */}
+                {/* Services Section - Mobile */}
                 <div>
                   <button onClick={() => toggleMobile('services_main')} className="w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 text-white items-center">
                       Services {mobileExpanded === 'services_main' ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
@@ -300,11 +315,24 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                                   <category.icon size={14}/> {category.label}
                               </h5>
                               <div className="pl-6 border-l border-gray-700 ml-1 space-y-2">
-                                  {category.items.map((item, i) => (
-                                      <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className="block text-xs text-gray-400 hover:text-white">
-                                          {item.label}
-                                      </Link>
-                                  ))}
+                                  {category.items.map((item, i) => {
+                                      const isItemActive = isActiveLink(item.href);
+                                      return (
+                                          <Link 
+                                            key={i} 
+                                            href={item.href} 
+                                            onClick={() => setIsOpen(false)} 
+                                            className={`flex items-center gap-2 text-xs hover:text-white ${
+                                                isItemActive ? "text-green-400 font-bold" : "text-gray-400"
+                                            }`}
+                                          >
+                                              <span className={`w-1.5 h-1.5 rounded-full ${
+                                                  isItemActive ? "bg-green-400" : "bg-gray-600"
+                                              }`}></span>
+                                              {item.label}
+                                          </Link>
+                                      );
+                                  })}
                               </div>
                           </div>
                       ))}
@@ -325,7 +353,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                  </div>
                 </div>
 
-                {/* Our Team - Mobile (Direct Link) */}
+                {/* Our Team */}
                 <Link 
                     href="/ourteam" 
                     className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/ourteam") ? "text-green-400" : "text-white"}`} 
