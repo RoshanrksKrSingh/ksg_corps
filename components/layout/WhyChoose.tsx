@@ -134,7 +134,7 @@ const WhyChoose = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: false }}
-            className="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight"
+            className="text-2xl md:text-3xl font-bold mb-6 text-white leading-tight"
           >
             We bring our{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500 animate-pulse">
@@ -151,7 +151,7 @@ const WhyChoose = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: false }}
-            className="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight"
+            className="text-2xl md:text-3xl font-bold mb-6 text-white leading-tight"
           >
             to help you achieve the{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500 animate-pulse">
