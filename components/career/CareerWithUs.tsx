@@ -92,7 +92,7 @@ export default function CareerWithUs() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* --- TOP SECTION --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-15 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-10 mb-10">
           
           {/* Left: Text Content (Floating Animation Delay: 0s) */}
           <motion.div 
