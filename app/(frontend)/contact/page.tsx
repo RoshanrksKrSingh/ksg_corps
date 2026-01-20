@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import InsightHeader from "@/components/ui/InsightHeader";
+import ContactHeader from "@/components/ui/ContactHeader"; // ✅ Imported new ContactHeader
 import { MapPin, Phone, Mail, Clock, Send, ArrowRight } from "lucide-react";
 
 export default function ContactPage() {
@@ -19,7 +19,7 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+971 4 355 8880", "+971 50 123 4567"], // Replace with actual numbers
+      details: ["+971 4 355 8880", "+971 50 123 4567"], 
       color: "text-green-500",
       bg: "bg-green-50"
     },
@@ -41,15 +41,12 @@ export default function ContactPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
-      <Navbar forceStatic={true} />
+      <Navbar/>
       
-      {/* Spacer for Fixed Navbar */}
-      {/* <div className="w-full h-24 bg-[#0b2b3f]"></div> */}
-
-      {/* 1. Insight Header - Updated with Gradient Title & Smaller Font Size */}
-      <InsightHeader 
+      {/* 1. Used New ContactHeader Component */}
+      <ContactHeader 
         title={
-            <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400">
+            <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400 mb-0">
                 Contact Us
             </span>
         }
@@ -69,12 +66,6 @@ export default function ContactPage() {
           referrerPolicy="no-referrer-when-downgrade"
           className="grayscale hover:grayscale-0 transition-all duration-700"
         ></iframe>
-        
-        {/* Overlay Title on Map */}
-        {/* <div className="absolute top-5 left-5 md:top-10 md:left-10 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-2xl max-w-sm border-l-4 border-green-500">
-            <h2 className="text-2xl font-bold text-[#041D2D] mb-1">Visit Our Office</h2>
-            <p className="text-gray-600 text-sm">Al Jawhara Building, Bur Dubai</p>
-        </div> */}
       </section>
 
       {/* ================= CONTACT CONTENT ================= */}
@@ -87,7 +78,6 @@ export default function ContactPage() {
                 {/* Header Text */}
                 <div>
                     <span className="text-orange-500 font-bold uppercase tracking-widest text-sm">Get In Touch</span>
-                    {/* Updated Gradient Title */}
                     <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-6 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-500">
                         Have questions? Let's discuss your business needs.
                     </h1>
@@ -123,7 +113,6 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-[#041D2D] mb-6 relative z-10">Send us a Message</h3>
                     
                     <form className="space-y-5 relative z-10">
-                        {/* Added text-gray-900 to inputs for visibility */}
                         <div>
                             <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
                             <input type="text" placeholder="Andy Jassy" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all text-gray-900" />

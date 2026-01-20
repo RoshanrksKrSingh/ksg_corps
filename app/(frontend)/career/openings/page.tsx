@@ -27,10 +27,13 @@ export default async function JobOpeningsPage() {
     <div className="bg-gray-50 min-h-screen font-sans">
       
       {/* 1. Navbar */}
-      <Navbar />
+      <Navbar forceStatic={true} />
+            
+             {/* 2. Spacer Div */}
+             <div className="w-full h-20 bg-[#0b2b3f] rounded-2xl"></div>
 
       {/* 2. Header Section */}
-    
+{/*     
       <InsightHeader 
         title={
             // ✅ Updates: Font Size reduced + Gradient on First Word
@@ -40,7 +43,7 @@ export default async function JobOpeningsPage() {
         }
         breadcrumb="Job Openings"
         image=""
-      />
+      /> */}
       
       {/* 3. Job Listings Section */}
       <div className="relative z-10 bg-gray-50 py-20">

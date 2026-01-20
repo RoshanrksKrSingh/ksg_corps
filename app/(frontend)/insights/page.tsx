@@ -21,16 +21,12 @@ async function getBlogs() {
 // ✅ Dynamic Page Component
 export default async function InsightsPage({ searchParams }: { searchParams: { cat?: string } }) {
   const allBlogs = await getBlogs();
-  
-  // 1. Get Current Category from URL (default to 'all')
   const activeCategory = searchParams.cat || 'all';
 
-  // 2. Filter Blogs based on Category
   const filteredBlogs = activeCategory === 'all' 
     ? allBlogs 
     : allBlogs.filter((blog: any) => blog.category?.toLowerCase() === activeCategory.toLowerCase()); 
 
-  // 3. Calculate Counts for Hero Buttons
   const counts = {
     all: allBlogs.length,
     blogs: allBlogs.filter((b: any) => b.category === 'blogs').length,
@@ -41,48 +37,16 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
     events: allBlogs.filter((b: any) => b.category === 'events').length,
   };
 
-  // 4. Dynamic Header Titles (Expanded for new categories)
   const headerTitles: any = {
-    all: "Insights & Updates",
-    
-    blogs: (
-      <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Latest</span> Blogs
-      </span>
-    ),
-    
-    audit: (
-      <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Accounting &</span> Audit
-      </span>
-    ),
-
-    tax: (
-      <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Tax</span> Advisory
-      </span>
-    ),
-
-    business: (
-      <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Business</span> Setup/PRO
-      </span>
-    ),
-
-    risk: (
-      <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Risk</span> Advisory
-      </span>
-    ),
-    
-    events: (
-      <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Upcoming</span> Events
-      </span>
-    )
+    all: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Insights</span> & Updates</span>),
+    blogs: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Latest</span> Blogs</span>),
+    audit: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Accounting &</span> Audit</span>),
+    tax: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Tax</span> Advisory</span>),
+    business: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Business</span> Setup/PRO</span>),
+    risk: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Risk</span> Advisory</span>),
+    events: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Upcoming</span> Events</span>)
   };
 
-  // 5. Breadcrumb Text Map
   const breadcrumbMap: any = {
     all: "All Insights",
     blogs: "Latest Blogs",
@@ -97,18 +61,16 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
 
   return (
     <div className="bg-gray-50 ">
-      
       <Navbar />
 
-      {/* ✅ Dynamic Header */}
+      {/* ✅ Ensure isAnimated is set to true */}
       <InsightHeader 
-        title={headerTitles[activeCategory] || "Insights & Updates"}
+        title={headerTitles[activeCategory] || headerTitles.all}
         breadcrumb={breadcrumbText}
+        isAnimated={true} 
       />
 
       <div className="max-w-7xl mx-auto px-6 py-12">
-        
-        {/* ✅ CATEGORY HERO CARDS (Buttons) */}
         <div className="flex flex-wrap justify-center gap-4 mb-16 -mt-20 relative z-20">
            {[
              { id: 'all', label: 'All', count: counts.all },
@@ -139,7 +101,7 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
            ))}
         </div>
 
-        {/* --- BLOG GRID SECTION --- */}
+        {/* Blog Grid Logic (Same as before) */}
         {filteredBlogs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredBlogs.map((blog: any) => (
@@ -148,36 +110,27 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
                 href={`/insights/${blog.slug}`} 
                 className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg border-gray-100 flex flex-col h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
               >
-                {/* Image */}
                 <div className="h-56 overflow-hidden relative w-full">
                    <img 
                      src={blog.thumbnail || "https://placehold.co/600x400?text=KSG+Insights"} 
                      alt={blog.title} 
                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                    />
-                   
-                   {/* Category Badge on Card */}
                    <div className="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md">
                       {breadcrumbMap[blog.category] || blog.category || "Insights"}
                    </div>
                 </div>
-
-                {/* Content */}
                 <div className="p-6 flex flex-col flex-1">
                    <div className="flex items-center gap-2 text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
                       <Calendar size={12} />
                       {new Date(blog.createdAt).toLocaleDateString()}
                    </div>
-
                    <h3 className="text-xl font-bold text-[#041D2D] mb-3 line-clamp-2 group-hover:text-orange-600 transition-colors">
                      {blog.title}
                    </h3>
-
                    <p className="text-gray-600 text-sm line-clamp-3 mb-6 flex-1 leading-relaxed">
                      {blog.description}
                    </p>
-                   
-                   {/* ✅ UPDATED BUTTON STYLE: Gradient Pill */}
                    <div className="mt-auto">
                       <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-green-500 text-white text-xs font-bold uppercase tracking-wider shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
                          Read Full Article <ArrowRight size={14} />
