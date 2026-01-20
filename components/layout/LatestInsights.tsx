@@ -50,8 +50,21 @@ export default function LatestInsights() {
 
   // 3. Main Content
   return (
-    <section className="relative w-full py-20 bg-[#041D2D] overflow-hidden">
+    <section className="relative w-full py-20 bg-[#041D2D] overflow-hidden rounded-t-2xl">
       
+      {/* ✅ Added CSS for Shimmer Animation */}
+      <style jsx>{`
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .animate-shimmer { 
+          background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+          background-size: 200% 100%;
+          animation: shimmer 3s infinite;
+        }
+      `}</style>
+
       {/* --- Background Elements --- */}
       <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
         <div className="absolute top-20 right-[-100px] w-96 h-96 bg-blue-600/20 rounded-full blur-[120px]"></div>
@@ -62,14 +75,17 @@ export default function LatestInsights() {
         
         {/* --- SECTION HEADER --- */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400 font-bold uppercase text-base tracking-widest">
+          {/* ✅ Shimmer Badge Animation */}
+          <span className="relative inline-block py-1.5 px-4 rounded-full border border-white/10 bg-white/5 overflow-hidden mb-4">
+            <div className="absolute inset-0 animate-shimmer"></div>
+            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400 font-bold uppercase text-base tracking-widest">
                 Our Blog
-              </span>
+            </span>
           </span>
 
+          {/* ✅ Heading Pulse Animation */}
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-green-200">
-            Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-500">Insights</span> & Updates
+            Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-500 animate-pulse">Insights</span> & Updates
           </h2>
 
           <p className="text-transparent bg-clip-text bg-gradient-to-br from-gray-200 via-blue-100 to-gray-200 text-base md:text-lg leading-relaxed">
@@ -120,7 +136,7 @@ export default function LatestInsights() {
                 {/* Content Container */}
                 <div className="p-6 flex flex-col flex-1">
                     
-                    {/* ✅ UPDATED: Date Moved Here (Below Image) */}
+                    {/* Date Moved Here (Below Image) */}
                     <div className="flex items-center gap-2 text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
                         <Calendar size={14} className="text-orange-500" />
                         {new Date(blog.createdAt).toLocaleDateString()}
@@ -134,7 +150,7 @@ export default function LatestInsights() {
                     {blog.description}
                     </p>
                     
-                    {/* ✅ UPDATED BUTTON: Orange-Green Gradient Background */}
+                    {/* BUTTON: Orange-Green Gradient Background */}
                     <div className="mt-auto">
                         <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-green-500 text-white text-xs font-bold  tracking-wider shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
                             Read Full Article <ArrowRight size={14} />

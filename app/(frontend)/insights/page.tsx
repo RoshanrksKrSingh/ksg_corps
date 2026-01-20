@@ -28,36 +28,50 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
   // 2. Filter Blogs based on Category
   const filteredBlogs = activeCategory === 'all' 
     ? allBlogs 
-    : allBlogs.filter((blog: any) => blog.category?.toLowerCase() === activeCategory.toLowerCase() || blog.type?.toLowerCase() === activeCategory.toLowerCase()); 
+    : allBlogs.filter((blog: any) => blog.category?.toLowerCase() === activeCategory.toLowerCase()); 
 
   // 3. Calculate Counts for Hero Buttons
   const counts = {
     all: allBlogs.length,
-    news: allBlogs.filter((b: any) => b.category === 'news').length,
     blogs: allBlogs.filter((b: any) => b.category === 'blogs').length,
     audit: allBlogs.filter((b: any) => b.category === 'audit').length,
+    tax: allBlogs.filter((b: any) => b.category === 'tax').length,
+    business: allBlogs.filter((b: any) => b.category === 'business').length,
+    risk: allBlogs.filter((b: any) => b.category === 'risk').length,
     events: allBlogs.filter((b: any) => b.category === 'events').length,
   };
 
-  // 4. Dynamic Header Titles
+  // 4. Dynamic Header Titles (Expanded for new categories)
   const headerTitles: any = {
     all: "Insights & Updates",
     
-    news: (
-      <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Latest</span> News
-      </span>
-    ),
-    
     blogs: (
       <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Our</span> Blogs
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Latest</span> Blogs
       </span>
     ),
     
     audit: (
       <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Accounting &</span> Auditing
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Accounting &</span> Audit
+      </span>
+    ),
+
+    tax: (
+      <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Tax</span> Advisory
+      </span>
+    ),
+
+    business: (
+      <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Business</span> Setup/PRO
+      </span>
+    ),
+
+    risk: (
+      <span className="text-3xl md:text-5xl block leading-tight mt-1 md:mt-18">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Risk</span> Advisory
       </span>
     ),
     
@@ -71,10 +85,12 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
   // 5. Breadcrumb Text Map
   const breadcrumbMap: any = {
     all: "All Insights",
-    news: "Latest News",
-    blogs: "Our Blogs",
-    audit: "Accounting & Auditing",
-    events: "Upcoming Events"
+    blogs: "Latest Blogs",
+    audit: "Account & Audit",
+    tax: "Tax Advisory",
+    business: "Business Setup/PRO",
+    risk: "Risk Advisory",
+    events: "Events"
   };
 
   const breadcrumbText = breadcrumbMap[activeCategory] || "Insights & Updates";
@@ -95,10 +111,12 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
         {/* ✅ CATEGORY HERO CARDS (Buttons) */}
         <div className="flex flex-wrap justify-center gap-4 mb-16 -mt-20 relative z-20">
            {[
-             { id: 'all', label: 'All Posts', count: counts.all },
-             { id: 'news', label: 'Latest News', count: counts.news },
-             { id: 'blogs', label: 'Blogs', count: counts.blogs },
-             { id: 'audit', label: 'Audit & Accounts', count: counts.audit },
+             { id: 'all', label: 'All', count: counts.all },
+             { id: 'blogs', label: 'Latest Blogs', count: counts.blogs },
+             { id: 'audit', label: 'Account & Audit', count: counts.audit },
+             { id: 'tax', label: 'Tax Advisory', count: counts.tax },
+             { id: 'business', label: 'Business Setup', count: counts.business },
+             { id: 'risk', label: 'Risk Advisory', count: counts.risk },
              { id: 'events', label: 'Events', count: counts.events },
            ].map((cat) => (
              <Link 
@@ -140,7 +158,7 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
                    
                    {/* Category Badge on Card */}
                    <div className="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md">
-                      {blog.category || "Insights"}
+                      {breadcrumbMap[blog.category] || blog.category || "Insights"}
                    </div>
                 </div>
 
@@ -175,12 +193,12 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
                 <Filter className="text-gray-300" size={40} />
              </div>
              <h3 className="text-xl font-bold text-gray-700">No Articles Found</h3>
-             <p className="text-gray-500 mt-2">There are no posts in the <span className="font-bold text-orange-500 capitalize">{activeCategory}</span> category yet.</p>
+             <p className="text-gray-500 mt-2">There are no posts in the <span className="font-bold text-orange-500 capitalize">{breadcrumbMap[activeCategory]}</span> category yet.</p>
              <Link href="/insights" className="mt-6 inline-block text-sm font-bold text-blue-600 hover:underline">View All Insights</Link>
           </div>
         )}
       </div>
-     <div className="rounded-2xl overflow-hidden">
+      <div className="rounded-2xl overflow-hidden">
         <Footer/>
       </div>
     </div>

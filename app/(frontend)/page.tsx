@@ -9,6 +9,7 @@ import WhyChoose from "@/components/layout/WhyChoose";
 import LatestInsights from "@/components/layout/LatestInsights";
 import Footer from "@/components/layout/Footer";
 import ServicesCards from "@/components/layout/ServicesCards";
+import VisionMission from "@/components/layout/VisionMission";
 
 export default function HomePage() {
   return (
@@ -37,7 +38,7 @@ export default function HomePage() {
       {/* ✅ Updated: Adjusted top margin for sections below to account for layout changes */}
       <div className="relative z-20 mt-0 md:mt-0 px-0  text-gray-900 rounded-t-[2rem] pt-0">
         <AboutUs/>
-        
+        <VisionMission/>
         <div className="mt-0">
           <WhyChoose/>
           <ServicesCards/>

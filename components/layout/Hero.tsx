@@ -56,7 +56,7 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full h-full flex flex-col justify-center pb-12 md:pb-32">
         
         {/* ✅ Updated: Changed 'mt-32' to 'mt-60' to push text further down on mobile */}
-        <div className="max-w-3xl relative h-40 w-full mt-45 md:mt-0"> 
+        <div className="max-w-3xl relative h-40 w-full mt-45 md:mt-13"> 
           {slides.map((slide, index) => (
             <div
               key={slide.id}

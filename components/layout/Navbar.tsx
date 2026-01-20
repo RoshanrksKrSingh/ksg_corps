@@ -14,7 +14,7 @@ import {
 const megaMenuData = {
   accounting: { 
     id: 'accounting', 
-    label: 'Accounting & Audit', 
+    label: 'Accounting & Audit Support', 
     icon: FileText, 
     items: [
       { label: "Overview",  href: "/services/accounting" },
@@ -23,21 +23,6 @@ const megaMenuData = {
       { label: "Financial Audit Support", href: "/services/accounting/financial-audit" },
       { label: "IFRS Advisory Services", href: "/services/accounting/ifrs" },
       { label: "Stock Audit and Verification", href: "/services/accounting/stock-audit" },
-    ] 
-  },
-  
-  risk: { 
-    id: 'risk', 
-    label: 'Risk Advisory', 
-    icon: BarChart3, 
-    items: [
-        { label: "Overview", href: "/services/risk" },
-        { label: "Internal Audit", href: "/services/risk/internal-audit" },
-        { label: "Standard Operating Procedure (SOP)", href: "/services/risk/sop" },
-        { label: "Forensic and Fraud Audit", href: "/services/risk/forensic-audit" },
-        { label: "Internal Control (ICFR)", href: "/services/risk/icfr" },
-        { label: "Enterprise Risk (ERM)", href: "/risk/auditing/erm" },
-        { label: "Anti-Money Laundering", href: "/services/risk/aml" },
     ] 
   },
 
@@ -71,6 +56,21 @@ const megaMenuData = {
         { label: "Company Liquidation", href: "/services/business-setup/liquidation" }
     ] 
   },
+  
+  risk: { 
+    id: 'risk', 
+    label: 'Risk Advisory', 
+    icon: BarChart3, 
+    items: [
+        { label: "Overview", href: "/services/risk" },
+        { label: "Internal Audit", href: "/services/risk/internal-audit" },
+        { label: "Standard Operating Procedure (SOP)", href: "/services/risk/sop" },
+        { label: "Forensic and Fraud Audit", href: "/services/risk/forensic-audit" },
+        { label: "Internal Control (ICFR)", href: "/services/risk/icfr" },
+        { label: "Enterprise Risk (ERM)", href: "/risk/auditing/erm" },
+        { label: "Anti-Money Laundering", href: "/services/risk/aml" },
+    ] 
+  },
 };
 
 const randomMenuData = {
@@ -78,9 +78,11 @@ const randomMenuData = {
     title: "Insights", 
     icon: Lightbulb, 
     items: [
-      { label: "Latest News", href: "/insights?cat=news" }, 
-      { label: "Blogs", href: "/insights?cat=blogs" }, 
-      { label: "Account and Auditing", href: "/insights?cat=audit" }, 
+      { label: "Latest Blogs", href: "/insights?cat=blogs" }, 
+      { label: "Account & Audit", href: "/insights?cat=audit" }, 
+      { label: "Tax Advisory", href: "/insights?cat=tax" }, 
+      { label: "Business Setup/PRO", href: "/insights?cat=business" }, 
+      { label: "Risk Advisory", href: "/insights?cat=risk" }, 
       { label: "Events", href: "/insights?cat=events" } 
     ] 
   },
@@ -156,7 +158,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${isActiveLink("/") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
               </Link>
 
-              {/* SERVICES MEGA MENU - FULL GRID */}
+              {/* SERVICES MEGA MENU */}
               <div className="group static h-full flex items-center"> 
                 <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${pathname?.startsWith('/services') ? "text-green-400" : "text-white hover:text-green-400"}`}>
                   Services <ChevronDown size={14} />
@@ -164,10 +166,6 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 </button>
                 
                 {/* Mega Menu Container */}
-                {/* ✅ UPDATED: Changed 'left-6 right-6' to 'left-4 right-4' or 'w-full' with max-width container inside for better control.
-                   Using 'left-[-150px]' (approx) or centering logic depends on parent. 
-                   Here, I'm setting a fixed width container centered relative to the viewport or navbar to ensure symmetry.
-                */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-full w-[90vw] max-w-[80rem] bg-[#03314e] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-3xl overflow-hidden">
                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
                    
@@ -181,7 +179,8 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                                   {/* Category Title */}
                                   <div className="flex items-center gap-2 pb-2 border-b border-white/20">
                                       <Icon size={18} className="text-orange-500" />
-                                      <h3 className="font-bold text-sm uppercase tracking-wider text-green-400">
+                                      {/* ✅ UPDATED: Changed text-sm to text-xs */}
+                                      <h3 className="font-bold text-xs  tracking-wider text-green-400">
                                           {category.label}
                                       </h3>
                                   </div>
@@ -197,7 +196,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                                                       className={`group/item flex items-center gap-2 text-xs transition-all duration-200 py-1 ${
                                                           isItemActive 
                                                           ? "text-green-400 font-bold translate-x-1" 
-                                                          : "text-gray-300 hover:text-white hover:translate-x-1"
+                                                          : "text-white hover:text-gray-300 q hover:translate-x-1"
                                                       }`}
                                                   >
                                                       <span className={`w-1.5 h-1.5 rounded-full transition-colors ${
@@ -225,7 +224,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     Insights <ChevronDown size={14} />
                     <span className={`absolute bottom-4 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${pathname?.startsWith('/insights') ? "w-full" : "w-0 group-hover:w-full"}`}></span>
                 </button>
-                 <div className="absolute left-0 top-full w-56 bg-[#041D2D] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
+                 <div className="absolute left-0 top-full w-56 bg-[#03314e] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
                     <ul>
                     {randomMenuData.insight.items.map((item: any, idx) => (
                         <li key={idx}>
@@ -238,24 +237,13 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 </div>
               </div>
 
-              {/* OUR TEAM */}
-              <Link 
-                href="/ourteam" 
-                className={`font-semibold transition text-sm tracking-wide relative group ${
-                    isActiveLink("/ourteam") ? "text-green-400" : "text-white hover:text-green-400"
-                }`}
-              >
-                Our Team
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${isActiveLink("/ourteam") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
-              </Link>
-
-              {/* CAREER */}
+              {/* ✅ MOVED: Career Link (Before Our Team) */}
               <div className="group relative h-full flex items-center">
                 <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${pathname?.startsWith('/career') ? "text-green-400" : "text-white hover:text-green-400"}`}>
                     Career <ChevronDown size={14} />
                     <span className={`absolute bottom-4 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${pathname?.startsWith('/career') ? "w-full" : "w-0 group-hover:w-full"}`}></span>
                 </button>
-                 <div className="absolute left-0 top-full w-56 bg-[#041D2D] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
+                 <div className="absolute left-0 top-full w-56 bg-[#03314e] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
                     <ul>
                     {randomMenuData.career.items.map((item: any, idx) => (
                         <li key={idx}>
@@ -267,6 +255,17 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     </ul>
                 </div>
               </div>
+
+              {/* ✅ MOVED: Our Team Link (After Career) */}
+              <Link 
+                href="/ourteam" 
+                className={`font-semibold transition text-sm tracking-wide relative group ${
+                    isActiveLink("/ourteam") ? "text-green-400" : "text-white hover:text-green-400"
+                }`}
+              >
+                Our Team
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${isActiveLink("/ourteam") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+              </Link>
 
               <Link 
                 href="/contact" 
@@ -353,16 +352,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                  </div>
                 </div>
 
-                {/* Our Team */}
-                <Link 
-                    href="/ourteam" 
-                    className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/ourteam") ? "text-green-400" : "text-white"}`} 
-                    onClick={() => setIsOpen(false)}
-                >
-                    Our Team
-                </Link>
-
-                {/* Career */}
+                {/* ✅ MOVED: Career (Before Our Team) */}
                 <div>
                  <button onClick={() => toggleMobile('career')} className="w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 text-white items-center">
                     Career {mobileExpanded === 'career' ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
@@ -375,6 +365,15 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                     </div>
                  </div>
                 </div>
+
+                {/* ✅ MOVED: Our Team (After Career) */}
+                <Link 
+                    href="/ourteam" 
+                    className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/ourteam") ? "text-green-400" : "text-white"}`} 
+                    onClick={() => setIsOpen(false)}
+                >
+                    Our Team
+                </Link>
 
                 <Link href="/contact" className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/contact") ? "text-green-400" : "text-white"}`} onClick={() => setIsOpen(false)}>Contact</Link>
             </div>

@@ -1,18 +1,65 @@
 "use client";
 
-import { CheckCircle2, Eye, Rocket, Gem } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const AboutUs = () => {
+  
+  // Animation Variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
+  const fadeRight = {
+    hidden: { opacity: 0, x: -40 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
+  const fadeLeft = {
+    hidden: { opacity: 0, x: 40 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
   return (
-    <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-[#041D2D] py-20">
+    <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-[#041D2D] py-20 rounded-b-2xl group font-sans">
       
+      {/* ✅ CUSTOM CSS FOR CONTINUOUS FLOATING EFFECTS (Non-Scroll) */}
+      <style jsx>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        @keyframes drift {
+          0% { transform: translate(0px, 0px); }
+          50% { transform: translate(10px, 20px); }
+          100% { transform: translate(0px, 0px); }
+        }
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-drift { animation: drift 10s ease-in-out infinite; }
+        .animate-shimmer { 
+          background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+          background-size: 200% 100%;
+          animation: shimmer 3s infinite;
+        }
+      `}</style>
+
       {/* =========================================
           1. BACKGROUND LAYERS
       ========================================= */}
       
-      {/* Layer 1: Background Image */}
+      {/* Background Image */}
       <div 
-        className="absolute inset-0 w-full h-full z-0"
+        className="absolute inset-0 w-full h-full z-0 opacity-40 transition-transform duration-[10s] ease-in-out transform hover:scale-110"
         style={{
           backgroundImage: `url('https://cdn-becae.nitrocdn.com/OcwjylvgvBbNRDjYtTmGOXeUgIvOimBD/assets/images/optimized/rev-47b5ce8/www.aaconsultancy.ae/wp-content/uploads/2025/04/General-Header-BG.jpg')`,
           backgroundSize: 'cover',
@@ -20,147 +67,132 @@ const AboutUs = () => {
         }}
       ></div>
 
-      {/* Layer 2: Dark Blue Overlay */}
-      <div className="absolute inset-0 bg-[#041D2D]/90 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#041D2D] via-[#041D2D]/95 to-[#041D2D]/80 z-0"></div>
 
-      {/* Layer 3: Geometric Green Accents */}
-      <div className="absolute top-0 right-0 w-1/3 h-full border-l border-green-500/20 hidden lg:block transform -skew-x-12 z-0"></div>
-      <div className="absolute bottom-0 left-20 w-32 h-32 border-2 border-green-500/30 rounded-full blur-xl z-0"></div>
+      {/* Continuous Moving Decor Elements */}
+      <div className="absolute top-[-10%] right-[-5%] w-96 h-96 border border-white/5 rounded-full animate-spin-slow z-0"></div>
+      <div className="absolute bottom-10 left-10 w-32 h-32 bg-green-500/20 rounded-full blur-[80px] animate-drift z-0"></div>
 
       {/* =========================================
-          2. MAIN CONTENT GRID
+          2. MAIN CONTENT
       ========================================= */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
         
-        {/* --- TOP SECTION: ABOUT TEXT + IMAGE --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
-          {/* LEFT SIDE: TEXT CONTENT */}
+          {/* LEFT: TEXT CONTENT */}
           <div className="space-y-8">
             
-            {/* Heading Section */}
-            <div className="space-y-4">
-              <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400 font-bold uppercase text-base md:text-lg tracking-widest">
+            {/* Animated Badge */}
+            <motion.div 
+              variants={fadeRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }} // ✅ Runs every time
+            >
+              <span className="relative inline-block py-1.5 px-4 rounded-full border border-white/10 bg-white/20 overflow-hidden">
+                <div className="absolute inset-0 animate-shimmer"></div>
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400 font-bold uppercase text-xs tracking-[0.2em]">
                   About Us
                 </span>
               </span>
+            </motion.div>
+            
+            {/* Heading */}
+            <motion.h2 
+              className="text-3xl md:text-3xl font-bold leading-tight text-white space-y-2 font-sans"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }} // ✅ Runs every time
+            >
+              <span className="block">We help organizations to <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">globalize their business,</span></span>
+              <span className="block text-xl md:text-2xl font-semibold text-gray-300 mt-2">develop institutional capacity, and tackle the organizational challenges</span>
+            </motion.h2>
+
+            {/* Paragraphs - ✅ Compact Spacing ([word-spacing:-2px] & tracking-tighter) */}
+            <div className="space-y-4 text-sm md:text-base text-gray-300 leading-tight tracking-tighter [word-spacing:-2px] text-justify font-sans">
               
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white">
-                We help organizations to <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">globalize</span> their business
-              </h2>
+              <motion.p 
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }} // ✅ Runs every time
+              >
+                <strong className="text-white">KSG Corporate Services is</strong> a corporate consulting firm formed with the objective of providing unparalleled broad range of corporate advisory services including 
+                <span className="text-white font-medium"> Tax Advisory,</span> <span className="text-white font-medium"> Accounting and Payroll outsourcing, Business Setup/PRO</span>, and <span className="text-white font-medium">Risk Management</span>, across the GCC region with an emphasis on client-focused, business-centric solutions.
+              </motion.p>
+              
+              <motion.p 
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }} // ✅ Runs every time
+                transition={{ delay: 0.2 }} // Slight delay for second paragraph
+              >
+                We provide tailor made solutions to <span className=" text-green-300">"our clients with a commitment to the highest technical standards and integrity."</span> We always ensures that our clients receive the most accurate and relevant advice at a most competitive cost and exceptional quality with an intention to make a value addition to the client’s business.
+              </motion.p>
             </div>
 
-            {/* Content Paragraphs */}
-            <div className="space-y-6 leading-relaxed text-base md:text-lg text-justify">
-              <p className="text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-green-200">
-                <strong className="text-white">KSG Corporate Services</strong> is a corporate consulting firm formed with the objective of providing an unparalleled broad range of corporate advisory services including 
-                <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-green-300"> Tax Advisory</span>, 
-                <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-green-300"> Accounting</span>, and 
-                <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-green-300"> Risk Advisory Services</span> 
-                across the GCC region with an emphasis on client-focused, business-centric solutions.
-              </p>
-              
-              <p className="text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-green-200">
-                We provide tailor-made solutions to our clients with a commitment to the highest technical standards and integrity. We always ensure that our clients receive the most accurate and relevant advice at a most competitive cost and exceptional quality with an intention to make a value addition to the client’s business.
-              </p>
-
-              {/* Presence Section */}
-              <div className="flex items-center gap-2 text-sm font-semibold text-blue-200 mb-10">
-                <CheckCircle2 className="text-green-500" size={18} />
-                <span>Presence in UAE & India (Associated)</span>
+            {/* Features List */}
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 pt-2"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
+            >
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors w-full">
+                <div className="bg-green-500/20 p-2 rounded-full text-green-400 flex-shrink-0">
+                  <CheckCircle2 size={18} />
+                </div>
+                <span className="text-xs md:text-sm font-semibold text-white leading-tight">We have our presence currently in UAE and India (Associated).</span>
               </div>
-            </div>
-
-            {/* ❌ BUTTONS REMOVED (Old Code Preserved as Comment) */}
-            {/* <div className="flex flex-wrap gap-4 pt-4">
-              <Link href="/contact">
-                <button className="px-8 py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-green-600 hover:from-orange-600 hover:to-green-700 text-white font-bold tracking-wide shadow-lg shadow-green-900/20 transition-all transform hover:-translate-y-1">
-                  Free Consultation
-                </button>
-              </Link>
-              <Link href="/services">
-                <button className="px-8 py-3.5 rounded-full border border-white/20 hover:bg-white/10 text-white font-semibold tracking-wide transition-all flex items-center gap-2 group">
-                  Our Services <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
-                </button>
-              </Link>
-            </div> 
-            */}
+            </motion.div>
 
           </div>
 
-          {/* RIGHT SIDE: TEAM IMAGE */}
-          <div className="relative h-full flex items-center justify-center lg:justify-end mt-10 lg:mt-0">
-            <div className="absolute bottom-0 right-10 w-3/4 h-3/4 bg-blue-500/20 blur-[100px] rounded-full pointer-events-none"></div>
+          {/* RIGHT: CONTINUOUS FLOATING IMAGE */}
+          <motion.div 
+            className="relative h-full flex items-center justify-center lg:justify-end mt-10 lg:mt-0"
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.5 }} // ✅ Runs every time
+          >
             
-            <img 
-              src="https://images.pexels.com/photos/1367276/pexels-photo-1367276.jpeg" 
-              alt="KSG Leadership Team" 
-              className="relative z-10 w-full h-auto max-h-[600px] object-contain rounded-3xl hover:scale-[1.02] transition-transform duration-700"
-            />
-          </div>
+            {/* 1. Back Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-blue-600/30 blur-[100px] rounded-full animate-pulse"></div>
+
+            {/* 2. Floating Image Wrapper */}
+            <div className="relative w-full max-w-md lg:max-w-full animate-float">
+                
+                {/* Decorative Border Ring */}
+                <div className="absolute -inset-4 border-2 border-dashed border-white/20 rounded-[3rem] animate-spin-slow"></div>
+
+                {/* Main Image */}
+                <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#041D2D] via-transparent to-transparent opacity-60 z-10"></div>
+                  <img 
+                    src="https://images.pexels.com/photos/1367276/pexels-photo-1367276.jpeg" 
+                    alt="KSG Team" 
+                    className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                  />
+                  
+                  {/* Floating Info Card on Image */}
+                  <div className="absolute bottom-6 left-6 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl flex items-center gap-4 animate-drift">
+                    <div className="h-10 w-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">7+</div>
+                    <div>
+                      <p className="text-[10px] text-gray-300 uppercase tracking-wider">Years of</p>
+                      <p className="text-white font-bold leading-none text-sm">Excellence</p>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+          </motion.div>
 
         </div>
-
-        {/* --- BOTTOM SECTION: VISION, MISSION, VALUES --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* 1. VISION CARD */}
-            <div className="group bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <Eye size={100} className="text-white" />
-                </div>
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/20 group-hover:scale-110 transition-transform">
-                    <Eye className="text-white" size={32} />
-                </div>
-                
-                {/* ✅ UPDATED: Permanent Gradient Heading */}
-                <h3 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">KSG Vision</h3>
-                
-                {/* ✅ UPDATED: Permanent Gradient Paragraph */}
-                <p className="text-sm leading-relaxed text-justify text-transparent bg-clip-text bg-gradient-to-br from-white via-orange-100 to-red-200">
-                    Our vision is to create an exceptional client-centric organisation to provide single window corporate advisory services with cost-effective solution while upholding exceptional quality and integrity.
-                </p>
-            </div>
-
-            {/* 2. MISSION CARD */}
-            <div className="group bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <Rocket size={100} className="text-white" />
-                </div>
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
-                    <Rocket className="text-white" size={32} />
-                </div>
-                
-                {/* ✅ UPDATED: Permanent Gradient Heading */}
-                <h3 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">KSG Mission</h3>
-                
-                {/* ✅ UPDATED: Permanent Gradient Paragraph */}
-                <p className="text-sm leading-relaxed text-justify text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-cyan-200">
-                    We are dedicated to delivering effective and efficient corporate advisory services with integrity and accountability that delights our clients.
-                </p>
-            </div>
-
-            {/* 3. VALUES CARD */}
-            <div className="group bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <Gem size={100} className="text-white" />
-                </div>
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/20 group-hover:scale-110 transition-transform">
-                    <Gem className="text-white" size={32} />
-                </div>
-                
-                {/* ✅ UPDATED: Permanent Gradient Heading */}
-                <h3 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">KSG Values</h3>
-                
-                {/* ✅ UPDATED: Permanent Gradient Paragraph */}
-                <p className="text-sm leading-relaxed text-justify text-transparent bg-clip-text bg-gradient-to-br from-white via-green-100 to-emerald-200">
-                    We are responsible, accountable, efficient and effective corporate advisor. We promote honesty, integrity and quality in all we do. We encourage innovation to meet the challenges.
-                </p>
-            </div>
-
-        </div>
-
       </div>
     </section>
   );

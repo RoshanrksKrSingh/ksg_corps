@@ -9,16 +9,16 @@ const BlogSchema = new Schema(
     category: { 
       type: String, 
       required: true, 
-      enum: ['news', 'blogs', 'audit', 'events'], 
+      // ✅ UPDATED: Added new categories to enum
+      enum: ['news', 'blogs', 'audit', 'events', 'tax', 'business', 'risk'], 
       default: 'blogs' 
     },
-    // ✅ NEW: Author Field
+    // Author Field
     author: { type: String, default: "KSG Team" },
 
     // Content Blocks
     content: [
       {
-        // ✅ NEW: Added 'table' to enum
         type: { type: String, enum: ['heading', 'paragraph', 'image', 'table'], default: 'paragraph' },
         value: { type: String, required: true }
       }

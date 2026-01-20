@@ -84,22 +84,24 @@ export default function BlogForm({ initialData, isEditing = false }: BlogFormPro
             </div>
             <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700 flex items-center gap-2"><LinkIcon size={16} className="text-orange-500" /> Slug</label>
-              {/* ✅ Fixed: Added text-gray-900 */}
               <input name="slug" value={formData.slug} onChange={handleChange} placeholder="slug-url" className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:ring-2 focus:ring-orange-500 outline-none" required />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-             <div className="space-y-2">
+              <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700 flex items-center gap-2"><ImageIcon size={16} className="text-orange-500" /> Thumbnail URL</label>
               <input name="thumbnail" value={formData.thumbnail} onChange={handleChange} placeholder="https://..." className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:ring-2 focus:ring-orange-500 outline-none" />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700 flex items-center gap-2"><Layers size={16} className="text-orange-500" /> Category</label>
               <select name="category" value={formData.category} onChange={handleChange} className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:ring-2 focus:ring-orange-500 outline-none cursor-pointer">
-                <option value="blogs">General Blog</option>
-                <option value="news">Latest News</option>
+                <option value="blogs">Latest Blogs</option>
                 <option value="audit">Account & Audit</option>
+                {/* ✅ UPDATED: Added new categories */}
+                <option value="tax">Tax Advisory</option>
+                <option value="business">Business Setup/PRO</option>
+                <option value="risk">Risk Advisory</option>
                 <option value="events">Events</option>
               </select>
             </div>
@@ -108,7 +110,6 @@ export default function BlogForm({ initialData, isEditing = false }: BlogFormPro
           {/* Author Input */}
           <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700 flex items-center gap-2"><User size={16} className="text-orange-500" /> Author Name</label>
-              {/* ✅ Fixed: Added text-gray-900 */}
               <input name="author" value={formData.author} onChange={handleChange} placeholder="e.g. Nithila Kumar" className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:ring-2 focus:ring-orange-500 outline-none" />
           </div>
 
@@ -148,7 +149,6 @@ export default function BlogForm({ initialData, isEditing = false }: BlogFormPro
                   
                   {block.type === "image" && <input placeholder="Image URL..." value={block.value} onChange={(e) => updateBlockValue(index, e.target.value)} className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 focus:ring-2 focus:ring-orange-500 outline-none" />}
 
-                  {/* ✅ Fixed: Added text-gray-900 to Table Input */}
                   {block.type === "table" && (
                     <div className="space-y-2">
                         <textarea 
