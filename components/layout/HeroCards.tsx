@@ -51,7 +51,8 @@ const HeroCards = () => {
 
   return (
     // Further reduced max-width to 'max-w-4xl' (Narrower)
-    <div className="max-w-2xl mx-2 relative z-20 px-0">
+    <div className="max-w-2xl 2xl:max-w-6xl mx-0 relative z-20 px-0">
+
       {/* Added 'lg:gap-10' to increase spacing specifically on laptop/desktop views.
           'gap-5' remains for mobile/tablet.
       */}
@@ -65,7 +66,7 @@ const HeroCards = () => {
             // ✅ Updated: Added 'md:bg-[#041D2D]/80' for transparency on md screens and larger
             // 'bg-[#041D2D]' is opaque on mobile
             // Added 'min-h-[320px]' to increase height
-            className="group relative bg-[#041D2D] md:bg-[#041D2D]/30 backdrop-blur-sm text-white p-2 rounded-xl border-t-4 border-t-orange-500 border border-white/10 transition-all duration-500 shadow-2xl flex flex-col min-h-[200px] h-full"
+            className="group relative bg-[#041D2D] md:bg-[#041D2D]/30 backdrop-blur-xs text-white p-2 rounded-xl border-t-4 border-t-orange-500 border border-white/10 transition-all duration-500 flex flex-col min-h-[200px] 2xl:min-h-[280px] h-full"
           >
              {/* Decorative background element */}
              {/* <div className="absolute top-0 right-0 p-3 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
@@ -73,12 +74,12 @@ const HeroCards = () => {
              </div> */}
 
              {/* Icon Container - Slightly smaller for compact look */}
-             <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center mb-5 group-hover:bg-orange-500 group-hover:scale-110 transition-all duration-300 flex-shrink-0 shadow-lg">
+             <div className="w-8 h-8 2xl:w-10 2xl:h-10 rounded-full bg-white/10 flex items-center justify-center mb-5 group-hover:bg-orange-500 group-hover:scale-110 transition-all duration-300 flex-shrink-0 shadow-lg">
                <card.icon size={18} className="text-white" strokeWidth={1.5} />
              </div>
 
              {/* Heading */}
-             <h3 className="text-[9px] font-bold mb-3 tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400">
+             <h3 className="text-[9px] 2xl:text-sm font-bold mb-3 tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400">
                {card.title}
              </h3>
              
@@ -87,7 +88,7 @@ const HeroCards = () => {
 
              {/* Paragraph */}
              {/* ✅ UPDATED: Changed 'text-justify' to 'text-left' to fix uneven spacing */}
-             <p className="text-xs leading-relaxed tracking-tighter [word-spacing:-1px] text-white text-left group-hover:text-white transition-colors flex-grow">
+            <p className="text-xs 2xl:text-sm leading-relaxed 2xl:leading-loose tracking-tighter [word-spacing:-1px] text-white text-left flex-grow">
                {card.fullText || card.text}
              </p>
           </div>

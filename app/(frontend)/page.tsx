@@ -30,13 +30,13 @@ export default function HomePage() {
            - Desktop (md+): '-mt-32' -> Cards will overlap the Hero section by moving up 32 units.
            - Added 'relative z-30' to ensure they sit on top.
         */}
-        <div className="relative z-30 mt-0 md:-mt-75 px-4 md:px-0 pb-10 md:pb-0">
+        <div className="relative z-30 mt-0 lg:-mt-65 px-4 md:px-8 lg:px-30  xl:px-48 2xl:px-206  pb-10 md:pb-0">
            <HeroCards/>
         </div>
       </div>
       
       {/* ✅ Updated: Adjusted top margin for sections below to account for layout changes */}
-      <div className="relative z-20 mt-0 md:mt-0 px-0  text-gray-900 rounded-t-[2rem] pt-0">
+      <div className="relative z-20 mt-0 md:mt-10 px-0  text-gray-900 rounded-t-[2rem] pt-0">
         <AboutUs/>
         <VisionMission/>
         <div className="mt-0">
