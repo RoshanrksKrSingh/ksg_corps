@@ -36,7 +36,7 @@ export default function HomePage() {
       </div>
       
       {/* ✅ Updated: Adjusted top margin for sections below to account for layout changes */}
-      <div className="relative z-20 mt-0 md:mt-10 px-0  text-gray-900 rounded-t-[2rem] pt-0">
+      <div className="relative z-20 mt-0 md:mt-0 px-0  text-gray-900 rounded-t-[2rem] pt-0">
         <AboutUs/>
         <VisionMission/>
         <div className="mt-0">
