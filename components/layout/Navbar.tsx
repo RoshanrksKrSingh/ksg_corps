@@ -10,7 +10,7 @@ import {
   Building
 } from 'lucide-react';
 
-// ================== DATA (Unchanged) ==================
+// ================== DATA ==================
 const megaMenuData = {
   accounting: { 
     id: 'accounting', 
@@ -25,6 +25,7 @@ const megaMenuData = {
       { label: "Stock Audit and Verification", href: "/services/accounting/stock-audit" },
     ] 
   },
+
   tax: { 
     id: 'tax', 
     label: 'TAX Advisory', 
@@ -40,6 +41,7 @@ const megaMenuData = {
         { label: "Voluntary Disclosure", href: "/services/tax/voluntary-disclosure" }
     ] 
   },
+
   businessSetup: { 
     id: 'businessSetup', 
     label: 'Business Setup/PRO', 
@@ -54,6 +56,7 @@ const megaMenuData = {
         { label: "Company Liquidation", href: "/services/business-setup/liquidation" }
     ] 
   },
+  
   risk: { 
     id: 'risk', 
     label: 'Risk Advisory', 
@@ -124,35 +127,30 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
       className={`fixed z-50 font-sans transition-all duration-300 ${
         scrolled || forceStatic
           ? "top-0 left-0 right-0 bg-[#0b2b3f] rounded-2xl py-0 " 
-          : "top-0 left-2 -right-2 md:-right-10 bg-transparent py-0"
+          : "top-0 left-2 -right-2 md:-right-10 bg-transparent py-2"
       }`}
     >
-      <div className="max-w-7xl xl:max-w-[98%] w-full mx-auto px-4 sm:px-6 lg:px-6 ml-[-2.5rem] xl:ml-0 transition-all duration-500">
-        <div className="flex justify-between items-center h-20 lg:h-15 xl:h-22 2xl:h-32 transition-all duration-500"> 
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-6 ml-[-2.5rem]">
+        <div className="flex justify-between items-center h-20"> 
           
           {/* LOGO */}
-          <div className="flex-shrink-0 lg:-ml-0 xl:-ml-9 z-50">
+          <div className="flex-shrink-0 z-50">
             <Link href="/">
               <img 
                 src="http://ksgcorps.com/wp-content/uploads/2021/11/ksg-logo-white.png"
                 alt="KSG Logo" 
-                className={`object-contain object-left transition-all duration-300 h-40 lg:h-40 xl:h-40 2xl:h-64 w-auto`} 
+                className={`object-contain object-left transition-all duration-300 h-40 w-auto `} 
               />
             </Link>
           </div>
 
           {/* DESKTOP MENU */}
-          {/* ✅ Updated: Added ml-auto to push menu to the RIGHT */}
-          <div className="hidden lg:flex items-center ml-auto mr-4"> 
-            
-            {/* ✅ Updated: Spacing increased for XL and 2XL */}
-            <nav className="flex items-center space-x-6 xl:space-x-8 2xl:space-x-20 transition-all duration-500">
+          <div className="hidden lg:flex items-center">
+            <nav className="flex items-center space-x-6 xl:space-x-8">
               
-              {/* Home Link */}
               <Link 
                 href="/" 
-                /* ✅ Updated: Font sizes - lg:text-sm, xl:text-lg, 2xl:text-3xl (Increased) */
-                className={`font-semibold transition tracking-wide relative group text-sm xl:text-lg 2xl:text-3xl ${
+                className={`font-semibold transition text-sm tracking-wide relative group ${
                   isActiveLink("/") ? "text-green-400" : "text-white hover:text-green-400"
                 }`}
               >
@@ -162,28 +160,27 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
 
               {/* SERVICES MEGA MENU */}
               <div className="group static h-full flex items-center"> 
-                {/* ✅ Updated: Button size */}
-                <button className={`flex items-center gap-1 font-semibold transition tracking-wide py-6 relative text-sm xl:text-lg 2xl:text-3xl ${pathname?.startsWith('/services') ? "text-green-400" : "text-white hover:text-green-400"}`}>
-                  Services <ChevronDown className="w-3.5 h-3.5 xl:w-5 xl:h-5 2xl:w-7 2xl:h-7" />
+                <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${pathname?.startsWith('/services') ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                  Services <ChevronDown size={14} />
                   <span className={`absolute bottom-4 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${pathname?.startsWith('/services') ? "w-full" : "w-0 group-hover:w-full"}`}></span>
                 </button>
                 
                 {/* Mega Menu Container */}
-                <div className="absolute right-0 md:right-20 top-full w-[90vw] max-w-[80rem] 2xl:max-w-[110rem] bg-[#03314e] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-3xl overflow-hidden">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full w-[90vw] max-w-[80rem] bg-[#03314e] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-3xl overflow-hidden">
                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
                    
                    {/* 4-Column Grid for All Services */}
                    <div className="w-full px-8 py-10 relative z-10">
-                      <div className="grid grid-cols-4 gap-6 2xl:gap-16">
+                      <div className="grid grid-cols-4 gap-8">
                           {Object.values(megaMenuData).map((category) => {
                              const Icon = category.icon;
                              return (
                                <div key={category.id} className="space-y-4 border-l border-white/10 pl-6">
                                   {/* Category Title */}
                                   <div className="flex items-center gap-2 pb-2 border-b border-white/20">
-                                      <Icon className="text-orange-500 w-4 h-4 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8" />
-                                      {/* ✅ Updated: Mega Menu Headers */}
-                                      <h3 className="font-bold tracking-wider text-green-400 text-xs xl:text-base 2xl:text-2xl">
+                                      <Icon size={18} className="text-orange-500" />
+                                      {/* ✅ UPDATED: Changed text-sm to text-xs */}
+                                      <h3 className="font-bold text-xs  tracking-wider text-green-400">
                                           {category.label}
                                       </h3>
                                   </div>
@@ -196,14 +193,13 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                                               <li key={idx}>
                                                   <Link 
                                                       href={item.href} 
-                                                      /* ✅ Updated: Mega Menu Links */
-                                                      className={`group/item flex items-center gap-2 transition-all duration-200 py-1 text-xs xl:text-base 2xl:text-xl ${
+                                                      className={`group/item flex items-center gap-2 text-xs transition-all duration-200 py-1 ${
                                                           isItemActive 
                                                           ? "text-green-400 font-bold translate-x-1" 
-                                                          : "text-white hover:text-gray-300 hover:translate-x-1"
+                                                          : "text-white hover:text-gray-300 q hover:translate-x-1"
                                                       }`}
                                                   >
-                                                      <span className={`w-1.5 h-1.5 2xl:w-2.5 2xl:h-2.5 rounded-full transition-colors ${
+                                                      <span className={`w-1.5 h-1.5 rounded-full transition-colors ${
                                                           isItemActive 
                                                           ? "bg-green-400" 
                                                           : "bg-gray-500 group-hover/item:bg-green-400"
@@ -224,16 +220,15 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
 
               {/* INSIGHTS */}
               <div className="group relative h-full flex items-center">
-                <button className={`flex items-center gap-1 font-semibold transition tracking-wide py-6 relative text-sm xl:text-lg 2xl:text-3xl ${pathname?.startsWith('/insights') ? "text-green-400" : "text-white hover:text-green-400"}`}>
-                    Insights <ChevronDown className="w-3.5 h-3.5 xl:w-5 xl:h-5 2xl:w-7 2xl:h-7" />
+                <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${pathname?.startsWith('/insights') ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                    Insights <ChevronDown size={14} />
                     <span className={`absolute bottom-4 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${pathname?.startsWith('/insights') ? "w-full" : "w-0 group-hover:w-full"}`}></span>
                 </button>
-                 <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#03314e] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
+                 <div className="absolute left-0 top-full w-56 bg-[#03314e] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
                     <ul>
                     {randomMenuData.insight.items.map((item: any, idx) => (
                         <li key={idx}>
-                        {/* ✅ Updated: Dropdown Items */}
-                        <Link href={item.href} className={`block px-5 py-2 transition-colors border-b border-white/5 last:border-0 text-sm xl:text-lg 2xl:text-2xl ${isActiveLink(item.href) ? "bg-white/10 text-green-400 font-bold" : "hover:bg-white/10 hover:text-brand-accent"}`}>
+                        <Link href={item.href} className={`block px-5 py-2 text-sm transition-colors border-b border-white/5 last:border-0 ${isActiveLink(item.href) ? "bg-white/10 text-green-400 font-bold" : "hover:bg-white/10 hover:text-brand-accent"}`}>
                             {item.label}
                         </Link>
                         </li>
@@ -242,17 +237,17 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 </div>
               </div>
 
-              {/* Career Link */}
+              {/* ✅ MOVED: Career Link (Before Our Team) */}
               <div className="group relative h-full flex items-center">
-                <button className={`flex items-center gap-1 font-semibold transition tracking-wide py-6 relative text-sm xl:text-lg 2xl:text-3xl ${pathname?.startsWith('/career') ? "text-green-400" : "text-white hover:text-green-400"}`}>
-                    Career <ChevronDown className="w-3.5 h-3.5 xl:w-5 xl:h-5 2xl:w-7 2xl:h-7" />
+                <button className={`flex items-center gap-1 font-semibold transition text-sm tracking-wide py-6 relative ${pathname?.startsWith('/career') ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                    Career <ChevronDown size={14} />
                     <span className={`absolute bottom-4 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${pathname?.startsWith('/career') ? "w-full" : "w-0 group-hover:w-full"}`}></span>
                 </button>
-                 <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#03314e] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
+                 <div className="absolute left-0 top-full w-56 bg-[#03314e] backdrop-blur-xl text-white border border-brand-accent/30 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2 mt-2">
                     <ul>
                     {randomMenuData.career.items.map((item: any, idx) => (
                         <li key={idx}>
-                        <Link href={item.href} className={`block px-5 py-2 transition-colors border-b border-white/5 last:border-0 text-sm xl:text-lg 2xl:text-2xl ${isActiveLink(item.href) ? "bg-white/10 text-green-400 font-bold" : "hover:bg-white/10 hover:text-brand-accent"}`}>
+                        <Link href={item.href} className={`block px-5 py-2 text-sm transition-colors border-b border-white/5 last:border-0 ${isActiveLink(item.href) ? "bg-white/10 text-green-400 font-bold" : "hover:bg-white/10 hover:text-brand-accent"}`}>
                             {item.label}
                         </Link>
                         </li>
@@ -261,10 +256,10 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 </div>
               </div>
 
-              {/* Our Team Link */}
+              {/* ✅ MOVED: Our Team Link (After Career) */}
               <Link 
                 href="/ourteam" 
-                className={`font-semibold transition tracking-wide relative group text-sm xl:text-lg 2xl:text-3xl ${
+                className={`font-semibold transition text-sm tracking-wide relative group ${
                     isActiveLink("/ourteam") ? "text-green-400" : "text-white hover:text-green-400"
                 }`}
               >
@@ -272,10 +267,9 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-green-500 transition-all duration-300 ${isActiveLink("/ourteam") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
               </Link>
 
-              {/* Contact Link */}
               <Link 
                 href="/contact" 
-                className={`font-semibold transition tracking-wide relative group text-sm xl:text-lg 2xl:text-3xl ${
+                className={`font-semibold transition text-sm tracking-wide relative group ${
                   isActiveLink("/contact") ? "text-green-400" : "text-white hover:text-green-400"
                 }`}
               >
@@ -286,8 +280,8 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
             </nav>
           </div>
 
-          {/* MOBILE TOGGLE (Unchanged) */}
-          <div className="lg:hidden flex items-center z-50 absolute right-4 md:right-14 top-1/2 -translate-y-1/2">
+          {/* MOBILE TOGGLE */}
+          <div className="lg:hidden flex items-center z-50 absolute right-4 top-1/2 -translate-y-1/2">
               <button onClick={() => setIsOpen(!isOpen)} className="text-white hover:text-brand-accent transition p-2 focus:outline-none">
               {isOpen ? <X size={32} /> : <Menu size={32} />}
             </button>
@@ -296,7 +290,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
         </div>
       </div>
 
-      {/* MOBILE DRAWER (Unchanged) */}
+      {/* MOBILE DRAWER */}
       <div 
         className={`fixed inset-y-0 right-0 z-40 w-[85%] max-w-sm bg-[#041D2D] shadow-2xl transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
@@ -306,11 +300,13 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
             <div className="space-y-4 flex-grow">
                 <Link href="/" className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/") ? "text-green-400" : "text-white"}`} onClick={() => setIsOpen(false)}>Home</Link>
                 
-                {/* Mobile Services */}
+                {/* Services Section - Mobile */}
                 <div>
                   <button onClick={() => toggleMobile('services_main')} className="w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 text-white items-center">
                       Services {mobileExpanded === 'services_main' ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
                   </button>
+                  
+                  {/* Show all categories inside Services */}
                   <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'services_main' ? 'max-h-[1000px] opacity-100 py-2' : 'max-h-0 opacity-0'}`}>
                       {Object.values(megaMenuData).map((category) => (
                           <div key={category.id} className="mb-4 last:mb-0">
@@ -318,47 +314,67 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                                   <category.icon size={14}/> {category.label}
                               </h5>
                               <div className="pl-6 border-l border-gray-700 ml-1 space-y-2">
-                                  {category.items.map((item, i) => (
-                                      <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`flex items-center gap-2 text-xs hover:text-white ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400"}`}>
-                                          <span className={`w-1.5 h-1.5 rounded-full ${isActiveLink(item.href) ? "bg-green-400" : "bg-gray-600"}`}></span>
-                                          {item.label}
-                                      </Link>
-                                  ))}
+                                  {category.items.map((item, i) => {
+                                      const isItemActive = isActiveLink(item.href);
+                                      return (
+                                          <Link 
+                                            key={i} 
+                                            href={item.href} 
+                                            onClick={() => setIsOpen(false)} 
+                                            className={`flex items-center gap-2 text-xs hover:text-white ${
+                                                isItemActive ? "text-green-400 font-bold" : "text-gray-400"
+                                            }`}
+                                          >
+                                              <span className={`w-1.5 h-1.5 rounded-full ${
+                                                  isItemActive ? "bg-green-400" : "bg-gray-600"
+                                              }`}></span>
+                                              {item.label}
+                                          </Link>
+                                      );
+                                  })}
                               </div>
                           </div>
                       ))}
                   </div>
                 </div>
 
-                {/* Mobile Insights */}
+                {/* Insight */}
                 <div>
                  <button onClick={() => toggleMobile('insight')} className="w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 text-white items-center">
-                   Insight {mobileExpanded === 'insight' ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
+                    Insight {mobileExpanded === 'insight' ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
                  </button>
                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'insight' ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
                     <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
-                        {randomMenuData.insight.items.map((item: any, i: number) => (
+                        {randomMenuData.insight.items.map((item, i) => (
                             <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                         ))}
                     </div>
                  </div>
                 </div>
 
-                {/* Mobile Career */}
+                {/* ✅ MOVED: Career (Before Our Team) */}
                 <div>
                  <button onClick={() => toggleMobile('career')} className="w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 text-white items-center">
-                   Career {mobileExpanded === 'career' ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
+                    Career {mobileExpanded === 'career' ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
                  </button>
                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'career' ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
                     <div className="pl-4 border-l border-gray-700 ml-1 py-1 space-y-1">
-                        {randomMenuData.career.items.map((item: any, i: number) => (
+                        {randomMenuData.career.items.map((item, i) => (
                             <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`block text-xs py-1 ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400 hover:text-white"}`}>{item.label}</Link>
                         ))}
                     </div>
                  </div>
                 </div>
 
-                <Link href="/ourteam" className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/ourteam") ? "text-green-400" : "text-white"}`} onClick={() => setIsOpen(false)}>Our Team</Link>
+                {/* ✅ MOVED: Our Team (After Career) */}
+                <Link 
+                    href="/ourteam" 
+                    className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/ourteam") ? "text-green-400" : "text-white"}`} 
+                    onClick={() => setIsOpen(false)}
+                >
+                    Our Team
+                </Link>
+
                 <Link href="/contact" className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/contact") ? "text-green-400" : "text-white"}`} onClick={() => setIsOpen(false)}>Contact</Link>
             </div>
             
