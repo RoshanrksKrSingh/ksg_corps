@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Navbar from "@/components/layout/Navbar"; 
 import Hero from "@/components/layout/Hero";
 import HeroCards from "@/components/layout/HeroCards";
@@ -13,45 +12,33 @@ import VisionMission from "@/components/layout/VisionMission";
 
 export default function HomePage() {
   return (
-    // ✅ Updated: Set body background to bg-[#041D2D]
-    <div className="w-full font-sans bg-[#eceff1] overflow-x-hidden text-white rounded-2xl">
+    // ✅ Updated: Body background matches overall theme
+    <div className="w-full font-sans bg-[#eceff1] overflow-x-hidden text-gray-900">
       
-      {/* =========================================
-          1. HEADER & HERO SECTION
-      ========================================= */}
-      <Navbar />
+      {/* 1. FIXED NAVBAR (Always on Top) */}
+      <Navbar  />
       
-      {/* Wrapper to remove extra spacing */}
+      {/* 2. HERO SECTION (Starts below Navbar due to margin in Hero component) */}
       <div className="relative w-full">
         <Hero />
         
-        {/* ✅ Updated: Hero Cards Positioning
-           - Mobile: 'mt-0' -> Cards will appear directly below the Hero section naturally.
-           - Desktop (md+): '-mt-32' -> Cards will overlap the Hero section by moving up 32 units.
-           - Added 'relative z-30' to ensure they sit on top.
-        */}
-        <div className="relative z-30 mt-0 lg:-mt-65 px-4 md:px-8   pb-10 md:pb-0">
+        {/* 3. HERO CARDS (Overlapping the bottom of Hero Image) */}
+        {/* Negative margin pulls it UP over the hero image */}
+        <div className="relative z-30 w-full flex justify-center -mt-24 md:-mt-32 lg:-mt-40 xl:-mt-78 px-4 pb-12">
            <HeroCards/>
         </div>
       </div>
       
-      {/* ✅ Updated: Adjusted top margin for sections below to account for layout changes */}
-      <div className="relative z-20 mt-0 md:mt-0 px-0  text-gray-900 rounded-t-[2rem] pt-0">
+      {/* 4. REST OF CONTENT */}
+      <div className="relative z-20 bg-[#eceff1]  pt-0">
         <AboutUs/>
         <VisionMission/>
-        <div className="mt-0">
-          <WhyChoose/>
-          <ServicesCards/>
-        </div>
-        
-        <div className="mt-0">
-          <LatestInsights />
-        </div>
+        <WhyChoose/>
+        <ServicesCards/>
+        <LatestInsights />
       </div>
       
-      <div className="rounded-b-2xl overflow-hidden">
-  <Footer/>
-</div>
+      <Footer/>
     </div>
   );
 }

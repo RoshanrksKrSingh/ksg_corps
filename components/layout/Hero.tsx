@@ -2,88 +2,65 @@
 
 import { useState, useEffect } from "react";
 
-// ================== SLIDER DATA ==================
 const slides = [
-  {
-    id: 1,
-    text: "Our Corporate Advisors Are Devoted To Mitigate Your Business Exposures",
-    image: "https://res.cloudinary.com/defxm7hjb/image/upload/v1768993393/pexels-pixabay-219692_s1rxcp.jpg",
-  },
-  {
-    id: 2,
-    text: "Fast Growing Corporate Consulting Firm Providing Client-Focused, Business-Centric Solutions",
-    image: "https://ik.imagekit.io/travechela/pexels-apasaric-4201659.jpg",
-  },
-  {
-    id: 3,
-    text: "Proactive and Cost Effective Tailor Made Solutions Helping Businesses Navigate The New Normal",
-    image: "https://ik.imagekit.io/travechela/pexels-apasaric-692103.jpg?updatedAt=1768990939754",
-  },
-  {
-    id: 4,
-    text: "Professionally Equipped, Economically Viable, Qualitatively Unparalleled and Highly Committed",
-    image: "https://ik.imagekit.io/travechela/meeting-4784909.jpg",
-  },
-  {
-    id: 5,
-    text: "Your Strategic Partner for Sustainable Business Growth and Corporate Excellence",
-    image: "https://ik.imagekit.io/travechela/istockphoto-1384233087-1024x1024.jpg",
-  },
+  { id: 1, text: "Our Corporate Advisors Are Devoted To Mitigate Your Business Exposures", image: "https://res.cloudinary.com/defxm7hjb/image/upload/v1768993393/pexels-pixabay-219692_s1rxcp.jpg" },
+  { id: 2, text: "Fast Growing Corporate Consulting Firm Providing Client-Focused, Business-Centric Solutions", image: "https://ik.imagekit.io/travechela/pexels-apasaric-4201659.jpg" },
+  { id: 3, text: "Proactive and Cost Effective Tailor Made Solutions Helping Businesses Navigate The New Normal", image: "https://ik.imagekit.io/travechela/pexels-apasaric-692103.jpg?updatedAt=1768990939754" },
+  { id: 4, text: "Professionally Equipped, Economically Viable, Qualitatively Unparalleled and Highly Committed", image: "https://ik.imagekit.io/travechela/meeting-4784909.jpg" },
+  { id: 5, text: "Your Strategic Partner for Sustainable Business Growth and Corporate Excellence", image: "https://ik.imagekit.io/travechela/istockphoto-1384233087-1024x1024.jpg" },
 ];
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Automatic Slider Logic
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 4000); 
-
     return () => clearInterval(interval);
   }, []);
 
   return (
-    // ✅ Updated: Removed fixed 'h-screen' constraint to allow full cover
-    // 'min-h-[100dvh]' ensures it covers full viewport height at minimum
-    // 'relative' ensures the absolute images stay within this section
-    <section className="relative w-full min-h-[100dvh] flex items-center overflow-hidden bg-[#edf0f1]">
+    // ✅ Fixed Top Spacing: 'mt' matches Navbar height exactly (h-16 -> mt-16, etc.)
+    // ✅ Fixed Bottom Spacing: 'min-h' ensures full viewport coverage
+    <section className="relative w-full mt-16 lg:mt-16 xl:mt-20 2xl:mt-24 min-h-[85vh] md:min-h-[100vh] flex items-center justify-center overflow-hidden ">
       
-      {/* ================= BACKGROUND IMAGE SLIDER ================= */}
+      {/* Background Slider */}
       {slides.map((slide, index) => (
         <div 
           key={slide.id}
-          // ✅ Updated: 'h-full' ensures it stretches to cover the entire section height including bottom gap
-          // 'bg-cover' and 'bg-center' ensure the image fills the area without distortion
-          className={`absolute inset-0 z-0 h-full w-full bg-cover bg-[center_top] bg-no-repeat transition-opacity duration-1000 ease-in-out ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            backgroundImage: `url('${slide.image}')`
-          }}
+          className={`absolute inset-0 z-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
         >
-          {/* Optional: Dark Overlay for better text readability */}
-          {/* <div className="absolute inset-0 bg-black/20"></div> */}
+           {/* ✅ Fixed: Image covers entire area perfectly without gaps */}
+           <div 
+             className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+             style={{ backgroundImage: `url('${slide.image}')` }}
+           >
+             {/* Dark Overlay for better text visibility */}
+             <div className="absolute inset-0 bg-black/40"></div>
+           </div>
         </div>
       ))}
 
-      {/* ================= HERO CONTENT (SLIDER) ================= */}
-      {/* ✅ Updated: Adjusted padding to center content vertically without leaving huge gaps */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full h-full flex flex-col justify-center py-32 md:py-40">
+      {/* Content */}
+      {/* ✅ Updated: Padding adjusted to center text nicely */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center pb-20 md:pb-72 text-center h-full">
         
-        {/* Container mt adjusted for large screens */}
-        <div className="max-w-3xl xl:max-w-4xl 2xl:max-w-6xl relative h-40 w-full mt-10 md:mt-0 2xl:mt-10"> 
+        <div className="max-w-4xl 2xl:max-w-6xl"> 
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`absolute top-0 left-0 w-full transition-all duration-1000 ease-in-out transform ${
+              className={`transition-all duration-1000 ease-in-out transform ${
                 index === currentSlide 
-                  ? "opacity-100 translate-y-0" 
-                  : "opacity-0 translate-y-4 pointer-events-none"
+                  ? "opacity-100 translate-y-0 scale-100 relative block" 
+                  : "opacity-0 translate-y-8 scale-95 absolute hidden"
               }`}
             >
-              <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-bold leading-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-500 to-green-500 drop-shadow-lg text-center md:text-center">
-                {slide.text}
+              {/* ✅ Updated: Professional Text Gradient & Responsive Font Sizes */}
+              <h1 className="text-3xl sm:text-4xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-8xl font-extrabold leading-tight tracking-tight drop-shadow-2xl">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-200 via-white to-green-200">
+                  {slide.text}
+                </span>
               </h1>
             </div>
           ))}

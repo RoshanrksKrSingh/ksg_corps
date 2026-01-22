@@ -61,13 +61,13 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
 
   return (
     <div className="bg-gray-50 ">
-      <Navbar />
+      <Navbar  />
 
       {/* ✅ Ensure isAnimated is set to true */}
       <InsightHeader 
         title={headerTitles[activeCategory] || headerTitles.all}
         breadcrumb={breadcrumbText}
-        isAnimated={true} 
+        isAnimated={true}     
       />
 
       <div className="max-w-7xl mx-auto px-6 py-12">

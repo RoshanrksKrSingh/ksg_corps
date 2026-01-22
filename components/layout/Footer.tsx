@@ -28,16 +28,16 @@ const Footer = () => {
           <div className="flex flex-col items-start">
             
             {/* Wrapper for Logo alignment - Shifted further left (-ml-12) */}
-            <div className="-ml-10 md:-ml-11 lg:-ml-12 -mt-6">
+            <div className="-ml-10 md:-ml-11 lg:-ml-12 -mt-6 xl:-ml-9 2xl:-ml-99">
               
               {/* Logo */}
               <div className="mb-0"> {/* Reduced margin-bottom */}
-                <Link href="/" className="block">
+                <Link href="/" className="block px-4 pb-4 md:-ml-0 lg:ml-1 xl:-ml-2">
                   <img 
                     src="http://ksgcorps.com/wp-content/uploads/2021/11/ksg-logo-white.png"
                     alt="KSG Corporate Services Logo"
                     // Size maintained as requested (h-44)
-                    className="h-44 w-auto object-contain py-1"
+                    className=" h-32 md:h-30 lg:h-32 xl:h-42 2xl:h-45 w-auto  object-contain py-1"
                   />
                 </Link>
               </div>

@@ -31,7 +31,7 @@ export default function ContactHeader({ title, breadcrumb, image }: ContactHeade
 
       {/* Background Image Layer */}
       <div 
-        className="absolute inset-0 z-0 bg-no-repeat h-[220px] mt-24 md:mt-auto"
+        className="absolute inset-0 z-0 bg-no-repeat h-[220px] mt-24 "
         style={{ 
             backgroundImage: `url(${bgImage})`,
             backgroundPosition: 'right bottom', 
