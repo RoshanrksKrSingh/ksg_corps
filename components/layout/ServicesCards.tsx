@@ -44,39 +44,54 @@ export default function ServicesCards() {
   // Left-to-Right Continuous Sway Animation for Cards
   const horizontalSway = (index: number) => ({
     animate: {
-      // Even cards move Right first, Odd cards move Left first
       x: index % 2 === 0 ? [0, 10, 0] : [0, -10, 0], 
       transition: {
-        duration: 6, // Smooth slow movement
-        repeat: Infinity, // Never stops
+        duration: 6,
+        repeat: Infinity,
         ease: "easeInOut",
-        delay: index * 0.2, // Stagger effect
+        delay: index * 0.2,
       },
     },
   });
 
   return (
-    <section className="py-16 md:py-20 bg-gray-50 rounded-2xl overflow-hidden relative">
+    // ✅ Updated: Light Mode Background (bg-slate-50), Dark Mode (bg-[#020617])
+    <section className="py-16 md:py-20 overflow-hidden relative bg-slate-50 dark:bg-[#020617] transition-colors duration-300">
       
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+      {/* ================= HERO-STYLE COSMIC BACKGROUND ================= */}
+      {/* Stardust: Inverted in light mode */}
+      <div className="absolute inset-0 z-0 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
+
+      {/* Top Glows: Adjusted for light mode visibility */}
+      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      <div className="absolute top-[-15%] right-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+
+      {/* Bottom Glows */}
+      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      <div className="absolute bottom-[-15%] left-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+
+      {/* Cosmic Dots */}
+      <div className="absolute top-[15%] right-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-[15%] left-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
+
+      {/* ================================================================ */}
 
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 relative z-10">
         
-        {/* ✅ Section Header (Converted to Framer Motion for reliable Bi-directional Scroll) */}
+        {/* Section Header */}
         <motion.div 
           className="text-center mb-10 md:mb-14"
-          initial={{ opacity: 0, y: -50 }} // Starts slightly above
-          whileInView={{ opacity: 1, y: 0 }} // Moves to center
-          viewport={{ once: false, amount: 0.5 }} // ✅ Fix: Triggers EVERY time (Up or Down scroll)
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#041D2D] via-blue-800 to-[#041D2D]">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 dark:from-green-400 dark:to-blue-500 transition-colors duration-300">
             Solutions We Provide
           </h2>
           <motion.div 
             initial={{ width: 0 }}
-            whileInView={{ width: 96 }} // 24 * 4 = 96px (w-24)
+            whileInView={{ width: 96 }}
             viewport={{ once: false }}
             transition={{ duration: 1, delay: 0.3 }}
             className="h-1.5 bg-gradient-to-r from-orange-500 to-green-500 mx-auto rounded-full"
@@ -86,79 +101,67 @@ export default function ServicesCards() {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            
-            // Wrapper Motion Div for "Entrance on Scroll"
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }} // ✅ Triggers every time you scroll
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="h-full"
             >
-                {/* Inner Motion Div for "Continuous Sway" */}
-                <motion.div 
-                  variants={horizontalSway(index)}
-                  animate="animate"
-                  // Hover Effect
-                  whileHover={{ 
-                    y: -10, 
-                    scale: 1.02, 
-                    transition: { duration: 0.3 } 
-                  }}
-                  
-                  className="group bg-white rounded-2xl overflow-hidden transition-all duration-300 border border-gray-100 flex flex-col h-full"
-                >
-                  {/* Image Container */}
-                  <div className="relative h-40 sm:h-44 lg:h-40 overflow-hidden">
-                    <img 
-                      src={service.image} 
-                      alt={service.title} 
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-[#041D2D]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                      <service.icon className="text-white w-10 h-10" strokeWidth={1.5} />
+              <motion.div 
+                variants={horizontalSway(index)}
+                animate="animate"
+                whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.3 } }}
+                // ✅ Updated Card: Light Mode (bg-white/80), Dark Mode (bg-white/5)
+                className="group rounded-2xl overflow-hidden transition-all duration-300 border border-gray-200 dark:border-white/10 flex flex-col h-full bg-white/80 dark:bg-white/5 backdrop-blur-md shadow-sm dark:shadow-none hover:shadow-xl"
+              >
+                {/* Image */}
+                <div className="relative h-40 sm:h-44 lg:h-40 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-[#020617]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                    <service.icon className="text-white w-10 h-10" strokeWidth={1.5} />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-5 flex flex-col flex-grow relative">
+                  <div className="flex items-start gap-3 mb-2">
+                    <div className="p-1.5 bg-blue-100 dark:bg-blue-50/20 rounded-lg text-blue-600 dark:text-white group-hover:bg-green-100 dark:group-hover:bg-green-500/30 group-hover:text-green-600 dark:group-hover:text-white transition-colors shrink-0 -mt-1">
+                      <service.icon size={17} />
                     </div>
+                    {/* Title: Dark text in light mode */}
+                    <h3 className="text-sm md:text-[15px] font-bold text-gray-900 dark:text-white leading-tight group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors pt-0.5">
+                      {service.title}
+                    </h3>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-5 flex flex-col flex-grow relative">
-                    
-                    {/* Icon & Title */}
-                    <div className="flex items-start gap-3 mb-2">
-                      <div className="p-1.5 bg-blue-50 rounded-lg text-[#041D2D] group-hover:bg-[#041D2D] group-hover:text-white transition-colors shrink-0 -mt-1">
-                        <service.icon size={17} />
-                      </div>
-                      <h3 className="text-sm md:text-[15px] font-bold text-[#041D2D] leading-tight group-hover:text-blue-800 transition-colors pt-0.5">
-                        {service.title}
-                      </h3>
-                    </div>
+                  {/* Desc: Gray text in light mode */}
+                  <p className="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed mb-4 line-clamp-3 flex-grow transition-colors duration-300">
+                    {service.desc}
+                  </p>
 
-                    {/* Description */}
-                    <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">
-                      {service.desc}
-                    </p>
+                  <Link 
+                    href={service.link}
+                    className="inline-flex items-center gap-2 font-bold text-xs md:text-sm mt-auto group/link"
+                  >
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-green-600 hover:from-orange-500 hover:to-green-500 transition-all">
+                      Read More 
+                    </span>
+                    <ArrowRight size={14} className="text-green-600 transform group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
 
-                    {/* Read More Link */}
-                    <Link 
-                      href={service.link}
-                      className="inline-flex items-center gap-2 font-bold text-xs md:text-sm mt-auto group/link"
-                    >
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-green-600 hover:from-orange-500 hover:to-green-500 transition-all">
-                        Read More 
-                      </span>
-                      <ArrowRight size={14} className="text-green-600 transform group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
-                    
-                    {/* Bottom Border Accent */}
-                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-orange-500 to-green-500 group-hover:w-full transition-all duration-500"></div>
-                  </div>
-                </motion.div>
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-orange-500 to-green-500 group-hover:w-full transition-all duration-500"></div>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
-}
+};

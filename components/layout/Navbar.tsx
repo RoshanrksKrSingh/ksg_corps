@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { ThemeToggle } from "@/components/ui/ThemeToggle"; // ✅ Import Theme Toggle
 import { 
   Menu, X, ChevronDown, ChevronRight, 
   FileText, BarChart3, Wallet, 
@@ -39,23 +40,23 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
     }
     return pathname === path;
   };
-useEffect(() => {
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 10);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
 
    
   return (
     // ✅ Updated: Reduced height (h-16 instead of h-20)
-    <header className={`fixed top-0 left-0 w-full z-50 bg-[#041D2D] shadow-lg font-sans transition-all duration-300 h-16 lg:h-16 xl:h-20 2xl:h-24  ${scrolled ? "rounded-2xl" : "rounded-t-2xl"}`}>
+    <header className={`fixed top-0 left-0 w-full z-50 bg-[#020617] shadow-lg font-sans transition-all duration-300 h-16 lg:h-16 xl:h-20 2xl:h-24  ${scrolled ? "rounded-2xl" : "rounded-t-2xl"}`}>
       
       <div className="max-w-7xl xl:max-w-[98%] w-full mx-auto px-4 sm:px-6 lg:px-6 h-full flex justify-between items-center transition-all duration-500">
           
@@ -95,7 +96,7 @@ useEffect(() => {
                 </button>
                 
                 {/* Mega Menu Dropdown */}
-                <div className="absolute right-0 top-full w-[90vw] max-w-[80rem] 2xl:max-w-[110rem] bg-[#03314e] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-b-3xl overflow-hidden">
+                <div className="absolute right-0 top-full w-[90vw] max-w-[80rem] 2xl:max-w-[110rem] bg-[#020617] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-b-3xl overflow-hidden">
                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
                    
                    <div className="w-full px-8 py-8 relative z-10">
@@ -142,7 +143,7 @@ useEffect(() => {
                 <button className={`flex items-center gap-1 font-medium tracking-wide text-sm xl:text-base 2xl:text-2xl ${pathname?.startsWith('/insights') ? "text-green-400" : "text-white hover:text-green-400"}`}>
                     Insights <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6" />
                 </button>
-                 <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#03314e] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
+                 <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#020617] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
                     <ul>
                     {randomMenuData.insight.items.map((item: any, idx) => (
                         <li key={idx}>
@@ -160,7 +161,7 @@ useEffect(() => {
                 <button className={`flex items-center gap-1 font-medium tracking-wide text-sm xl:text-base 2xl:text-2xl ${pathname?.startsWith('/career') ? "text-green-400" : "text-white hover:text-green-400"}`}>
                     Career <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6" />
                 </button>
-                 <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#03314e] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
+                 <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#020617] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
                     <ul>
                     {randomMenuData.career.items.map((item: any, idx) => (
                         <li key={idx}>
@@ -182,11 +183,19 @@ useEffect(() => {
                 Contact <span className={`absolute -bottom-1 left-0 h-0.5 bg-green-500 transition-all duration-300 ${isActiveLink("/contact") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
               </Link>
 
+              {/* ✅ THEME TOGGLE BUTTON ADDED HERE */}
+              <div className="ml-4 pl-4 border-l border-white/20 flex items-center">
+                <ThemeToggle />
+              </div>
+
             </nav>
           </div>
 
           {/* MOBILE TOGGLE BUTTON */}
-          <div className="lg:hidden flex items-center z-50 absolute right-4 md:right-12 top-1/2 -translate-y-1/2">
+          <div className="lg:hidden flex items-center gap-4 z-50 absolute right-4 md:right-12 top-1/2 -translate-y-1/2">
+              {/* ✅ Theme Toggle for Mobile */}
+              <ThemeToggle />
+              
               <button onClick={() => setIsOpen(!isOpen)} className="text-white hover:text-green-400 transition p-2 focus:outline-none">
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
               </button>

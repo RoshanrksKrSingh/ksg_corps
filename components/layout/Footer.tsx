@@ -5,7 +5,7 @@ import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin, Instagram } from 'luc
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#041D2D] text-white pt-16 pb-8 font-sans overflow-hidden">
+    <footer className="relative bg-[#020617] text-white pt-16 pb-8 font-sans overflow-hidden">
       
       {/* =========================================
           BACKGROUND EFFECTS (Mimicking the image style)

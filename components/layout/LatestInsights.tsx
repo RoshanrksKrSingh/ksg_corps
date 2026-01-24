@@ -17,162 +17,146 @@ export default function LatestInsights() {
         if (!res.ok) throw new Error("Failed to fetch");
         
         const data = await res.json();
-        
-        if (Array.isArray(data)) {
-            setBlogs(data.slice(0, 3));
-        } else {
-            setBlogs([]);
-        }
-      } catch (error) {
-        console.error("Failed to fetch blogs:", error);
+        if (Array.isArray(data)) setBlogs(data.slice(0, 3));
+        else setBlogs([]);
+      } catch (err) {
+        console.error("Failed to fetch blogs:", err);
         setError(true);
       } finally {
         setLoading(false);
       }
     };
-    
     fetchBlogs();
   }, []);
 
-  // 1. Loading State (Dark Mode Text)
   if (loading) {
     return (
-        <section className="py-20 bg-[#041D2D]">
-            <div className="text-white">
-                <Loader text="Loading Insights..." />
-            </div>
-        </section>
+      <section className="py-20 bg-slate-50 dark:bg-[#020617] relative overflow-hidden transition-colors duration-300">
+        <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
+        <div className="text-gray-900 dark:text-white relative z-10">
+          <Loader text="Loading Insights..." />
+        </div>
+      </section>
     );
   }
 
-  // 2. Error State
-  if (error) return null; 
+  if (error) return null;
 
-  // 3. Main Content
   return (
-    <section className="relative w-full py-20 bg-[#041D2D] overflow-hidden rounded-t-2xl">
+    // ✅ Updated: Light Mode Background (bg-slate-50), Dark Mode (bg-[#020617])
+    <section className="relative w-full py-20 overflow-hidden bg-slate-50 dark:bg-[#020617] transition-colors duration-300">
       
-      {/* ✅ Added CSS for Shimmer Animation */}
-      <style jsx>{`
-        @keyframes shimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-        .animate-shimmer { 
-          background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
-          background-size: 200% 100%;
-          animation: shimmer 3s infinite;
-        }
-      `}</style>
+      {/* ================= HERO-STYLE COSMIC BACKGROUND ================= */}
+      {/* Stardust: Inverted in light mode */}
+      <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
+      
+      {/* Top Glows: Adjusted for light mode visibility */}
+      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      <div className="absolute top-[-15%] right-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      
+      {/* Bottom Glows */}
+      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      <div className="absolute bottom-[-15%] left-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      
+      {/* Cosmic Dots */}
+      <div className="absolute top-[15%] right-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-[15%] left-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
 
-      {/* --- Background Elements --- */}
-      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
-        <div className="absolute top-20 right-[-100px] w-96 h-96 bg-blue-600/20 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-20 left-[-100px] w-96 h-96 bg-green-600/20 rounded-full blur-[120px]"></div>
-      </div>
-
+      {/* ================= MAIN CONTENT ================= */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* --- SECTION HEADER --- */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          {/* ✅ Shimmer Badge Animation */}
-          <span className="relative inline-block py-1.5 px-4 rounded-full border border-white/10 bg-white/5 overflow-hidden mb-4">
+          {/* Badge: Visible border in light mode */}
+          <span className="relative inline-block py-1.5 px-4 rounded-full border border-gray-300 dark:border-white/10 bg-white/60 dark:bg-white/5 overflow-hidden mb-4 shadow-sm">
             <div className="absolute inset-0 animate-shimmer"></div>
-            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-400 font-bold uppercase text-base tracking-widest">
+            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-orange-400 dark:to-green-400 font-bold uppercase text-base tracking-widest">
                 Our Blog
             </span>
           </span>
 
-          {/* ✅ Heading Pulse Animation */}
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-green-200">
-            Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-500 animate-pulse">Insights</span> & Updates
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200 transition-colors duration-300">
+            Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-orange-400 dark:to-green-500 animate-pulse">Insights</span> & Updates
           </h2>
 
-          <p className="text-transparent bg-clip-text bg-gradient-to-br from-gray-200 via-blue-100 to-gray-200 text-base md:text-lg leading-relaxed">
+          <p className="text-gray-600 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-br dark:from-gray-200 dark:via-blue-100 dark:to-gray-200 text-base md:text-lg leading-relaxed transition-colors duration-300">
             Stay updated with the latest trends in business setup, taxation, and corporate laws in the UAE.
           </p>
         </div>
 
-        {/* --- CONDITIONAL RENDERING --- */}
+        {/* --- BLOG GRID / EMPTY STATE --- */}
         {blogs.length === 0 ? (
-            
-            // EMPTY STATE
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-12 text-center shadow-lg flex flex-col items-center justify-center max-w-2xl mx-auto">
-                <div className="bg-white/10 p-4 rounded-full mb-4">
-                    <AlertCircle className="text-gray-300" size={32} />
-                </div>
-                <h3 className="text-xl font-bold text-white">No Insights Available</h3>
-                <p className="text-gray-400 mt-2">We haven't posted any updates yet. Check back soon!</p>
-            </div>
-
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-12 text-center shadow-lg flex flex-col items-center justify-center max-w-2xl mx-auto transition-colors duration-300">
+              <div className="bg-gray-100 dark:bg-white/10 p-4 rounded-full mb-4 transition-colors">
+                  <AlertCircle className="text-gray-500 dark:text-gray-300" size={32} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors">No Insights Available</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2 transition-colors">We haven't posted any updates yet. Check back soon!</p>
+          </div>
         ) : (
-
-            // BLOG GRID
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogs.map((blog) => (
-                <Link 
-                    key={blog._id} 
-                    href={`/insights/${blog.slug}`} 
-                    className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
-                >
+              <Link 
+                key={blog._id} 
+                href={`/insights/${blog.slug}`} 
+                // ✅ Updated Card: Light Mode (bg-white), Dark Mode (bg-white/5)
+                className="group relative bg-white dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full shadow-md dark:shadow-none"
+              >
                 {/* Image Container */}
                 <div className="h-52 overflow-hidden relative">
-                    {blog.thumbnail ? (
-                        <img 
-                        src={blog.thumbnail} 
-                        alt={blog.title} 
-                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                        />
-                    ) : (
-                        <div className="w-full h-full bg-gray-800 flex items-center justify-center text-gray-500">
-                            <span className="text-sm">No Image</span>
-                        </div>
-                    )}
-                    
-                    {/* Overlay Gradient on Image */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#041D2D] via-transparent to-transparent opacity-60"></div>
+                  {blog.thumbnail ? (
+                    <img 
+                      src={blog.thumbnail} 
+                      alt={blog.title} 
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-gray-500">
+                      <span className="text-sm">No Image</span>
+                    </div>
+                  )}
+                  {/* Gradient Overlay: Adjusted for Light Mode */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/10 dark:from-[#020617] via-transparent to-transparent opacity-60"></div>
                 </div>
 
-                {/* Content Container */}
+                {/* Content */}
                 <div className="p-6 flex flex-col flex-1">
-                    
-                    {/* Date Moved Here (Below Image) */}
-                    <div className="flex items-center gap-2 text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
-                        <Calendar size={14} className="text-orange-500" />
-                        {new Date(blog.createdAt).toLocaleDateString()}
-                    </div>
-
-                    <h3 className="text-lg md:text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-green-500 transition-all">
+                  <div className="flex items-center gap-2 text-xs font-bold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider transition-colors">
+                      <Calendar size={14} className="text-orange-600 dark:text-orange-500" />
+                      {new Date(blog.createdAt).toLocaleDateString()}
+                  </div>
+                  
+                  {/* Title: Dark Text in Light Mode */}
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-green-600 dark:group-hover:from-orange-400 dark:group-hover:to-green-500 transition-all">
                     {blog.title}
-                    </h3>
-                    
-                    <p className="text-gray-400 text-sm line-clamp-3 mb-6 flex-1">
+                  </h3>
+                  
+                  {/* Desc: Gray Text in Light Mode */}
+                  <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 mb-6 flex-1 transition-colors">
                     {blog.description}
-                    </p>
-                    
-                    {/* BUTTON: Orange-Green Gradient Background */}
-                    <div className="mt-auto">
-                        <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-green-500 text-white text-xs font-bold  tracking-wider shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
-                            Read Full Article <ArrowRight size={14} />
-                        </span>
-                    </div>
+                  </p>
+                  
+                  <div className="mt-auto">
+                    <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-green-500 text-white text-xs font-bold tracking-wider shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
+                        Read Full Article <ArrowRight size={14} />
+                    </span>
+                  </div>
                 </div>
-                </Link>
+              </Link>
             ))}
-            </div>
-
+          </div>
         )}
 
-        {/* View All Button (Centered at bottom) */}
+        {/* --- View All Button --- */}
         {blogs.length > 0 && (
-            <div className="mt-16 text-center">
-                <Link 
-                    href="/insights" 
-                    className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-green-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300 transform hover:scale-105"
-                >
-                    View All Insights <ArrowRight size={18} />
-                </Link>
-            </div>
+          <div className="mt-16 text-center">
+            <Link 
+              href="/insights" 
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-green-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300 transform hover:scale-105"
+            >
+              View All Insights <ArrowRight size={18} />
+            </Link>
+          </div>
         )}
 
       </div>

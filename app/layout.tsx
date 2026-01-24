@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css"; // Global Tailwind styles
+import "./globals.css";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KSG CORPS - Corporate Services",
-  description: "Strategic partner for business setup, audit, and tax compliance in UAE.",
+  title: "KSG CORPS",
+  description: "Corporate Services",
 };
 
 export default function RootLayout({
@@ -23,11 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-[#020617] text-gray-900 dark:text-white`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
