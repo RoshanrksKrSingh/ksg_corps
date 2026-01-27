@@ -27,20 +27,20 @@ const slides = [
     desc: "Helping businesses navigate the changing economic landscape with professionally equipped strategies.",
     image: "https://ik.imagekit.io/travechela/pexels-apasaric-692103.jpg?updatedAt=1768990939754",
   },
-  {
-    id: 4,
-    heading: "Professionally Equipped, Economically Viable",
-    highlight: "Highly Committed Team",
-    desc: "Qualitatively unparalleled services delivered by a team of Chartered Accountants, ACCAs, and MBAs.",
-    image: "https://ik.imagekit.io/travechela/meeting-4784909.jpg",
-  },
-  {
-    id: 5,
-    heading: "Your Strategic Partner for Sustainable",
-    highlight: "Corporate Excellence",
-    desc: "Gaining a competitive edge through unparalleled customer service and exceptional client engagement.",
-    image: "https://ik.imagekit.io/travechela/istockphoto-1384233087-1024x1024.jpg",
-  },
+  // {
+  //   id: 4,
+  //   heading: "Professionally Equipped, Economically Viable",
+  //   highlight: "Highly Committed Team",
+  //   desc: "Qualitatively unparalleled services delivered by a team of Chartered Accountants, ACCAs, and MBAs.",
+  //   image: "https://ik.imagekit.io/travechela/meeting-4784909.jpg",
+  // },
+  // {
+  //   id: 5,
+  //   heading: "Your Strategic Partner for Sustainable",
+  //   highlight: "Corporate Excellence",
+  //   desc: "Gaining a competitive edge through unparalleled customer service and exceptional client engagement.",
+  //   image: "https://ik.imagekit.io/travechela/istockphoto-1384233087-1024x1024.jpg",
+  // },
 ];
 
 // Static Features
