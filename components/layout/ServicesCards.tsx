@@ -55,28 +55,22 @@ export default function ServicesCards() {
   });
 
   return (
-    // ✅ Updated: Light Mode Background (bg-slate-50), Dark Mode (bg-[#020617])
-    <section className="py-16 md:py-20 overflow-hidden relative bg-slate-50 dark:bg-[#020617] transition-colors duration-300">
+    <section className="py-16 md:py-20 overflow-hidden relative bg-slate-50 dark:bg-[#05205b] transition-colors duration-300">
       
-      {/* ================= HERO-STYLE COSMIC BACKGROUND ================= */}
-      {/* Stardust: Inverted in light mode */}
+      {/* ================= BACKGROUND EFFECTS ================= */}
       <div className="absolute inset-0 z-0 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
 
-      {/* Top Glows: Adjusted for light mode visibility */}
       <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
       <div className="absolute top-[-15%] right-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-
-      {/* Bottom Glows */}
       <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
       <div className="absolute bottom-[-15%] left-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
 
-      {/* Cosmic Dots */}
       <div className="absolute top-[15%] right-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
       <div className="absolute bottom-[15%] left-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
+      {/* ====================================================== */}
 
-      {/* ================================================================ */}
-
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 relative z-10">
+      {/* ✅ Updated: Main Container Width & Spacing matched with Hero */}
+      <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8">
         
         {/* Section Header */}
         <motion.div 
@@ -98,8 +92,8 @@ export default function ServicesCards() {
           ></motion.div>
         </motion.div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* ✅ Cards Grid: justify-items-center fixes spacing on large screens */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -107,14 +101,14 @@ export default function ServicesCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="h-full"
+              className="h-full w-full flex justify-center"
             >
               <motion.div 
                 variants={horizontalSway(index)}
                 animate="animate"
                 whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.3 } }}
-                // ✅ Updated Card: Light Mode (bg-white/80), Dark Mode (bg-white/5)
-                className="group rounded-2xl overflow-hidden transition-all duration-300 border border-gray-200 dark:border-white/10 flex flex-col h-full bg-white/80 dark:bg-white/5 backdrop-blur-md shadow-sm dark:shadow-none hover:shadow-xl"
+                // ✅ Updated: Fixed width (max-w-[350px]) ensures cards don't stretch on large screens
+                className="group w-full max-w-[350px] rounded-2xl overflow-hidden transition-all duration-300 border border-gray-200 dark:border-white/10 flex flex-col h-full bg-white/80 dark:bg-white/5 backdrop-blur-md shadow-sm dark:shadow-none hover:shadow-xl"
               >
                 {/* Image */}
                 <div className="relative h-40 sm:h-44 lg:h-40 overflow-hidden">
@@ -134,13 +128,13 @@ export default function ServicesCards() {
                     <div className="p-1.5 bg-blue-100 dark:bg-blue-50/20 rounded-lg text-blue-600 dark:text-white group-hover:bg-green-100 dark:group-hover:bg-green-500/30 group-hover:text-green-600 dark:group-hover:text-white transition-colors shrink-0 -mt-1">
                       <service.icon size={17} />
                     </div>
-                    {/* Title: Dark text in light mode */}
+                    {/* Title */}
                     <h3 className="text-sm md:text-[15px] font-bold text-gray-900 dark:text-white leading-tight group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors pt-0.5">
                       {service.title}
                     </h3>
                   </div>
 
-                  {/* Desc: Gray text in light mode */}
+                  {/* Desc */}
                   <p className="text-gray-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed mb-4 line-clamp-3 flex-grow transition-colors duration-300">
                     {service.desc}
                   </p>

@@ -5,10 +5,10 @@ import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin, Instagram } from 'luc
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#020617] text-white pt-16 pb-8 font-sans overflow-hidden">
+    <footer className="relative bg-[#05205b] text-white pt-16 pb-8 font-sans overflow-hidden">
       
       {/* =========================================
-          BACKGROUND EFFECTS (Mimicking the image style)
+          BACKGROUND EFFECTS
       ========================================= */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
          {/* Green Peak/Glow on the Right */}
@@ -21,35 +21,35 @@ const Footer = () => {
          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ✅ Updated: Consistent Width and Spacing with Hero Section */}
+      {/* px-4 lg:px-6 ensures it aligns slightly more left visually */}
+      <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-6">
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           
-          {/* 1. Company Info */}
+          {/* 1. Company Info - ✅ Fixed Alignment & Position */}
           <div className="flex flex-col items-start">
             
-            {/* Wrapper for Logo alignment - Shifted further left (-ml-12) */}
-            <div className="-ml-10 md:-ml-11 lg:-ml-12 -mt-6 xl:-ml-9 2xl:-ml-99">
+            <div className="flex flex-col items-start w-full">
               
-              {/* Logo */}
-              <div className="mb-0"> {/* Reduced margin-bottom */}
-                <Link href="/" className="block px-4 pb-4 md:-ml-0 lg:ml-1 xl:-ml-2">
+              {/* Logo - Size Maintained */}
+              <div className="-mb-10"> 
+                <Link href="/" className="block">
                   <img 
                     src="http://ksgcorps.com/wp-content/uploads/2021/11/ksg-logo-white.png"
                     alt="KSG Corporate Services Logo"
-                    // Size maintained as requested (h-44)
-                    className=" h-32 md:h-30 lg:h-32 xl:h-42 2xl:h-45 w-auto  object-contain py-1"
+                    className="-ml-5 h-35 md:h-35 lg:h-39 xl:h-45 2xl:h-45 w-auto object-contain"
                   />
                 </Link>
               </div>
 
-              {/* Description Text - ✅ Gradient Mix & Reduced Top Space */}
-              {/* -mt-12 pulls it closer to the logo to reduce gap */}
-              <p className="text-sm leading-relaxed mb-6 pl-10 md:pl-10 pr-4 -mt-12 font-medium text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-green-300">
+              {/* Description Text - Adjusted spacing naturally without negative margins */}
+              <p className="text-sm leading-relaxed mb-6 font-medium text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-green-300 max-w-sm">
                 KSG Corporate Services is a corporate consulting firm formed with the objective of providing unparalleled broad range of corporate advisory services.
               </p>
 
               {/* Social Icons */}
-              <div className="flex space-x-4 pl-10 md:pl-10">
+              <div className="flex space-x-4">
                 {[Facebook, Instagram, Linkedin, Twitter].map((Icon, index) => (
                   <Link key={index} href="#" className="text-white hover:text-orange-500 transition transform hover:scale-110">
                     <Icon size={22} />
@@ -62,7 +62,6 @@ const Footer = () => {
 
           {/* 2. Services Links */}
           <div className="md:pl-8 pt-4">
-            {/* ✅ Updated: Changed solid border to Gradient (Orange to Green) using 'after' pseudo-element */}
             <h4 className="text-xl font-bold mb-6 text-white inline-block pb-1 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-gradient-to-r after:from-orange-500 after:to-green-500 after:rounded-sm">
               Services
             </h4>
@@ -79,7 +78,6 @@ const Footer = () => {
 
           {/* 3. Contact Details */}
           <div className="pt-4">
-            {/* ✅ Updated: Changed solid border to Gradient (Orange to Green) using 'after' pseudo-element */}
             <h4 className="text-xl font-bold mb-6 text-white inline-block pb-1 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-gradient-to-r after:from-orange-500 after:to-green-500 after:rounded-sm">
               Contact
             </h4>

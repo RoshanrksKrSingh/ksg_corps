@@ -3,15 +3,15 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ThemeToggle } from "@/components/ui/ThemeToggle"; // ✅ Import Theme Toggle
+import { ThemeToggle } from "@/components/ui/ThemeToggle"; 
 import { 
   Menu, X, ChevronDown, ChevronRight, 
   FileText, BarChart3, Wallet, 
-  Users, Briefcase, Lightbulb, 
-  Building
+  Building, Briefcase, Lightbulb 
 } from 'lucide-react';
+import NotificationBar from "@/components/ui/NotificationBar"; // ✅ Import
 
-// ... (DATA CONSTANTS SAME AS BEFORE - Keeping them hidden for brevity) ...
+// ... (MEGA MENU DATA CONSTANTS - KEPT EXACTLY SAME) ...
 const megaMenuData = {
   accounting: { id: 'accounting', label: 'Accounting & Audit Support', icon: FileText, items: [{ label: "Overview",  href: "/services/accounting" }, { label: "Accounting and Book Keeping", href: "/services/accounting/book-keeping" }, { label: "Outsourced Payroll Services", href: "/services/accounting/payroll" }, { label: "Financial Audit Support", href: "/services/accounting/financial-audit" }, { label: "IFRS Advisory Services", href: "/services/accounting/ifrs" }, { label: "Stock Audit and Verification", href: "/services/accounting/stock-audit" }] },
   tax: { id: 'tax', label: 'TAX Advisory', icon: Wallet, items: [{ label: "Overview", href: "/services/tax" }, { label: "International Taxation", href: "/services/tax/international-tax" }, { label: "VAT/Excise Compliance", href: "/services/tax/vat-compliance" }, { label: "VAT/Excise Health Checks", href: "/services/tax/vat-health-check" }, { label: "VAT Registration", href: "/services/tax/vat-registration" }, { label: "VAT/Excise Audit Support", href: "/services/tax/vat-audit" }, { label: "VAT Refund Support", href: "/services/tax/vat-refund" }, { label: "Voluntary Disclosure", href: "/services/tax/voluntary-disclosure" }] },
@@ -33,35 +33,30 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
     setMobileExpanded(mobileExpanded === key ? null : key);
   };
   
-
   const isActiveLink = (path: string) => {
     if (path.includes('#')) {
        return pathname === path.split('#')[0];
     }
     return pathname === path;
   };
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-
-   
   return (
-    // ✅ Updated: Reduced height (h-16 instead of h-20)
-    <header className={`fixed top-0 left-0 w-full z-50 bg-[#020617] shadow-lg font-sans transition-all duration-300 h-16 lg:h-16 xl:h-20 2xl:h-24  ${scrolled ? "rounded-2xl" : "rounded-t-2xl"}`}>
+    // ✅ Navbar Container (Fixed Height logic maintained)
+    <header className={`fixed top-0 left-0 w-full z-50 bg-[#05205b] font-sans transition-all duration-300 h-16 lg:h-16 xl:h-20 2xl:h-24 ${scrolled ? "rounded-2xl shadow-xl" : "rounded-t-2xl"}`}>
       
       <div className="max-w-7xl xl:max-w-[98%] w-full mx-auto px-4 sm:px-6 lg:px-6 h-full flex justify-between items-center transition-all duration-500">
           
-          {/* LOGO */}
-          {/* ✅ Updated: Slightly smaller logo to fit reduced height */}
+          {/* LOGO (Left) */}
           <div className="flex-shrink-0 z-50 -ml-6 md:-ml-7 lg:-ml-5 xl:-ml-9">
             <Link href="/">
               <img 
@@ -72,139 +67,141 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
             </Link>
           </div>
 
-          {/* DESKTOP MENU */}
-          <div className="hidden lg:flex items-center ml-auto"> 
+          {/* ✅ CENTER: NOTIFICATION BAR (Visible on All Devices) */}
+          <NotificationBar />
+
+          {/* RIGHT: MENU / TOGGLE */}
+          <div className="flex items-center gap-4 flex-shrink-0">
             
-            <nav className="flex items-center space-x-6 xl:space-x-10 2xl:space-x-16 transition-all duration-500">
-              
-              {/* Home */}
-              {/* ✅ Updated: Font size reduced (text-base instead of text-lg) */}
-              <Link 
-                href="/" 
-                className={`font-medium tracking-wide relative group text-sm xl:text-base 2xl:text-2xl ${
-                  isActiveLink("/") ? "text-green-400" : "text-white hover:text-green-400"
-                }`}
-              >
-                Home
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-green-500 transition-all duration-300 ${isActiveLink("/") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
-              </Link>
-
-              {/* Services Mega Menu */}
-              <div className="group static h-full flex items-center py-4"> 
-                <button className={`flex items-center gap-1 font-medium tracking-wide text-sm xl:text-base 2xl:text-2xl ${pathname?.startsWith('/services') ? "text-green-400" : "text-white hover:text-green-400"}`}>
-                  Services <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6" />
-                </button>
+            {/* DESKTOP MENU */}
+            <div className="hidden lg:flex items-center"> 
+              <nav className="flex items-center space-x-6 xl:space-x-10 2xl:space-x-16 transition-all duration-500">
                 
-                {/* Mega Menu Dropdown */}
-                <div className="absolute right-0 top-full w-[90vw] max-w-[80rem] 2xl:max-w-[110rem] bg-[#020617] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-b-3xl overflow-hidden">
-                   <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
-                   
-                   <div className="w-full px-8 py-8 relative z-10">
-                      <div className="grid grid-cols-4 gap-6 2xl:gap-12">
-                          {Object.values(megaMenuData).map((category) => {
-                             const Icon = category.icon;
-                             return (
-                               <div key={category.id} className="space-y-3 border-l border-white/10 pl-6">
-                                  <div className="flex items-center gap-2 pb-2 border-b border-white/20">
-                                      <Icon className="text-orange-500 w-4 h-4 xl:w-5 xl:h-5 2xl:w-7 2xl:h-7" />
-                                      {/* Updated Mega Menu Header Size */}
-                                      <h3 className="font-bold tracking-wider text-green-400 text-xs xl:text-sm 2xl:text-xl">
-                                          {category.label}
-                                      </h3>
-                                  </div>
-                                  <ul className="space-y-1.5">
-                                      {category.items.map((item, idx) => {
-                                          const isItemActive = isActiveLink(item.href);
-                                          return (
-                                              <li key={idx}>
-                                                  <Link 
-                                                      href={item.href} 
-                                                      className={`group/item flex items-center gap-2 transition-all duration-200 py-0.5 text-xs xl:text-sm 2xl:text-lg ${
-                                                          isItemActive ? "text-green-400 font-bold translate-x-1" : "text-white hover:text-gray-300 hover:translate-x-1"
-                                                      }`}
-                                                  >
-                                                      <span className={`w-1 h-1 2xl:w-2 2xl:h-2 rounded-full transition-colors ${isItemActive ? "bg-green-400" : "bg-gray-500 group-hover/item:bg-green-400"}`}></span>
-                                                      {item.label}
-                                                  </Link>
-                                              </li>
-                                          );
-                                      })}
-                                  </ul>
-                               </div>
-                             );
-                          })}
-                      </div>
-                   </div>
+                {/* Home */}
+                <Link 
+                  href="/" 
+                  className={`font-medium tracking-wide relative group text-sm xl:text-base 2xl:text-2xl ${
+                    isActiveLink("/") ? "text-green-400" : "text-white hover:text-green-400"
+                  }`}
+                >
+                  Home
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-green-500 transition-all duration-300 ${isActiveLink("/") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+                </Link>
+
+                {/* Services Mega Menu */}
+                <div className="group static h-full flex items-center py-4"> 
+                  <button className={`flex items-center gap-1 font-medium tracking-wide text-sm xl:text-base 2xl:text-2xl ${pathname?.startsWith('/services') ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                    Services <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6" />
+                  </button>
+                  
+                  {/* Mega Menu Dropdown */}
+                  <div className="absolute right-0 top-full w-[90vw] max-w-[80rem] 2xl:max-w-[110rem] bg-[#020617] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-b-3xl overflow-hidden">
+                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
+                     <div className="w-full px-8 py-8 relative z-10">
+                        <div className="grid grid-cols-4 gap-6 2xl:gap-12">
+                            {Object.values(megaMenuData).map((category) => {
+                               const Icon = category.icon;
+                               return (
+                                 <div key={category.id} className="space-y-3 border-l border-white/10 pl-6">
+                                    <div className="flex items-center gap-2 pb-2 border-b border-white/20">
+                                        <Icon className="text-orange-500 w-4 h-4 xl:w-5 xl:h-5 2xl:w-7 2xl:h-7" />
+                                        <h3 className="font-bold tracking-wider text-green-400 text-xs xl:text-sm 2xl:text-xl">
+                                            {category.label}
+                                        </h3>
+                                    </div>
+                                    <ul className="space-y-1.5">
+                                        {category.items.map((item, idx) => {
+                                            const isItemActive = isActiveLink(item.href);
+                                            return (
+                                                <li key={idx}>
+                                                    <Link 
+                                                        href={item.href} 
+                                                        className={`group/item flex items-center gap-2 transition-all duration-200 py-0.5 text-xs xl:text-sm 2xl:text-lg ${
+                                                            isItemActive ? "text-green-400 font-bold translate-x-1" : "text-white hover:text-gray-300 hover:translate-x-1"
+                                                        }`}
+                                                    >
+                                                        <span className={`w-1 h-1 2xl:w-2 2xl:h-2 rounded-full transition-colors ${isItemActive ? "bg-green-400" : "bg-gray-500 group-hover/item:bg-green-400"}`}></span>
+                                                        {item.label}
+                                                    </Link>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                 </div>
+                               );
+                            })}
+                        </div>
+                     </div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Insights Dropdown */}
-              <div className="group relative h-full flex items-center py-4">
-                <button className={`flex items-center gap-1 font-medium tracking-wide text-sm xl:text-base 2xl:text-2xl ${pathname?.startsWith('/insights') ? "text-green-400" : "text-white hover:text-green-400"}`}>
-                    Insights <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6" />
-                </button>
-                 <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#020617] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
-                    <ul>
-                    {randomMenuData.insight.items.map((item: any, idx) => (
-                        <li key={idx}>
-                        <Link href={item.href} className={`block px-5 py-2 transition-colors border-b border-white/5 last:border-0 text-sm xl:text-base 2xl:text-xl ${isActiveLink(item.href) ? "bg-white/10 text-green-400 font-bold" : "hover:bg-white/10 hover:text-brand-accent"}`}>
-                            {item.label}
-                        </Link>
-                        </li>
-                    ))}
-                    </ul>
+                {/* Insights Dropdown */}
+                <div className="group relative h-full flex items-center py-4">
+                  <button className={`flex items-center gap-1 font-medium tracking-wide text-sm xl:text-base 2xl:text-2xl ${pathname?.startsWith('/insights') ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                      Insights <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6" />
+                  </button>
+                   <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#020617] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
+                     <ul>
+                     {randomMenuData.insight.items.map((item: any, idx) => (
+                         <li key={idx}>
+                         <Link href={item.href} className={`block px-5 py-2 transition-colors border-b border-white/5 last:border-0 text-sm xl:text-base 2xl:text-xl ${isActiveLink(item.href) ? "bg-white/10 text-green-400 font-bold" : "hover:bg-white/10 hover:text-brand-accent"}`}>
+                             {item.label}
+                         </Link>
+                         </li>
+                     ))}
+                     </ul>
+                  </div>
                 </div>
-              </div>
 
-              {/* Career Dropdown */}
-              <div className="group relative h-full flex items-center py-4">
-                <button className={`flex items-center gap-1 font-medium tracking-wide text-sm xl:text-base 2xl:text-2xl ${pathname?.startsWith('/career') ? "text-green-400" : "text-white hover:text-green-400"}`}>
-                    Career <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6" />
-                </button>
-                 <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#020617] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
-                    <ul>
-                    {randomMenuData.career.items.map((item: any, idx) => (
-                        <li key={idx}>
-                        <Link href={item.href} className={`block px-5 py-2 transition-colors border-b border-white/5 last:border-0 text-sm xl:text-base 2xl:text-xl ${isActiveLink(item.href) ? "bg-white/10 text-green-400 font-bold" : "hover:bg-white/10 hover:text-brand-accent"}`}>
-                            {item.label}
-                        </Link>
-                        </li>
-                    ))}
-                    </ul>
+                {/* Career Dropdown */}
+                <div className="group relative h-full flex items-center py-4">
+                  <button className={`flex items-center gap-1 font-medium tracking-wide text-sm xl:text-base 2xl:text-2xl ${pathname?.startsWith('/career') ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                      Career <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6" />
+                  </button>
+                   <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#020617] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
+                     <ul>
+                     {randomMenuData.career.items.map((item: any, idx) => (
+                         <li key={idx}>
+                         <Link href={item.href} className={`block px-5 py-2 transition-colors border-b border-white/5 last:border-0 text-sm xl:text-base 2xl:text-xl ${isActiveLink(item.href) ? "bg-white/10 text-green-400 font-bold" : "hover:bg-white/10 hover:text-brand-accent"}`}>
+                             {item.label}
+                         </Link>
+                         </li>
+                     ))}
+                     </ul>
+                  </div>
                 </div>
-              </div>
 
-              {/* Direct Links */}
-              <Link href="/ourteam" className={`font-medium tracking-wide relative group text-sm xl:text-base 2xl:text-2xl ${isActiveLink("/ourteam") ? "text-green-400" : "text-white hover:text-green-400"}`}>
-                Our Team <span className={`absolute -bottom-1 left-0 h-0.5 bg-green-500 transition-all duration-300 ${isActiveLink("/ourteam") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
-              </Link>
+                {/* Direct Links */}
+                <Link href="/ourteam" className={`font-medium tracking-wide relative group text-sm xl:text-base 2xl:text-2xl ${isActiveLink("/ourteam") ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                  Our Team <span className={`absolute -bottom-1 left-0 h-0.5 bg-green-500 transition-all duration-300 ${isActiveLink("/ourteam") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+                </Link>
 
-              <Link href="/contact" className={`font-medium tracking-wide relative group text-sm xl:text-base 2xl:text-2xl ${isActiveLink("/contact") ? "text-green-400" : "text-white hover:text-green-400"}`}>
-                Contact <span className={`absolute -bottom-1 left-0 h-0.5 bg-green-500 transition-all duration-300 ${isActiveLink("/contact") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
-              </Link>
+                <Link href="/contact" className={`font-medium tracking-wide relative group text-sm xl:text-base 2xl:text-2xl ${isActiveLink("/contact") ? "text-green-400" : "text-white hover:text-green-400"}`}>
+                  Contact <span className={`absolute -bottom-1 left-0 h-0.5 bg-green-500 transition-all duration-300 ${isActiveLink("/contact") ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+                </Link>
 
-              {/* ✅ THEME TOGGLE BUTTON ADDED HERE */}
-              <div className="ml-4 pl-4 border-l border-white/20 flex items-center">
+                {/* Theme Toggle */}
+                <div className="ml-4 pl-4 border-l border-white/20 flex items-center">
+                  <ThemeToggle />
+                </div>
+
+              </nav>
+            </div>
+
+            {/* MOBILE TOGGLE BUTTON */}
+            <div className="lg:hidden flex items-center gap-4">
                 <ThemeToggle />
-              </div>
-
-            </nav>
-          </div>
-
-          {/* MOBILE TOGGLE BUTTON */}
-          <div className="lg:hidden flex items-center gap-4 z-50 absolute right-4 md:right-12 top-1/2 -translate-y-1/2">
-              {/* ✅ Theme Toggle for Mobile */}
-              <ThemeToggle />
-              
-              <button onClick={() => setIsOpen(!isOpen)} className="text-white hover:text-green-400 transition p-2 focus:outline-none">
-                {isOpen ? <X size={28} /> : <Menu size={28} />}
-              </button>
+                <button onClick={() => setIsOpen(!isOpen)} className="text-white hover:text-green-400 transition p-2 focus:outline-none">
+                  {isOpen ? <X size={28} /> : <Menu size={28} />}
+                </button>
+            </div>
           </div>
 
       </div>
 
       {/* MOBILE DRAWER */}
       <div className={`fixed inset-y-0 right-0 z-40 w-[85%] max-w-sm bg-[#041D2D] shadow-2xl transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+         {/* Mobile Menu Content (Same as before) */}
          <div className="h-full overflow-y-auto px-6 pb-6 pt-24 flex flex-col">
             <div className="space-y-4 flex-grow">
                 <Link href="/" className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/") ? "text-green-400" : "text-white"}`} onClick={() => setIsOpen(false)}>Home</Link>

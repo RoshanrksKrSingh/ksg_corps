@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FileText, Briefcase, MessageSquare, ArrowRight } from "lucide-react";
+import { FileText, Briefcase, MessageSquare, ArrowRight, Bell } from "lucide-react";
 
 export default function DashboardOverview() {
   const cards = [
@@ -26,6 +26,13 @@ export default function DashboardOverview() {
       icon: MessageSquare,
       color: "bg-orange-100 text-orange-600",
     },
+    {
+      title: "Notifications",
+      desc: "Update the site-wide notification bar.",
+      href: "/dashboard/notification",
+      icon: Bell,
+      color: "bg-purple-100 text-purple-600",
+    },
   ];
 
   return (
@@ -37,7 +44,7 @@ export default function DashboardOverview() {
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {cards.map((card, index) => (
           <Link
             key={index}

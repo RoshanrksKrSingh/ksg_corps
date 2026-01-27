@@ -31,7 +31,7 @@ export default function LatestInsights() {
 
   if (loading) {
     return (
-      <section className="py-20 bg-slate-50 dark:bg-[#020617] relative overflow-hidden transition-colors duration-300">
+      <section className="py-20 bg-slate-50 dark:bg-[#05205b] relative overflow-hidden transition-colors duration-300">
         <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
         <div className="text-gray-900 dark:text-white relative z-10">
           <Loader text="Loading Insights..." />
@@ -44,7 +44,7 @@ export default function LatestInsights() {
 
   return (
     // ✅ Updated: Light Mode Background (bg-slate-50), Dark Mode (bg-[#020617])
-    <section className="relative w-full py-20 overflow-hidden bg-slate-50 dark:bg-[#020617] transition-colors duration-300">
+    <section className="relative w-full py-20 overflow-hidden bg-slate-50 dark:bg-[#05205b] transition-colors duration-300">
       
       {/* ================= HERO-STYLE COSMIC BACKGROUND ================= */}
       {/* Stardust: Inverted in light mode */}
@@ -63,12 +63,13 @@ export default function LatestInsights() {
       <div className="absolute bottom-[15%] left-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
 
       {/* ================= MAIN CONTENT ================= */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      {/* ✅ Updated: Width and Spacing to match Hero Section (Reduced side spacing on large screens) */}
+      <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8">
         
         {/* --- SECTION HEADER --- */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
           {/* Badge: Visible border in light mode */}
-          <span className="relative inline-block py-1.5 px-4 rounded-full border border-gray-300 dark:border-white/10 bg-white/60 dark:bg-white/5 overflow-hidden mb-4 shadow-sm">
+          <span className="relative inline-block py-1.5 px-4 rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none border border-gray-300 dark:border-white/10 bg-white/60 dark:bg-white/5 overflow-hidden mb-4 shadow-sm">
             <div className="absolute inset-0 animate-shimmer"></div>
             <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-orange-400 dark:to-green-400 font-bold uppercase text-base tracking-widest">
                 Our Blog
@@ -94,55 +95,57 @@ export default function LatestInsights() {
               <p className="text-gray-600 dark:text-gray-400 mt-2 transition-colors">We haven't posted any updates yet. Check back soon!</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          // ✅ Updated: Fixed max-w for cards and centered items to prevent stretching on large screens
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
             {blogs.map((blog) => (
-              <Link 
-                key={blog._id} 
-                href={`/insights/${blog.slug}`} 
-                // ✅ Updated Card: Light Mode (bg-white), Dark Mode (bg-white/5)
-                className="group relative bg-white dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full shadow-md dark:shadow-none"
-              >
-                {/* Image Container */}
-                <div className="h-52 overflow-hidden relative">
-                  {blog.thumbnail ? (
-                    <img 
-                      src={blog.thumbnail} 
-                      alt={blog.title} 
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-gray-500">
-                      <span className="text-sm">No Image</span>
-                    </div>
-                  )}
-                  {/* Gradient Overlay: Adjusted for Light Mode */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/10 dark:from-[#020617] via-transparent to-transparent opacity-60"></div>
-                </div>
+              <div key={blog._id} className="w-full max-w-[380px] h-full"> {/* Wrapper to constrain width */}
+                <Link 
+                  href={`/insights/${blog.slug}`} 
+                  // ✅ Updated Card: Light Mode (bg-white), Dark Mode (bg-white/5)
+                  className="group relative bg-white dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full shadow-md dark:shadow-none"
+                >
+                  {/* Image Container */}
+                  <div className="h-52 overflow-hidden relative">
+                    {blog.thumbnail ? (
+                      <img 
+                        src={blog.thumbnail} 
+                        alt={blog.title} 
+                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-gray-500">
+                        <span className="text-sm">No Image</span>
+                      </div>
+                    )}
+                    {/* Gradient Overlay: Adjusted for Light Mode */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/10 dark:from-[#020617] via-transparent to-transparent opacity-60"></div>
+                  </div>
 
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 text-xs font-bold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider transition-colors">
-                      <Calendar size={14} className="text-orange-600 dark:text-orange-500" />
-                      {new Date(blog.createdAt).toLocaleDateString()}
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 text-xs font-bold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider transition-colors">
+                        <Calendar size={14} className="text-orange-600 dark:text-orange-500" />
+                        {new Date(blog.createdAt).toLocaleDateString()}
+                    </div>
+                    
+                    {/* Title: Dark Text in Light Mode */}
+                    <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-green-600 dark:group-hover:from-orange-400 dark:group-hover:to-green-500 transition-all">
+                      {blog.title}
+                    </h3>
+                    
+                    {/* Desc: Gray Text in Light Mode */}
+                    <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 mb-6 flex-1 transition-colors">
+                      {blog.description}
+                    </p>
+                    
+                    <div className="mt-auto">
+                      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-orange-500 to-green-500 text-white text-xs font-bold tracking-wider shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
+                          Read Full Article <ArrowRight size={14} />
+                      </span>
+                    </div>
                   </div>
-                  
-                  {/* Title: Dark Text in Light Mode */}
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-green-600 dark:group-hover:from-orange-400 dark:group-hover:to-green-500 transition-all">
-                    {blog.title}
-                  </h3>
-                  
-                  {/* Desc: Gray Text in Light Mode */}
-                  <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 mb-6 flex-1 transition-colors">
-                    {blog.description}
-                  </p>
-                  
-                  <div className="mt-auto">
-                    <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-green-500 text-white text-xs font-bold tracking-wider shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
-                        Read Full Article <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             ))}
           </div>
         )}
@@ -152,7 +155,7 @@ export default function LatestInsights() {
           <div className="mt-16 text-center">
             <Link 
               href="/insights" 
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-green-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-orange-500 to-green-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300 transform hover:scale-105"
             >
               View All Insights <ArrowRight size={18} />
             </Link>

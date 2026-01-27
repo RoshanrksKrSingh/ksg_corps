@@ -11,23 +11,37 @@ interface MongooseCache {
   promise: Promise<typeof mongoose> | null;
 }
 
-// Global caching to prevent multiple connections in dev mode
+// Global caching
 let cached = (global as any).mongoose as MongooseCache;
 
 if (!cached) {
   cached = (global as any).mongoose = { conn: null, promise: null };
 }
 
-export const connectDB = async () => {
+// ✅ Main Function (Notification API uses this)
+export const connectToDB = async () => {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
-      dbName: "ksgcorps",
+    const opts = {
+      dbName: "ksgcorps", // ✅ Restore this: This ensures we connect to your existing data
       bufferCommands: false,
+    };
+
+    cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {
+      return mongoose;
     });
   }
   
-  cached.conn = await cached.promise;
+  try {
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    throw e;
+  }
+
   return cached.conn;
 };
+
+// ✅ Alias for Backward Compatibility (Old Admin Pages use this)
+export const connectDB = connectToDB;

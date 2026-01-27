@@ -10,7 +10,7 @@ const WhyChoose = () => {
       title: "Experienced Advisors",
       desc: "Qualified professional having different industries experience",
       gradient: "from-orange-500 to-pink-500",
-      textGradient: "from-orange-600 via-pink-600 to-pink-500 dark:from-orange-200 dark:via-white dark:to-pink-200", // Darker text for light mode
+      textGradient: "from-orange-600 via-pink-600 to-pink-500 dark:from-orange-200 dark:via-white dark:to-pink-200", 
       shadow: "shadow-orange-500/20",
     },
     {
@@ -58,8 +58,8 @@ const WhyChoose = () => {
   };
 
   return (
-    // ✅ Updated: Light mode bg-slate-50, Dark mode bg-[#020617]
-    <section className="relative w-full py-24 overflow-hidden bg-slate-50 dark:bg-[#020617] transition-colors duration-300">
+    // ✅ Updated: Removed borders and ensured smooth background transition
+    <section className="relative w-full py-24 overflow-hidden bg-slate-50 dark:bg-[#05205b] border-none transition-colors duration-300">
 
       {/* ================= HERO BACKGROUND ONLY ================= */}
 
@@ -93,12 +93,13 @@ const WhyChoose = () => {
         }
       `}</style>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      {/* ✅ Updated: Main Container Width & Spacing to match Hero (99% / 95% 2xl) */}
+      <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8">
 
         {/* --- HEADER SECTION --- */}
         <div className="text-center mb-20 max-w-3xl mx-auto">
           
-          <span className="relative inline-block py-1.5 px-4 rounded-full border border-gray-300 dark:border-white/10 bg-white/60 dark:bg-white/20 overflow-hidden mb-6 shadow-sm">
+          <span className="relative inline-block py-1.5 px-4 rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none  bg-white/60 dark:bg-white/20 overflow-hidden mb-6 shadow-sm">
             <div className="absolute inset-0 animate-shimmer"></div>
             <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-orange-400 dark:to-green-400 font-bold uppercase text-sm tracking-[0.2em]">
               Why Choose Us

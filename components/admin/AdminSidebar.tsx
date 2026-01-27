@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, FileText, Briefcase, MessageSquare, LogOut, X, Menu } from "lucide-react";
+import { LayoutDashboard, FileText, Briefcase, MessageSquare, LogOut, X, Menu, Bell } from "lucide-react";
 import { useState } from "react";
 
 const menuItems = [
@@ -10,6 +10,7 @@ const menuItems = [
   { name: "Manage Blogs", href: "/dashboard/blogs", icon: FileText },
   { name: "Manage Careers", href: "/dashboard/careers", icon: Briefcase },
   { name: "Inquiries", href: "/dashboard/inquiries", icon: MessageSquare },
+  { name: "Notification", href: "/dashboard/notification", icon: Bell },
 ];
 
 export default function AdminSidebar() {

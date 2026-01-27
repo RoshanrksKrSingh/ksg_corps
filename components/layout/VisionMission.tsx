@@ -23,101 +23,119 @@ const VisionMission = () => {
     },
   };
 
+  // ✅ Data with Rotating Gradients
+  const cards = [
+    { 
+      title: "KSG Vision", 
+      icon: Eye, 
+      // Conic Gradient for the rotating effect
+      rotateGradient: "bg-[conic-gradient(from_0deg,transparent_0_300deg,#f97316_360deg)]",
+      iconColor: "text-orange-500",
+      iconBg: "bg-orange-500/10 border-orange-500/20",
+      iconShadow: "shadow-orange-500/40"
+    },
+    { 
+      title: "KSG Mission", 
+      icon: Rocket, 
+      rotateGradient: "bg-[conic-gradient(from_0deg,transparent_0_300deg,#0ea5e9_360deg)]",
+      iconColor: "text-blue-500",
+      iconBg: "bg-blue-500/10 border-blue-500/20",
+      iconShadow: "shadow-blue-500/40"
+    },
+    { 
+      title: "KSG Values", 
+      icon: Gem, 
+      rotateGradient: "bg-[conic-gradient(from_0deg,transparent_0_300deg,#22c55e_360deg)]",
+      iconColor: "text-green-500",
+      iconBg: "bg-green-500/10 border-green-500/20",
+      iconShadow: "shadow-green-500/40"
+    },
+  ];
+
   return (
-    // ✅ Updated: Light mode background 'bg-white', Dark mode 'dark:bg-[#020617]'
-    <section className="relative py-28 overflow-hidden bg-slate-50 dark:bg-[#020617] transition-colors duration-300">
+    <section className="relative py-28 overflow-hidden bg-slate-50 dark:bg-[#05205b] transition-colors duration-300">
 
-      {/* ================= HERO STYLE BACKGROUND ================= */}
-      {/* Stars Pattern: Inverted in light mode */}
+      {/* ================= BACKGROUND EFFECTS ================= */}
       <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
-
-      {/* Large Ambient Glows: Adjusted for light mode visibility */}
+      
+      {/* Ambient Glows */}
       <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] transition-colors duration-300"></div>
-      <div className="absolute top-[-15%] right-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] transition-colors duration-300"></div>
-      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] transition-colors duration-300"></div>
-      <div className="absolute bottom-[-15%] left-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] transition-colors duration-300"></div>
+      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-green-200/40 dark:bg-green-900/20 rounded-full blur-[120px] transition-colors duration-300"></div>
+      
+      {/* Custom Keyframe for smooth rotation */}
+      <style jsx>{`
+        @keyframes spin-border {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-border {
+          animation: spin-border 4s linear infinite;
+        }
+      `}</style>
 
-      {/* Small Cosmos Elements */}
-      <div className="absolute top-[15%] right-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg animate-pulse pointer-events-none"></div>
-      <div className="absolute bottom-[15%] left-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg animate-pulse pointer-events-none"></div>
-      {/* ========================================================== */}
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* ================= MAIN CONTAINER ================= */}
+      {/* ✅ Layout matched with Hero Section */}
+      <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8">
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
 
-          {[
-            { title: "KSG Vision", icon: Eye, glow: "orange" },
-            { title: "KSG Mission", icon: Rocket, glow: "blue" },
-            { title: "KSG Values", icon: Gem, glow: "green" },
-          ].map((item, i) => (
+          {cards.map((item, i) => (
             <motion.div
               key={i}
               variants={cardVariants}
-              whileHover={{ y: -14, scale: 1.03, rotateX: 6 }}
-              className="
-                group relative
-                w-full max-w-[300px]
-                min-h-[330px]
-                /* ✅ Updated Card Styles for Light/Dark Mode */
-                bg-white/80 dark:bg-white/3 
-                backdrop-blur-2xl
-                border border-gray-200 dark:border-white/10
-                rounded-[1.5rem]
-                p-6
-                flex flex-col
-                shadow-xl dark:shadow-lg
-                transition-all duration-500
-                overflow-hidden
-              "
+              whileHover={{ scale: 1.02 }}
+              // ✅ Updated: Reduced width to max-w-[320px]
+              className="group relative w-full max-w-[320px] min-h-[350px] flex items-center justify-center rounded-[24px] overflow-hidden bg-white dark:bg-[#05205b] shadow-2xl dark:shadow-black/40"
             >
-              {/* Gradient Border Glow */}
-              <div className="absolute inset-0 rounded-[1.5rem] bg-gradient-to-br from-orange-500/20 via-green-500/10 to-blue-500/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+              
+              {/* 1. THE ROTATING BORDER LAYER (Behind content) */}
+              {/* This div spins continuously to create the moving border effect */}
+              <div className={`absolute inset-[-50%] ${item.rotateGradient} animate-spin-border opacity-100`}></div>
 
-              {/* Light Sweep */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-transparent via-white/40 dark:via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+              {/* 2. INNER MASK (The actual card background) */}
+              {/* 'inset-[3px]' creates the border thickness */}
+              <div className="absolute inset-[3px] rounded-[21px] bg-slate-50 dark:bg-[#0c1936] z-10"></div>
 
-              {/* Glow Orb - Adjusted colors dynamically */}
-              <div className={`absolute -top-10 -right-10 w-32 h-32 bg-${item.glow}-500/30 dark:bg-${item.glow}-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-
-              {/* Icon Container */}
-              <div className="relative w-14 h-14 mb-5 group-hover:scale-110 transition-transform duration-300">
-                <div className="absolute inset-0 bg-white/50 dark:bg-white/10 rounded-xl"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-green-500 rounded-xl flex items-center justify-center shadow-lg">
-                  <item.icon className="text-white" size={28} />
+              {/* 3. CARD CONTENT (Z-20 to sit on top) */}
+              <div className="relative z-20 flex flex-col p-8 h-full w-full">
+                
+                {/* Watermark Icon (Faded Background) */}
+                <div className={`absolute -top-4 -right-4 opacity-5 dark:opacity-[0.03] group-hover:opacity-10 transition-opacity duration-500 transform rotate-12 ${item.iconColor}`}>
+                  <item.icon size={160} />
                 </div>
-              </div>
 
-              {/* Title */}
-              <h3 className="text-lg font-bold mb-3 relative z-10">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-green-600 dark:from-orange-400 dark:to-green-400">
+                {/* Icon Box */}
+                <div className={`
+                  w-16 h-16 mb-6 rounded-2xl flex items-center justify-center 
+                  border backdrop-blur-sm transition-all duration-300 group-hover:scale-110
+                  ${item.iconBg} ${item.iconColor} shadow-lg ${item.iconShadow}
+                `}>
+                  <item.icon size={32} strokeWidth={2} />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white tracking-wide">
                   {item.title}
-                </span>
-              </h3>
+                </h3>
 
-              {/* Description - ✅ Updated Text Colors */}
-              <p className="
-                text-sm leading-relaxed tracking-tight
-                text-gray-600 dark:text-gray-300/90
-                group-hover:text-gray-900 dark:group-hover:text-gray-200
-                transition-colors duration-300
-                relative z-10
-              ">
-                {item.title === "KSG Vision" && 
-                  "Our vision is to create an exceptional client-centric organisation to provide single window corporate advisory services with cost-effective solution while upholding exceptional quality and integrity."}
+                {/* Description */}
+                <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300 font-medium relative z-10">
+                  {item.title === "KSG Vision" && 
+                    "Our vision is to create an exceptional client-centric organisation to provide single window corporate advisory services with cost-effective solution while upholding exceptional quality and integrity."}
 
-                {item.title === "KSG Mission" && 
-                  "We are dedicated to delivering effective and efficient corporate advisory services with integrity and accountability that delights our clients."}
+                  {item.title === "KSG Mission" && 
+                    "We are dedicated to delivering effective and efficient corporate advisory services with integrity and accountability that delights our clients."}
 
-                {item.title === "KSG Values" && 
-                  "We are responsible, accountable, efficient and effective corporate advisor. We promote honesty, integrity and quality in all we do. We encourage innovation to meet the challenges."}
-              </p>
+                  {item.title === "KSG Values" && 
+                    "We are responsible, accountable, efficient and effective corporate advisor. We promote honesty, integrity and quality in all we do. We encourage innovation to meet the challenges."}
+                </p>
+              </div>
 
             </motion.div>
           ))}

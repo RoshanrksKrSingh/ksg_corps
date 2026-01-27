@@ -11,19 +11,19 @@ const AboutUs = () => {
   const fadeLeft = { hidden: { opacity: 0, x: 40 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } } };
 
   return (
-    // ✅ Updated: Added light mode background (bg-white or bg-slate-50) and dark mode (dark:bg-[#020617])
-    <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-slate-50 dark:bg-[#020617] pt-10 pb-20  group font-sans transition-colors duration-300">
+    // ✅ Updated: Background colors match Hero (bg-slate-50 / dark:bg-[#05205b])
+    <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-slate-50 dark:bg-[#05205b] pt-10 pb-20 group font-sans transition-colors duration-300">
       
       {/* ================= HERO STYLE BACKGROUND ================= */}
 
-      {/* Stars Pattern: Inverted in light mode for visibility */}
+      {/* Stars Pattern */}
       <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
 
-      {/* Large Ambient Glows: Lighter colors in light mode */}
+      {/* Large Ambient Glows */}
       <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
 
-      {/* Small Cosmos Elements: Adjusted opacity/colors for light mode */}
+      {/* Small Cosmos Elements */}
       <div className="absolute top-[15%] right-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
       <div className="absolute bottom-[25%] left-[15%] w-2 h-2 rounded-full bg-green-500/70 dark:bg-green-400/70 blur-[1px] shadow-lg pointer-events-none"></div>
       <div className="absolute top-[10%] left-[5%] w-1.5 h-1.5 rounded-full bg-orange-400/60 dark:bg-orange-200/60 blur-[0.5px] pointer-events-none"></div>
@@ -43,7 +43,8 @@ const AboutUs = () => {
       `}</style>
 
       {/* ================= MAIN CONTENT ================= */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+      {/* ✅ Updated: Width and Spacing to match Hero Section (Reduced side spacing) */}
+      <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8 w-full">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
@@ -52,9 +53,8 @@ const AboutUs = () => {
             
             {/* Animated Badge */}
             <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.5 }}>
-              {/* Badge Border/BG: Darker in light mode to be visible */}
-              <span className="relative inline-block py-1.5 px-4 rounded-full border border-gray-300 dark:border-white/10 bg-white/60 dark:bg-white/20 overflow-hidden shadow-sm">
-                <div className="absolute inset-0 animate-shimmer"></div>
+              <span className="relative inline-block py-1.5 px-4 rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none border border-gray-300 dark:border-white/10 bg-white/60 dark:bg-white/20 overflow-hidden shadow-sm">
+                <div className="absolute inset-0 animate-shimmer "></div>
                 <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-orange-400 dark:to-green-400 font-bold uppercase text-xs tracking-[0.2em]">
                   About Us
                 </span>
@@ -88,7 +88,6 @@ const AboutUs = () => {
 
             {/* Features */}
             <motion.div className="flex flex-col sm:flex-row gap-6 pt-2" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.5 }}>
-              {/* Feature Box: Light BG in light mode, Transparent in dark */}
               <div className="flex items-center gap-3 p-3 rounded-xl bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/5 hover:bg-white/80 dark:hover:bg-white/10 transition-colors w-full shadow-sm dark:shadow-none">
                 <div className="bg-green-100 dark:bg-green-500/20 p-2 rounded-full text-green-600 dark:text-green-400 flex-shrink-0 transition-colors">
                   <CheckCircle2 size={18} />
@@ -101,20 +100,20 @@ const AboutUs = () => {
 
           </div>
 
-          {/* RIGHT: IMAGE (Unchanged mostly, just outer ring color for light mode) */}
+          {/* RIGHT: IMAGE */}
           <motion.div className="relative h-full flex items-center justify-center lg:justify-end mt-10 lg:mt-0" variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.5 }}>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-blue-400/20 dark:bg-blue-600/30 blur-[100px] rounded-full animate-pulse transition-colors"></div>
 
             <div className="relative w-full max-w-md lg:max-w-full animate-float">
-              {/* Ring Color: Dark gray in light mode, White in dark mode */}
+              {/* Ring Color */}
               <div className="absolute -inset-4 border-2 border-dashed border-gray-300 dark:border-white/20 rounded-[3rem] animate-spin-slow transition-colors"></div>
 
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10 transition-colors">
-                {/* Gradient Overlay: Adjusted for light mode */}
+                {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#020617] via-transparent to-transparent opacity-60 z-10 transition-colors"></div>
                 <img src="https://images.pexels.com/photos/1367276/pexels-photo-1367276.jpeg" alt="KSG Team" className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"/>
                 
-                {/* Floating Card: Glassmorphism adjusted for light mode */}
+                {/* Floating Card */}
                 <div className="absolute bottom-6 left-6 z-20 bg-white/70 dark:bg-white/10 backdrop-blur-md border border-gray-200 dark:border-white/20 p-4 rounded-2xl flex items-center gap-4 animate-drift shadow-lg transition-colors">
                   <div className="h-10 w-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">7+</div>
                   <div>

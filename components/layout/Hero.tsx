@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FileText, Wallet, Building } from "lucide-react";
 
-// ... (Slides and Features Data remain unchanged) ...
+// ================== SLIDER DATA ==================
 const slides = [
   {
     id: 1,
@@ -43,6 +43,7 @@ const slides = [
   },
 ];
 
+// Static Features
 const features = [
   { icon: FileText, title: "Accounting & Audit Support", href: "/services/accounting" },
   { icon: Wallet, title: "Tax Advisory", href: "/services/tax" },
@@ -60,40 +61,27 @@ const Hero = () => {
   }, []);
 
   return (
-    // ✅ Updated: Background for Light Mode (bg-[#eceff1]) & Dark Mode (bg-[#020617])
-    <section className="relative w-full pt-24 pb-12 lg:pt-30 lg:pb-20 overflow-hidden  bg-slate-50  dark:bg-[#020617] transition-colors duration-300">
+    <section className="relative w-full pt-0 pb-16 lg:pt-12 lg:pb-24 overflow-hidden bg-slate-50 dark:bg-[#05205b] transition-colors duration-300 flex items-center justify-center">
       
       {/* ================= BACKGROUND EFFECTS ================= */}
-      
-      {/* Stars Pattern: Inverted for Light Mode */}
       <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
       
-      {/* ===== TOP AMBIENT GLOWS ===== */}
-      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-200/50 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      <div className="absolute top-[-15%] right-[-10%] w-[400px] h-[400px] bg-green-200/50 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-200/50 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-green-200/50 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
 
-      {/* ===== BOTTOM AMBIENT GLOWS ===== */}
-      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-200/50 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      <div className="absolute bottom-[-15%] left-[-10%] w-[400px] h-[400px] bg-green-200/50 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      <div className="absolute top-[15%] right-[10%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg animate-pulse"></div>
+      <div className="absolute bottom-[20%] left-[5%] w-2 h-2 rounded-full bg-orange-400/60 dark:bg-orange-200/60 blur-[0.5px] animate-pulse"></div>
 
-      {/* ===== COSMIC DOTS (Adjusted for Light/Dark visibility) ===== */}
-      {/* Top */}
-      <div className="absolute top-[15%] right-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-[0_0_15px_rgba(59,130,246,0.8)] dark:shadow-[0_0_15px_rgba(96,165,250,0.8)] pointer-events-none animate-pulse"></div>
-      <div className="absolute top-[10%] left-[5%] w-1.5 h-1.5 rounded-full bg-orange-400/60 dark:bg-orange-200/60 blur-[0.5px] pointer-events-none"></div>
 
-      {/* Bottom */}
-      <div className="absolute bottom-[15%] left-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-[0_0_15px_rgba(59,130,246,0.8)] dark:shadow-[0_0_15px_rgba(96,165,250,0.8)] pointer-events-none animate-pulse"></div>
-      <div className="absolute bottom-[10%] right-[5%] w-1.5 h-1.5 rounded-full bg-orange-400/60 dark:bg-orange-200/60 blur-[0.5px] pointer-events-none"></div>
-
-      {/* ===================================================== */}
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16 min-h-[480px]">
+      {/* ================= MAIN CONTAINER ================= */}
+      <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto h-full px-4 lg:px-8">
+        
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-24 min-h-[500px]">
           
           {/* ================= LEFT CONTENT ================= */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center relative">
+          <div className="w-full lg:w-1/2 flex flex-col justify-center relative z-20 2xl:-mt-24">
             
-            <div className="relative h-[300px] sm:h-[260px] lg:h-[320px] w-full">
+            <div className="relative h-[320px] sm:h-[280px] lg:h-[300px] w-full">
               {slides.map((slide, index) => (
                 <div
                   key={slide.id}
@@ -103,26 +91,23 @@ const Hero = () => {
                       : "opacity-0 translate-y-4 -z-10 pointer-events-none"
                   }`}
                 >
-                  {/* Heading: Dark Text in Light Mode, White in Dark Mode */}
-                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-4 text-gray-900 dark:text-white transition-colors duration-300">
-                    {slide.heading} <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-green-400 dark:to-blue-500">
+                  <h1 className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-3xl font-bold leading-[1.15] mb-6 text-gray-900 dark:text-white transition-colors duration-300 max-w-4xl tracking-tight whitespace-normal sm:whitespace-nowrap">
+                    {slide.heading} <br className="hidden lg:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-green-400 dark:to-blue-500 leading-tight block mt-1">
                       {slide.highlight}
                     </span>
                   </h1>
 
-                  {/* Description: Gray-600 in Light Mode, Gray-300 in Dark Mode */}
-                  <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base mb-8 max-w-lg leading-relaxed font-light transition-colors duration-300">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base lg:text-base mb-8 max-w-xl leading-relaxed font-light transition-colors duration-300 ">
                     {slide.desc}
                   </p>
 
-                  {/* Buttons */}
-                  <div className="flex flex-wrap gap-3">
-                    <Link href="/contact" className="px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-green-600 dark:from-orange-500 dark:to-green-500 text-white text-sm font-semibold shadow-lg hover:shadow-green-500/30 hover:scale-105 transition-all duration-300">
+                  <div className="flex flex-wrap gap-4">
+                    {/* ✅ Buttons: Leaf Shape Preserved */}
+                    <Link href="/contact" className="px-8 py-3.5 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-orange-500 to-green-600 dark:from-orange-500 dark:to-green-500 text-white text-sm font-bold shadow-lg hover:shadow-green-500/30 hover:scale-105 transition-all duration-300">
                       Get In Touch
                     </Link>
-                    {/* Explore Services: Dark border in light mode */}
-                    <Link href="/" aria-disabled="true" className="px-6 py-2.5 rounded-full bg-white/50 dark:bg-white/5 border border-gray-300 dark:border-white/10 text-gray-900 dark:text-white text-sm font-semibold hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+                    <Link href="/" aria-disabled="true" className="px-8 py-3.5 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-white/50 dark:bg-white/5 border border-gray-300 dark:border-white/10 text-gray-900 dark:text-white text-sm font-bold hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
                       Explore Services
                     </Link>
                   </div>
@@ -130,14 +115,17 @@ const Hero = () => {
               ))}
             </div>
 
-            {/* Static Features: Light mode box styling */}
-            <div className="mt-2 pt-5 border-t border-gray-300 dark:border-white/10 w-full grid grid-cols-1 sm:grid-cols-3 gap-3 transition-colors duration-300">
+            {/* Static Features */}
+            <div className="mt-0 pt-0 w-full grid grid-cols-1 sm:grid-cols-3 gap-4 2xl:gap-6 transition-colors duration-300">
                {features.map((f, i) => (
-                 <Link key={i} href={f.href} className="flex items-center gap-3 p-2.5 rounded-lg bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 border border-gray-200 dark:border-white/5 hover:border-green-500/30 transition-all group shadow-sm dark:shadow-none">
-                    <div className="p-1.5 bg-gradient-to-br from-blue-100 to-green-100 dark:from-blue-500/20 dark:to-green-500/20 rounded-md group-hover:scale-110 transition-transform">
-                      <f.icon className="w-4 h-4 text-green-600 dark:text-green-300" />
+                 <Link key={i} href={f.href} className="flex items-center gap-3 px-3 py-2 2xl:px-5 2xl:py-3 rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none bg-white/40 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 border border-gray-200 dark:border-white/5 hover:border-green-500/30 transition-all group shadow-sm dark:shadow-none cursor-pointer w-full">
+                    <div className="bg-gradient-to-br from-blue-100 to-green-100 dark:from-blue-500/20 dark:to-green-500/20 rounded-lg group-hover:scale-110 transition-transform flex-shrink-0 p-2">
+                      <f.icon className="w-3 h-3 2xl:w-6 2xl:h-6 text-green-600 dark:text-green-300" />
                     </div>
-                    <span className="text-xs font-medium text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">{f.title}</span>
+                    
+                    <span className="text-xs sm:text-sm 2xl:text-lg font-semibold text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors whitespace-normal  3xl:whitespace-nowrap">
+                      {f.title}
+                    </span>
                  </Link>
                ))}
             </div>
@@ -145,33 +133,43 @@ const Hero = () => {
           </div>
 
           {/* ================= RIGHT IMAGE ================= */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
-             <div className="relative w-full max-w-sm lg:max-w-[90%] aspect-[4/3] lg:aspect-square max-h-[350px] lg:max-h-[450px] mx-auto lg:mr-0">
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative z-0 pl-0 2xl:pl-0 pointer-events-none lg:pr-18 xl:pr-25 2xl:pr-62 lg:-mt-76 xl:-mt-30 2xl:mt-32">
+             
+             <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] 2xl:h-[800px] lg:w-[130%] 2xl:w-[150%] mx-auto lg:-mr-[20%] 2xl:-mr-[35%] lg:-mt-17 xl:-mt-10 2xl:-mt-20">
                 
-                {/* Decorative Backing: Colors adapted for light mode */}
-                <div className="absolute inset-3 bg-gradient-to-tr from-green-200 to-blue-200 dark:from-green-500/20 dark:to-blue-500/20 rounded-[2rem] blur-xl transform rotate-6 scale-95 transition-colors duration-300"></div>
+                {/* Glow Backdrop */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-gradient-to-tr from-blue-200/30 to-green-200/30 dark:from-blue-600/10 dark:to-green-600/10 rounded-full blur-[80px] opacity-70 pointer-events-none transition-colors duration-300"></div>
 
-                {/* Images Container: BG white in light mode */}
-                <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-gray-200 dark:border-white/10 shadow-2xl bg-white dark:bg-[#020617] transition-colors duration-300">
+                <div className="relative w-full h-full overflow-visible">
                   {slides.map((slide, index) => (
                     <div
                       key={slide.id}
-                      className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-                        index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                      className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${
+                        index === currentSlide ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-110 blur-sm"
                       }`}
                     >
                        <div 
-                         className="absolute inset-0 bg-cover bg-center"
+                         className="absolute inset-0 bg-contain bg-no-repeat bg-right-bottom 2xl:bg-right"
                          style={{ backgroundImage: `url('${slide.image}')` }}
                        >
-                          {/* Inner Gradient Overlay: White fade in light mode */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-[#020617]/80 via-transparent to-transparent opacity-50 transition-colors duration-300"></div>
+                          {/* ✅ FIXED: Reduced Opacity & Width of Gradients in Light Mode to reveal image */}
+                          
+                          {/* Bottom Fade: Reduced opacity to /10 in light mode */}
+                          <div className="absolute bottom-0 left-0 right-0 h-1/6 bg-gradient-to-t from-slate-50/10 via-slate-50/5 to-transparent dark:from-[#05205b] dark:via-[#05205b]/30 dark:to-transparent"></div>
+
+                          {/* Left Fade: Reduced width (w-1/6) and opacity (slate-50/20) so it doesn't cover image */}
+                          <div className="absolute top-0 bottom-0 left-0 w-1/6 bg-gradient-to-r from-slate-50/20 via-transparent to-transparent dark:from-[#05205b] dark:via-[#05205b]/20 dark:to-transparent"></div>
+                          
+                          {/* Top Fade: Very subtle */}
+                          <div className="absolute top-0 left-0 right-0 h-1/6 bg-gradient-to-b from-slate-50/10 via-transparent to-transparent dark:from-[#05205b] dark:via-transparent dark:to-transparent"></div>
                        </div>
                     </div>
                   ))}
                 </div>
+
              </div>
           </div>
+
         </div>
       </div>
     </section>
