@@ -12,7 +12,7 @@ const AboutUs = () => {
 
   return (
     // ✅ Updated: Background colors match Hero (bg-slate-50 / dark:bg-[#05205b])
-    <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-slate-50 dark:bg-[#05205b] pt-10 pb-20 group font-sans transition-colors duration-300">
+    <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-slate-50 dark:bg-[#151B33] pt-10 pb-20 group font-sans transition-colors duration-300">
       
       {/* ================= HERO STYLE BACKGROUND ================= */}
 

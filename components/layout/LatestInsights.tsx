@@ -31,7 +31,7 @@ export default function LatestInsights() {
 
   if (loading) {
     return (
-      <section className="py-20 bg-slate-50 dark:bg-[#05205b] relative overflow-hidden transition-colors duration-300">
+      <section className="py-20 bg-slate-50 dark:bg-[#151B33] relative overflow-hidden transition-colors duration-300">
         <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
         <div className="text-gray-900 dark:text-white relative z-10">
           <Loader text="Loading Insights..." />
@@ -44,7 +44,7 @@ export default function LatestInsights() {
 
   return (
     // ✅ Updated: Light Mode Background (bg-slate-50), Dark Mode (bg-[#020617])
-    <section className="relative w-full py-20 overflow-hidden bg-slate-50 dark:bg-[#05205b] transition-colors duration-300">
+    <section className="relative w-full py-20 overflow-hidden bg-slate-50 dark:bg-[#151B33] transition-colors duration-300">
       
       {/* ================= HERO-STYLE COSMIC BACKGROUND ================= */}
       {/* Stardust: Inverted in light mode */}

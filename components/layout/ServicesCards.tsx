@@ -55,7 +55,7 @@ export default function ServicesCards() {
   });
 
   return (
-    <section className="py-16 md:py-20 overflow-hidden relative bg-slate-50 dark:bg-[#05205b] transition-colors duration-300">
+    <section className="py-16 md:py-20 overflow-hidden relative bg-slate-50 dark:bg-[#151B33] transition-colors duration-300">
       
       {/* ================= BACKGROUND EFFECTS ================= */}
       <div className="absolute inset-0 z-0 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>

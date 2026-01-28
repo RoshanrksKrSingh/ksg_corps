@@ -59,7 +59,7 @@ const WhyChoose = () => {
 
   return (
     // ✅ Updated: Removed borders and ensured smooth background transition
-    <section className="relative w-full py-24 overflow-hidden bg-slate-50 dark:bg-[#05205b] border-none transition-colors duration-300">
+    <section className="relative w-full py-24 overflow-hidden bg-slate-50 dark:bg-[#151B33] border-none transition-colors duration-300">
 
       {/* ================= HERO BACKGROUND ONLY ================= */}
 

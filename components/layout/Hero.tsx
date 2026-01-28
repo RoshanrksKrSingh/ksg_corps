@@ -61,9 +61,11 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full pt-0 pb-16 lg:pt-12 lg:pb-24 overflow-hidden bg-slate-50 dark:bg-[#05205b] transition-colors duration-300 flex items-center justify-center">
+    <section className="relative w-full pt-0 pb-16 lg:pt-12 lg:pb-24 overflow-hidden bg-slate-50 dark:bg-[#151B33] transition-colors duration-300 flex items-center justify-center">
       
       {/* ================= BACKGROUND EFFECTS ================= */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-blue-900/25 via-[#151B33] to-[#151B33] opacity-70 pointer-events-none dark:block hidden"></div>
+
       <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
       
       <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-200/50 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
@@ -71,7 +73,6 @@ const Hero = () => {
 
       <div className="absolute top-[15%] right-[10%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg animate-pulse"></div>
       <div className="absolute bottom-[20%] left-[5%] w-2 h-2 rounded-full bg-orange-400/60 dark:bg-orange-200/60 blur-[0.5px] animate-pulse"></div>
-
 
       {/* ================= MAIN CONTAINER ================= */}
       <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto h-full px-4 lg:px-8">
@@ -103,7 +104,6 @@ const Hero = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-4">
-                    {/* ✅ Buttons: Leaf Shape Preserved */}
                     <Link href="/contact" className="px-8 py-3.5 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-orange-500 to-green-600 dark:from-orange-500 dark:to-green-500 text-white text-sm font-bold shadow-lg hover:shadow-green-500/30 hover:scale-105 transition-all duration-300">
                       Get In Touch
                     </Link>
@@ -123,7 +123,7 @@ const Hero = () => {
                       <f.icon className="w-3 h-3 2xl:w-6 2xl:h-6 text-green-600 dark:text-green-300" />
                     </div>
                     
-                    <span className="text-xs sm:text-sm 2xl:text-lg font-semibold text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors whitespace-normal  3xl:whitespace-nowrap">
+                    <span className="text-xs sm:text-sm 2xl:text-lg font-semibold text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors whitespace-normal 3xl:whitespace-nowrap">
                       {f.title}
                     </span>
                  </Link>
@@ -134,11 +134,10 @@ const Hero = () => {
 
           {/* ================= RIGHT IMAGE ================= */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative z-0 pl-0 2xl:pl-0 pointer-events-none lg:pr-18 xl:pr-25 2xl:pr-62 lg:-mt-76 xl:-mt-30 2xl:mt-32">
-             
+              
              <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] 2xl:h-[800px] lg:w-[130%] 2xl:w-[150%] mx-auto lg:-mr-[20%] 2xl:-mr-[35%] lg:-mt-17 xl:-mt-10 2xl:-mt-20">
-                
-                {/* Glow Backdrop */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-gradient-to-tr from-blue-200/30 to-green-200/30 dark:from-blue-600/10 dark:to-green-600/10 rounded-full blur-[80px] opacity-70 pointer-events-none transition-colors duration-300"></div>
+
+                {/* ❌ Glow Backdrop REMOVED */}
 
                 <div className="relative w-full h-full overflow-visible">
                   {slides.map((slide, index) => (
@@ -152,16 +151,14 @@ const Hero = () => {
                          className="absolute inset-0 bg-contain bg-no-repeat bg-right-bottom 2xl:bg-right"
                          style={{ backgroundImage: `url('${slide.image}')` }}
                        >
-                          {/* ✅ FIXED: Reduced Opacity & Width of Gradients in Light Mode to reveal image */}
-                          
-                          {/* Bottom Fade: Reduced opacity to /10 in light mode */}
-                          <div className="absolute bottom-0 left-0 right-0 h-1/6 bg-gradient-to-t from-slate-50/10 via-slate-50/5 to-transparent dark:from-[#05205b] dark:via-[#05205b]/30 dark:to-transparent"></div>
+                          {/* Bottom Fade */}
+                          <div className="absolute bottom-0 left-0 right-0 h-1/6 bg-gradient-to-t from-slate-50/10 via-slate-50/5 to-transparent dark:from-[#151B33] dark:via-[#151B33]/50 dark:to-transparent"></div>
 
-                          {/* Left Fade: Reduced width (w-1/6) and opacity (slate-50/20) so it doesn't cover image */}
-                          <div className="absolute top-0 bottom-0 left-0 w-1/6 bg-gradient-to-r from-slate-50/20 via-transparent to-transparent dark:from-[#05205b] dark:via-[#05205b]/20 dark:to-transparent"></div>
+                          {/* Left Fade */}
+                          <div className="absolute top-0 bottom-0 left-0 w-1/6 bg-gradient-to-r from-slate-50/20 via-transparent to-transparent dark:from-[#151B33] dark:via-[#151B33]/1 dark:to-transparent"></div>
                           
-                          {/* Top Fade: Very subtle */}
-                          <div className="absolute top-0 left-0 right-0 h-1/6 bg-gradient-to-b from-slate-50/10 via-transparent to-transparent dark:from-[#05205b] dark:via-transparent dark:to-transparent"></div>
+                          {/* Top Fade */}
+                          <div className="absolute top-0 left-0 right-0 h-1/6 bg-gradient-to-b from-slate-50/10 via-transparent to-transparent dark:from-[#151B33] dark:via-transparent dark:to-transparent"></div>
                        </div>
                     </div>
                   ))}

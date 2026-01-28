@@ -52,9 +52,9 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
 
   return (
     // ✅ Navbar Container (Fixed Height logic maintained)
-    <header className={`fixed top-0 left-0 w-full z-50 bg-[#05205b] font-sans transition-all duration-300 h-16 lg:h-16 xl:h-20 2xl:h-24 ${scrolled ? "rounded-2xl shadow-xl" : "rounded-t-2xl"}`}>
+    <header className={`fixed top-0 left-0 w-full z-50 bg-[#10162d] font-sans transition-all duration-300 h-16 lg:h-16 xl:h-20 2xl:h-24 ${scrolled ? "rounded-2xl " : "rounded-t-2xl"}`}>
       
-      <div className="max-w-7xl xl:max-w-[98%] w-full mx-auto px-4 sm:px-6 lg:px-6 h-full flex justify-between items-center transition-all duration-500">
+      <div className="max-w-7xl xl:max-w-[98%] w-full mx-auto px-4 sm:px-6 lg:px-6 h-full flex justify-between items-center transition-all duration-500 ">
           
           {/* LOGO (Left) */}
           <div className="flex-shrink-0 z-50 -ml-6 md:-ml-7 lg:-ml-5 xl:-ml-9">
@@ -95,7 +95,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                   </button>
                   
                   {/* Mega Menu Dropdown */}
-                  <div className="absolute right-0 top-full w-[90vw] max-w-[80rem] 2xl:max-w-[110rem] bg-[#051352] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-b-3xl overflow-hidden">
+                  <div className="absolute right-0 top-full w-[90vw] max-w-[80rem] 2xl:max-w-[110rem] bg-[#01092c] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-b-3xl overflow-hidden">
                      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
                      <div className="w-full px-8 py-8 relative z-10">
                         <div className="grid grid-cols-4 gap-6 2xl:gap-12">
@@ -140,7 +140,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                   <button className={`flex items-center gap-1 font-medium tracking-wide text-sm xl:text-base 2xl:text-2xl ${pathname?.startsWith('/insights') ? "text-green-400" : "text-white hover:text-green-400"}`}>
                       Insights <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6" />
                   </button>
-                   <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#051352] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
+                   <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#01092c] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
                      <ul>
                      {randomMenuData.insight.items.map((item: any, idx) => (
                          <li key={idx}>
@@ -158,7 +158,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                   <button className={`flex items-center gap-1 font-medium tracking-wide text-sm xl:text-base 2xl:text-2xl ${pathname?.startsWith('/career') ? "text-green-400" : "text-white hover:text-green-400"}`}>
                       Career <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6" />
                   </button>
-                   <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#051352] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
+                   <div className="absolute right-0 top-full w-56 2xl:w-80 bg-[#01092c] backdrop-blur-xl text-white border border-brand-accent/30 rounded-b-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl py-2">
                      <ul>
                      {randomMenuData.career.items.map((item: any, idx) => (
                          <li key={idx}>
