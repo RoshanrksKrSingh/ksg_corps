@@ -55,7 +55,7 @@ export default function ServicesCards() {
   });
 
   return (
-    <section className="py-16 md:py-20 overflow-hidden relative bg-slate-50 dark:bg-[#151B33] transition-colors duration-300">
+    <section className="py-16 md:py-20 overflow-hidden relative bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] transition-colors duration-300">
       
       {/* ================= BACKGROUND EFFECTS ================= */}
       <div className="absolute inset-0 z-0 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
@@ -88,7 +88,7 @@ export default function ServicesCards() {
             whileInView={{ width: 96 }}
             viewport={{ once: false }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="h-1.5 bg-gradient-to-r from-orange-500 to-green-500 mx-auto rounded-full"
+            className="h-1.5 bg-gradient-to-r from-green-400 to-blue-500 mx-auto rounded-full"
           ></motion.div>
         </motion.div>
 
@@ -143,7 +143,7 @@ export default function ServicesCards() {
                     href={service.link}
                     className="inline-flex items-center gap-2 font-bold text-xs md:text-sm mt-auto group/link"
                   >
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-green-600 hover:from-orange-500 hover:to-green-500 transition-all">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:from-orange-500 hover:to-green-500 transition-all">
                       Read More 
                     </span>
                     <ArrowRight size={14} className="text-green-600 transform group-hover/link:translate-x-1 transition-transform" />

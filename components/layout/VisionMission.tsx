@@ -53,7 +53,7 @@ const VisionMission = () => {
   ];
 
   return (
-    <section className="relative py-28 overflow-hidden bg-slate-50 dark:bg-[#151B33] transition-colors duration-300">
+    <section className="relative py-28 overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D]  transition-colors duration-300">
 
       {/* ================= BACKGROUND EFFECTS ================= */}
       <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>

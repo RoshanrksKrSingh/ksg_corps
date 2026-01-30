@@ -44,7 +44,7 @@ export default function LatestInsights() {
 
   return (
     // ✅ Updated: Light Mode Background (bg-slate-50), Dark Mode (bg-[#020617])
-    <section className="relative w-full py-20 overflow-hidden bg-slate-50 dark:bg-[#151B33] transition-colors duration-300">
+    <section className="relative w-full py-20 overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#0F333D] dark:to-[#09102d]  transition-colors duration-300">
       
       {/* ================= HERO-STYLE COSMIC BACKGROUND ================= */}
       {/* Stardust: Inverted in light mode */}
@@ -71,13 +71,13 @@ export default function LatestInsights() {
           {/* Badge: Visible border in light mode */}
           <span className="relative inline-block py-1.5 px-4 rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none border border-gray-300 dark:border-white/10 bg-white/60 dark:bg-white/5 overflow-hidden mb-4 shadow-sm">
             <div className="absolute inset-0 animate-shimmer"></div>
-            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-orange-400 dark:to-green-400 font-bold uppercase text-base tracking-widest">
+            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 font-bold uppercase text-base tracking-widest">
                 Our Blog
             </span>
           </span>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200 transition-colors duration-300">
-            Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-orange-400 dark:to-green-500 animate-pulse">Insights</span> & Updates
+            Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 animate-pulse">Insights</span> & Updates
           </h2>
 
           <p className="text-gray-600 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-br dark:from-gray-200 dark:via-blue-100 dark:to-gray-200 text-base md:text-lg leading-relaxed transition-colors duration-300">
@@ -139,7 +139,7 @@ export default function LatestInsights() {
                     </p>
                     
                     <div className="mt-auto">
-                      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-orange-500 to-green-500 text-white text-xs font-bold tracking-wider shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
+                      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs font-bold tracking-wider shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
                           Read Full Article <ArrowRight size={14} />
                       </span>
                     </div>
@@ -155,7 +155,7 @@ export default function LatestInsights() {
           <div className="mt-16 text-center">
             <Link 
               href="/insights" 
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-orange-500 to-green-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300 transform hover:scale-105"
             >
               View All Insights <ArrowRight size={18} />
             </Link>
