@@ -55,18 +55,65 @@ export default function ServicesCards() {
   });
 
   return (
-    <section className="py-16 md:py-20 overflow-hidden relative bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] transition-colors duration-300">
+    // ✅ Updated: Background & Gradient matched to VisionMission styling
+    <section className="py-16 md:py-10 overflow-hidden relative bg-slate-50 dark:bg-gradient-to-b dark:from-[#0F333D] dark:to-[#09102d] transition-colors duration-300">
       
-      {/* ================= BACKGROUND EFFECTS ================= */}
-      <div className="absolute inset-0 z-0 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
+      {/* ================= STAR BACKGROUND (From VisionMission) ================= */}
+      {/* Deep Stars */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-90 mix-blend-screen"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          backgroundSize: "280px 280px",
+          filter: "brightness(1.8) saturate(1.5)",
+        }}
+      />
 
-      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      <div className="absolute top-[-15%] right-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      <div className="absolute bottom-[-15%] left-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      {/* Mid Stars */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-70 mix-blend-screen animate-stars-slow"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/tiny-stars.png')",
+          backgroundSize: "180px 180px",
+          filter: "brightness(2) saturate(1.6)",
+        }}
+      />
 
-      <div className="absolute top-[15%] right-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
-      <div className="absolute bottom-[15%] left-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
+      {/* Near Stars */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-60 mix-blend-screen animate-stars-fast"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          backgroundSize: "120px 120px",
+          filter: "brightness(2.2) saturate(1.8)",
+        }}
+      />
+
+      {/* Subtle Star Color Tint */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-cyan-400/10 via-transparent to-blue-500/10"></div>
+
+      {/* Ambient Glows */}
+      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-green-200/40 dark:bg-green-900/20 rounded-full blur-[120px]"></div>
+
+      {/* ================= ANIMATIONS ================= */}
+      <style jsx>{`
+        @keyframes starsSlow {
+          from { transform: translateY(0); }
+          to { transform: translateY(-200px); }
+        }
+        @keyframes starsFast {
+          from { transform: translateY(0); }
+          to { transform: translateY(-400px); }
+        }
+        .animate-stars-slow {
+          animation: starsSlow 120s linear infinite;
+        }
+        .animate-stars-fast {
+          animation: starsFast 60s linear infinite;
+        }
+      `}</style>
+
       {/* ====================================================== */}
 
       {/* ✅ Updated: Main Container Width & Spacing matched with Hero */}
@@ -158,4 +205,4 @@ export default function ServicesCards() {
       </div>
     </section>
   );
-};
+}

@@ -31,7 +31,7 @@ const WhyChoose = () => {
     },
   ];
 
-  // Floating for Cards (Unchanged)
+  // Floating for Cards
   const floatCard = (delay: number) => ({
     animate: {
       y: [0, -15, 0],
@@ -44,7 +44,7 @@ const WhyChoose = () => {
     },
   });
 
-  // Floating for Image (Unchanged)
+  // Floating for Image
   const floatImage = {
     animate: {
       y: [0, -20, 0],
@@ -58,30 +58,63 @@ const WhyChoose = () => {
   };
 
   return (
-    // ✅ Updated: Removed borders and ensured smooth background transition
-    <section className="relative w-full py-24 overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#0F333D] dark:to-[#09102d] border-none transition-colors duration-300">
+    // ✅ Updated BG: Matches AboutUs Background (Dark Blue -> Teal)
+    <section className="relative w-full py-10 overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] transition-colors duration-300">
 
-      {/* ================= HERO BACKGROUND ONLY ================= */}
+      {/* ================= STAR BACKGROUND (From AboutUs) ================= */}
+      {/* Deep Stars */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          backgroundSize: "280px 280px",
+          filter: "brightness(1.8) saturate(1.5)",
+        }}
+      />
 
-      {/* Stars Pattern: Inverted in light mode */}
-      <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
+      {/* Mid Stars */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/tiny-stars.png')",
+          backgroundSize: "180px 180px",
+          filter: "brightness(2) saturate(1.6)",
+        }}
+      />
 
-      {/* ===== TOP AMBIENT GLOWS: Adjusted for Light Mode ===== */}
-      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      <div className="absolute top-[-15%] right-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      {/* Near Stars */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          backgroundSize: "120px 120px",
+          filter: "brightness(2.2) saturate(1.8)",
+        }}
+      />
 
-      {/* ===== BOTTOM AMBIENT GLOWS ===== */}
-      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      <div className="absolute bottom-[-15%] left-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
+      {/* Soft Star Color Tint */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-cyan-400/10 via-transparent to-blue-500/10"></div>
 
-      {/* ===== COSMIC DOTS ===== */}
-      <div className="absolute top-[15%] right-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg animate-pulse pointer-events-none"></div>
-      <div className="absolute bottom-[15%] left-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg animate-pulse pointer-events-none"></div>
+      {/* Glow Nebula */}
+      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/30 dark:bg-blue-600/25 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-green-400/30 dark:bg-green-600/20 rounded-full blur-[140px] pointer-events-none"></div>
 
-      {/* ======================================================== */}
-
-      {/* ✅ Shimmer CSS (same) */}
+      {/* ================= ANIMATIONS ================= */}
       <style jsx>{`
+        @keyframes starsSlow {
+          from { transform: translateY(0px); }
+          to { transform: translateY(-200px); }
+        }
+        @keyframes starsFast {
+          from { transform: translateY(0px); }
+          to { transform: translateY(-400px); }
+        }
+        .animate-stars-slow {
+          animation: starsSlow 120s linear infinite;
+        }
+        .animate-stars-fast {
+          animation: starsFast 60s linear infinite;
+        }
         @keyframes shimmer {
           0% { background-position: -200% 0; }
           100% { background-position: 200% 0; }
@@ -93,7 +126,7 @@ const WhyChoose = () => {
         }
       `}</style>
 
-      {/* ✅ Updated: Main Container Width & Spacing to match Hero (99% / 95% 2xl) */}
+      {/* ================= MAIN CONTENT ================= */}
       <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8">
 
         {/* --- HEADER SECTION --- */}
@@ -146,20 +179,18 @@ const WhyChoose = () => {
                 variants={floatCard(idx * 2)} 
                 animate="animate"
               >
-                {/* ✅ Updated Card Styles for Light/Dark Mode */}
-                <div className={`group relative bg-white dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/5 p-6 rounded-2xl transition-all duration-300 hover:shadow-xl dark:hover:bg-white/10 dark:hover:border-white/20 hover:border-gray-300 ${item.shadow}`}>
+                {/* ✅ Card: No Border */}
+                <div className={`group relative bg-white dark:bg-white/5 backdrop-blur-md p-6 rounded-2xl transition-all duration-300 hover:shadow-xl dark:hover:bg-white/10 ${item.shadow}`}>
                   <div className="flex items-center gap-6">
                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500`}>
                       <item.icon className="text-white" size={30} />
                     </div>
 
                     <div>
-                      {/* Title: Dark Text in Light Mode */}
                       <h3 className={`text-xl font-bold mb-1 text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r ${item.gradient} transition-all duration-300`}>
                         {item.title}
                       </h3>
 
-                      {/* Desc: Gray Text */}
                       <p className="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors">
                         {item.desc}
                       </p>
@@ -176,7 +207,8 @@ const WhyChoose = () => {
             animate="animate"
             className="relative group order-1 lg:order-2"
           >
-            <div className="relative rounded-3xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-2xl">
+            {/* ✅ Image Container: No Border */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src="https://images.pexels.com/photos/2041629/pexels-photo-2041629.jpeg"
                 alt="Why Choose Us"
@@ -184,8 +216,8 @@ const WhyChoose = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/20 dark:from-[#020617] via-transparent to-transparent opacity-80 transition-colors duration-300"></div>
 
-              {/* Floating Badge on Image */}
-              <div className="absolute bottom-6 right-6 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-gray-200 dark:border-white/20 p-4 rounded-xl shadow-lg transition-colors duration-300">
+              {/* Floating Badge: No Border */}
+              <div className="absolute bottom-6 right-6 bg-white/80 dark:bg-white/10 backdrop-blur-md p-4 rounded-xl shadow-lg transition-colors duration-300">
                 <p className="text-gray-900 dark:text-white font-bold text-lg transition-colors duration-300">100%</p>
                 <p className="text-green-600 dark:text-green-300 text-xs uppercase tracking-wide transition-colors duration-300">Client Satisfaction</p>
               </div>

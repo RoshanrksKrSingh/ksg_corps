@@ -43,27 +43,75 @@ export default function LatestInsights() {
   if (error) return null;
 
   return (
-    // ✅ Updated: Light Mode Background (bg-slate-50), Dark Mode (bg-[#020617])
-    <section className="relative w-full py-20 overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#0F333D] dark:to-[#09102d]  transition-colors duration-300">
+    // ✅ Updated BG: Matches AboutUs Background (Dark Blue -> Teal)
+    <section className="relative w-full py-10 overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] transition-colors duration-300">
       
-      {/* ================= HERO-STYLE COSMIC BACKGROUND ================= */}
-      {/* Stardust: Inverted in light mode */}
-      <div className="absolute inset-0 z-0 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0"></div>
-      
-      {/* Top Glows: Adjusted for light mode visibility */}
-      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      <div className="absolute top-[-15%] right-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      
-      {/* Bottom Glows */}
-      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      <div className="absolute bottom-[-15%] left-[-10%] w-[400px] h-[400px] bg-green-200/40 dark:bg-green-900/15 rounded-full blur-[120px] pointer-events-none transition-colors duration-300"></div>
-      
-      {/* Cosmic Dots */}
-      <div className="absolute top-[15%] right-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
-      <div className="absolute bottom-[15%] left-[20%] w-3 h-3 rounded-full bg-blue-500/80 dark:bg-blue-400/80 blur-[2px] shadow-lg pointer-events-none animate-pulse"></div>
+      {/* ================= STAR BACKGROUND (From AboutUs) ================= */}
+      {/* Deep Stars */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          backgroundSize: "280px 280px",
+          filter: "brightness(1.8) saturate(1.5)",
+        }}
+      />
+
+      {/* Mid Stars */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/tiny-stars.png')",
+          backgroundSize: "180px 180px",
+          filter: "brightness(2) saturate(1.6)",
+        }}
+      />
+
+      {/* Near Stars */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          backgroundSize: "120px 120px",
+          filter: "brightness(2.2) saturate(1.8)",
+        }}
+      />
+
+      {/* Soft Star Color Tint */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-cyan-400/10 via-transparent to-blue-500/10"></div>
+
+      {/* Glow Nebula */}
+      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/30 dark:bg-blue-600/25 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-green-400/30 dark:bg-green-600/20 rounded-full blur-[140px] pointer-events-none"></div>
+
+      {/* ================= ANIMATIONS ================= */}
+      <style jsx>{`
+        @keyframes starsSlow {
+          from { transform: translateY(0px); }
+          to { transform: translateY(-200px); }
+        }
+        @keyframes starsFast {
+          from { transform: translateY(0px); }
+          to { transform: translateY(-400px); }
+        }
+        .animate-stars-slow {
+          animation: starsSlow 120s linear infinite;
+        }
+        .animate-stars-fast {
+          animation: starsFast 60s linear infinite;
+        }
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .animate-shimmer { 
+          background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+          background-size: 200% 100%;
+          animation: shimmer 3s infinite;
+        }
+      `}</style>
 
       {/* ================= MAIN CONTENT ================= */}
-      {/* ✅ Updated: Width and Spacing to match Hero Section (Reduced side spacing on large screens) */}
       <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8">
         
         {/* --- SECTION HEADER --- */}
@@ -95,13 +143,11 @@ export default function LatestInsights() {
               <p className="text-gray-600 dark:text-gray-400 mt-2 transition-colors">We haven't posted any updates yet. Check back soon!</p>
           </div>
         ) : (
-          // ✅ Updated: Fixed max-w for cards and centered items to prevent stretching on large screens
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
             {blogs.map((blog) => (
-              <div key={blog._id} className="w-full max-w-[380px] h-full"> {/* Wrapper to constrain width */}
+              <div key={blog._id} className="w-full max-w-[380px] h-full"> 
                 <Link 
                   href={`/insights/${blog.slug}`} 
-                  // ✅ Updated Card: Light Mode (bg-white), Dark Mode (bg-white/5)
                   className="group relative bg-white dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full shadow-md dark:shadow-none"
                 >
                   {/* Image Container */}
