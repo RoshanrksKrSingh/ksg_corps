@@ -65,7 +65,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: "Success: Saved & Emailed", data: newContact }, { status: 201 });
 
   } catch (error) {
-    console.error("Contact API Error:", error);
+    
+    // The Client Component will detect this 500 status and show the Toast error.
     return NextResponse.json({ message: "Server Error", error }, { status: 500 });
   }
 }

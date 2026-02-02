@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { MapPin, Briefcase, Clock, ArrowRight, AlertCircle } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
-import InsightHeader from "@/components/ui/InsightHeader";
 import Footer from "@/components/layout/Footer";
 
 // ✅ Fetch Jobs (Server Component)
@@ -15,7 +14,6 @@ async function getJobs() {
     if (!res.ok) return [];
     return await res.json();
   } catch (error) {
-    console.error("Failed to fetch jobs:", error);
     return [];
   }
 }
@@ -29,22 +27,9 @@ export default async function JobOpeningsPage() {
       {/* 1. Navbar */}
       <Navbar forceStatic={true} />
             
-             {/* 2. Spacer Div */}
-             <div className="w-full h-20 bg-[#0b2b3f] rounded-2xl"></div>
+      {/* 2. Spacer Div */}
+      <div className="w-full h-20 bg-[#0b2b3f] rounded-2xl"></div>
 
-      {/* 2. Header Section */}
-{/*     
-      <InsightHeader 
-        title={
-            // ✅ Updates: Font Size reduced + Gradient on First Word
-            <span className="text-3xl md:text-5xl font-bold ">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-500">Current</span> Openings
-            </span>
-        }
-        breadcrumb="Job Openings"
-        image=""
-      /> */}
-      
       {/* 3. Job Listings Section */}
       <div className="relative z-10 bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -126,7 +111,7 @@ export default async function JobOpeningsPage() {
       {/* 4. Footer */}
         <div className="rounded-2xl overflow-hidden">
        <Footer/>
-     </div>
+      </div>
       
     </div>
   );

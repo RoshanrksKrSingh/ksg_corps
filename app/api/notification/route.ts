@@ -9,7 +9,7 @@ export async function GET() {
     const notifications = await Notification.find().sort({ createdAt: -1 });
     return NextResponse.json(notifications);
   } catch (error) {
-    console.error("GET Notification Error:", error);
+  
     return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }
@@ -28,7 +28,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ message: "Created successfully", notification: newNotification }, { status: 201 });
   } catch (error) {
-    console.error("POST Notification Error:", error); // Check your terminal for this!
+    
     return NextResponse.json({ error: "Failed to create" }, { status: 500 });
   }
 }

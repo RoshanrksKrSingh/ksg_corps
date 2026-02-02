@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation"; // ✅ Added Hooks
 import { Plus, Trash, Edit, AlertCircle, CheckCircle, AlertTriangle, MapPin, Briefcase } from "lucide-react";
 import Loader from "@/components/ui/Loader";
 
@@ -12,11 +13,26 @@ export default function AdminCareersPage() {
   const [toast, setToast] = useState<{ msg: string; type: "success" | "error" | null }>({ msg: "", type: null });
   const [deleteId, setDeleteId] = useState<string | null>(null); 
 
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   // Helper: Toast
   const showToast = (msg: string, type: "success" | "error") => {
     setToast({ msg, type });
     setTimeout(() => setToast({ msg: "", type: null }), 3000);
   };
+
+  // ✅ Check for Redirect Success Messages
+  useEffect(() => {
+    const success = searchParams.get("success");
+    if (success === "updated") {
+      showToast("Job updated successfully!", "success");
+      router.replace("/dashboard/careers");
+    } else if (success === "created") {
+      showToast("Job posted successfully!", "success");
+      router.replace("/dashboard/careers");
+    }
+  }, [searchParams, router]);
 
   // Fetch Jobs
   const fetchJobs = async () => {
@@ -26,7 +42,7 @@ export default function AdminCareersPage() {
       const data = await res.json();
       setJobs(Array.isArray(data) ? data : []);
     } catch (error) {
-      console.error(error);
+     
       showToast("Failed to load jobs", "error");
     } finally {
       setLoading(false);
@@ -85,7 +101,7 @@ export default function AdminCareersPage() {
                     </p>
                     <div className="flex gap-3 w-full">
                         <button onClick={() => setDeleteId(null)} className="flex-1 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition">Cancel</button>
-                        <button onClick={executeDelete} className="flex-1 py-3 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition">Yes, Delete</button>
+                        <button onClick={executeDelete} className="flex-1 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition">Yes, Delete</button>
                     </div>
                 </div>
             </div>
@@ -97,7 +113,7 @@ export default function AdminCareersPage() {
         <h1 className="text-3xl font-bold text-white">Manage Careers</h1>
         <Link 
           href="/dashboard/careers/create" 
-          className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-green-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all transform hover:scale-105 w-full sm:w-auto justify-center sm:justify-start"
+          className="flex items-center gap-2 px-6 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all transform hover:scale-105 w-full sm:w-auto justify-center sm:justify-start"
         >
           <Plus size={20} /> Post New Job
         </Link>

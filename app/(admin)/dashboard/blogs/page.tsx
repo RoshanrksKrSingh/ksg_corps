@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation"; // ✅ Added hooks for URL params
 import { Plus, Trash, Eye, Edit, AlertCircle, CheckCircle, AlertTriangle } from "lucide-react";
 import Loader from "@/components/ui/Loader";
 
@@ -13,21 +14,41 @@ export default function AdminBlogsPage() {
   const [toast, setToast] = useState<{ msg: string; type: "success" | "error" | null }>({ msg: "", type: null });
   const [deleteId, setDeleteId] = useState<string | null>(null); 
 
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   // --- Helper: Show Toast ---
   const showToast = (msg: string, type: "success" | "error") => {
     setToast({ msg, type });
     setTimeout(() => setToast({ msg: "", type: null }), 3000);
   };
 
+  // --- Check for Redirect Success Messages ---
+  useEffect(() => {
+    const success = searchParams.get("success");
+    if (success === "updated") {
+      showToast("Insight updated successfully!", "success");
+      // Optional: Clean up the URL to prevent toast on refresh
+      router.replace("/dashboard/blogs");
+    } else if (success === "created") {
+      showToast("Insight created successfully!", "success");
+      router.replace("/dashboard/blogs");
+    }
+  }, [searchParams, router]);
+
   // --- Fetch Blogs ---
   const fetchBlogs = async () => {
     try {
       const res = await fetch("/api/blogs");
-      if (!res.ok) throw new Error("Failed to fetch");
+
+      if (!res.ok) {
+        showToast("Failed to load blogs", "error");
+        return;
+      }
+
       const data = await res.json();
       setBlogs(data);
-    } catch (error) {
-      console.error(error);
+    } catch {
       showToast("Failed to load blogs", "error");
     } finally {
       setLoading(false);
@@ -43,23 +64,24 @@ export default function AdminBlogsPage() {
 
   const executeDelete = async () => {
     if (!deleteId) return;
+
     try {
-        const res = await fetch(`/api/blogs/${deleteId}`, { method: "DELETE" });
-        if (res.ok) {
-            setBlogs(blogs.filter((blog) => blog._id !== deleteId));
-            showToast("Insight deleted successfully!", "success");
-        } else {
-            showToast("Failed to delete insight", "error");
-        }
-    } catch (error) {
-        showToast("Server error while deleting", "error");
+      const res = await fetch(`/api/blogs/${deleteId}`, { method: "DELETE" });
+
+      if (res.ok) {
+        setBlogs(blogs.filter((blog) => blog._id !== deleteId));
+        showToast("Insight deleted successfully!", "success");
+      } else {
+        showToast("Failed to delete insight", "error");
+      }
+    } catch {
+      showToast("Server error while deleting", "error");
     } finally {
-        setDeleteId(null);
+      setDeleteId(null);
     }
   };
 
   return (
-    // Updated: Added px-4 for mobile spacing
     <div className="relative space-y-8 max-w-7xl mx-auto px-4 md:px-0">
       
       {/* --- TOAST --- */}
@@ -75,10 +97,9 @@ export default function AdminBlogsPage() {
         </div>
       )}
 
-      {/* --- DELETE MODAL (Responsive) --- */}
+      {/* --- DELETE MODAL --- */}
       {deleteId && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-            {/* Updated: Added w-[90%] for mobile width */}
             <div className="bg-white rounded-2xl p-6 md:p-8 w-[90%] max-w-sm shadow-2xl animate-in zoom-in-95 duration-200">
                 <div className="flex flex-col items-center text-center">
                     <div className="w-16 h-16 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-4">
@@ -90,32 +111,31 @@ export default function AdminBlogsPage() {
                     </p>
                     <div className="flex gap-3 w-full">
                         <button onClick={() => setDeleteId(null)} className="flex-1 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition">Cancel</button>
-                        <button onClick={executeDelete} className="flex-1 py-3 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition">Yes, Delete</button>
+                        <button onClick={executeDelete} className="flex-1 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition">Yes, Delete</button>
                     </div>
                 </div>
             </div>
         </div>
       )}
 
-      {/* --- HEADER (Responsive Flex) --- */}
+      {/* --- HEADER --- */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-3xl font-bold text-white">Manage Blogs</h1>
         <Link 
           href="/dashboard/blogs/create" 
-          className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-green-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all transform hover:scale-105 w-full sm:w-auto justify-center sm:justify-start"
+          className="flex items-center gap-2 px-6 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all transform hover:scale-105 w-full sm:w-auto justify-center sm:justify-start"
         >
           <Plus size={20} /> Create New Insight
         </Link>
       </div>
 
-      {/* --- TABLE CONTENT (Scrollable) --- */}
+      {/* --- TABLE CONTENT --- */}
       {loading ? (
         <div className="bg-white/5 rounded-2xl p-12 backdrop-blur-sm border border-white/10">
             <Loader text="Loading Blogs..." />
         </div>
       ) : (
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-          {/* Updated: Added overflow-x-auto for horizontal scroll */}
           <div className="overflow-x-auto">
             <table className="w-full text-left min-w-[600px]">
                 <thead className="bg-gray-50 border-b border-gray-200">
@@ -133,7 +153,11 @@ export default function AdminBlogsPage() {
                     blogs.map((blog) => (
                     <tr key={blog._id} className="hover:bg-blue-50/50 transition duration-200">
                         <td className="p-5">
-                        <img src={blog.thumbnail || "https://placehold.co/600x400?text=No+Image"} alt="" className="w-16 h-12 rounded-lg object-cover border border-gray-200 shadow-sm" />
+                          <img
+                            src={blog.thumbnail || "https://placehold.co/600x400?text=No+Image"}
+                            alt=""
+                            className="w-16 h-12 rounded-lg object-cover border border-gray-200 shadow-sm"
+                          />
                         </td>
                         <td className="p-5 font-bold text-gray-800 max-w-xs truncate">{blog.title}</td>
                         <td className="p-5 text-gray-500 text-sm font-medium">{new Date(blog.createdAt).toLocaleDateString()}</td>

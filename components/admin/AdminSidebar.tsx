@@ -70,7 +70,7 @@ export default function AdminSidebar() {
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center gap-3 px-3 py-3 rounded-xl mx-4 transition-all duration-300 ${
                   isActive
-                    ? "bg-gradient-to-r from-green-500 to-orange-500 text-white shadow-lg mr-14 shadow-orange-500/20"
+                    ? "rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] mr-14 shadow-orange-500/20"
                     : "text-gray-400 hover:bg-white/5 hover:text-white"
                 }`}
               >

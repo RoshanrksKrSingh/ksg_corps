@@ -2,13 +2,22 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Calendar, AlertCircle } from "lucide-react";
+import { ArrowRight, Calendar, AlertCircle, CheckCircle } from "lucide-react"; // Added CheckCircle for Toast
 import Loader from "@/components/ui/Loader"; 
 
 export default function LatestInsights() {
   const [blogs, setBlogs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  // ✅ Toast State
+  const [toast, setToast] = useState<{ msg: string; type: "success" | "error" | null }>({ msg: "", type: null });
+
+  // ✅ Helper: Show Toast
+  const showToast = (msg: string, type: "success" | "error") => {
+    setToast({ msg, type });
+    setTimeout(() => setToast({ msg: "", type: null }), 3000);
+  };
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -20,7 +29,7 @@ export default function LatestInsights() {
         if (Array.isArray(data)) setBlogs(data.slice(0, 3));
         else setBlogs([]);
       } catch (err) {
-        console.error("Failed to fetch blogs:", err);
+        showToast("Failed to load insights", "error");
         setError(true);
       } finally {
         setLoading(false);
@@ -40,12 +49,26 @@ export default function LatestInsights() {
     );
   }
 
-  if (error) return null;
+  // Note: We render even if error is true so toast can show, but we might show empty state instead of null
+  if (error && !toast.msg) return null; 
 
   return (
     // ✅ Updated BG: Matches AboutUs Background (Dark Blue -> Teal)
     <section className="relative w-full py-10 overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] transition-colors duration-300">
       
+      {/* ✅ ADDED TOAST UI */}
+      {toast.type && (
+        <div className={`fixed top-5 right-5 z-50 flex items-center gap-3 px-6 py-4 rounded-xl shadow-2xl animate-in slide-in-from-top-5 duration-300 ${
+            toast.type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"
+        }`}>
+            {toast.type === "success" ? <CheckCircle size={24} /> : <AlertCircle size={24} />}
+            <div>
+                <h4 className="font-bold text-sm">{toast.type === "success" ? "Success" : "Error"}</h4>
+                <p className="text-sm opacity-90">{toast.msg}</p>
+            </div>
+        </div>
+      )}
+
       {/* ================= STAR BACKGROUND (From AboutUs) ================= */}
       {/* Deep Stars */}
       <div

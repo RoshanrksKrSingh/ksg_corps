@@ -1,21 +1,31 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Mail, Phone, Calendar, User } from "lucide-react";
+import { Mail, Phone, Calendar, User, AlertCircle, CheckCircle } from "lucide-react"; // ✅ Added icons
 import Loader from "@/components/ui/Loader";
 
 export default function InquiriesPage() {
   const [leads, setLeads] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // ✅ Toast State
+  const [toast, setToast] = useState<{ msg: string; type: "success" | "error" | null }>({ msg: "", type: null });
+
+  // ✅ Helper: Show Toast
+  const showToast = (msg: string, type: "success" | "error") => {
+    setToast({ msg, type });
+    setTimeout(() => setToast({ msg: "", type: null }), 3000);
+  };
+
   useEffect(() => {
     const fetchLeads = async () => {
       try {
         const res = await fetch("/api/contact");
+        if (!res.ok) throw new Error("Failed to fetch"); // Ensure non-200 triggers catch
         const data = await res.json();
         setLeads(data);
       } catch (error) {
-        console.error("Error fetching leads:", error);
+        showToast("Failed to load inquiries", "error");
       } finally {
         setLoading(false);
       }
@@ -25,7 +35,21 @@ export default function InquiriesPage() {
 
   return (
     // Updated: Added px-4
-    <div className="space-y-8 max-w-7xl mx-auto px-4 md:px-0">
+    <div className="relative space-y-8 max-w-7xl mx-auto px-4 md:px-0">
+      
+      {/* ✅ ADDED TOAST UI */}
+      {toast.type && (
+        <div className={`fixed top-5 right-5 z-50 flex items-center gap-3 px-6 py-4 rounded-xl shadow-2xl animate-in slide-in-from-top-5 duration-300 ${
+            toast.type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"
+        }`}>
+            {toast.type === "success" ? <CheckCircle size={24} /> : <AlertCircle size={24} />}
+            <div>
+                <h4 className="font-bold text-sm">{toast.type === "success" ? "Success" : "Error"}</h4>
+                <p className="text-sm opacity-90">{toast.msg}</p>
+            </div>
+        </div>
+      )}
+
       <h1 className="text-3xl font-bold text-white">Inquiries & Leads</h1>
 
       {loading ? (

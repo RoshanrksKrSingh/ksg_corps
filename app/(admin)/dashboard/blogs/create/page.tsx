@@ -20,7 +20,7 @@ export default function CreateBlogPage() {
         <Link 
           href="/dashboard/blogs" 
           // Updated: w-full sm:w-auto added for full width button on mobile
-          className="flex items-center justify-center sm:justify-start gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all transform hover:scale-105 w-full sm:w-auto"
+          className="flex items-center justify-center sm:justify-start gap-2 px-6 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)]transition-all transform hover:scale-105 w-full sm:w-auto"
         >
           <ArrowLeft size={20} />
           <span>Back to Blogs</span>

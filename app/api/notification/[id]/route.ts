@@ -16,6 +16,7 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
 
     return NextResponse.json({ message: "Updated", notification: updated });
   } catch (error) {
+    
     return NextResponse.json({ error: "Failed to update" }, { status: 500 });
   }
 }
@@ -27,6 +28,7 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
     await Notification.findByIdAndDelete(params.id);
     return NextResponse.json({ message: "Deleted" });
   } catch (error) {
+    
     return NextResponse.json({ error: "Failed to delete" }, { status: 500 });
   }
 }

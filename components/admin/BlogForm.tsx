@@ -57,8 +57,10 @@ export default function BlogForm({ initialData, isEditing = false }: BlogFormPro
       });
 
       if (res.ok) {
-        router.push("/dashboard/blogs");
-        router.refresh();
+        // ✅ Updated: Redirect with success query param to trigger toast on list page
+        const successType = isEditing ? "updated" : "created";
+        router.push(`/dashboard/blogs?success=${successType}`);
+        router.refresh(); 
       } else {
         alert("Something went wrong");
       }
@@ -98,7 +100,6 @@ export default function BlogForm({ initialData, isEditing = false }: BlogFormPro
               <select name="category" value={formData.category} onChange={handleChange} className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:ring-2 focus:ring-orange-500 outline-none cursor-pointer">
                 <option value="blogs">Latest Blogs</option>
                 <option value="audit">Account & Audit</option>
-                {/* ✅ UPDATED: Added new categories */}
                 <option value="tax">Tax Advisory</option>
                 <option value="business">Business Setup/PRO</option>
                 <option value="risk">Risk Advisory</option>
@@ -174,7 +175,7 @@ export default function BlogForm({ initialData, isEditing = false }: BlogFormPro
           </div>
 
           <div className="mt-8">
-              <button type="submit" disabled={loading} className="w-full py-4 bg-gradient-to-r from-orange-500 to-green-500 text-white font-bold rounded-xl shadow-xl hover:shadow-orange-500/30 transition-all flex items-center justify-center gap-2 disabled:opacity-70">
+              <button type="submit" disabled={loading} className="w-full py-4 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all flex items-center justify-center gap-2 disabled:opacity-70">
                   {loading ? "Processing..." : <> <Save size={20} /> {isEditing ? "Update Article" : "Publish Article"} </>}
               </button>
           </div>

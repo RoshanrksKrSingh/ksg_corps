@@ -36,7 +36,7 @@ export default function AdminNotificationPage() {
       const data = await res.json();
       setNotifications(Array.isArray(data) ? data : []);
     } catch (error) {
-      console.error(error);
+      
       showToast("Failed to load notifications", "error");
     } finally {
       setLoading(false);
@@ -82,8 +82,8 @@ export default function AdminNotificationPage() {
       setIsModalOpen(false);
       fetchNotifications(); 
     } catch (error) {
-      console.error(error);
-      showToast("Error saving notification. Check console.", "error");
+     
+      showToast("Error saving notification.", "error");
     } finally {
       setSubmitting(false); // STOP LOADER
     }
@@ -136,8 +136,8 @@ export default function AdminNotificationPage() {
                 Are you sure? This will remove the announcement from the website.
               </p>
               <div className="flex gap-3 w-full">
-                <button onClick={() => setDeleteId(null)} className="flex-1 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition">Cancel</button>
-                <button onClick={executeDelete} className="flex-1 py-3 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition">Yes, Delete</button>
+                <button onClick={() => setDeleteId(null)} className="flex-1 py-3 bg-gray-100 text-gray-700 font-bold rounded-tl-[30px] rounded-br-[30px] hover:bg-gray-200 transition">Cancel</button>
+                <button onClick={executeDelete} className="flex-1 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition">Yes, Delete</button>
               </div>
             </div>
           </div>
@@ -182,8 +182,8 @@ export default function AdminNotificationPage() {
                    </div>
                 ) : (
                   <>
-                    <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition">Cancel</button>
-                    <button type="submit" className="flex-1 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition">
+                    <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-3 bg-gray-100 text-gray-700 font-bold rounded-tl-[30px] rounded-br-[30px]publ hover:bg-gray-200  transition">Cancel</button>
+                    <button type="submit" className="flex-1 py-rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition">
                       {editingId ? "Update" : "Create"}
                     </button>
                   </>
@@ -202,7 +202,7 @@ export default function AdminNotificationPage() {
         </div>
         <button 
           onClick={handleCreate} 
-          className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all transform hover:scale-105 w-full sm:w-auto justify-center sm:justify-start"
+          className="flex items-center gap-2 px-6 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all transform hover:scale-105 w-full sm:w-auto justify-center sm:justify-start"
         >
           <Plus size={20} /> New Announcement
         </button>

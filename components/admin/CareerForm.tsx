@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Save, Briefcase, MapPin, Loader2 } from "lucide-react";
 
 interface CareerFormProps {
-  initialData?: any; // Edit mode ke liye data
+  initialData?: any; 
   isEdit?: boolean;
 }
 
@@ -39,13 +39,16 @@ export default function CareerForm({ initialData, isEdit = false }: CareerFormPr
       });
 
       if (res.ok) {
-        router.push("/dashboard/careers"); // Redirect to list
+        // ✅ Updated: Redirect with success param to show toast on list page
+        const successType = isEdit ? "updated" : "created";
+        router.push(`/dashboard/careers?success=${successType}`); 
         router.refresh();
       } else {
         alert("Something went wrong");
       }
     } catch (error) {
-      console.error(error);
+    
+      alert("Something went wrong"); // Fallback alert for fetch errors if not handled by list page toast
     } finally {
       setLoading(false);
     }
@@ -125,7 +128,7 @@ export default function CareerForm({ initialData, isEdit = false }: CareerFormPr
             <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-gradient-to-r from-orange-500 to-green-600 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-orange-500/25 transition-all transform hover:scale-[1.01] disabled:opacity-70 flex justify-center items-center gap-2"
+            className="w-full py-4 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all transform hover:scale-[1.01] disabled:opacity-70 flex justify-center items-center gap-2"
             >
             {loading ? <Loader2 className="animate-spin" /> : <><Save size={20} /> {isEdit ? "Update Job Post" : "Publish Job Post"}</>}
             </button>
