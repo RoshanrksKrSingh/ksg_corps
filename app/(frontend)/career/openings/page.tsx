@@ -2,17 +2,16 @@ import Link from 'next/link';
 import { MapPin, Briefcase, Clock, ArrowRight, AlertCircle } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { connectDB } from "@/lib/db"; // ✅ Import DB connection
+import Job from "@/models/Job"; // ✅ Import Job Model
 
-// ✅ Fetch Jobs (Server Component)
+// ✅ Fetch Jobs (Server Component - Direct DB Call)
 async function getJobs() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/careers`, { 
-        cache: 'no-store' 
-    });
-    
-    if (!res.ok) return [];
-    return await res.json();
+    await connectDB(); // Connect to DB directly
+    // Fetch jobs, sort by date, and convert to plain JSON
+    const jobs = await Job.find({ isActive: true }).sort({ createdAt: -1 }).lean();
+    return JSON.parse(JSON.stringify(jobs));
   } catch (error) {
     return [];
   }
