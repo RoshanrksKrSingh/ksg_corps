@@ -88,10 +88,10 @@ export default function LoginPage() {
           <div className="space-y-2">
             <label className="text-xs font-bold text-gray-300 uppercase tracking-wider ml-1">Username</label>
             <div className="relative group">
-              <User className="absolute left-4 top-3.5 text-gray-400 group-focus-within:text-orange-500 transition-colors" size={20} />
+              <User className="absolute left-4 top-3.5 text-gray-400 group-focus-within:text-green-500 transition-colors" size={20} />
               <input
                 type="text"
-                className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-gray-600 rounded-xl text-white placeholder-gray-500 focus:bg-white/10 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 outline-none transition-all"
+                className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-gray-600 rounded-xl text-white placeholder-gray-500 focus:bg-white/10 focus:border-blue-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
                 placeholder="Enter your username"
                 onChange={(e) => setCreds({ ...creds, username: e.target.value })}
                 required
@@ -103,10 +103,10 @@ export default function LoginPage() {
           <div className="space-y-2">
             <label className="text-xs font-bold text-gray-300 uppercase tracking-wider ml-1">Password</label>
             <div className="relative group">
-              <Lock className="absolute left-4 top-3.5 text-gray-400 group-focus-within:text-orange-500 transition-colors" size={20} />
+              <Lock className="absolute left-4 top-3.5 text-gray-400 group-focus-within:text-green-500 transition-colors" size={20} />
               <input
                 type={showPassword ? "text" : "password"}
-                className="w-full pl-12 pr-12 py-3.5 bg-white/5 border border-gray-600 rounded-xl text-white placeholder-gray-500 focus:bg-white/10 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 outline-none transition-all"
+                className="w-full pl-12 pr-12 py-3.5 bg-white/5 border border-gray-600 rounded-xl text-white placeholder-gray-500 focus:bg-white/10 focus:border-blue-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
                 placeholder="••••••••"
                 onChange={(e) => setCreds({ ...creds, password: e.target.value })}
                 required
@@ -127,7 +127,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-gradient-to-r from-orange-500 to-green-500 hover:from-orange-600 hover:to-green-600 text-white font-bold rounded-xl shadow-lg transform active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed mt-4"
+            className="w-full py-4  rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed mt-4"
           >
             {loading ? (
               <>

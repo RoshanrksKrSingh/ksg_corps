@@ -13,13 +13,13 @@ import VisionMission from "@/components/layout/VisionMission";
 export default function HomePage() {
   return (
     // ✅ Updated: Body background matches overall theme
-    <div className="w-full font-sans bg-[#eceff1] overflow-x-hidden text-gray-900">
+    <div className="w-full font-sans bg-[#eceff1] overflow-hidden text-gray-900">
       
       {/* 1. FIXED NAVBAR (Always on Top) */}
       <Navbar />
       
       {/* 2. HERO SECTION (Self-contained, includes the cards logic now) */}
-      <div className="relative w-full">
+      <div className="relative w-full h-auto">
         <Hero />
       </div>
       
@@ -33,7 +33,11 @@ export default function HomePage() {
         <LatestInsights />
       </div>
       
-      <Footer/>
+      {/* 5. FOOTER SECTION (Distinct Background) */}
+      {/* ✅ Footer ko alag container me daala with Dark Background */}
+      <div className="relative z-30 bg-[#020617] border-t border-white/5">
+        <Footer/>
+      </div>
     </div>
   );
 }

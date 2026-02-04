@@ -67,20 +67,6 @@ export default function OurTeamPage() {
     },
   };
 
-  // Continuous Background Blob Movement
-  const blobAnimation = {
-    animate: {
-      scale: [1, 1.2, 1],
-      rotate: [0, 90, 0],
-      opacity: [0.3, 0.5, 0.3],
-      transition: {
-        duration: 15,
-        repeat: Infinity,
-        ease: "linear",
-      },
-    },
-  };
-
   const strengths = [
     {
       title: "QUALIFIED PROFESSIONALS",
@@ -105,28 +91,69 @@ export default function OurTeamPage() {
   ];
 
   return (
-    <div className="bg-gray-50 min-h-screen font-sans relative overflow-hidden">
+    // ✅ Main Wrapper: Matches CareerWithUs Background (Dark Blue -> Teal)
+    <div className="bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] min-h-screen font-sans transition-colors duration-300 relative overflow-hidden">
       
-      {/* ✅ MOVING BACKGROUND BLOB */}
-      <motion.div 
-        variants={blobAnimation}
-        animate="animate"
-        className="fixed top-20 left-0 w-[800px] h-[800px] bg-gradient-to-r from-orange-100/40 to-green-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"
+      {/* ================= STAR BACKGROUND (From CareerWithUs) ================= */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          backgroundSize: "280px 280px",
+          filter: "brightness(1.8) saturate(1.5)",
+        }}
       />
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/tiny-stars.png')",
+          backgroundSize: "180px 180px",
+          filter: "brightness(2) saturate(1.6)",
+        }}
+      />
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast"
+        style={{
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+          backgroundSize: "120px 120px",
+          filter: "brightness(2.2) saturate(1.8)",
+        }}
+      />
+      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-cyan-400/10 via-transparent to-blue-500/10"></div>
+      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/30 dark:bg-blue-600/25 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-green-400/30 dark:bg-green-600/20 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <style jsx>{`
+        @keyframes starsSlow {
+          from { transform: translateY(0px); }
+          to { transform: translateY(-200px); }
+        }
+        @keyframes starsFast {
+          from { transform: translateY(0px); }
+          to { transform: translateY(-400px); }
+        }
+        .animate-stars-slow {
+          animation: starsSlow 120s linear infinite;
+        }
+        .animate-stars-fast {
+          animation: starsFast 60s linear infinite;
+        }
+      `}</style>
 
       <Navbar forceStatic={true} />
                   
       {/* 2. Spacer Div */}
-      <div className="w-full h-20 bg-[#0b2b3f] rounded-2xl"></div>
+      <div className="w-full h-20 bg-[#0b2b3f]"></div>
 
-      {/* 2. Introduction Section */}
-      <section className="relative w-full pt-37 pb-0 overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"> 
+      {/* ================= MAIN CONTENT CONTAINER (Matches CareerWithUs Widths) ================= */}
+      <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8 w-full">
+
+        {/* 2. Introduction Section */}
+        <section className="relative w-full pt-20 lg:pt-32 pb-0 overflow-visible">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"> 
               
               {/* Text Content */}
               <motion.div 
-                className="-mt-22 lg:-mt-24" 
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }} 
@@ -136,19 +163,19 @@ export default function OurTeamPage() {
                     variants={textFloatAnimation} 
                     animate="animate"
                   >
-                      <h2 className="text-2xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-500 leading-tight">
-                         Our Team & Associates
+                      <h2 className="text-2xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 leading-tight">
+                          Our Team & Associates
                       </h2>
-                      <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                      <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                         We at KSG have a well structured team, with pre-defined roles and responsibilities, and with the required supervision from the seniors/ partners. A structured approach not only aids in delivering services to the satisfaction of clients, but also provides a structured road-map for the professionals.
                       </p>
-                      <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-green-500 rounded-full "></div>
+                      <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-green-500 rounded-full "></div>
                   </motion.div>
               </motion.div>
 
               {/* Image Content with Floating Animation */}
               <motion.div 
-                className="relative group -mt-12 lg:-mt-24" 
+                className="relative group lg:-mt-12" 
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -156,75 +183,79 @@ export default function OurTeamPage() {
                 variants={floatAnimation} 
                 animate="animate"
               >
-                  <div className="relative rounded-3xl overflow-hidden border-4 border-white">
-                     <img 
+                  <div className="relative rounded-[2rem] overflow-hidden border-4 border-white dark:border-white/10 shadow-2xl">
+                      <img 
                         src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
                         alt="Our Team Collaboration" 
                         className="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" 
-                     />
+                      />
                   </div>
               </motion.div>
 
-           </div>
-        </div>
-      </section>
+            </div>
+        </section>
 
-      {/* SECTION 1: Team Strengths (With Vision/Mission Card Animation) */}
-      <section id="advisors" className="pt-10 pb-20 px-6 max-w-7xl mx-auto">
-        
-        {/* Title Animation */}
-        <motion.div 
+        {/* SECTION 1: Team Strengths (With Vision/Mission Card Animation) */}
+        <section id="advisors" className="pt-20 pb-20">
+          
+          {/* Title Animation */}
+          <motion.div 
             className="text-center mb-16"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.3 }} 
             variants={fadeInUp}
-        >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#041D2D] mb-4">
-              Our Team four <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-500">Prime Strength</span>
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 mb-4">
+              Our Team four <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">Prime Strength</span>
             </h2>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-green-500 mx-auto rounded-full"></div>
-        </motion.div>
+            <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-green-500 mx-auto rounded-full"></div>
+          </motion.div>
 
-        {/* Staggered Grid Animation with Pop-Up Effect */}
-        <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          {/* Staggered Grid Animation with Pop-Up Effect */}
+          <motion.div 
+            // ✅ FIXED: Constrained width on large screens (1441px - 2600px) to match 1440px layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto" 
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.1 }} 
-        >
-           {strengths.map((item, idx) => (
-             <motion.div 
+          >
+            {strengths.map((item, idx) => (
+              <motion.div 
                 key={idx} 
-                variants={cardVariants} // ✅ Changed to cardVariants (Pop Up)
-                whileHover={{ y: -10, scale: 1.02 }} // ✅ Added Hover Effect (Lift Up)
-                className="bg-white p-6 rounded-3xl border border-gray-100 shadow-md hover:shadow-orange-500/20 transition-all duration-500 relative overflow-hidden group"
-             >
+                variants={cardVariants} // ✅ Preserved Pop-Up Animation
+                whileHover={{ y: -10, scale: 1.02 }} 
+                // ✅ INCREASED HEIGHT: Added 'min-h-[350px]' for taller cards
+                className="bg-white/80 dark:bg-white/5 backdrop-blur-md p-4 rounded-3xl  transition-all duration-500 relative overflow-hidden group flex flex-col min-h-[350px]"
+              >
                 {/* Background Blob Effect (Subtle) */}
-                <div className="absolute -right-10 -top-10 w-32 h-32 bg-orange-50 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -right-10 -top-10 w-32 h-32 bg-orange-50 dark:bg-orange-500/10 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 {/* Subtle Gradient Background on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-green-50 dark:from-white/5 dark:to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 {/* Gradient Icon Background */}
-                <div className="relative z-10 w-14 h-14 bg-gradient-to-br from-orange-500 to-green-500 rounded-2xl flex items-center justify-center mb-6 mx-auto md:mx-0 shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
-                   <item.icon className="text-white" size={32} />
+                <div className="relative z-10 w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 flex-shrink-0">
+                    <item.icon className="text-white" size={36} />
                 </div>
                 
-                <h3 className="relative z-10 text-sm font-bold text-[#041D2D] mb-3 text-center md:text-left group-hover:text-green-600 transition-colors">
+                <h3 className="relative z-10 text-base font-bold text-gray-900 dark:text-white mb-4 text-center group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
                   {item.title}
                 </h3>
                 
-                <p className="relative z-10 text-gray-600 leading-relaxed text-xs text-center md:text-left font-medium">
+                <p className="relative z-10 text-gray-600 dark:text-gray-300 leading-relaxed text-sm text-center font-medium flex-grow">
                     {item.desc}
                 </p>
-             </motion.div>
-           ))}
-        </motion.div>
-      </section>
+              </motion.div>
+            ))}
+          </motion.div>
+        </section>
 
-      <div className="rounded-2xl overflow-hidden">
+      </div>
+
+      {/* Footer */}
+      <div className="relative z-20 bg-[#020617] border-t border-white/5">
         <Footer/>
       </div>
     </div>

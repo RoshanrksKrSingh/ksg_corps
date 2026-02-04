@@ -2,14 +2,13 @@ import Link from 'next/link';
 import { MapPin, Briefcase, Clock, ArrowRight, AlertCircle } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { connectDB } from "@/lib/db"; // ✅ Import DB connection
-import Job from "@/models/Job"; // ✅ Import Job Model
+import { connectDB } from "@/lib/db"; 
+import Job from "@/models/Job"; 
 
 // ✅ Fetch Jobs (Server Component - Direct DB Call)
 async function getJobs() {
   try {
-    await connectDB(); // Connect to DB directly
-    // Fetch jobs, sort by date, and convert to plain JSON
+    await connectDB(); 
     const jobs = await Job.find({ isActive: true }).sort({ createdAt: -1 }).lean();
     return JSON.parse(JSON.stringify(jobs));
   } catch (error) {
@@ -21,29 +20,69 @@ export default async function JobOpeningsPage() {
   const jobs = await getJobs();
 
   return (
-    <div className="bg-gray-50 min-h-screen font-sans">
+    // ✅ Main Wrapper: Matches Career/AboutUs Background Transition
+    <div className="bg-slate-50 dark:bg-[#09102d] min-h-screen font-sans transition-colors duration-300">
       
       {/* 1. Navbar */}
       <Navbar forceStatic={true} />
             
       {/* 2. Spacer Div */}
-      <div className="w-full h-20 bg-[#0b2b3f] rounded-2xl"></div>
+      <div className="w-full h-20 bg-[#09102d]"></div>
 
-      {/* 3. Job Listings Section */}
-      <div className="relative z-10 bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* 3. Job Listings Section (Styled like CareerWithUs) */}
+      <section className="relative w-full min-h-[85vh] flex flex-col items-center overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] pt-10 pb-20 group font-sans transition-colors duration-300">
+
+        {/* ================= STAR BACKGROUND LAYERS ================= */}
+        <div
+            className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen"
+            style={{
+            backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+            backgroundSize: "280px 280px",
+            filter: "brightness(1.8) saturate(1.5)",
+            }}
+        />
+        <div
+            className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow"
+            style={{
+            backgroundImage: "url('https://www.transparenttextures.com/patterns/tiny-stars.png')",
+            backgroundSize: "180px 180px",
+            filter: "brightness(2) saturate(1.6)",
+            }}
+        />
+        <div
+            className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast"
+            style={{
+            backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
+            backgroundSize: "120px 120px",
+            filter: "brightness(2.2) saturate(1.8)",
+            }}
+        />
+        <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-cyan-400/10 via-transparent to-blue-500/10"></div>
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/30 dark:bg-blue-600/25 rounded-full blur-[140px] pointer-events-none"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-green-400/30 dark:bg-green-600/20 rounded-full blur-[140px] pointer-events-none"></div>
+
+        {/* CSS Animations for Background */}
+        <style>{`
+            @keyframes starsSlow { from { transform: translateY(0px); } to { transform: translateY(-200px); } }
+            @keyframes starsFast { from { transform: translateY(0px); } to { transform: translateY(-400px); } }
+            .animate-stars-slow { animation: starsSlow 120s linear infinite; }
+            .animate-stars-fast { animation: starsFast 60s linear infinite; }
+        `}</style>
+
+        {/* ================= CONTENT CONTAINER (Matches CareerWithUs Widths) ================= */}
+        <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8 w-full">
             
             {/* Section Heading */}
-            <div className="text-center mb-16 max-w-3xl mx-auto">
-                <span className="inline-block py-1 px-3 rounded-full bg-green-100 border border-green-200 mb-4">
-                    <span className="text-green-600 font-bold uppercase text-xs tracking-widest">
+            <div className="text-center mb-16 max-w-3xl mx-auto pt-10">
+                <span className="inline-block py-1.5 px-4 rounded-tl-[20px] rounded-br-[20px] border border-gray-300 dark:border-white/10 bg-white/60 dark:bg-white/20 shadow-sm mb-6">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-600 dark:from-green-400 dark:to-blue-500 font-bold uppercase text-xs tracking-[0.2em]">
                         We are hiring
                     </span>
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-[#041D2D] mb-4">
-                    Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-500">Opportunities</span>
+                <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 mb-4">
+                    Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">Opportunities</span>
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300 text-lg">
                     Find the perfect role for you and join our dynamic team at KSG Corporate Services.
                 </p>
             </div>
@@ -54,27 +93,29 @@ export default async function JobOpeningsPage() {
                     jobs.map((job: any) => (
                         <div 
                             key={job._id} 
-                            className="group bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-orange-100 transition-all duration-300 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+                            // ✅ Updated Card Style: Glassmorphism + Responsive + Dark Mode compatible
+                            className="group bg-white/80 dark:bg-white/5 backdrop-blur-md p-8 rounded-[2rem] shadow-sm border border-gray-200 dark:border-white/10 hover:shadow-xl hover:border-orange-200 dark:hover:border-orange-500/30 transition-all duration-300 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
                         >
                             {/* Job Details */}
                             <div className="space-y-4 flex-1">
-                                <h3 className="text-2xl font-bold text-[#041D2D] group-hover:text-orange-600 transition-colors">
-                                    {job.title}
-                                </h3>
+                               <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-600 bg-clip-text text-transparent">
+  {job.title}
+</h3>
+
                                 
-                                <div className="flex flex-wrap items-center gap-4 text-sm font-medium text-gray-500">
-                                    <span className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
-                                        <MapPin size={16} className="text-orange-500" /> {job.location}
+                                <div className="flex flex-wrap items-center gap-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                                    <span className="flex items-center gap-1.5 bg-gray-50 dark:bg-white/10 px-3 py-1.5 rounded-lg border border-gray-100 dark:border-white/5">
+                                        <MapPin size={16} className="text-green-500" /> {job.location}
                                     </span>
-                                    <span className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
-                                        <Briefcase size={16} className="text-green-500" /> {job.type}
+                                    <span className="flex items-center gap-1.5 bg-gray-50 dark:bg-white/10 px-3 py-1.5 rounded-lg border border-gray-100 dark:border-white/5">
+                                        <Briefcase size={16} className="text-black-500" /> {job.type}
                                     </span>
-                                    <span className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
+                                    <span className="flex items-center gap-1.5 bg-gray-50 dark:bg-white/10 px-3 py-1.5 rounded-lg border border-gray-100 dark:border-white/5">
                                         <Clock size={16} className="text-blue-500" /> Posted Recently
                                     </span>
                                 </div>
 
-                                <p className="text-gray-600 leading-relaxed line-clamp-2 max-w-3xl">
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-2 max-w-3xl">
                                     {job.description}
                                 </p>
                             </div>
@@ -83,7 +124,7 @@ export default async function JobOpeningsPage() {
                             <div className="w-full md:w-auto">
                                 <Link 
                                     href="/contact" 
-                                    className="inline-flex w-full md:w-auto items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-green-600 text-white font-bold shadow-lg hover:shadow-orange-500/30 transition-all transform hover:-translate-y-1 hover:scale-105"
+                                    className="inline-flex w-full md:w-auto items-center justify-center gap-2 px-8 py-3.5 rounded-tl-[20px] rounded-br-[20px] bg-gradient-to-r from-blue-500 to-green-600 text-white font-bold shadow-lg hover:shadow-orange-500/30 transition-all transform hover:-translate-y-1 hover:scale-105"
                                 >
                                     Apply Now <ArrowRight size={18} />
                                 </Link>
@@ -92,12 +133,12 @@ export default async function JobOpeningsPage() {
                     ))
                 ) : (
                     // Empty State
-                    <div className="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
-                        <div className="inline-block p-4 rounded-full bg-gray-50 mb-4">
-                            <AlertCircle className="text-gray-400" size={40} />
+                    <div className="text-center py-20 bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-[2rem] border border-gray-200 dark:border-white/10 shadow-sm">
+                        <div className="inline-block p-4 rounded-full bg-gray-50 dark:bg-white/10 mb-4">
+                            <AlertCircle className="text-gray-400 dark:text-gray-500" size={40} />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-700">No Open Positions</h3>
-                        <p className="text-gray-500 mt-2">
+                        <h3 className="text-xl font-bold text-gray-700 dark:text-white">No Open Positions</h3>
+                        <p className="text-gray-500 dark:text-gray-400 mt-2">
                             We don't have any openings right now. Check back later!
                         </p>
                     </div>
@@ -105,13 +146,13 @@ export default async function JobOpeningsPage() {
             </div>
 
         </div>
-      </div>
+      </section>
 
       {/* 4. Footer */}
-        <div className="rounded-2xl overflow-hidden">
-       <Footer/>
+      <div className="relative z-30 bg-[#020617] border-t border-white/5">
+          <Footer/>
       </div>
       
     </div>
   );
-}
+} 

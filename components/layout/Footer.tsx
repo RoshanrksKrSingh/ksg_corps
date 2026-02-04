@@ -83,7 +83,7 @@ const Footer = () => {
             </h4>
             <ul className="space-y-5 text-sm text-white">
               <li className="flex items-start group">
-                <MapPin className="mr-3 h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0 group-hover:text-white transition" />
+                <MapPin className="mr-3 h-5 w-5 text-green-500 mt-0.5 flex-shrink-0 group-hover:text-white transition" />
                 <span className="leading-relaxed">
                   Office 705, Suit 7, AL Jawhara Building<br />
                   (Habib Bank AG Zurich), Bank Street,<br />
@@ -91,7 +91,7 @@ const Footer = () => {
                 </span>
               </li>
               <li className="flex items-center group">
-                <Phone className="mr-3 h-5 w-5 text-orange-500 flex-shrink-0 group-hover:text-white transition" />
+                <Phone className="mr-3 h-5 w-5 text-blue-500 flex-shrink-0 group-hover:text-white transition" />
                 <span>+971 561657158</span>
               </li>
               <li className="flex items-center group">

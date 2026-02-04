@@ -110,7 +110,7 @@ export default function AdminBlogsPage() {
                         Are you sure you want to delete this blog? This action cannot be undone.
                     </p>
                     <div className="flex gap-3 w-full">
-                        <button onClick={() => setDeleteId(null)} className="flex-1 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition">Cancel</button>
+                        <button onClick={() => setDeleteId(null)} className="flex-1 py-3 bg-gray-100 text-gray-700 font-bold rounded-tl-[30px] rounded-br-[30px] hover:bg-gray-200 transition">Cancel</button>
                         <button onClick={executeDelete} className="flex-1 py-3 rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition">Yes, Delete</button>
                     </div>
                 </div>

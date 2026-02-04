@@ -48,12 +48,14 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full pt-0 pb-6 lg:pt-12 lg:pb-0 overflow-hidden bg-slate-50 dark:bg-[#151B33] transition-colors duration-300 flex items-center justify-center">
+    <section className="relative w-full pt-0 pb-6 lg:pt-12 2xl:pt-30 lg:pb-0 overflow-hidden bg-slate-50 dark:bg-[#151B33] transition-colors duration-300 flex items-center justify-center min-h-[600px] lg:min-h-[80vh] 2xl:min-h-[90vh]">
+      
       {/* ===== FULL HERO BACKGROUND IMAGE ===== */}
+      {/* ✅ FIX: Removed top padding on image, ensured it covers full area properly on large screens */}
       <img
         src="https://www.virtualaccountants.ae/wp-content/uploads/2025/07/Virtual-Accountants-Home-Banner-image.jpg"
         alt="Hero Background"
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover object-center z-0"
       />
 
       {/* ================= BACKGROUND EFFECTS ================= */}
@@ -135,7 +137,7 @@ const Hero = () => {
               <img
                 src="https://ik.imagekit.io/travechela/pexels-gustavo-fring-4173357-removebg-preview.png"
                 alt="Top Person"
-                className="absolute top-30 right-[-10%] w-[65%] sm:w-[60%] lg:w-[100%] object-contain z-20"
+                className="absolute top-30 2xl:top-40 right-[-10%] 2xl:right-[5%] w-[65%] sm:w-[60%] lg:w-[100%] 2xl:w-[150%] object-contain z-20"
               />
             </div>
           </div>

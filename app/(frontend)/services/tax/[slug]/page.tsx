@@ -11,6 +11,7 @@ import {
   ChevronRight,
   CheckCircle2,
 } from "lucide-react";
+import { motion } from "framer-motion"; // ✅ Import Framer Motion
 
 // --- TAX DATA ---
 const servicesData: Record<
@@ -87,7 +88,7 @@ const servicesData: Record<
   "vat-refund": {
     title: "VAT Refund Support",
     desc: "Refund of VAT is a scenario where input tax amount is higher than output tax amount as per the tax return filed with the tax authority. Typically refund claim is scrutinised by the tax authority before sanctioning the refund claim. We Assist with FTA Information Requests for VAT Refunds filed, VAT Tourist Refund Scheme, VAT Refund for Business Visitors, VAT Refund for Expo 2020 Official Participants, and VAT Refund for Building New Residences by UAE Nationals.",
-    subtitle: "Our VAT Refund Support service covers:", // Added generic subtitle as none provided specific
+    subtitle: "Our VAT Refund Support service covers:", 
     details: [
       "Refund Assessment through a comprehensive VAT Health Check",
       "Preparation of refund application and assistance in submission",
@@ -116,7 +117,7 @@ const sidebarLinks = [
   { id: "vat-health-check", label: "VAT/Excise Health Checks" },
   { id: "vat-registration", label: "VAT/Excise Registration" },
   { id: "vat-audit", label: "VAT/Excise Audit Support" },
-  { id: "vat-refund", label: "VAT/Excise Audit Support" },
+  { id: "vat-refund", label: "VAT Refund Support" }, // Fixed label duplication
   { id: "voluntary-disclosure", label: "Voluntary Disclosure (VD)" },
 ];
 
@@ -132,149 +133,180 @@ export default function ServiceDetailPage({
     return notFound();
   }
 
+  // Animation Variant
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  // ✅ Common Style for Active Buttons (Gradient + Specific Radius + Shadow)
+  const activeButtonStyle = "rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] shadow-orange-500/20";
+
   return (
-    <div className="bg-[#041D2D] min-h-screen font-sans relative overflow-hidden">
+    <div className="bg-slate-50 dark:bg-[#09102d] min-h-screen font-sans transition-colors duration-300">
       
       <Navbar forceStatic={true} />
+      
+      {/* Spacer */}
+      <div className="h-20 bg-[#09102d]"></div>
 
-      {/* Background Elements */}
-      <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
-        <div className="absolute top-20 left-[-100px] w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-20 right-[-100px] w-96 h-96 bg-green-600/10 rounded-full blur-[120px]"></div>
-      </div>
-
-      <div className="h-20"></div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-9 py-10 -mt-8">
+      {/* ================= MAIN CONTENT WRAPPER (Starry Background) ================= */}
+      <div className="relative overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] transition-colors duration-300 min-h-screen">
         
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm font-medium text-green-400 mb-8">
-          <Link
-            href="/services/tax"
-            className="hover:text-green-400 transition-colors"
-          >
-            Tax Advisory
-          </Link>
-          <span>/</span>
-          <span className="text-white">{service.title}</span>
-        </div>
+        {/* --- STAR BACKGROUND LAYERS --- */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')", backgroundSize: "280px 280px", filter: "brightness(1.8) saturate(1.5)" }} />
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/tiny-stars.png')", backgroundSize: "180px 180px", filter: "brightness(2) saturate(1.6)" }} />
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')", backgroundSize: "120px 120px", filter: "brightness(2.2) saturate(1.8)" }} />
+        <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-cyan-400/5 via-transparent to-blue-500/5"></div>
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/20 dark:bg-blue-600/20 rounded-full blur-[140px] pointer-events-none"></div>
+        <div className="absolute bottom-[20%] right-[-10%] w-[400px] h-[400px] bg-green-400/20 dark:bg-green-600/20 rounded-full blur-[140px] pointer-events-none"></div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        <style jsx>{`
+          @keyframes starsSlow { from { transform: translateY(0px); } to { transform: translateY(-200px); } }
+          @keyframes starsFast { from { transform: translateY(0px); } to { transform: translateY(-400px); } }
+          .animate-stars-slow { animation: starsSlow 120s linear infinite; }
+          .animate-stars-fast { animation: starsFast 60s linear infinite; }
+        `}</style>
+
+        {/* Content Container */}
+        <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8 py-10 -mt-8">
           
-          {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left) --- */}
-          <div className="lg:col-span-1 space-y-4 order-last lg:order-first">
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6">
-              <h3 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">
-                Other Services
-              </h3>
-              <ul className="space-y-3">
-                {sidebarLinks.map((link) => {
-                  const isActive = slug === link.id;
-                  return (
-                    <li key={link.id}>
-                      <Link
-                        href={`/services/tax/${link.id}`}
-                        className={`flex items-center justify-between p-3 rounded-xl text-sm font-medium transition-all duration-300 ${
-                          isActive
-                            ? "bg-gradient-to-r from-orange-500 to-green-500 text-white shadow-lg"
-                            : "text-gray-300 hover:bg-white/10 hover:text-white"
-                        }`}
-                      >
-                        {link.label}
-                        {isActive && <ChevronRight size={16} />}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-900 to-[#041D2D] border border-white/10 rounded-2xl p-6 text-center">
-              <h4 className="text-white font-bold mb-2">Need Expert Advice?</h4>
-              <p className="text-gray-400 text-xs mb-4">
-                Our team is ready to help you.
-              </p>
-              <Link
-                href="/contact"
-                className="block w-full py-2 bg-white text-[#041D2D] font-bold rounded-lg text-sm hover:bg-gray-100 transition"
-              >
-                Contact Us
-              </Link>
-            </div>
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-sm font-medium text-green-600 dark:text-green-400 mb-8 pt-8">
+            <Link
+              href="/services/tax"
+              className="hover:text-green-500 transition-colors"
+            >
+              Tax Advisory
+            </Link>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-900 dark:text-white">{service.title}</span>
           </div>
 
-          {/* --- RIGHT CONTENT --- */}
-          <div className="lg:col-span-3">
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden">
-              
-              {/* 1. Title */}
-              <h1 className="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-green-200">
-                {service.title}
-              </h1>
-
-              {/* 2. Description */}
-              <p className="text-gray-300 text-sm md:text-lg leading-relaxed mb-8">
-                {service.desc}
-              </p>
-
-              {/* 3. Image Banner */}
-              <div className="relative w-full h-38 md:h-96 rounded-2xl overflow-hidden mb-8 shadow-2xl border border-white/10 group">
-                <img
-                  src="https://images.pexels.com/photos/6863259/pexels-photo-6863259.jpeg"
-                  alt={service.title}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#041D2D]/80 via-transparent to-transparent"></div>
-              </div>
-              
-              {/* Subtitle (Dynamic based on service) */}
-              {service.subtitle && (
-                <div>
-                  <h5 className="text-sm md:text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-green-200">
-                    {service.subtitle}
-                  </h5>
-                </div>
-              )}
-
-              {/* 4. Includes List */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-                {service.details.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start md:items-center gap-3 p-3 md:p-4 bg-white/5 rounded-xl border border-white/5 hover:border-green-500/30 transition-colors"
-                  >
-                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1 md:mt-0" size={20} />
-                    <span className="text-gray-200 text-sm md:text-base font-medium leading-relaxed">
-                      {item}
-                    </span>
-                  </div>
-                ))}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+            
+            {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left) --- */}
+            <div className="lg:col-span-1 space-y-4 order-last lg:order-first">
+              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-white/10 pb-4">
+                  Other Services
+                </h3>
+                <ul className="space-y-3">
+                  {sidebarLinks.map((link) => {
+                    const isActive = slug === link.id;
+                    return (
+                      <li key={link.id}>
+                        <Link
+                          href={`/services/tax/${link.id}`}
+                        className={`flex items-center justify-between gap-3 px-3 py-3 rounded-xl transition-all duration-300 whitespace-normal xl:whitespace-nowrap text-sm  2xl:text-xl ${
+                            isActive
+                              ? activeButtonStyle
+                              : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white "
+                          }`}
+                        >
+                          {link.label}
+                          {isActive && <ChevronRight size={16} />}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
 
-              {/* 5. Buttons */}
-              <div className="flex flex-wrap gap-4 pt-6 border-t border-white/10">
-                <Link
-                  href="/services/tax"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold text-sm shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1"
-                >
-                  <ArrowLeft size={18} /> Back 
-                </Link>
-
+              <div className="bg-gradient-to-br from-blue-900 to-[#041D2D] border border-white/10 rounded-2xl p-6 text-center shadow-lg">
+                <h4 className="text-white font-bold mb-2">Need Expert Advice?</h4>
+                <p className="text-gray-400 text-xs mb-4">
+                  Our team is ready to help you.
+                </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-green-500 text-white font-bold text-sm shadow-lg hover:shadow-orange-500/40 transition-all transform hover:-translate-y-1"
+                  className={`block w-full py-3 text-center transition-all duration-300 ${activeButtonStyle}`}
                 >
-                  <MessageSquare size={18} /> Free Consultation
+                  Contact Us
                 </Link>
               </div>
+            </div>
+
+            {/* --- RIGHT CONTENT --- */}
+            <div className="lg:col-span-3">
+              <motion.div 
+                className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden shadow-xl"
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+              >
+                
+                {/* 1. Title */}
+                <h1 className="text-xl md:text-xl xl:text-2xl 2xl:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+                  {service.title}
+                </h1>
+
+                {/* 2. Description (Responsive Text) */}
+                <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base xl:text-sm 2xl:text-xl leading-relaxed mb-8">
+                  {service.desc}
+                </p>
+
+                {/* 3. Image Banner */}
+                <div className="relative w-full h-48 md:h-96 rounded-2xl overflow-hidden mb-8 group shadow-lg">
+                  <img
+                    src="https://images.pexels.com/photos/6863259/pexels-photo-6863259.jpeg"
+                    alt={service.title}
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                
+                {/* Subtitle (Dynamic based on service) */}
+                {service.subtitle && (
+                  <div>
+                    <h5 className="text-sm md:text-xl font-bold mb-6 text-gray-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200">
+                      {service.subtitle}
+                    </h5>
+                  </div>
+                )}
+
+                {/* 4. Includes List */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                  {service.details.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start md:items-center gap-3 p-3 md:p-4 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/5 hover:border-green-500/30 transition-colors"
+                    >
+                      <CheckCircle2 className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1 md:mt-0" size={20} />
+                      <span className="text-gray-700 dark:text-gray-200 text-sm md:text-base font-medium leading-relaxed">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* 5. Buttons */}
+                <div className="flex flex-wrap gap-4 pt-6 border-t border-gray-200 dark:border-white/10">
+                  <Link
+                    href="/services/tax"
+                    className={`inline-flex items-center gap-2 px-6 py-3 transition-all duration-300 ${activeButtonStyle}`}
+                  >
+                    <ArrowLeft size={18} /> Back 
+                  </Link>
+
+                  <Link
+                    href="/contact"
+                    className={`inline-flex items-center gap-2 px-8 py-3 transition-all duration-300 ${activeButtonStyle}`}
+                  >
+                    <MessageSquare size={18} /> Free Consultation
+                  </Link>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="rounded-b-2xl overflow-hidden">
+      {/* ================= FOOTER SECTION (Distinct Background) ================= */}
+      <div className="relative z-20 bg-gray-900 dark:bg-[#020617] border-t border-gray-200 dark:border-white/5">
         <Footer/>
       </div>
+
     </div>
   );
-}
+}   

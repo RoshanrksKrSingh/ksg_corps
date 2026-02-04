@@ -76,7 +76,7 @@ const AboutUs = () => {
           <div className="space-y-8">
             <motion.div variants={fadeRight} initial="hidden" whileInView="visible">
               <span className="inline-block py-1.5 px-4 rounded-tl-[20px] rounded-br-[20px] border border-gray-300 dark:border-white/10 bg-white/60 dark:bg-white/20 shadow-sm">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-green-400 dark:to-blue-500 font-bold uppercase text-xs tracking-[0.2em]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 font-bold uppercase text-xs tracking-[0.2em]">
                   About Us
                 </span>
               </span>
