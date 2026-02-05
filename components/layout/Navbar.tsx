@@ -60,7 +60,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
           <div className="flex-shrink-0 z-50 -ml-6 md:-ml-7 lg:-ml-5 xl:-ml-9">
             <Link href="/">
               <img 
-                src="https://ik.imagekit.io/travechela/K__4_-removebg-preview.png"
+                src="https://ik.imagekit.io/travechela/K__5_-removebg-preview.png"
                 alt="KSG Logo" 
                 className="object-contain object-left transition-all duration-300 h-30 md:h-30 lg:h-32 xl:h-42 2xl:h-45 w-auto" 
               />
