@@ -49,7 +49,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
       <Navbar forceStatic={true} />
 
       {/* 2. Spacer Div */}
-      <div className="w-full h-24 bg-[#0b2b3f]"></div>
+      <div className="w-full h-24 "></div>
 
       {/* ================= MAIN CONTENT CONTAINER ================= */}
       {/* ✅ Updated: Width matches 'AboutUs' exactly (w-[99%] max-w-8xl) to reduce side spacing */}
