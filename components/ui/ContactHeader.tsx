@@ -8,7 +8,7 @@ interface ContactHeaderProps {
   image?: string;
 }
 
-const DEFAULT_BG = "https://cdn-becae.nitrocdn.com/OcwjylvgvBbNRDjYtTmGOXeUgIvOimBD/assets/images/optimized/rev-47b5ce8/www.aaconsultancy.ae/wp-content/uploads/2021/10/AA-Associate-news.webp";
+const DEFAULT_BG = "https://ik.imagekit.io/travechela/pexels-gustavo-fring-4173357-removebg-preview.png?updatedAt=1769605406114";
 
 export default function ContactHeader({ title, breadcrumb, image }: ContactHeaderProps) {
   const bgImage = image || DEFAULT_BG;

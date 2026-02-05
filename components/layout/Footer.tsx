@@ -33,25 +33,25 @@ const Footer = () => {
             <div className="flex flex-col items-start w-full">
               
               {/* Logo - Size Maintained */}
-              <div className="-mb-10"> 
+              <div className="-mb-10 -mt-10 "> 
                 <Link href="/" className="block">
                   <img 
                     src="http://ksgcorps.com/wp-content/uploads/2021/11/ksg-logo-white.png"
                     alt="KSG Corporate Services Logo"
-                    className="-ml-5 h-35 md:h-35 lg:h-39 xl:h-45 2xl:h-45 w-auto object-contain"
+                    className="-ml-6 md:-ml-5 2xl:-ml-10 h-35 md:h-35 lg:h-39 xl:h-45 2xl:h-55 w-auto object-contain"
                   />
                 </Link>
               </div>
 
               {/* Description Text - Adjusted spacing naturally without negative margins */}
-              <p className="text-sm leading-relaxed mb-6 font-medium text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-green-300 max-w-sm">
+              <p className="text-sm leading-relaxed mb-6 ml-0 2xl:-ml-2 font-medium text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-green-300 max-w-sm">
                 KSG Corporate Services is a corporate consulting firm formed with the objective of providing unparalleled broad range of corporate advisory services.
               </p>
 
               {/* Social Icons */}
               <div className="flex space-x-4">
                 {[Facebook, Instagram, Linkedin, Twitter].map((Icon, index) => (
-                  <Link key={index} href="#" className="text-white hover:text-orange-500 transition transform hover:scale-110">
+                  <Link key={index} href="#" className="text-white hover:text-green-500 transition transform hover:scale-110 ml-0 2xl:-ml-3">
                     <Icon size={22} />
                   </Link>
                 ))}
@@ -68,8 +68,8 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-white">
               {['Home', 'Our Team', 'Career', 'Insights', 'Contact Us'].map((item, idx) => (
                 <li key={idx}>
-                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:text-orange-400 transition flex items-center gap-2">
-                    <span className="text-orange-500">›</span> {item}
+                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:text-green-400 transition flex items-center gap-2">
+                    <span className="text-blue-500">›</span> {item}
                   </Link>
                 </li>
               ))}

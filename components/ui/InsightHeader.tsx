@@ -11,7 +11,7 @@ interface InsightHeaderProps {
   badgeClassName?: string;
 }
 
-const DEFAULT_BG = "https://cdn-becae.nitrocdn.com/OcwjylvgvBbNRDjYtTmGOXeUgIvOimBD/assets/images/optimized/rev-47b5ce8/www.aaconsultancy.ae/wp-content/uploads/2021/10/AA-Associate-news.webp";
+const DEFAULT_BG = "https://ik.imagekit.io/travechela/pexels-gustavo-fring-4173357-removebg-preview.png?updatedAt=1769605406114";
 
 export default function InsightHeader({ title, breadcrumb, image, isAnimated = false, badgeClassName = "" }: InsightHeaderProps) {
   const bgImage = image || DEFAULT_BG;
@@ -59,7 +59,7 @@ export default function InsightHeader({ title, breadcrumb, image, isAnimated = f
         </span>
 
         {/* Title */}
-        <h1 className="text-4xl md:text-xl lg:text-7xl font-bold text-white md:mb-0 tracking-tight drop-shadow-xl leading-tight">
+        <h1 className="text-4xl md:text-xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-600 dark:from-green-400 dark:to-blue-500 md:mb-0 tracking-tight drop-shadow-xl leading-tight">
           {title}
         </h1>
 

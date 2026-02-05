@@ -38,13 +38,13 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
   };
 
   const headerTitles: any = {
-    all: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Insights</span> & Updates</span>),
-    blogs: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Latest</span> Blogs</span>),
-    audit: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Accounting &</span> Audit</span>),
-    tax: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Tax</span> Advisory</span>),
-    business: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Business</span> Setup/PRO</span>),
-    risk: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Risk</span> Advisory</span>),
-    events: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-green-500 font-bold">Upcoming</span> Events</span>)
+    all: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 font-bold">Insights</span> & Updates</span>),
+    blogs: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 font-bold">Latest</span> Blogs</span>),
+    audit: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 font-bold">Accounting &</span> Audit</span>),
+    tax: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 font-bold">Tax</span> Advisory</span>),
+    business: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 font-bold">Business</span> Setup/PRO</span>),
+    risk: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 font-bold">Risk</span> Advisory</span>),
+    events: (<span className="text-2xl md:text-4xl block leading-tight mt-1 md:mt-18"><span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 font-bold">Upcoming</span> Events</span>)
   };
 
   const breadcrumbMap: any = {
@@ -87,7 +87,7 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
                scroll={false} 
                className={`flex items-center gap-3 px-6 py-4 rounded-xl border shadow-lg transition-all transform hover:-translate-y-1 ${
                  activeCategory === cat.id 
-                   ? "bg-gradient-to-r from-orange-500 to-green-500 text-white border-transparent ring-2 ring-white/20" 
+                   ? "bg-gradient-to-r from-blue-500 to-green-500 text-white border-transparent ring-2 ring-white/20" 
                    : "bg-white text-gray-700 border-gray-100 hover:border-orange-200 hover:shadow-orange-500/10"
                }`}
              >
@@ -116,7 +116,7 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
                      alt={blog.title} 
                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                    />
-                   <div className="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md">
+                   <div className="absolute top-4 left-4 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md">
                       {breadcrumbMap[blog.category] || blog.category || "Insights"}
                    </div>
                 </div>
@@ -132,7 +132,7 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
                      {blog.description}
                    </p>
                    <div className="mt-auto">
-                      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-green-500 text-white text-xs font-bold uppercase tracking-wider shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
+                      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-tl-[20px] rounded-br-[20px] bg-gradient-to-r from-blue-500 to-green-500 text-white text-xs font-bold uppercase tracking-wider shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
                          Read Full Article <ArrowRight size={14} />
                       </span>
                    </div>
@@ -151,8 +151,8 @@ export default async function InsightsPage({ searchParams }: { searchParams: { c
           </div>
         )}
       </div>
-      <div className="rounded-2xl overflow-hidden">
-        <Footer/>
+      <div className="relative z-20 bg-[#020617] border-t border-white/5">
+        <Footer />
       </div>
     </div>
   );

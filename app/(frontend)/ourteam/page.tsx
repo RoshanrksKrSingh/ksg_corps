@@ -7,63 +7,41 @@ import { motion } from "framer-motion";
 
 export default function OurTeamPage() {
   
-  // --- 1. ANIMATION VARIANTS (UPDATED to match VisionMission) ---
-
-  // Fade Up Entry Animation (For text/headers)
+  // --- 1. ANIMATION VARIANTS ---
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
-  // Stagger Effect for Grid
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2 // Slightly slower stagger for pop effect
-      }
+      transition: { staggerChildren: 0.2 }
     }
   };
 
-  // ✅ NEW: Card Entrance Animation (Pop Up - Same as VisionMission)
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: { 
       opacity: 1, 
       y: 0, 
       scale: 1,
-      transition: { 
-        type: "spring",
-        damping: 20,
-        stiffness: 100
-      } 
+      transition: { type: "spring", damping: 20, stiffness: 100 } 
     },
   };
 
-  // Continuous Floating for Image (Slower)
   const floatAnimation = {
     animate: {
       y: [0, -15, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        repeatType: "reverse" as const,
-        ease: "easeInOut",
-      },
+      transition: { duration: 6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" },
     },
   };
 
-  // Continuous Floating for Text
   const textFloatAnimation = {
     animate: {
       y: [0, -8, 0], 
-      transition: {
-        duration: 5, 
-        repeat: Infinity,
-        repeatType: "reverse" as const,
-        ease: "easeInOut",
-      },
+      transition: { duration: 5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" },
     },
   };
 
@@ -91,53 +69,22 @@ export default function OurTeamPage() {
   ];
 
   return (
-    // ✅ Main Wrapper: Matches CareerWithUs Background (Dark Blue -> Teal)
+    // ✅ Main Wrapper
     <div className="bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] min-h-screen font-sans transition-colors duration-300 relative overflow-hidden">
       
-      {/* ================= STAR BACKGROUND (From CareerWithUs) ================= */}
-      <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen"
-        style={{
-          backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
-          backgroundSize: "280px 280px",
-          filter: "brightness(1.8) saturate(1.5)",
-        }}
-      />
-      <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow"
-        style={{
-          backgroundImage: "url('https://www.transparenttextures.com/patterns/tiny-stars.png')",
-          backgroundSize: "180px 180px",
-          filter: "brightness(2) saturate(1.6)",
-        }}
-      />
-      <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast"
-        style={{
-          backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')",
-          backgroundSize: "120px 120px",
-          filter: "brightness(2.2) saturate(1.8)",
-        }}
-      />
+      {/* ================= STAR BACKGROUND ================= */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')", backgroundSize: "280px 280px", filter: "brightness(1.8) saturate(1.5)" }} />
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/tiny-stars.png')", backgroundSize: "180px 180px", filter: "brightness(2) saturate(1.6)" }} />
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')", backgroundSize: "120px 120px", filter: "brightness(2.2) saturate(1.8)" }} />
       <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-cyan-400/10 via-transparent to-blue-500/10"></div>
       <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/30 dark:bg-blue-600/25 rounded-full blur-[140px] pointer-events-none"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-green-400/30 dark:bg-green-600/20 rounded-full blur-[140px] pointer-events-none"></div>
 
       <style jsx>{`
-        @keyframes starsSlow {
-          from { transform: translateY(0px); }
-          to { transform: translateY(-200px); }
-        }
-        @keyframes starsFast {
-          from { transform: translateY(0px); }
-          to { transform: translateY(-400px); }
-        }
-        .animate-stars-slow {
-          animation: starsSlow 120s linear infinite;
-        }
-        .animate-stars-fast {
-          animation: starsFast 60s linear infinite;
-        }
+        @keyframes starsSlow { from { transform: translateY(0px); } to { transform: translateY(-200px); } }
+        @keyframes starsFast { from { transform: translateY(0px); } to { transform: translateY(-400px); } }
+        .animate-stars-slow { animation: starsSlow 120s linear infinite; }
+        .animate-stars-fast { animation: starsFast 60s linear infinite; }
       `}</style>
 
       <Navbar forceStatic={true} />
@@ -145,7 +92,7 @@ export default function OurTeamPage() {
       {/* 2. Spacer Div */}
       <div className="w-full h-20 bg-[#0b2b3f]"></div>
 
-      {/* ================= MAIN CONTENT CONTAINER (Matches CareerWithUs Widths) ================= */}
+      {/* ================= MAIN CONTENT CONTAINER ================= */}
       <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8 w-full">
 
         {/* 2. Introduction Section */}
@@ -173,7 +120,7 @@ export default function OurTeamPage() {
                   </motion.div>
               </motion.div>
 
-              {/* Image Content with Floating Animation */}
+              {/* Image Content */}
               <motion.div 
                 className="relative group lg:-mt-12" 
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -195,7 +142,7 @@ export default function OurTeamPage() {
             </div>
         </section>
 
-        {/* SECTION 1: Team Strengths (With Vision/Mission Card Animation) */}
+        {/* SECTION 1: Team Strengths */}
         <section id="advisors" className="pt-20 pb-20">
           
           {/* Title Animation */}
@@ -212,10 +159,10 @@ export default function OurTeamPage() {
             <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-green-500 mx-auto rounded-full"></div>
           </motion.div>
 
-          {/* Staggered Grid Animation with Pop-Up Effect */}
+          {/* Staggered Grid Animation */}
           <motion.div 
-            // ✅ FIXED: Constrained width on large screens (1441px - 2600px) to match 1440px layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto" 
+            // ✅ FIXED: Using 'min-[1440px]:gap-24' to push cards 1 & 4 apart and spacing 2 & 3
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 xl:gap-12 min-[1440px]:gap-20 2xl:gap-32 w-full" 
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -224,15 +171,15 @@ export default function OurTeamPage() {
             {strengths.map((item, idx) => (
               <motion.div 
                 key={idx} 
-                variants={cardVariants} // ✅ Preserved Pop-Up Animation
+                variants={cardVariants} 
                 whileHover={{ y: -10, scale: 1.02 }} 
-                // ✅ INCREASED HEIGHT: Added 'min-h-[350px]' for taller cards
-                className="bg-white/80 dark:bg-white/5 backdrop-blur-md p-4 rounded-3xl  transition-all duration-500 relative overflow-hidden group flex flex-col min-h-[350px]"
+                // ✅ UPDATED CARD STYLE: 'min-h-[350px]' for taller cards
+                className="bg-white/80 dark:bg-white/5 backdrop-blur-md p-4 rounded-3xl transition-all duration-500 relative overflow-hidden group flex flex-col min-h-[300px]"
               >
-                {/* Background Blob Effect (Subtle) */}
+                {/* Background Blob Effect */}
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-orange-50 dark:bg-orange-500/10 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                {/* Subtle Gradient Background on Hover */}
+                {/* Subtle Gradient Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-green-50 dark:from-white/5 dark:to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 {/* Gradient Icon Background */}
@@ -240,11 +187,11 @@ export default function OurTeamPage() {
                     <item.icon className="text-white" size={36} />
                 </div>
                 
-                <h3 className="relative z-10 text-base font-bold text-gray-900 dark:text-white mb-4 text-center group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                <h3 className="relative z-10 text-sm font-bold  mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500 transition-colors">
                   {item.title}
                 </h3>
                 
-                <p className="relative z-10 text-gray-600 dark:text-gray-300 leading-relaxed text-sm text-center font-medium flex-grow">
+                <p className="relative z-10 text-gray-600 dark:text-gray-300 leading-relaxed text-xs text-center font-medium flex-grow">
                     {item.desc}
                 </p>
               </motion.div>
