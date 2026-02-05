@@ -36,7 +36,7 @@ const Footer = () => {
               <div className="-mb-10 -mt-10 "> 
                 <Link href="/" className="block">
                   <img 
-                    src="http://ksgcorps.com/wp-content/uploads/2021/11/ksg-logo-white.png"
+                    src="https://ik.imagekit.io/travechela/K__4_-removebg-preview.png"
                     alt="KSG Corporate Services Logo"
                     className="-ml-6 md:-ml-5 2xl:-ml-10 h-35 md:h-35 lg:h-39 xl:h-45 2xl:h-55 w-auto object-contain"
                   />
