@@ -83,7 +83,7 @@ const Hero = () => {
                 >
                   <h1 className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-4xl 2xl:text-5xl font-bold leading-[1.15] mb-6 text-white transition-colors duration-300 max-w-4xl tracking-tight whitespace-normal sm:whitespace-nowrap">
                     {slide.heading} <br className="hidden lg:block" />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-600 dark:from-green-400 dark:to-blue-500 leading-tight block mt-1">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-600 dark:from-green-400 dark:to-blue-500 leading-tight block mt-1">
                       {slide.highlight}
                     </span>
                   </h1>
