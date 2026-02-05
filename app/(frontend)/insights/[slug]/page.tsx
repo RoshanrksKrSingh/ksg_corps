@@ -64,7 +64,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
             <div className="mb-8">
                 <Link 
                 href="/insights" 
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold text-sm shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1"
+                className="inline-flex items-center gap-2 px-6 py-2.5  rounded-tl-[20px] rounded-br-[20px] bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold text-sm shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1"
                 >
                 <ArrowLeft size={18} /> Back
                 </Link>
