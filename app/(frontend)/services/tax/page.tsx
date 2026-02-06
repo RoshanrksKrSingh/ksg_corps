@@ -189,7 +189,7 @@ export default function TaxPage() {
                 viewport={{ once: true }}
               >
                 <div className="relative w-full max-w-md lg:max-w-full">
-                  <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10">
+                  <div className="rounded-tl-[30px] rounded-br-[30px] overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10">
                     <img
                       src="https://images.pexels.com/photos/6863515/pexels-photo-6863515.jpeg"
                       alt="Tax Advisory Overview"

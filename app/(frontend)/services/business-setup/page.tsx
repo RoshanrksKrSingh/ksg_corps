@@ -194,7 +194,7 @@ export default function BusinessSetupPage() {
                 viewport={{ once: true }}
               >
                 <div className="relative w-full max-w-md lg:max-w-full">
-                  <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10">
+                  <div className="rounded-tl-[30px] rounded-br-[30px] overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10">
                     <img
                       src={overviewImage}
                       alt="Business Setup Overview"
