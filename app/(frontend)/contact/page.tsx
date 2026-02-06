@@ -308,7 +308,7 @@ export default function ContactPage() {
       </section>
 
       {/* ✅ Fixed: Dark background applied to footer container */}
-      <div className="relative z-20 bg-[#020617] border-t border-white/5">
+      <div className="relative z-30 bg-[#020617] border-t border-white/5">
         <Footer />
       </div>
     </div>

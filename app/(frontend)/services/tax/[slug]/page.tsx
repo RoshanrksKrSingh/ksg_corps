@@ -29,7 +29,7 @@ const servicesData: Record<
       "Withholding Tax Compliance Advisory",
       "Double Tax Avoidance Agreement (DTAA) Impact Advisory",
       "Transfer Pricing Compliances and Reporting Advisory",
-      "Expatriates Tax Advisory"
+      "Expatriates Tax Advisory",
     ],
   },
   "vat-compliance": {
@@ -42,7 +42,7 @@ const servicesData: Record<
       "Review of VAT/Excise return workings prepared by the Company",
       "Review VAT Input/ Excise Deduction eligibility",
       "Providing assistance in finalizing VAT/Excise return workings",
-      "Assistance in filing VAT/Excise return"
+      "Assistance in filing VAT/Excise return",
     ],
   },
   "vat-health-check": {
@@ -56,7 +56,7 @@ const servicesData: Record<
       "Review of Custom documents related to import/export of goods and services",
       "Contract vetting for VAT Impact analysis",
       "Developing Standard Operating Procedures (SOPs) for VAT Compliance",
-      "Help in drafting and submitting Clarifications / Ruling request with the Authorities"
+      "Help in drafting and submitting Clarifications / Ruling request with the Authorities",
     ],
   },
   "vat-registration": {
@@ -68,7 +68,7 @@ const servicesData: Record<
       "Preparation of all documents required for Single/Group Registration",
       "Helping to obtain custom certificate for FTA account linking",
       "Filling of Registration Application with the FTA",
-      "Assisting in updating VAT Registration with the Federal Tax Authority"
+      "Assisting in updating VAT Registration with the Federal Tax Authority",
     ],
   },
   "vat-audit": {
@@ -82,19 +82,19 @@ const servicesData: Record<
       "Preparation of all the Reports to be sent to the FTA",
       "Advise and support to prepare and maintain required documents",
       "Help to file Voluntary Disclosures/Penalty Waiver application",
-      "Provide Detailed Training to the In-house Staff for VAT Audit Readiness"
+      "Provide Detailed Training to the In-house Staff for VAT Audit Readiness",
     ],
   },
   "vat-refund": {
     title: "VAT Refund Support",
     desc: "Refund of VAT is a scenario where input tax amount is higher than output tax amount as per the tax return filed with the tax authority. Typically refund claim is scrutinised by the tax authority before sanctioning the refund claim. We Assist with FTA Information Requests for VAT Refunds filed, VAT Tourist Refund Scheme, VAT Refund for Business Visitors, VAT Refund for Expo 2020 Official Participants, and VAT Refund for Building New Residences by UAE Nationals.",
-    subtitle: "Our VAT Refund Support service covers:", 
+    subtitle: "Our VAT Refund Support service covers:",
     details: [
       "Refund Assessment through a comprehensive VAT Health Check",
       "Preparation of refund application and assistance in submission",
       "Review of refund related documents",
       "Assisting in replying to queries raised by the FTA",
-      "Expediting the VAT Refund Process"
+      "Expediting the VAT Refund Process",
     ],
   },
   "voluntary-disclosure": {
@@ -105,7 +105,7 @@ const servicesData: Record<
       "VD Assessment through a comprehensive VAT Health Check",
       "Preparation of Reports to revise VAT Computation",
       "File Voluntary Disclosure (VD) with the FTA",
-      "Assisting in replying to queries raised by the FTA"
+      "Assisting in replying to queries raised by the FTA",
     ],
   },
 };
@@ -136,41 +136,85 @@ export default function ServiceDetailPage({
   // Animation Variant
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   // ✅ Common Style for Active Buttons (Gradient + Specific Radius + Shadow)
-  const activeButtonStyle = "rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] shadow-orange-500/20";
+  const activeButtonStyle =
+    "rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] shadow-orange-500/20";
 
   return (
     <div className="bg-slate-50 dark:bg-[#09102d] min-h-screen font-sans transition-colors duration-300">
-      
       <Navbar forceStatic={true} />
-      
+
       {/* Spacer */}
       <div className="h-20 bg-[#09102d]"></div>
 
       {/* ================= MAIN CONTENT WRAPPER (Starry Background) ================= */}
       <div className="relative overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] transition-colors duration-300 min-h-screen">
-        
         {/* --- STAR BACKGROUND LAYERS --- */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')", backgroundSize: "280px 280px", filter: "brightness(1.8) saturate(1.5)" }} />
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/tiny-stars.png')", backgroundSize: "180px 180px", filter: "brightness(2) saturate(1.6)" }} />
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')", backgroundSize: "120px 120px", filter: "brightness(2.2) saturate(1.8)" }} />
+        <div
+          className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen"
+          style={{
+            backgroundImage:
+              "url('https://www.transparenttextures.com/patterns/stardust.png')",
+            backgroundSize: "280px 280px",
+            filter: "brightness(1.8) saturate(1.5)",
+          }}
+        />
+        <div
+          className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow"
+          style={{
+            backgroundImage:
+              "url('https://www.transparenttextures.com/patterns/tiny-stars.png')",
+            backgroundSize: "180px 180px",
+            filter: "brightness(2) saturate(1.6)",
+          }}
+        />
+        <div
+          className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast"
+          style={{
+            backgroundImage:
+              "url('https://www.transparenttextures.com/patterns/stardust.png')",
+            backgroundSize: "120px 120px",
+            filter: "brightness(2.2) saturate(1.8)",
+          }}
+        />
         <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-cyan-400/5 via-transparent to-blue-500/5"></div>
         <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/20 dark:bg-blue-600/20 rounded-full blur-[140px] pointer-events-none"></div>
         <div className="absolute bottom-[20%] right-[-10%] w-[400px] h-[400px] bg-green-400/20 dark:bg-green-600/20 rounded-full blur-[140px] pointer-events-none"></div>
 
         <style jsx>{`
-          @keyframes starsSlow { from { transform: translateY(0px); } to { transform: translateY(-200px); } }
-          @keyframes starsFast { from { transform: translateY(0px); } to { transform: translateY(-400px); } }
-          .animate-stars-slow { animation: starsSlow 120s linear infinite; }
-          .animate-stars-fast { animation: starsFast 60s linear infinite; }
+          @keyframes starsSlow {
+            from {
+              transform: translateY(0px);
+            }
+            to {
+              transform: translateY(-200px);
+            }
+          }
+          @keyframes starsFast {
+            from {
+              transform: translateY(0px);
+            }
+            to {
+              transform: translateY(-400px);
+            }
+          }
+          .animate-stars-slow {
+            animation: starsSlow 120s linear infinite;
+          }
+          .animate-stars-fast {
+            animation: starsFast 60s linear infinite;
+          }
         `}</style>
 
         {/* Content Container */}
         <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8 py-10 -mt-8">
-          
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-sm font-medium text-green-600 dark:text-green-400 mb-8 pt-8">
             <Link
@@ -180,11 +224,12 @@ export default function ServiceDetailPage({
               Tax Advisory
             </Link>
             <span className="text-gray-400">/</span>
-            <span className="text-gray-900 dark:text-white">{service.title}</span>
+            <span className="text-gray-900 dark:text-white">
+              {service.title}
+            </span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-            
             {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left) --- */}
             <div className="lg:col-span-1 space-y-4 order-last lg:order-first">
               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-sm">
@@ -198,7 +243,7 @@ export default function ServiceDetailPage({
                       <li key={link.id}>
                         <Link
                           href={`/services/tax/${link.id}`}
-                        className={`flex items-center justify-between gap-3 px-3 py-3 rounded-xl transition-all duration-300 whitespace-normal xl:whitespace-nowrap text-sm  2xl:text-xl ${
+                          className={`flex items-center justify-between gap-3 px-3 py-3 rounded-xl transition-all duration-300 whitespace-normal xl:whitespace-nowrap text-sm  2xl:text-xl ${
                             isActive
                               ? activeButtonStyle
                               : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white "
@@ -214,7 +259,9 @@ export default function ServiceDetailPage({
               </div>
 
               <div className="bg-gradient-to-br from-blue-900 to-[#041D2D] border border-white/10 rounded-2xl p-6 text-center shadow-lg">
-                <h4 className="text-white font-bold mb-2">Need Expert Advice?</h4>
+                <h4 className="text-white font-bold mb-2">
+                  Need Expert Advice?
+                </h4>
                 <p className="text-gray-400 text-xs mb-4">
                   Our team is ready to help you.
                 </p>
@@ -229,13 +276,12 @@ export default function ServiceDetailPage({
 
             {/* --- RIGHT CONTENT --- */}
             <div className="lg:col-span-3">
-              <motion.div 
+              <motion.div
                 className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden shadow-xl"
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
               >
-                
                 {/* 1. Title */}
                 <h1 className="text-xl md:text-xl xl:text-2xl 2xl:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
                   {service.title}
@@ -255,7 +301,7 @@ export default function ServiceDetailPage({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
-                
+
                 {/* Subtitle (Dynamic based on service) */}
                 {service.subtitle && (
                   <div>
@@ -272,7 +318,10 @@ export default function ServiceDetailPage({
                       key={index}
                       className="flex items-start md:items-center gap-3 p-3 md:p-4 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/5 hover:border-green-500/30 transition-colors"
                     >
-                      <CheckCircle2 className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1 md:mt-0" size={20} />
+                      <CheckCircle2
+                        className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1 md:mt-0"
+                        size={20}
+                      />
                       <span className="text-gray-700 dark:text-gray-200 text-sm md:text-base font-medium leading-relaxed">
                         {item}
                       </span>
@@ -286,7 +335,7 @@ export default function ServiceDetailPage({
                     href="/services/tax"
                     className={`inline-flex items-center gap-2 px-6 py-3 transition-all duration-300 ${activeButtonStyle}`}
                   >
-                    <ArrowLeft size={18} /> Back 
+                    <ArrowLeft size={18} /> Back
                   </Link>
 
                   <Link
@@ -303,10 +352,9 @@ export default function ServiceDetailPage({
       </div>
 
       {/* ================= FOOTER SECTION (Distinct Background) ================= */}
-      <div className="relative z-20 bg-gray-900 dark:bg-[#020617] border-t border-gray-200 dark:border-white/5">
-        <Footer/>
+      <div className="relative z-30 bg-[#020617] border-t border-white/5">
+        <Footer />
       </div>
-
     </div>
   );
-}   
+}

@@ -76,7 +76,13 @@ const servicesData: Record<
     title: "Stock Audit and Verification",
     desc: "Stock Verification or Stocktaking is a physical checking of stock of goods or inventory in the store after a regular interval of time. Periodic physical review of inventory helps identify variances between physical and book quantities and assists in evaluating internal control on movement, accounting and safeguarding of inventory. Our KSG Professional team can assist you in inventory verification and provide more insights into your stock, along with a proper reconciliation of the existing stock records.",
     subtitle: "Our Stock Audit and Verification service covers:",
-    details: ["Assists client with the complete inventory verification process", "Identification of damaged and slow moving or obsolete items", "Preparation and Submission of Variance Report", "Help to quantify pilferage, fraud, wastage or damage","Valuation of Inventory for Inventory Accounting"],
+    details: [
+      "Assists client with the complete inventory verification process",
+      "Identification of damaged and slow moving or obsolete items",
+      "Preparation and Submission of Variance Report",
+      "Help to quantify pilferage, fraud, wastage or damage",
+      "Valuation of Inventory for Inventory Accounting",
+    ],
   },
 };
 
@@ -103,41 +109,85 @@ export default function ServiceDetailPage({
   // Animation Variant
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   // ✅ Common Style for Active Buttons (Gradient + Specific Radius + Shadow)
-  const activeButtonStyle = "rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] shadow-orange-500/20";
+  const activeButtonStyle =
+    "rounded-tl-[30px] rounded-br-[30px] rounded-tr-none rounded-bl-none bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] shadow-orange-500/20";
 
   return (
     <div className="bg-slate-50 dark:bg-[#09102d] min-h-screen font-sans transition-colors duration-300">
-      
       <Navbar forceStatic={true} />
-      
+
       {/* Spacer */}
       <div className="h-20 bg-[#09102d]"></div>
 
       {/* ================= MAIN CONTENT WRAPPER (Starry Background) ================= */}
       <div className="relative overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] transition-colors duration-300 min-h-screen">
-        
         {/* --- STAR BACKGROUND LAYERS --- */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')", backgroundSize: "280px 280px", filter: "brightness(1.8) saturate(1.5)" }} />
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/tiny-stars.png')", backgroundSize: "180px 180px", filter: "brightness(2) saturate(1.6)" }} />
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')", backgroundSize: "120px 120px", filter: "brightness(2.2) saturate(1.8)" }} />
+        <div
+          className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-100 mix-blend-screen"
+          style={{
+            backgroundImage:
+              "url('https://www.transparenttextures.com/patterns/stardust.png')",
+            backgroundSize: "280px 280px",
+            filter: "brightness(1.8) saturate(1.5)",
+          }}
+        />
+        <div
+          className="absolute inset-0 z-0 pointer-events-none opacity-70 dark:opacity-90 mix-blend-screen animate-stars-slow"
+          style={{
+            backgroundImage:
+              "url('https://www.transparenttextures.com/patterns/tiny-stars.png')",
+            backgroundSize: "180px 180px",
+            filter: "brightness(2) saturate(1.6)",
+          }}
+        />
+        <div
+          className="absolute inset-0 z-0 pointer-events-none opacity-60 dark:opacity-80 mix-blend-screen animate-stars-fast"
+          style={{
+            backgroundImage:
+              "url('https://www.transparenttextures.com/patterns/stardust.png')",
+            backgroundSize: "120px 120px",
+            filter: "brightness(2.2) saturate(1.8)",
+          }}
+        />
         <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-cyan-400/5 via-transparent to-blue-500/5"></div>
         <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/20 dark:bg-blue-600/20 rounded-full blur-[140px] pointer-events-none"></div>
         <div className="absolute bottom-[20%] right-[-10%] w-[400px] h-[400px] bg-green-400/20 dark:bg-green-600/20 rounded-full blur-[140px] pointer-events-none"></div>
 
         <style jsx>{`
-          @keyframes starsSlow { from { transform: translateY(0px); } to { transform: translateY(-200px); } }
-          @keyframes starsFast { from { transform: translateY(0px); } to { transform: translateY(-400px); } }
-          .animate-stars-slow { animation: starsSlow 120s linear infinite; }
-          .animate-stars-fast { animation: starsFast 60s linear infinite; }
+          @keyframes starsSlow {
+            from {
+              transform: translateY(0px);
+            }
+            to {
+              transform: translateY(-200px);
+            }
+          }
+          @keyframes starsFast {
+            from {
+              transform: translateY(0px);
+            }
+            to {
+              transform: translateY(-400px);
+            }
+          }
+          .animate-stars-slow {
+            animation: starsSlow 120s linear infinite;
+          }
+          .animate-stars-fast {
+            animation: starsFast 60s linear infinite;
+          }
         `}</style>
 
         {/* Content Container */}
         <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8 py-10 -mt-8">
-          
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-sm font-medium text-green-600 dark:text-green-400 mb-8 pt-8">
             <Link
@@ -147,11 +197,12 @@ export default function ServiceDetailPage({
               Accounting
             </Link>
             <span className="text-gray-400">/</span>
-            <span className="text-gray-900 dark:text-white">{service.title}</span>
+            <span className="text-gray-900 dark:text-white">
+              {service.title}
+            </span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-            
             {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left/First) --- */}
             <div className="lg:col-span-1 space-y-4 order-last lg:order-first">
               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-sm">
@@ -182,7 +233,9 @@ export default function ServiceDetailPage({
               </div>
 
               <div className="bg-gradient-to-br from-blue-900 to-[#041D2D] border border-white/10 rounded-2xl p-6 text-center shadow-lg">
-                <h4 className="text-white font-bold mb-2">Need Expert Advice?</h4>
+                <h4 className="text-white font-bold mb-2">
+                  Need Expert Advice?
+                </h4>
                 <p className="text-gray-400 text-xs mb-4">
                   Our team is ready to help you.
                 </p>
@@ -198,13 +251,12 @@ export default function ServiceDetailPage({
 
             {/* --- RIGHT CONTENT --- */}
             <div className="lg:col-span-3">
-              <motion.div 
+              <motion.div
                 className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden shadow-xl"
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
               >
-                
                 {/* 1. Title */}
                 <h1 className="text-xl md:text-xl xl:text-2xl 2xl:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
                   {service.title}
@@ -239,7 +291,10 @@ export default function ServiceDetailPage({
                       key={index}
                       className="flex items-start md:items-center gap-3 p-3 md:p-4 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/5 hover:border-green-500/30 transition-colors"
                     >
-                      <CheckCircle2 className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1 md:mt-0" size={20} />
+                      <CheckCircle2
+                        className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1 md:mt-0"
+                        size={20}
+                      />
                       <span className="text-gray-700 dark:text-gray-200 text-sm md:text-base font-medium leading-relaxed">
                         {item}
                       </span>
@@ -272,10 +327,9 @@ export default function ServiceDetailPage({
       </div>
 
       {/* ================= FOOTER SECTION (Distinct Background) ================= */}
-      <div className="relative z-20 bg-gray-900 dark:bg-[#020617] border-t border-gray-200 dark:border-white/5">
-        <Footer/>
+      <div className="relative z-30 bg-[#020617] border-t border-white/5">
+        <Footer />
       </div>
-
     </div>
   );
 }
