@@ -86,7 +86,7 @@ const Hero = () => {
                       : "opacity-0 translate-y-6 -z-10 pointer-events-none"
                   }`}
                 >
-                  <h1 className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-4xl 2xl:text-5xl font-bold leading-[1.15] mb-6 text-white max-w-4xl">
+                  <h1 className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-4xl 2xl:text-5xl font-bold leading-[1.15] mb-6 text-white max-w-4xl whitespace-normal lg:whitespace-nowrap">
                     {slide.heading}
                     <br className="hidden lg:block" />
                     <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
