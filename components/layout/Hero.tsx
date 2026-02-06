@@ -50,7 +50,6 @@ const Hero = () => {
   return (
     // ✅ FIX: Added dynamic top margin (mt-16, xl:mt-20, 2xl:mt-24) to push section below fixed Navbar
     <section className="relative w-full mt-16 xl:mt-20 2xl:mt-24 pt-0 pb-6 lg:pt-12 2xl:pt-30 lg:pb-0 overflow-hidden bg-slate-50 dark:bg-[#151B33] transition-colors duration-300 flex items-center justify-center min-h-[600px] lg:min-h-[80vh] 2xl:min-h-[90vh]">
-      
       {/* ===== FULL HERO BACKGROUND IMAGE ===== */}
       <img
         src="https://ik.imagekit.io/travechela/WhatsApp%20Image%202026-02-06%20at%2014.54.19.jpeg"
@@ -70,7 +69,6 @@ const Hero = () => {
           to reduce side spacing significantly on large laptops/desktops. */}
       <div className="relative z-20 w-[99%] max-w-8xl min-[1350px]:max-w-[95%] 2xl:max-w-[90%] mx-auto h-full px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 min-h-[350px] lg:min-h-[400px]">
-          
           {/* ================= LEFT CONTENT ================= */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center relative z-20 2xl:-mt-24">
             <div className="relative h-[320px] sm:h-[280px] lg:h-[300px] w-full">
@@ -104,7 +102,15 @@ const Hero = () => {
 
                     <Link
                       href="/"
-                      className="px-8 py-3.5 rounded-tl-[30px] rounded-br-[30px] bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent text-sm font-bold hover:scale-105"
+                      className="px-8 py-3.5 rounded-tl-[30px] rounded-br-[30px]
+             bg-white/20 dark:bg-white/5
+             backdrop-blur-md
+             border border-gray-300 dark:border-white/10
+             text-sm font-bold
+             bg-gradient-to-r from-green-400 to-blue-500
+             bg-clip-text text-transparent
+             hover:bg-white/30 hover:scale-105
+             transition-all duration-300"
                     >
                       Explore Services
                     </Link>
@@ -114,22 +120,36 @@ const Hero = () => {
             </div>
 
             {/* Static Features */}
-            <div className="mt-0 pt-0 w-full grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {features.map((f, i) => (
-                <Link
-                  key={i}
-                  href={f.href}
-                  className="flex items-center gap-3 px-3 py-2 rounded-tl-[20px] rounded-br-[20px] bg-white/20 dark:bg-white/5 border border-white/20 shadow-sm cursor-pointer w-full hover:bg-white/30 transition-all"
-                >
-                  <div className="bg-gradient-to-br from-blue-100 to-green-100 dark:from-blue-500/20 to-green-500/20 rounded-lg p-2">
-                    <f.icon className="w-4 h-4 text-green-400" />
-                  </div>
-                  <span className="text-xs sm:text-sm font-semibold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-                    {f.title}
-                  </span>
-                </Link>
-              ))}
-            </div>
+     <div className="mt-0 pt-0 w-full grid grid-cols-1 sm:grid-cols-3 gap-4">
+  {features.map((f, i) => (
+    <Link
+      key={i}
+      href={f.href}
+      className="flex items-center gap-3 px-3 py-2
+                 rounded-tl-[20px] rounded-br-[20px]
+                 bg-white/20 dark:bg-white/5
+                 backdrop-blur-md
+                 border border-white/20
+                 shadow-sm cursor-pointer w-full
+                 hover:bg-white/30 hover:scale-[1.02]
+                 transition-all duration-300"
+    >
+      <div className="bg-gradient-to-br from-blue-100/80 to-green-100/80 dark:from-blue-500/20 dark:to-green-500/20 rounded-lg p-2">
+        <f.icon className="w-4 h-4 text-green-400" />
+      </div>
+
+      <span
+        className="text-xs sm:text-sm font-semibold
+                   bg-gradient-to-r from-green-400 to-blue-500
+                   bg-clip-text text-transparent
+                   drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]"
+      >
+        {f.title}
+      </span>
+    </Link>
+  ))}
+</div>
+
           </div>
 
           {/* ================= RIGHT EMPTY SPACE FOR BG IMAGE VISIBILITY ================= */}
