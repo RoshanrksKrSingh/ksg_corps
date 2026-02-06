@@ -50,7 +50,7 @@ export default function ContactHeader({ title, breadcrumb, image }: ContactHeade
              {/* Shimmer Overlay */}
              <div className="absolute inset-0 animate-shimmer"></div>
 
-             <span className="text-orange-400 font-bold uppercase text-xs tracking-widest relative z-10">
+             <span className="text-green-400 font-bold uppercase text-xs tracking-widest relative z-10">
                KSG Knowledge Hub
              </span>
         </span>

@@ -53,7 +53,7 @@ export default function InsightHeader({ title, breadcrumb, image, isAnimated = f
              {isAnimated && <div className="absolute inset-0 animate-shimmer"></div>}
 
              {/* Text Layer */}
-             <span className={`text-orange-400 font-bold uppercase text-xs tracking-widest ${isAnimated ? 'relative z-10' : ''}`}>
+             <span className={`text-green-400 font-bold uppercase text-xs tracking-widest ${isAnimated ? 'relative z-10' : ''}`}>
                KSG Knowledge Hub
              </span>
         </span>
