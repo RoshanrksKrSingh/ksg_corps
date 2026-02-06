@@ -53,8 +53,6 @@ const Hero = () => {
         flex items-center
         min-h-[600px]
         lg:min-h-[85vh]
-        2xl:min-h-[80vh]
-        min-[2000px]:min-h-[75vh]
         bg-slate-50 dark:bg-[#151B33]
       "
     >
@@ -69,14 +67,15 @@ const Hero = () => {
       <div className="absolute inset-0 z-10 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0" />
 
       {/* ================= MAIN CONTAINER ================= */}
-      <div className="relative z-20 w-full max-w-8xl min-[1350px]:max-w-[95%] 2xl:max-w-[90%] mx-auto px-4 lg:px-8">
+      {/* 🔒 Container behavior LOCKED after lg */}
+      <div className="relative z-20 w-full max-w-8xl mx-auto px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
 
           {/* ================= LEFT CONTENT ================= */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center lg:justify-start 2xl:pt-12 min-[2000px]:pt-6">
+          <div className="w-full lg:w-1/2 flex flex-col justify-center">
 
             {/* Slider */}
-            <div className="relative h-auto min-h-[260px] lg:min-h-[300px] 2xl:min-h-[340px]">
+            <div className="relative h-auto min-h-[260px] lg:min-h-[300px]">
               {slides.map((slide, index) => (
                 <div
                   key={slide.id}
