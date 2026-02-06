@@ -118,7 +118,7 @@ const AboutUs = () => {
           {/* RIGHT */}
           <motion.div className="relative h-full flex items-center justify-center lg:justify-end mt-10 lg:mt-0" variants={fadeLeft} initial="hidden" whileInView="visible">
             <div className="relative w-full max-w-md lg:max-w-full">
-              <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10">
+              <div className="rounded-tr-[20px] rounded-bl-[20px] overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10">
                 <img
                   src="https://images.pexels.com/photos/1367276/pexels-photo-1367276.jpeg"
                   alt="KSG Team"

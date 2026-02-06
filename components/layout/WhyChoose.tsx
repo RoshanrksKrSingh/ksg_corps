@@ -208,11 +208,11 @@ const WhyChoose = () => {
             className="relative group order-1 lg:order-2"
           >
             {/* ✅ Image Container: No Border */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-tl-[20px] rounded-br-[20px] overflow-hidden shadow-2xl">
               <img
                 src="https://images.pexels.com/photos/2041629/pexels-photo-2041629.jpeg"
                 alt="Why Choose Us"
-                className="w-full h-full object-cover transform transition-transform duration-[10s] ease-linear group-hover:scale-110"
+                className="w-full h-full object-cover transform transition-transform duration-[10s] ease-linear group-hover:scale-110 rounded-tl-[20px] rounded-br-[20px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/20 dark:from-[#020617] via-transparent to-transparent opacity-80 transition-colors duration-300"></div>
 
