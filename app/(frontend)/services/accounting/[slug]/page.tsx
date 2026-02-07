@@ -63,7 +63,7 @@ const servicesData: Record<
       "Disclosure requirements as per the new standard",
     ],
     // ✅ Unique Image 3
-    image: "https://ik.imagekit.io/travechela/pexels-yankrukov-8837443.jpg",
+    image: "https://ik.imagekit.io/travechela/ifrs.jpg",
   },
   "financial-audit": {
     title: "Financial Audit Support",
@@ -79,7 +79,7 @@ const servicesData: Record<
       "Compilation and Maintenance of Fixed Asset Register",
     ],
     // ✅ Unique Image 4
-    image: "https://ik.imagekit.io/travechela/pexels-sora-shimazaki-5668863.jpg",
+    image: "https://ik.imagekit.io/travechela/finacialandaudit.jpg",
   },
   "stock-audit": {
     title: "Stock Audit and Verification",
