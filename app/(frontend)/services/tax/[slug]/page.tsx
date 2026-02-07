@@ -11,12 +11,13 @@ import {
   ChevronRight,
   CheckCircle2,
 } from "lucide-react";
-import { motion } from "framer-motion"; // ✅ Import Framer Motion
+import { motion } from "framer-motion";
 
 // --- TAX DATA ---
+// ✅ Updated: Added specific 'image' for each service
 const servicesData: Record<
   string,
-  { title: string; desc: string; subtitle?: string; details: string[] }
+  { title: string; desc: string; subtitle?: string; details: string[]; image: string }
 > = {
   "international-tax": {
     title: "International Taxation & Transfer Pricing",
@@ -31,6 +32,8 @@ const servicesData: Record<
       "Transfer Pricing Compliances and Reporting Advisory",
       "Expatriates Tax Advisory",
     ],
+    // ✅ Unique Image 1
+    image: "https://images.pexels.com/photos/6863259/pexels-photo-6863259.jpeg",
   },
   "vat-compliance": {
     title: "VAT/Excise Compliance",
@@ -44,6 +47,8 @@ const servicesData: Record<
       "Providing assistance in finalizing VAT/Excise return workings",
       "Assistance in filing VAT/Excise return",
     ],
+    // ✅ Unique Image 2
+    image: "https://ik.imagekit.io/travechela/compilance.jpg",
   },
   "vat-health-check": {
     title: "VAT/Excise Health Checks",
@@ -58,6 +63,8 @@ const servicesData: Record<
       "Developing Standard Operating Procedures (SOPs) for VAT Compliance",
       "Help in drafting and submitting Clarifications / Ruling request with the Authorities",
     ],
+    // ✅ Unique Image 3
+    image: "https://ik.imagekit.io/travechela/helthcheck.jpg",
   },
   "vat-registration": {
     title: "VAT/Excise Registration/Deregistration",
@@ -70,6 +77,8 @@ const servicesData: Record<
       "Filling of Registration Application with the FTA",
       "Assisting in updating VAT Registration with the Federal Tax Authority",
     ],
+    // ✅ Unique Image 4
+    image: "https://ik.imagekit.io/travechela/registration.jpg",
   },
   "vat-audit": {
     title: "VAT/Excise Audit Support",
@@ -84,6 +93,8 @@ const servicesData: Record<
       "Help to file Voluntary Disclosures/Penalty Waiver application",
       "Provide Detailed Training to the In-house Staff for VAT Audit Readiness",
     ],
+    // ✅ Unique Image 5
+    image: "https://ik.imagekit.io/travechela/auditsupport.jpg",
   },
   "vat-refund": {
     title: "VAT Refund Support",
@@ -96,6 +107,8 @@ const servicesData: Record<
       "Assisting in replying to queries raised by the FTA",
       "Expediting the VAT Refund Process",
     ],
+    // ✅ Unique Image 6
+    image: "https://ik.imagekit.io/travechela/refund.jpg",
   },
   "voluntary-disclosure": {
     title: "Voluntary Disclosure (VD)",
@@ -107,6 +120,8 @@ const servicesData: Record<
       "File Voluntary Disclosure (VD) with the FTA",
       "Assisting in replying to queries raised by the FTA",
     ],
+    // ✅ Unique Image 7
+    image: "https://ik.imagekit.io/travechela/vd.jpg",
   },
 };
 
@@ -117,7 +132,7 @@ const sidebarLinks = [
   { id: "vat-health-check", label: "VAT/Excise Health Checks" },
   { id: "vat-registration", label: "VAT/Excise Registration" },
   { id: "vat-audit", label: "VAT/Excise Audit Support" },
-  { id: "vat-refund", label: "VAT Refund Support" }, // Fixed label duplication
+  { id: "vat-refund", label: "VAT Refund Support" },
   { id: "voluntary-disclosure", label: "Voluntary Disclosure (VD)" },
 ];
 
@@ -230,7 +245,7 @@ export default function ServiceDetailPage({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-            {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left) --- */}
+            {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left/First) --- */}
             <div className="lg:col-span-1 space-y-4 order-last lg:order-first">
               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-sm">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-white/10 pb-4">
@@ -243,7 +258,7 @@ export default function ServiceDetailPage({
                       <li key={link.id}>
                         <Link
                           href={`/services/tax/${link.id}`}
-                          className={`flex items-center justify-between gap-3 px-3 py-3 rounded-xl transition-all duration-300 whitespace-normal xl:whitespace-nowrap text-sm  2xl:text-xl ${
+                          className={`flex items-center justify-between gap-3 px-3 py-3 rounded-xl transition-all duration-300 whitespace-normal xl:whitespace-nowrap text-sm 2xl:text-xl ${
                             isActive
                               ? activeButtonStyle
                               : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white "
@@ -292,26 +307,25 @@ export default function ServiceDetailPage({
                   {service.desc}
                 </p>
 
-                {/* 3. Image Banner */}
-                <div className="relative w-full h-48 md:h-96 rounded-2xl overflow-hidden mb-8 group shadow-lg">
+                {/* 3. Image Banner (Dynamic & Responsive Height) */}
+                <div className="relative w-full h-48 md:h-150 min-[1355px]:h-[35rem] 2xl:h-[65rem] rounded-2xl overflow-hidden mb-8 group shadow-lg">
                   <img
-                    src="https://images.pexels.com/photos/6863259/pexels-photo-6863259.jpeg"
+                    // ✅ Updated: Uses the unique image for current tax service
+                    src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
 
-                {/* Subtitle (Dynamic based on service) */}
+                {/* Subtitle */}
                 {service.subtitle && (
-                  <div>
-                    <h5 className="text-sm md:text-xl font-bold mb-6 text-gray-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200">
-                      {service.subtitle}
-                    </h5>
-                  </div>
+                  <h5 className="text-sm md:text-xl font-bold mb-6 text-gray-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200">
+                    {service.subtitle}
+                  </h5>
                 )}
 
-                {/* 4. Includes List */}
+                {/* 4. Details List */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                   {service.details.map((item, index) => (
                     <div
@@ -351,7 +365,7 @@ export default function ServiceDetailPage({
         </div>
       </div>
 
-      {/* ================= FOOTER SECTION (Distinct Background) ================= */}
+      {/* ================= FOOTER SECTION ================= */}
       <div className="relative z-30 bg-[#020617] border-t border-white/5">
         <Footer />
       </div>

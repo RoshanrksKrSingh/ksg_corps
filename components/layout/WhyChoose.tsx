@@ -162,9 +162,8 @@ const WhyChoose = () => {
             in the shortest time frames.
           </h2>
 
-          <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed transition-colors duration-300">
-            We bring our expertise and integrity to your business, to help you achieve the best outcomes in the shortest time frames.
-            Our firm represents a combination of specialized skills that is geared to offer sound corporate solutions and advices.
+          <p className="text-gray-600 dark:text-gray-300 text-xs md:text-base  leading-relaxed transition-colors duration-300">
+            Our firm represents a combination of specialized skills that is geared to offer sound corporate solutions and advices. The organization is a congregation of professionally qualified and experienced advisors who are committed to add value and optimize the benefits accruing to clients.
           </p>
         </div>
 

@@ -11,25 +11,28 @@ import {
   ChevronRight,
   CheckCircle2,
 } from "lucide-react";
-import { motion } from "framer-motion"; // ✅ Import Framer Motion
+import { motion } from "framer-motion";
 
 // --- RISK DATA ---
+// ✅ Updated: Added specific 'image' for each service
 const servicesData: Record<
   string,
-  { title: string; desc: string; subtitle?: string; details: string[] }
+  { title: string; desc: string; subtitle?: string; details: string[]; image: string }
 > = {
-  "stock-audit": {
-    title: "Stock Audit and Verification",
-    desc: "Stock Verification or Stocktaking is a physical checking of stock of goods or inventory in the store after a regular interval of time. Periodic physical review of inventory helps identify variances between physical and book quantities and assists in evaluating internal control on movement, accounting and safeguarding of inventory. Our KSG Professional team can assist you in inventory verification and provide more insights into your stock, along with a proper reconciliation of the existing stock records.",
-    subtitle: "Our Stock Audit service includes:",
-    details: [
-      "Assists client with the complete inventory verification process",
-      "Identification of damaged and slow moving or obsolete items",
-      "Preparation and Submission of Variance Report",
-      "Help to quantify pilferage, fraud, wastage or damage",
-      "Valuation of Inventory for Inventory Accounting",
-    ],
-  },
+  // "stock-audit": {
+  //   title: "Stock Audit and Verification",
+  //   desc: "Stock Verification or Stocktaking is a physical checking of stock of goods or inventory in the store after a regular interval of time. Periodic physical review of inventory helps identify variances between physical and book quantities and assists in evaluating internal control on movement, accounting and safeguarding of inventory. Our KSG Professional team can assist you in inventory verification and provide more insights into your stock, along with a proper reconciliation of the existing stock records.",
+  //   subtitle: "Our Stock Audit service includes:",
+  //   details: [
+  //     "Assists client with the complete inventory verification process",
+  //     "Identification of damaged and slow moving or obsolete items",
+  //     "Preparation and Submission of Variance Report",
+  //     "Help to quantify pilferage, fraud, wastage or damage",
+  //     "Valuation of Inventory for Inventory Accounting",
+  //   ],
+  //   // ✅ Unique Image 1
+  //   image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg",
+  // },
   "internal-audit": {
     title: "Internal Audit",
     desc: "The principal purpose of internal auditing is to provide insight into an organization’s culture, policies, and procedures by verifying internal controls such as operating effectiveness, risk mitigation controls, and compliance with relevant laws or regulations. Internal Auditors’ function includes supervising, evaluating, investigating, and analysing the risks & controls; checking and ensuring information and compliance with policies, procedures, and laws. KSG Risk Advisory Team provides the Management with independent assurance on the organization’s internal controls, risk management strategies and governance are operating effectively.",
@@ -42,6 +45,20 @@ const servicesData: Record<
       "Identify the core operational risks and mitigation strategy for these risks",
       "To evaluate evidence in connection with the situation and issues",
     ],
+    // ✅ Unique Image 2 (Reused Stock Audit image based on context, or use a new one if provided. 
+    // Wait, let's check the list again. You provided 6 links for 6 services.
+    // 1. pexels... (Stock Audit)
+    // 2. sop.jpg
+    // 3. fraudaudit.jpg
+    // 4. icfr.jpg
+    // 5. risk-management.jpg
+    // 6. anti-money...jpg
+    // Ah, 'Internal Audit' doesn't have a specific link in your list of 6.
+    // I will use the 'fraudaudit.jpg' or 'risk-management.jpg' temporarily, or the first pexels image.
+    // Let's use the first Pexels image for Internal Audit as well, or better, let's use 'fraudaudit' here as it's close, 
+    // BUT typically 'fraudaudit' is for Forensic.
+    // Let's use the first image (Pexels) as a placeholder for Internal Audit since it's generic checking.
+    image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg", 
   },
   sop: {
     title: "Standard Operating Procedure (SOP)",
@@ -55,6 +72,8 @@ const servicesData: Record<
       "SOP for Management Authorisation",
       "SOP for all the critical business processes",
     ],
+    // ✅ Unique Image 2
+    image: "https://ik.imagekit.io/travechela/sop.jpg",
   },
   "forensic-audit": {
     title: "Forensic Audit",
@@ -68,6 +87,8 @@ const servicesData: Record<
       "Abuse of Authority/Power Investigation",
       "Fraud Risk Assessment",
     ],
+    // ✅ Unique Image 3
+    image: "https://ik.imagekit.io/travechela/fraudaudit.jpg",
   },
   icfr: {
     title: "Internal Control over Financial Reporting (ICFR)",
@@ -83,6 +104,8 @@ const servicesData: Record<
       "Provide checklist updates mapped to the compliance tool",
       "Handhold for a limited time period",
     ],
+    // ✅ Unique Image 4
+    image: "https://ik.imagekit.io/travechela/icfr.jpg",
   },
   erm: {
     title: "Enterprise Risk Management (ERM)",
@@ -96,6 +119,8 @@ const servicesData: Record<
       "Risk reporting templates based on the ISO, COCO and COSO, the leading risk management standards.",
       "Disclosure requirements as per the new standard",
     ],
+    // ✅ Unique Image 5
+    image: "https://ik.imagekit.io/travechela/risk-management.jpg",
   },
   aml: {
     title: "Anti-Money Laundering (AML) Advisory",
@@ -110,6 +135,8 @@ const servicesData: Record<
       "Provide in house staff training",
       "Respond to any queries raised by the authorities",
     ],
+    // ✅ Unique Image 6
+    image: "https://res.cloudinary.com/defxm7hjb/image/upload/v1770473283/anti-money_iejplq.jpg",
   },
 };
 
@@ -121,6 +148,7 @@ const sidebarLinks = [
   { id: "icfr", label: "Internal Control (ICFR)" },
   { id: "erm", label: "Enterprise Risk Management" },
   { id: "aml", label: "Anti-Money Laundering" },
+  // { id: "stock-audit", label: "Stock Audit" }, // Added Stock Audit to Sidebar to match Data
 ];
 
 export default function ServiceDetailPage({
@@ -232,7 +260,7 @@ export default function ServiceDetailPage({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-            {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left) --- */}
+            {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left/First) --- */}
             <div className="lg:col-span-1 space-y-4 order-last lg:order-first">
               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-sm">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-white/10 pb-4">
@@ -296,23 +324,23 @@ export default function ServiceDetailPage({
                   {service.desc}
                 </p>
 
-                {/* 3. Image Banner */}
-                <div className="relative w-full h-48 md:h-96 rounded-2xl overflow-hidden mb-8 group shadow-lg">
+                {/* 3. Image Banner (Dynamic) */}
+                {/* ✅ FIXED: Added specific height classes for 1355px+ and 4K screens */}
+                <div className="relative w-full h-48 md:h-150 min-[1355px]:h-[35rem] 2xl:h-[65rem] rounded-2xl overflow-hidden mb-8 group shadow-lg">
                   <img
-                    src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
+                    // ✅ Updated: Uses the specific image for the current service
+                    src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
 
-                {/* Subtitle (Dynamic based on service) */}
+                {/* Subtitle (Responsive Text) */}
                 {service.subtitle && (
-                  <div>
-                    <h5 className="text-sm md:text-xl font-bold mb-6 text-gray-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200">
-                      {service.subtitle}
-                    </h5>
-                  </div>
+                  <h5 className="text-sm md:text-xl font-bold mb-6 text-gray-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200">
+                    {service.subtitle}
+                  </h5>
                 )}
 
                 {/* 4. Includes List (Responsive) */}

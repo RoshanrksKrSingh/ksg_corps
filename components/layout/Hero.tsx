@@ -52,7 +52,8 @@ const Hero = () => {
         overflow-hidden
         flex items-center
         min-h-[600px]
-        lg:min-h-[85vh]
+        xl:min-h-[90vh]
+        2xl:min-h-[180vh]
         bg-slate-50 dark:bg-[#151B33]
       "
     >
@@ -68,8 +69,8 @@ const Hero = () => {
 
       {/* ================= MAIN CONTAINER ================= */}
       {/* 🔒 Container behavior LOCKED after lg */}
-      <div className="relative z-20 w-full max-w-8xl mx-auto px-4 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+      <div className="relative z-20 w-full max-w-8xl mx-auto px-4 lg:px-8 ">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-30">
 
           {/* ================= LEFT CONTENT ================= */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
@@ -85,7 +86,7 @@ const Hero = () => {
                       : "opacity-0 translate-y-6 -z-10 pointer-events-none"
                   }`}
                 >
-                  <h1 className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-4xl 2xl:text-5xl font-bold leading-[1.15] mb-6 text-white max-w-4xl whitespace-normal lg:whitespace-nowrap">
+                  <h1 className="text-2xl sm:text-2xl lg:text-[1.8rem] xl:text-3xl 2xl:text-4xl font-bold leading-[1.15] mb-6 text-white max-w-4xl whitespace-normal lg:whitespace-nowrap">
                     {slide.heading}
                     <br className="hidden lg:block" />
                     <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
@@ -111,7 +112,7 @@ const Hero = () => {
                     <Link
                       href="/"
                       className="px-8 py-3.5 rounded-tl-[30px] rounded-br-[30px]
-                                 bg-white/20 dark:bg-white/5
+                                 bg-black/60 dark:bg-black/65
                                  backdrop-blur-md
                                  border border-white/20
                                  text-sm font-bold
@@ -128,20 +129,20 @@ const Hero = () => {
             </div>
 
             {/* ================= FEATURES ================= */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="mt-0 2xl:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-4">
               {features.map((f, i) => (
                 <Link
                   key={i}
                   href={f.href}
                   className="flex items-center gap-3 px-3 py-2
                              rounded-tl-[20px] rounded-br-[20px]
-                             bg-white/20 dark:bg-white/5
+                             bg-black/60 dark:bg-black/65
                              backdrop-blur-md
                              border border-white/20
                              hover:bg-white/30 hover:scale-[1.02]
                              transition-all"
                 >
-                  <div className="bg-gradient-to-br from-blue-100/80 to-green-100/80 dark:from-blue-500/20 dark:to-green-500/20 rounded-lg p-2">
+                  <div className="bg-gradient-to-br from-blue-100/80 to-black-100/80 dark:from-blue-500/20 dark:to-green-500/20 rounded-lg p-2">
                     <f.icon className="w-4 h-4 text-green-400" />
                   </div>
 

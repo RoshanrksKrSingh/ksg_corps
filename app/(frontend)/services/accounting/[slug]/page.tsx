@@ -11,12 +11,13 @@ import {
   ChevronRight,
   CheckCircle2,
 } from "lucide-react";
-import { motion } from "framer-motion"; // ✅ Import Framer Motion
+import { motion } from "framer-motion";
 
 // --- DATA ---
+// ✅ Updated: Added specific 'image' for each service
 const servicesData: Record<
   string,
-  { title: string; desc: string; subtitle?: string; details: string[] }
+  { title: string; desc: string; subtitle?: string; details: string[]; image: string }
 > = {
   "book-keeping": {
     title: "Accounting and Book Keeping",
@@ -31,6 +32,8 @@ const servicesData: Record<
       "Independent health check on the company’s accounting operations",
       "Back log accounting for previous years",
     ],
+    // ✅ Unique Image 1
+    image: "https://images.pexels.com/photos/29267524/pexels-photo-29267524.jpeg",
   },
   payroll: {
     title: "Outsourced Payroll Services",
@@ -44,6 +47,8 @@ const servicesData: Record<
       "Apply Cloud-based payroll software that provides easy access and data retrieval",
       "Preparing payroll reports to support accounting",
     ],
+    // ✅ Unique Image 2
+    image: "https://ik.imagekit.io/travechela/pexels-mikhail-nilov-6930548.jpg",
   },
   ifrs: {
     title: "IFRS Advisory Services",
@@ -57,6 +62,8 @@ const servicesData: Record<
       "Providing training on the new standards",
       "Disclosure requirements as per the new standard",
     ],
+    // ✅ Unique Image 3
+    image: "https://ik.imagekit.io/travechela/pexels-yankrukov-8837443.jpg",
   },
   "financial-audit": {
     title: "Financial Audit Support",
@@ -71,6 +78,8 @@ const servicesData: Record<
       "Implement remediation efforts identified pre- or post-audit",
       "Compilation and Maintenance of Fixed Asset Register",
     ],
+    // ✅ Unique Image 4
+    image: "https://ik.imagekit.io/travechela/pexels-sora-shimazaki-5668863.jpg",
   },
   "stock-audit": {
     title: "Stock Audit and Verification",
@@ -83,6 +92,16 @@ const servicesData: Record<
       "Help to quantify pilferage, fraud, wastage or damage",
       "Valuation of Inventory for Inventory Accounting",
     ],
+    // ✅ Unique Image 5 (I used Image 4 again or you can swap with a 5th unique one if provided later. For now, using a relevant placeholder or rotating the list)
+    // Note: You provided 4 links in the prompt, but asked for 5 images. I have reused the IFRS image here or I can use the first one.
+    // Let's use the first meeting image as a fallback or a distinct one if available.
+    // Actually, looking at the links provided:
+    // 1. meeting
+    // 2. mikhail-nilov
+    // 3. yankrukov
+    // 4. sora-shimazaki
+    // You asked for "5 images". I will use the 'meeting' one again for Stock Audit as it fits 'verification', or you can update this link later.
+    image: "https://ik.imagekit.io/travechela/meeting-4784909.jpg?updatedAt=1768997579234",
   },
 };
 
@@ -217,7 +236,7 @@ export default function ServiceDetailPage({
                         {/* ✅ Updated Sidebar Buttons */}
                         <Link
                           href={`/services/accounting/${link.id}`}
-                          className={`flex items-center justify-between gap-3 px-3 py-3 rounded-xl transition-all duration-300 whitespace-normal xl:whitespace-nowrap text-sm  2xl:text-xl ${
+                          className={`flex items-center justify-between gap-3 px-3 py-3 rounded-xl transition-all duration-300 whitespace-normal xl:whitespace-nowrap text-sm 2xl:text-xl ${
                             isActive
                               ? activeButtonStyle
                               : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white "
@@ -267,10 +286,12 @@ export default function ServiceDetailPage({
                   {service.desc}
                 </p>
 
-                {/* 3. Image Banner */}
-                <div className="relative w-full h-48 md:h-96 rounded-2xl overflow-hidden mb-8 group shadow-lg">
+                {/* 3. Image Banner (Dynamic) */}
+                {/* ✅ FIXED: Added specific height classes for 1355px+ and 4K screens */}
+                <div className="relative w-full h-48 md:h-150 min-[1355px]:h-[35rem] 2xl:h-[65rem] rounded-2xl overflow-hidden mb-8 group shadow-lg">
                   <img
-                    src="https://images.pexels.com/photos/29267524/pexels-photo-29267524.jpeg"
+                    // ✅ Updated: Uses the specific image for the current service
+                    src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
@@ -332,4 +353,4 @@ export default function ServiceDetailPage({
       </div>
     </div>
   );
-}
+} 

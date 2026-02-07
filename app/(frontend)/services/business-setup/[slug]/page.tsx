@@ -11,12 +11,13 @@ import {
   ChevronRight,
   CheckCircle2,
 } from "lucide-react";
-import { motion } from "framer-motion"; // ✅ Import Framer Motion
+import { motion } from "framer-motion";
 
 // --- BUSINESS SETUP DATA ---
+// ✅ Updated: Added specific 'image' for each service
 const servicesData: Record<
   string,
-  { title: string; desc: string; subtitle?: string; details: string[] }
+  { title: string; desc: string; subtitle?: string; details: string[]; image: string }
 > = {
   mainland: {
     title: "UAE Mainland Company Formation",
@@ -31,6 +32,8 @@ const servicesData: Record<
       "Help to open Bank Account",
       "Help to get office on Rent",
     ],
+    // ✅ Unique Image 1
+    image: "https://ik.imagekit.io/travechela/mainland.jpg",
   },
   freezone: {
     title: "Free Zone Company Formation",
@@ -45,6 +48,8 @@ const servicesData: Record<
       "Help to open Bank Account",
       "Help to get office on Rent",
     ],
+    // ✅ Unique Image 2
+    image: "https://ik.imagekit.io/travechela/freezone.jpg",
   },
   offshore: {
     title: "Offshore Company Formation",
@@ -58,6 +63,8 @@ const servicesData: Record<
       "License renewals",
       "License amendments",
     ],
+    // ✅ Unique Image 3
+    image: "https://ik.imagekit.io/travechela/offshore.jpg",
   },
   sponsorship: {
     title: "Sponsorship Services",
@@ -67,6 +74,8 @@ const servicesData: Record<
       "Assist in getting an authentic and reliable local Partner",
       "Act as in intermediary between clients & Local Partner",
     ],
+    // ✅ Unique Image 4
+    image: "https://ik.imagekit.io/travechela/sponsership.jpg",
   },
   "pro-services": {
     title: "Corporate PRO Services",
@@ -83,6 +92,8 @@ const servicesData: Record<
       "Processing’s & approvals from government departments",
       "Attestation and Notarisation of Documents",
     ],
+    // ✅ Unique Image 5
+    image: "https://ik.imagekit.io/travechela/proservices.jpg",
   },
   liquidation: {
     title: "Company Liquidation",
@@ -97,6 +108,8 @@ const servicesData: Record<
       "Newspaper advertisements",
       "Obtaining Non-Liability Letter and Liquidation Certificate",
     ],
+    // ✅ Unique Image 6
+    image: "https://ik.imagekit.io/travechela/liquidation.jpg",
   },
 };
 
@@ -121,10 +134,6 @@ export default function ServiceDetailPage({
   if (!service) {
     return notFound();
   }
-
-  // Use a different image for the sub-services (Cityscape/Modern Business)
-  const detailImage =
-    "https://images.pexels.com/photos/4561006/pexels-photo-4561006.png";
 
   // Animation Variant
   const fadeUp = {
@@ -223,7 +232,7 @@ export default function ServiceDetailPage({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-            {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left) --- */}
+            {/* --- LEFT SIDEBAR (Mobile: Bottom, Desktop: Left/First) --- */}
             <div className="lg:col-span-1 space-y-4 order-last lg:order-first">
               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-sm">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-white/10 pb-4">
@@ -287,23 +296,23 @@ export default function ServiceDetailPage({
                   {service.desc}
                 </p>
 
-                {/* 3. Image Banner */}
-                <div className="relative w-full h-48 md:h-96 rounded-2xl overflow-hidden mb-8 group shadow-lg">
+                {/* 3. Image Banner (Dynamic) */}
+                {/* ✅ FIXED: Added specific height classes for 1355px+ and 4K screens */}
+                <div className="relative w-full h-48 md:h-150 min-[1355px]:h-[35rem] 2xl:h-[65rem] rounded-2xl overflow-hidden mb-8 group shadow-lg">
                   <img
-                    src={detailImage}
+                    // ✅ Updated: Uses the specific image for the current service
+                    src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
 
-                {/* Subtitle (Dynamic based on service) */}
+                {/* Subtitle (Responsive Text) */}
                 {service.subtitle && (
-                  <div>
-                    <h5 className="text-sm md:text-xl font-bold mb-6 text-gray-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200">
-                      {service.subtitle}
-                    </h5>
-                  </div>
+                  <h5 className="text-sm md:text-xl font-bold mb-6 text-gray-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200">
+                    {service.subtitle}
+                  </h5>
                 )}
 
                 {/* 4. Includes List (Responsive) */}
@@ -354,4 +363,4 @@ export default function ServiceDetailPage({
       </div>
     </div>
   );
-}
+}   
