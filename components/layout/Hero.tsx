@@ -70,7 +70,7 @@ const Hero = () => {
       {/* ================= MAIN CONTAINER ================= */}
       {/* 🔒 Container behavior LOCKED after lg */}
       <div className="relative z-20 w-full max-w-8xl mx-auto px-4 lg:px-8 ">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-30">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-20">
 
           {/* ================= LEFT CONTENT ================= */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
@@ -129,7 +129,7 @@ const Hero = () => {
             </div>
 
             {/* ================= FEATURES ================= */}
-            <div className="mt-0 2xl:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="mt-0 2xl:mt-17 grid grid-cols-1 sm:grid-cols-3 gap-4">
               {features.map((f, i) => (
                 <Link
                   key={i}
