@@ -33,25 +33,25 @@ const Footer = () => {
             <div className="flex flex-col items-start w-full">
               
               {/* Logo - Size Maintained */}
-              <div className="-mb-10 -mt-10 "> 
+              <div className="-mb-10 -mt-10 md:-mt-12 xl:-mt-13 md:-mb-12 2xl:-mt-18 "> 
                 <Link href="/" className="block">
                   <img 
-                    src="https://ik.imagekit.io/travechela/K__5_-removebg-preview.png"
+                    src="https://ik.imagekit.io/travechela/ksg-logo-white.png"
                     alt="KSG Corporate Services Logo"
-                    className="-ml-6 md:-ml-5 2xl:-ml-10 h-35 md:h-35 lg:h-39 xl:h-45 2xl:h-55 w-auto object-contain"
+                    className="-ml-6 md:-ml-7 2xl:-ml-18 h-35 md:h-45 lg:h-49 xl:h-49 2xl:h-65 w-auto object-contain"
                   />
                 </Link>
               </div>
 
               {/* Description Text - Adjusted spacing naturally without negative margins */}
-              <p className="text-sm leading-relaxed mb-6 ml-0 2xl:-ml-2 font-medium text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-green-300 max-w-sm">
+              <p className="text-sm leading-relaxed mb-6 ml-0 2xl:-ml-8 font-medium text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-green-300 max-w-sm">
                 KSG Corporate Services is a corporate consulting firm formed with the objective of providing unparalleled broad range of corporate advisory services.
               </p>
 
               {/* Social Icons */}
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 2xl:space-x-12">
                 {[Facebook, Instagram, Linkedin, Twitter].map((Icon, index) => (
-                  <Link key={index} href="#" className="text-white hover:text-green-500 transition transform hover:scale-110 ml-0 2xl:-ml-3">
+                  <Link key={index} href="#" className="text-white hover:text-green-500 transition transform hover:scale-110 ml-0 2xl:-ml-10">
                     <Icon size={22} />
                   </Link>
                 ))}

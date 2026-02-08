@@ -73,7 +73,7 @@ export default function LoginPage() {
           <div className="mb-0">
              {/* Change 3: Adjusted logo height for mobile (h-24) */}
              <img 
-               src="http://ksgcorps.com/wp-content/uploads/2021/11/ksg-logo-white.png" 
+               src="https://ik.imagekit.io/travechela/K__5_-removebg-preview.png?updatedAt=1770301064802" 
                alt="KSG Logo" 
                className="h-24 md:h-32 w-auto drop-shadow-md"
              />

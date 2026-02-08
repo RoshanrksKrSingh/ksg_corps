@@ -25,7 +25,7 @@ export default function AdminSidebar() {
         
         {/* LOGO HERE (Mobile) - Classes kept same as requested */}
         <img 
-          src="http://ksgcorps.com/wp-content/uploads/2021/11/ksg-logo-white.png" 
+          src="https://ik.imagekit.io/travechela/K__5_-removebg-preview.png?updatedAt=1770301064802" 
           alt="KSG Logo" 
           className="h-40 w-auto -mt-1 -ml-1"
         />
@@ -43,10 +43,10 @@ export default function AdminSidebar() {
       >
         <div className="p-0 border-b border-white/10 flex justify-between items-center overflow-hidden">
           
-          {/* LOGO HERE (Desktop/Sidebar) */}
+          {/* ✅ FIXED: Updated Sidebar Logo URL to the working ImageKit link */}
           <div className="w-full flex justify-start">
             <img 
-              src="http://ksgcorps.com/wp-content/uploads/2021/11/ksg-logo-white.png" 
+              src="https://ik.imagekit.io/travechela/K__5_-removebg-preview.png?updatedAt=1770301064802" 
               alt="KSG Logo" 
               className="h-40 w-auto -mt-10 -ml-1" 
             />
