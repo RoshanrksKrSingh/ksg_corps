@@ -70,7 +70,7 @@ const Hero = () => {
       {/* ================= MAIN CONTAINER ================= */}
       {/* 🔒 Container behavior LOCKED after lg */}
       <div className="relative z-20 w-full max-w-8xl mx-auto px-4 lg:px-8 ">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-20">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-20 2xl:mt-0">
 
           {/* ================= LEFT CONTENT ================= */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
