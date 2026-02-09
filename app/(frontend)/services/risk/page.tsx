@@ -148,7 +148,7 @@ export default function RiskAdvisoryPage() {
                       Overview
                     </span>
                   </span>
-                  <h2 className="text-3xl md:text-3xl font-bold leading-tight text-gray-900 dark:text-white">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-gray-900 dark:text-white">
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
                       Internal Audit & Risk Advisory
                     </span>
@@ -215,7 +215,7 @@ export default function RiskAdvisoryPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 transition-colors">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 transition-colors">
                 Our Internal Audit & Risk Advisory includes
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mt-4 rounded-full"></div>

@@ -159,7 +159,7 @@ export default function OurTeamPage() {
               variants={fadeInUp}
             >
               <motion.div variants={textFloatAnimation} animate="animate">
-                <h2 className="text-2xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 leading-tight">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 leading-tight">
                   Our Team & Associates
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
@@ -204,7 +204,7 @@ export default function OurTeamPage() {
             viewport={{ once: false, amount: 0.3 }}
             variants={fadeInUp}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 mb-4">
               Our Team four{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
                 Prime Strength

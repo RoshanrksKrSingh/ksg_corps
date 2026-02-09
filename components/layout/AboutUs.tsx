@@ -82,7 +82,7 @@ const AboutUs = () => {
               </span>
             </motion.div>
 
-            <motion.h2 className="text-2xl sm:text-3xl font-bold leading-tight text-gray-900 dark:text-white" variants={fadeUp} initial="hidden" whileInView="visible">
+            <motion.h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-gray-900 dark:text-white" variants={fadeUp} initial="hidden" whileInView="visible">
               <span className="block">
                 We help organizations to{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 dark:from-green-400 dark:to-blue-500">

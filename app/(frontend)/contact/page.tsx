@@ -130,7 +130,7 @@ export default function ContactPage() {
                 </span>
               </span>
 
-              <h1 className="text-4xl md:text-4xl font-bold mt-2 mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
                 Have questions? Let's discuss your business needs.
               </h1>
               <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">

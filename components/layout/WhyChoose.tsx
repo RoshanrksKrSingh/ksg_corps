@@ -139,7 +139,7 @@ const WhyChoose = () => {
             </span>
           </span>
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white leading-tight transition-colors duration-300">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-gray-900 dark:text-white leading-tight transition-colors duration-300">
             We bring our{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r  from-green-400 to-blue-500 animate-pulse">
               expertise
