@@ -147,7 +147,7 @@ export default function LatestInsights() {
             </span>
           </span>
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200 transition-colors duration-300">
+          <h2 className="text-xl sm:text-2xl lg:text-[1.8rem] xl:text-3xl 2xl:text-4xl font-bold mb-6 text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200 transition-colors duration-300">
             Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 animate-pulse">Insights</span> & Updates
           </h2>
 
@@ -198,7 +198,7 @@ export default function LatestInsights() {
                     </div>
                     
                     {/* Title: Dark Text in Light Mode */}
-                    <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-green-600 dark:group-hover:from-orange-400 dark:group-hover:to-green-500 transition-all">
+                    <h3 className="text-sm md:text-base font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-green-600 dark:group-hover:from-orange-400 dark:group-hover:to-green-500 transition-all">
                       {blog.title}
                     </h3>
                     

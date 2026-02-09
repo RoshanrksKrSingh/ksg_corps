@@ -82,14 +82,14 @@ const AboutUs = () => {
               </span>
             </motion.div>
 
-            <motion.h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-gray-900 dark:text-white" variants={fadeUp} initial="hidden" whileInView="visible">
+            <motion.h2 className="text-xl sm:text-2xl lg:text-[1.8rem] xl:text-3xl 2xl:text-4xl font-bold leading-tight text-gray-900 dark:text-white" variants={fadeUp} initial="hidden" whileInView="visible">
               <span className="block">
                 We help organizations to{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 dark:from-green-400 dark:to-blue-500">
                   globalize their business,
                 </span>
               </span>
-              <span className="block text-sm sm:text-2xl font-semibold text-gray-600 dark:text-gray-300 mt-2">
+              <span className="block text-sm sm:text-xl font-semibold text-gray-600 dark:text-gray-300 mt-2">
                 develop institutional capacity, and tackle the organizational challenges
               </span>
             </motion.h2>

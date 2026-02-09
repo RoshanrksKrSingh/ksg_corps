@@ -119,7 +119,7 @@ export default async function BlogDetailPage({
           </div>
 
           {/* Title */}
-          <h1 className="text-xl md:text-2xl xl:text-3xl 2xl:text-4xl font-extrabold leading-tight mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-green-500 dark:from-green-400 dark:to-blue-500">
+          <h1 className="text-xl sm:text-2xl lg:text-[1.8rem] xl:text-3xl 2xl:text-4xl font-extrabold leading-tight mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-green-500 dark:from-green-400 dark:to-blue-500">
             {blog.title}
           </h1>
 

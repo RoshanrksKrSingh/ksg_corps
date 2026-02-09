@@ -127,7 +127,7 @@ export default function ServicesCards() {
           viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 dark:from-green-400 dark:to-blue-500 transition-colors duration-300">
+          <h2 className="text-xl sm:text-2xl lg:text-[1.8rem] xl:text-3xl 2xl:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 dark:from-green-400 dark:to-blue-500 transition-colors duration-300">
             Solutions We Provide
           </h2>
           <motion.div 
@@ -176,7 +176,7 @@ export default function ServicesCards() {
                       <service.icon size={17} />
                     </div>
                     {/* Title */}
-                    <h3 className="text-sm md:text-[15px] font-bold text-gray-900 dark:text-white leading-tight group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors pt-0.5">
+                    <h3 className="text-sm md:text-[14px] whitespace-nowrap font-bold text-gray-900 dark:text-white leading-tight group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors pt-0.5">
                       {service.title}
                     </h3>
                   </div>

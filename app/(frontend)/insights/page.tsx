@@ -212,7 +212,7 @@ export default async function InsightsPage({
                     <Calendar size={12} />
                     {new Date(blog.createdAt).toLocaleDateString()}
                   </div>
-                  <h3 className="text-xl font-bold text-[#041D2D] dark:text-white mb-3 line-clamp-2 group-hover:text-orange-600 transition-colors">
+                  <h3 className="text-base font-bold text-[#041D2D] dark:text-white mb-3 line-clamp-2 group-hover:text-orange-600 transition-colors">
                     {blog.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-3 mb-6 flex-1 leading-relaxed">
