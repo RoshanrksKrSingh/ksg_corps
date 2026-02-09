@@ -134,12 +134,12 @@ const WhyChoose = () => {
           
           <span className="relative inline-block py-1.5 px-4 rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none  bg-white/60 dark:bg-white/20 overflow-hidden mb-6 shadow-sm">
             <div className="absolute inset-0 animate-shimmer"></div>
-            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r  from-green-400 to-blue-500 font-bold uppercase text-sm tracking-[0.2em]">
+            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r  from-green-400 to-blue-500 font-bold uppercase text-xs tracking-[0.2em]">
               Why Choose Us
             </span>
           </span>
 
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white leading-tight transition-colors duration-300">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white leading-tight transition-colors duration-300">
             We bring our{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r  from-green-400 to-blue-500 animate-pulse">
               expertise
@@ -151,7 +151,7 @@ const WhyChoose = () => {
             to your business
           </h2>
 
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white leading-tight transition-colors duration-300">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white leading-tight transition-colors duration-300">
             to help you achieve the{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r  from-green-400 to-blue-500 animate-pulse">
               best

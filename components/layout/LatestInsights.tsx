@@ -142,12 +142,12 @@ export default function LatestInsights() {
           {/* Badge: Visible border in light mode */}
           <span className="relative inline-block py-1.5 px-4 rounded-tl-[20px] rounded-br-[20px] rounded-tr-none rounded-bl-none border border-gray-300 dark:border-white/10 bg-white/60 dark:bg-white/5 overflow-hidden mb-4 shadow-sm">
             <div className="absolute inset-0 animate-shimmer"></div>
-            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 font-bold uppercase text-base tracking-widest">
+            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 font-bold uppercase text-xs tracking-widest">
                 Our Blog
             </span>
           </span>
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200 transition-colors duration-300">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-blue-100 dark:to-green-200 transition-colors duration-300">
             Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 animate-pulse">Insights</span> & Updates
           </h2>
 

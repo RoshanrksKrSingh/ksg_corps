@@ -82,19 +82,19 @@ const AboutUs = () => {
               </span>
             </motion.div>
 
-            <motion.h2 className="text-3xl md:text-3xl font-bold leading-tight text-gray-900 dark:text-white" variants={fadeUp} initial="hidden" whileInView="visible">
+            <motion.h2 className="text-2xl sm:text-3xl font-bold leading-tight text-gray-900 dark:text-white" variants={fadeUp} initial="hidden" whileInView="visible">
               <span className="block">
                 We help organizations to{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 dark:from-green-400 dark:to-blue-500">
                   globalize their business,
                 </span>
               </span>
-              <span className="block text-xl md:text-2xl font-semibold text-gray-600 dark:text-gray-300 mt-2">
+              <span className="block text-sm sm:text-2xl font-semibold text-gray-600 dark:text-gray-300 mt-2">
                 develop institutional capacity, and tackle the organizational challenges
               </span>
             </motion.h2>
 
-            <div className="space-y-4 text-sm md:text-base text-gray-700 dark:text-gray-300 text-justify">
+            <div className="space-y-4 text-sm sm:text-base text-gray-700 dark:text-gray-300 text-justify">
               <motion.p variants={fadeUp} initial="hidden" whileInView="visible">
                 <strong className="text-gray-900 dark:text-white">KSG Corporate Services is</strong> a corporate consulting firm formed with the objective of providing unparalleled advisory services including
                 <span className="text-gray-900 dark:text-white font-medium">

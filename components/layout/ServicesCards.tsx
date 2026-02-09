@@ -127,7 +127,7 @@ export default function ServicesCards() {
           viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 dark:from-green-400 dark:to-blue-500 transition-colors duration-300">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 dark:from-green-400 dark:to-blue-500 transition-colors duration-300">
             Solutions We Provide
           </h2>
           <motion.div 
