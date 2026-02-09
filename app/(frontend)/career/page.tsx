@@ -10,7 +10,7 @@ export default function CareerPage() {
       <Navbar forceStatic={true} />
 
       {/* 2. Spacer Div */}
-      <div className="w-full h-20 bg-[#0b2b3f]"></div>
+      <div className="w-full h-16  bg-[#0b2b3f]"></div>
 
       {/* 3. Static Content (Images, Text, Counter) */}
       <CareerWithUs />

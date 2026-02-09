@@ -86,7 +86,7 @@ const Hero = () => {
                       : "opacity-0 translate-y-6 -z-10 pointer-events-none"
                   }`}
                 >
-                  <h1 className="text-2xl sm:text-2xl lg:text-[1.8rem] xl:text-3xl 2xl:text-4xl font-bold leading-[1.15] mb-6 text-white max-w-4xl whitespace-normal lg:whitespace-nowrap">
+                  <h1 className="text-xl sm:text-2xl lg:text-[1.8rem] xl:text-3xl 2xl:text-4xl font-bold leading-[1.15] mb-6 text-white max-w-4xl whitespace-normal lg:whitespace-nowrap">
                     {slide.heading}
                     <br className="hidden lg:block" />
                     <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
@@ -98,13 +98,13 @@ const Hero = () => {
                     {slide.desc}
                   </p>
 
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-nowrap sm:flex-wrap gap-4">
                     <Link
                       href="/contact"
                       className="px-8 py-3.5 rounded-tl-[30px] rounded-br-[30px]
                                  bg-gradient-to-r from-green-400 to-blue-500
-                                 text-white text-sm font-bold
-                                 shadow-lg hover:scale-105 transition-all"
+                                 text-white text-xs sm:text-sm font-bold
+                                 shadow-lg hover:scale-105 transition-all "
                     >
                       Get In Touch
                     </Link>
@@ -115,7 +115,7 @@ const Hero = () => {
                                  bg-black/60 dark:bg-black/65
                                  backdrop-blur-md
                                  border border-white/20
-                                 text-sm font-bold
+                                 text-xs sm:text-sm font-bold
                                  bg-gradient-to-r from-green-400 to-blue-500
                                  bg-clip-text text-transparent
                                  hover:bg-white/30 hover:scale-105

@@ -144,7 +144,7 @@ export default function OurTeamPage() {
       <Navbar forceStatic={true} />
 
       {/* 2. Spacer Div */}
-      <div className="w-full h-20 bg-[#0b2b3f]"></div>
+      <div className="w-full h-16 bg-[#0b2b3f]"></div>
 
       {/* ================= MAIN CONTENT CONTAINER ================= */}
       <div className="relative z-10 w-[99%] max-w-8xl 2xl:max-w-[95%] mx-auto px-4 lg:px-8 w-full">
