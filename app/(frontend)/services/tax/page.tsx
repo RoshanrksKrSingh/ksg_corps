@@ -231,7 +231,7 @@ export default function TaxPage() {
                 <motion.div key={s.id} variants={cardVariant}>
                   <Link
                     href={`/services/tax/${s.id}`}
-                    className="group relative block p-8 bg-white dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden h-full"
+                    className="group relative block p-8 bg-white dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10  rounded-tl-[30px] rounded-br-[30px] shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden h-full"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-green-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">

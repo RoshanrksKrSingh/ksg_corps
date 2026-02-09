@@ -97,7 +97,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                   {/* Mega Menu Dropdown */}
                   <div className="absolute right-0 top-full w-[90vw] max-w-[80rem] 2xl:max-w-[110rem] bg-[#131a2e] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-b-3xl overflow-hidden">
                      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
-                     <div className="w-full px-8 py-8 relative z-10">
+                     <div className="w-full px-6 py-8 relative z-10">
                         <div className="grid grid-cols-4 gap-6 2xl:gap-12">
                             {Object.values(megaMenuData).map((category) => {
                                const Icon = category.icon;
@@ -105,7 +105,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                                  <div key={category.id} className="space-y-3 border-l border-white/10 pl-6">
                                     <div className="flex items-center gap-2 pb-2 border-b border-white/20">
                                         <Icon className="text-blue-500 w-4 h-4 xl:w-5 xl:h-5 2xl:w-7 2xl:h-7" />
-                                        <h3 className="font-bold tracking-wider text-green-400 text-xs xl:text-sm 2xl:text-xl">
+                                        <h3 className="font-bold tracking-wider text-green-400 text-xs xl:text-sm 2xl:text-xl whitespace-nowrap">
                                             {category.label}
                                         </h3>
                                     </div>
