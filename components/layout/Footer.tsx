@@ -1,7 +1,23 @@
 "use client";
 
 import Link from 'next/link';
-import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin, Instagram } from 'lucide-react';
+// ✅ Import 'X' icon from lucide-react instead of 'Twitter'
+import { Facebook, Linkedin, Mail, Phone, MapPin, Instagram } from 'lucide-react';
+
+// ✅ Custom X Icon Component (since lucide-react 'X' is usually a close button, not the logo)
+// If you specifically want the X Corp logo, using an SVG is safer than the standard 'X' (close) icon.
+const XLogo = ({ size = 22, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+  >
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+  </svg>
+);
 
 const Footer = () => {
   return (
@@ -50,11 +66,19 @@ const Footer = () => {
 
               {/* Social Icons */}
               <div className="flex space-x-4 2xl:space-x-12">
-                {[Facebook, Instagram, Linkedin, Twitter].map((Icon, index) => (
-                  <Link key={index} href="#" className="text-white hover:text-green-500 transition transform hover:scale-110 ml-0 2xl:-ml-10">
-                    <Icon size={22} />
-                  </Link>
-                ))}
+                <Link href="#" className="text-white hover:text-green-500 transition transform hover:scale-110 ml-0 2xl:-ml-10">
+                    <Facebook size={22} />
+                </Link>
+                <Link href="#" className="text-white hover:text-green-500 transition transform hover:scale-110 ml-0 2xl:-ml-10">
+                    <Instagram size={22} />
+                </Link>
+                <Link href="#" className="text-white hover:text-green-500 transition transform hover:scale-110 ml-0 2xl:-ml-10">
+                    <Linkedin size={22} />
+                </Link>
+                {/* ✅ X Icon Replacement */}
+                <Link href="#" className="text-white hover:text-green-500 transition transform hover:scale-110 ml-0 2xl:-ml-10">
+                    <XLogo size={20} />
+                </Link>
               </div>
 
             </div>
