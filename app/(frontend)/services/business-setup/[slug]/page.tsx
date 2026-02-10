@@ -154,7 +154,7 @@ export default function ServiceDetailPage({
       <Navbar forceStatic={true} />
 
       {/* Spacer */}
-      <div className="h-20 bg-[#09102d]"></div>
+      <div className="h-16 bg-[#09102d]"></div>
 
       {/* ================= MAIN CONTENT WRAPPER (Starry Background) ================= */}
       <div className="relative overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] transition-colors duration-300 min-h-screen">
