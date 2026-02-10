@@ -9,7 +9,7 @@ import {
   FileText, BarChart3, Wallet, 
   Building, Briefcase, Lightbulb 
 } from 'lucide-react';
-import NotificationBar from "@/components/ui/NotificationBar"; // ✅ Import
+import NotificationBar from "@/components/ui/NotificationBar"; 
 
 // ... (MEGA MENU DATA CONSTANTS - KEPT EXACTLY SAME) ...
 const megaMenuData = {
@@ -39,6 +39,19 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
     }
     return pathname === path;
   };
+
+  // ✅ NEW ADDITION: Auto-expand mobile menu based on current active page
+  useEffect(() => {
+    if (pathname.startsWith('/services')) {
+      setMobileExpanded('services_main');
+    } else if (pathname.startsWith('/insights')) {
+      setMobileExpanded('insight');
+    } else if (pathname.startsWith('/career')) {
+      setMobileExpanded('career');
+    } else {
+      setMobileExpanded(null);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,8 +109,8 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                   
                   {/* Mega Menu Dropdown */}
                   <div className="absolute right-0 top-full w-[90vw] max-w-[80rem] 2xl:max-w-[110rem] bg-[#131a2e] backdrop-blur-2xl text-white border-t border-brand-accent/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl mt-0 rounded-b-3xl overflow-hidden">
-                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
-                     <div className="w-full px-6 py-8 relative z-10">
+                      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
+                      <div className="w-full px-6 py-8 relative z-10">
                         <div className="grid grid-cols-4 gap-6 2xl:gap-12">
                             {Object.values(megaMenuData).map((category) => {
                                const Icon = category.icon;
@@ -131,7 +144,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                                );
                             })}
                         </div>
-                     </div>
+                      </div>
                   </div>
                 </div>
 
@@ -208,7 +221,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                 
                 {/* Mobile Menu Logic (Services) */}
                 <div>
-                  <button onClick={() => toggleMobile('services_main')} className="w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 text-white items-center">
+                  <button onClick={() => toggleMobile('services_main')} className={`w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 items-center ${mobileExpanded === 'services_main' ? 'text-green-400' : 'text-white'}`}>
                       Services {mobileExpanded === 'services_main' ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
                   </button>
                   <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'services_main' ? 'max-h-[1000px] opacity-100 py-2' : 'max-h-0 opacity-0'}`}>
@@ -219,8 +232,8 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                               </h5>
                               <div className="pl-6 border-l border-gray-700 ml-1 space-y-2">
                                   {category.items.map((item, i) => (
-                                      <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-2 text-xs text-gray-400 hover:text-white">
-                                          <span className="w-1.5 h-1.5 rounded-full bg-gray-600"></span> {item.label}
+                                      <Link key={i} href={item.href} onClick={() => setIsOpen(false)} className={`flex items-center gap-2 text-xs hover:text-white ${isActiveLink(item.href) ? "text-green-400 font-bold" : "text-gray-400"}`}>
+                                          <span className={`w-1.5 h-1.5 rounded-full ${isActiveLink(item.href) ? "bg-green-400" : "bg-gray-600"}`}></span> {item.label}
                                       </Link>
                                   ))}
                               </div>
@@ -231,7 +244,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
 
                 {/* Mobile Menu Logic (Insights) */}
                 <div>
-                 <button onClick={() => toggleMobile('insight')} className="w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 text-white items-center">
+                 <button onClick={() => toggleMobile('insight')} className={`w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 items-center ${mobileExpanded === 'insight' ? 'text-green-400' : 'text-white'}`}>
                    Insight {mobileExpanded === 'insight' ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
                  </button>
                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'insight' ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
@@ -245,7 +258,7 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
 
                 {/* Mobile Menu Logic (Career) */}
                 <div>
-                 <button onClick={() => toggleMobile('career')} className="w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 text-white items-center">
+                 <button onClick={() => toggleMobile('career')} className={`w-full flex justify-between font-bold text-lg border-b border-gray-700 pb-2 items-center ${mobileExpanded === 'career' ? 'text-green-400' : 'text-white'}`}>
                    Career {mobileExpanded === 'career' ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
                  </button>
                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === 'career' ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
@@ -257,8 +270,8 @@ const Navbar = ({ forceStatic = false }: { forceStatic?: boolean }) => {
                  </div>
                 </div>
 
-                <Link href="/ourteam" className="block font-bold text-lg border-b border-gray-700 pb-2 text-white" onClick={() => setIsOpen(false)}>Our Team</Link>
-                <Link href="/contact" className="block font-bold text-lg border-b border-gray-700 pb-2 text-white" onClick={() => setIsOpen(false)}>Contact</Link>
+                <Link href="/ourteam" className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/ourteam") ? "text-green-400" : "text-white"}`} onClick={() => setIsOpen(false)}>Our Team</Link>
+                <Link href="/contact" className={`block font-bold text-lg border-b border-gray-700 pb-2 ${isActiveLink("/contact") ? "text-green-400" : "text-white"}`} onClick={() => setIsOpen(false)}>Contact</Link>
             </div>
             
             <div className="mt-6 mb-4">
