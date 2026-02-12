@@ -48,7 +48,7 @@ const Hero = () => {
       className="
         relative w-full
         mt-16 xl:mt-20 2xl:mt-24
-        pb-8 lg:pb-0
+        pb-8 md:pb-0 lg:pb-0
         overflow-hidden
         flex items-center
         min-h-[600px]
@@ -57,18 +57,27 @@ const Hero = () => {
         bg-slate-50 dark:bg-[#151B33]
       "
     >
+      {/* SECTION PADDING:
+        - Mobile: pb-8
+        - Tablet (md): pb-0
+        - Desktop (lg): pb-0
+      */}
+
       {/* ===== BACKGROUND IMAGE ===== */}
       <img
         src="https://ik.imagekit.io/travechela/WhatsApp%20Image%202026-02-06%20at%2014.54.19.jpeg"
         alt="Hero Background"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="
+          absolute inset-0 w-full h-full 
+          object-cover object-[25%_50%] 
+          md:object-contain md:object-top 
+          lg:object-cover lg:object-center"
       />
 
       {/* Texture Overlay */}
       <div className="absolute inset-0 z-10 opacity-30 dark:opacity-50 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none invert dark:invert-0" />
 
       {/* ================= MAIN CONTAINER ================= */}
-      {/* 🔒 Container behavior LOCKED after lg */}
       <div className="relative z-20 w-full max-w-8xl mx-auto px-4 lg:px-8 ">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-20 2xl:mt-0">
 
@@ -129,12 +138,13 @@ const Hero = () => {
             </div>
 
             {/* ================= FEATURES ================= */}
-            <div className="mt-0 2xl:mt-17 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Added: lg:max-[1270px]:w-[135%] to increase width specifically between 1024px and 1270px */}
+            <div className="mt-0 2xl:mt-17 grid grid-cols-1 sm:grid-cols-3 gap-4 lg:max-[1270px]:w-[135%]">
               {features.map((f, i) => (
                 <Link
                   key={i}
                   href={f.href}
-                  className="flex items-center gap-3 px-3 py-2
+                  className="flex items-center gap-3 px-3 py-2 
                              rounded-tl-[20px] rounded-br-[20px]
                              bg-black/60 dark:bg-black/65
                              backdrop-blur-md
@@ -154,8 +164,8 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* ================= RIGHT SIDE EMPTY (BG VISIBILITY) ================= */}
-          <div className="w-full lg:w-1/2 min-h-[280px] lg:min-h-[400px]" />
+          {/* ================= RIGHT SIDE EMPTY ================= */}
+          <div className="w-full lg:w-1/2 min-h-[0px] md:min-h-[350px] lg:min-h-[400px]" />
         </div>
       </div>
     </section>
