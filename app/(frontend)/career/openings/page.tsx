@@ -34,7 +34,7 @@ export default async function JobOpeningsPage() {
       <Navbar forceStatic={true} />
 
       {/* 2. Spacer Div */}
-      <div className="w-full h-20 bg-[#09102d]"></div>
+      <div className="w-full h-16 bg-[#09102d]"></div>
 
       {/* 3. Job Listings Section (Styled like CareerWithUs) */}
       <section className="relative w-full min-h-[85vh] flex flex-col items-center overflow-hidden bg-slate-50 dark:bg-gradient-to-b dark:from-[#09102d] dark:to-[#0F333D] pt-10 pb-20 group font-sans transition-colors duration-300">
