@@ -70,7 +70,7 @@ const Hero = () => {
         className="
           absolute inset-0 w-full h-full 
           object-cover object-[25%_50%] 
-          md:object-contain md:object-top 
+          md:object-fill 
           lg:object-cover lg:object-center"
       />
 
@@ -79,7 +79,10 @@ const Hero = () => {
 
       {/* ================= MAIN CONTAINER ================= */}
       <div className="relative z-20 w-full max-w-8xl mx-auto px-4 lg:px-8 ">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-20 2xl:mt-0">
+        {/* Added `md:mt-40` to push content down on tablet. 
+           Added `lg:mt-20` to reset it back to original on desktop.
+        */}
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-20 md:mt-40 lg:mt-20 2xl:mt-0">
 
           {/* ================= LEFT CONTENT ================= */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
